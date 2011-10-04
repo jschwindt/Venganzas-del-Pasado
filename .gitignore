@@ -1,0 +1,8 @@
+.DS_Store
+.bundle
+.pt
+config/database.yml
+db/*.sqlite3
+log/*.log
+script/*.sh
+tmp/
