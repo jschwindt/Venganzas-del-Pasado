@@ -1,0 +1,21 @@
+- title "Post"
+
+%p
+  %strong Title:
+  = @post.title
+%p
+  %strong Content:
+  = @post.content
+%p
+  %strong Comments Count:
+  = @post.comments_count
+%p
+  %strong Slug:
+  = @post.slug
+
+%p
+  = link_to "Edit", edit_post_path(@post)
+  |
+  = link_to "Destroy", @post, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", posts_path

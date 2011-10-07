@@ -3,6 +3,7 @@ module Wordpress
     module ClassMethods
 
       def import
+        puts "Importando #{name}"
         each do |record|
           begin
             record.import
