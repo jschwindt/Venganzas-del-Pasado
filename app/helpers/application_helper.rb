@@ -17,4 +17,8 @@ module ApplicationHelper
     content_for(:head) { javascript_include_tag(*args) }
   end
 
+  def markdown_format(content)
+    simple_format(content)
+  end
+
 end

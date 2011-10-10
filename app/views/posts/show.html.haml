@@ -5,7 +5,7 @@
   = @post.title
 %p
   %strong Content:
-  = @post.content
+  = markdown_format @post.content
 %p
   %strong Comments Count:
   = @post.comments_count
