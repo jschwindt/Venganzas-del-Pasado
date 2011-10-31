@@ -1,22 +1,15 @@
 - title "Posts"
 
-%table
-  %tr
-    %th Title
-    %th Content
-    %th Comments count
-    %th Slug
-  - for post in @posts
-    %tr
-      %td= post.title
-      %td= post.content
-      %td= post.comments_count
-      %td= post.slug
-      %td= link_to 'Show', post
-      %td= link_to 'Edit', edit_post_path(post)
-      %td= link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete
+- @posts.each do |post|
+  %h2= post.title
+  %p= markdown_format post.content
+  %p
+    Comentarios:
+    = post.comments_count
+  %p
+    = link_to 'Show', post
+    \|
+    = link_to 'Edit', edit_post_path(post)
 
 %p
   = paginate @posts
-  
-%p= link_to "New Post", new_post_path

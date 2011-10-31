@@ -17,8 +17,13 @@ module ApplicationHelper
     content_for(:head) { javascript_include_tag(*args) }
   end
 
-  def markdown_format(content)
-    simple_format(content)
+  def markdown_format(text)
+    markdown = Redcarpet::Markdown.new(
+        Redcarpet::Render::HTML,
+        :autolink            => true,
+        :no_intra_emphasis   => true,
+        :space_after_headers => true)
+    markdown.render(text).html_safe
   end
 
 end

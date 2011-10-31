@@ -19,6 +19,7 @@ gem 'haml-rails'
 gem 'kaminari'
 gem "friendly_id", "~> 4.0.0.beta8"
 gem 'sequel'
+gem 'redcarpet', '~> 2.0.0b5'
 
 group :development do
   gem 'nifty-generators'
