@@ -1,0 +1,8 @@
+- title "Edit Comment"
+
+= render 'form'
+
+%p
+  = link_to "Show", [@post, @comment]
+  |
+  = link_to "View All", post_comments_path(@post)

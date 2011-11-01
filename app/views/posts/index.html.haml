@@ -5,7 +5,7 @@
   %p= markdown_format post.content
   %p
     Comentarios:
-    = post.comments_count
+    = link_to post.comments_count, post_comments_path(post)
   %p
     = link_to 'Show', post
     \|

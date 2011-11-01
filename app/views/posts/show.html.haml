@@ -19,3 +19,10 @@
   = link_to "Destroy", @post, :confirm => 'Are you sure?', :method => :delete
   |
   = link_to "View All", posts_path
+
+%hr/
+%h3 Comentarios:
+- @post.comments.order("created_at DESC").page(params[:page]).each do |comment|
+  = markdown_format comment.content
+  %hr
+  

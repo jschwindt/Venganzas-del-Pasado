@@ -1,0 +1,26 @@
+- title "Comments"
+
+%table
+  %tr
+    %th Post
+    %th Author
+    %th Author email
+    %th Author url
+    %th Author ip
+    %th Content
+  - for comment in @comments
+    %tr
+      %td= comment.post_id
+      %td= comment.author
+      %td= comment.author_email
+      %td= comment.author_url
+      %td= comment.author_ip
+      %td= markdown_format comment.content
+      %td= link_to 'Show', [@post, comment]
+      %td= link_to 'Edit', edit_post_comment_path(@post, comment)
+      %td= link_to 'Destroy', [@post, comment], :confirm => 'Are you sure?', :method => :delete
+
+%p
+  = paginate @comments
+
+%p= link_to "New Comment", new_post_comment_path(@post)

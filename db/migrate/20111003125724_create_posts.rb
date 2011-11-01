@@ -3,7 +3,7 @@ class CreatePosts < ActiveRecord::Migration
     create_table :posts do |t|
       t.string  :title
       t.text    :content
-      t.integer :comments_count
+      t.integer :comments_count, :default => 0
       t.string  :slug
       t.timestamps
     end
