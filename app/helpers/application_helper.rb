@@ -18,8 +18,9 @@ module ApplicationHelper
   end
 
   def markdown_format(text)
+    rndr = Redcarpet::Render::HTML.new(:filter_html => true, :hard_wrap => true)
     markdown = Redcarpet::Markdown.new(
-        Redcarpet::Render::HTML,
+        rndr,
         :autolink            => true,
         :no_intra_emphasis   => true,
         :space_after_headers => true)
