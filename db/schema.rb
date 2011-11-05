@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111003194557) do
+ActiveRecord::Schema.define(:version => 20111105191653) do
+
+  create_table "audios", :force => true do |t|
+    t.integer "post_id"
+    t.string  "url"
+    t.integer "bytes"
+  end
+
+  add_index "audios", ["post_id"], :name => "index_audios_on_post_id"
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
