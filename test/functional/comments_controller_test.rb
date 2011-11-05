@@ -2,53 +2,71 @@ require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
   def test_index
-    get :index
+    get :index, :post_id => posts(:one)
+    assert_not_nil assigns(:post)
+    assert_not_nil assigns(:comments)
+    assert_response :success
     assert_template 'index'
   end
 
   def test_show
-    get :show, :id => Comment.first
+    get :show, :post_id => posts(:one), :id => comments(:one)
+    assert_not_nil assigns(:post)
+    assert_not_nil assigns(:comment)
+    assert_response :success
     assert_template 'show'
   end
 
   def test_new
-    get :new
+    get :new, :post_id => posts(:one)
+    assert_not_nil assigns(:post)
+    assert_not_nil assigns(:comment)
+    assert_response :success
     assert_template 'new'
   end
 
   def test_create_invalid
     Comment.any_instance.stubs(:valid?).returns(false)
-    post :create
+    post :create, :post_id => posts(:one)
+    assert_not_nil assigns(:post)
+    assert_not_nil assigns(:comment)
+    assert_response :success
     assert_template 'new'
   end
 
   def test_create_valid
     Comment.any_instance.stubs(:valid?).returns(true)
-    post :create
-    assert_redirected_to comment_url(assigns(:comment))
+    post :create, :post_id => posts(:one), :comment => { :content => 'testing' }
+    assert_redirected_to post_comments_url(assigns(:post))
   end
 
   def test_edit
-    get :edit, :id => Comment.first
+    get :edit, :post_id => posts(:one), :id => comments(:one)
+    assert_not_nil assigns(:post)
+    assert_not_nil assigns(:comment)
+    assert_response :success
     assert_template 'edit'
   end
 
   def test_update_invalid
     Comment.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => Comment.first
+    put :update, :post_id => posts(:one), :id => comments(:one)
+    assert_not_nil assigns(:post)
+    assert_not_nil assigns(:comment)
+    assert_response :success
     assert_template 'edit'
   end
 
   def test_update_valid
     Comment.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => Comment.first
-    assert_redirected_to comment_url(assigns(:comment))
+    put :update, :post_id => posts(:one), :id => comments(:one)
+    assert_redirected_to post_comments_url(assigns(:post))
   end
 
   def test_destroy
     comment = Comment.first
-    delete :destroy, :id => comment
-    assert_redirected_to comments_url
+    delete :destroy, :post_id => posts(:one), :id => comment
+    assert_redirected_to post_comments_url(assigns(:post))
     assert !Comment.exists?(comment.id)
   end
 end
