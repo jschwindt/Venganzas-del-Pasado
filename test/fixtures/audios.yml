@@ -1,11 +1,9 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
 one:
-  post_id: 1
-  url: MyString
-  bytes: 1
+  post: one
+  url: http://venganzasdelpasado.com.ar/2011/lavenganza_2011-10-19.mp3
+  bytes: 21497204
 
 two:
-  post_id: 1
-  url: MyString
-  bytes: 1
+  post: one
+  url: http://venganzasdelpasado.com.ar/2011/lavenganza_2011-10-20.mp3
+  bytes: 21489456
