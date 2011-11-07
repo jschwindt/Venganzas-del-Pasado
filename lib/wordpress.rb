@@ -41,7 +41,6 @@ module Wordpress
       record.updated_at = post_modified
       record.save!
     end
-
   end
 
   class Comment < Sequel::Model(:wp_comments)
@@ -62,11 +61,25 @@ module Wordpress
       record.created_at = comment_date
       record.save!
     end
+  end
 
+  class Meta < Sequel::Model(:wp_postmeta)
+    set_dataset from(:wp_postmeta).filter(:meta_key => 'enclosure')
+
+    include Importable
+
+    def import
+      record = ::Audio.find_or_initialize_by_post_id(post_id)
+      url, bytes, mime = meta_value.split(/\r?\n/)
+      record.url   = url
+      record.bytes = bytes
+      record.save!
+    end
   end
 
   def self.import
     Post.import
+    Meta.import
     Comment.import
   end
 
