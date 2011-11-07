@@ -11,7 +11,7 @@
   = @post.comments_count
 %p
   - @post.audios.each do |audio|
-    = render 'player', :url => audio.url
+    = render 'player', :url => audio.url, :id => audio.id
 
 %p
   = link_to "Edit", edit_post_path(@post)

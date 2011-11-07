@@ -1,11 +1,12 @@
 /*
 *= require bootstrap
-*= require jplayer.skin.light/jplayer.light
+*= require jplayer-skin/jplayer.blue.monday
 *= require_self
 */
 body {
 /*  padding-top: 60px;
 */
+  padding: 5px;
 }
 
 select.date {

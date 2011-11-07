@@ -1,23 +1,16 @@
-#jquery_jplayer_1.jp-jplayer
-#jp_container_1.jp-audio
+.jp-audio{ 'data-url' => "#{url}", 'id' => "jp_container_#{id}" }
+  .jp-jplayer{ 'id' => "jplayer_#{id}" }
   .jp-type-single
     .jp-gui.jp-interface
       %ul.jp-controls
         %li
-          %a.jp-play{ :href => "javascript:;", :tabindex => "1"}
-            play
+          %a.jp-play{ :href => "#" }
         %li
-          %a.jp-pause{ :href => "javascript:;", :tabindex => "1"}
-            pause
+          %a.jp-pause{ :href => "#" }
         %li
-          %a.jp-stop{ :href => "javascript:;", :tabindex => "1"}
-            stop
+          %a.jp-mute{ :href => "#" }
         %li
-          %a.jp-mute{ :href => "javascript:;", :tabindex => "1"}
-            mute
-        %li
-          %a.jp-unmute{ :href => "javascript:;", :tabindex => "1"}
-            unmute
+          %a.jp-unmute{ :href => "#" }
       .jp-progress
         .jp-seek-bar
           .jp-play-bar
@@ -25,22 +18,7 @@
         .jp-volume-bar-value
       .jp-time-holder
         .jp-current-time
-        .jp-duration
-    .jp-no-solution
-      %span
-        Se necesita actualización
-      Para reproducir este audio necesita un navegador más reciente o actualizar la versión de Flash.
-
-:javascript
-  $(document).ready(function(){
-    $("#jquery_jplayer_1").jPlayer({
-      ready: function () {
-        $(this).jPlayer("setMedia", {
-          mp3: "#{url}"
-        });
-      },
-      swfPath: "/assets",
-      supplied: "mp3"
-    });
-  });
-
+    -# .jp-no-solution
+    -#   %span
+    -#     Se necesita actualización
+    -#   Para reproducir este audio necesita un navegador más reciente o actualizar la versión de Flash.

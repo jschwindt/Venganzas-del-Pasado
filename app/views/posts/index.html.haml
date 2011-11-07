@@ -2,6 +2,8 @@
 
 - @posts.each do |post|
   %h2= post.title
+  - post.audios.each do |audio|
+    = render 'player', :url => audio.url, :id => audio.id
   %p= markdown_format post.content
   %p
     Comentarios:
