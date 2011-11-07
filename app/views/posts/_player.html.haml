@@ -1,0 +1,46 @@
+#jquery_jplayer_1.jp-jplayer
+#jp_container_1.jp-audio
+  .jp-type-single
+    .jp-gui.jp-interface
+      %ul.jp-controls
+        %li
+          %a.jp-play{ :href => "javascript:;", :tabindex => "1"}
+            play
+        %li
+          %a.jp-pause{ :href => "javascript:;", :tabindex => "1"}
+            pause
+        %li
+          %a.jp-stop{ :href => "javascript:;", :tabindex => "1"}
+            stop
+        %li
+          %a.jp-mute{ :href => "javascript:;", :tabindex => "1"}
+            mute
+        %li
+          %a.jp-unmute{ :href => "javascript:;", :tabindex => "1"}
+            unmute
+      .jp-progress
+        .jp-seek-bar
+          .jp-play-bar
+      .jp-volume-bar
+        .jp-volume-bar-value
+      .jp-time-holder
+        .jp-current-time
+        .jp-duration
+    .jp-no-solution
+      %span
+        Se necesita actualización
+      Para reproducir este audio necesita un navegador más reciente o actualizar la versión de Flash.
+
+:javascript
+  $(document).ready(function(){
+    $("#jquery_jplayer_1").jPlayer({
+      ready: function () {
+        $(this).jPlayer("setMedia", {
+          mp3: "#{url}"
+        });
+      },
+      swfPath: "/assets",
+      supplied: "mp3"
+    });
+  });
+

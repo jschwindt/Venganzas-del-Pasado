@@ -1,0 +1,220 @@
+/*
+ * Skin for jPlayer Plugin (jQuery JavaScript Library)
+ * http://www.jplayer.org
+ *
+ * Skin Name: Light
+ *
+ * Copyright (c) 2010 Happyworm Ltd & Per Sandström
+ * Dual licensed under the MIT and GPL licenses.
+ *  - http://www.opensource.org/licenses/mit-license.php
+ *  - http://www.gnu.org/copyleft/gpl.html
+ *
+ * Author: Per Sandström – http://www.helloper.com
+ * Skin Version: 1.0 (jPlayer 2.0.0)
+ * Date: 20th March 2011
+ */
+
+div.jp-audio {
+  /* Edit the font-size to counteract inherited font sizing.
+   * Eg. 1.25em = 1 / 0.8em
+   */
+  color: #666;
+  font-size: 1.25em; /* No parent CSS that can effect the size in these demos */
+  font-family: 'Helvetica Neue', sans-serif;
+  line-height: 1.6;
+  -ms-text-size-adjust:none;
+  -webkit-text-size-adjust:none;
+}
+
+div.jp-audio {
+  width: 340px;
+}
+
+div.jp-interface {
+  background: #DDD;
+  background: -moz-linear-gradient(top, #DDD, #BBB);
+  background: -o-linear-gradient(top, #DDD, #BBB);
+  background: -webkit-gradient(linear, left top, left bottom, from(#DDD), to(#BBB));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#DDDDDD', endColorstr='#BBBBBB');
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#DDDDDD, endColorstr=#BBBBBB)";
+  border: 1px solid #BBB;
+  -moz-border-radius: 6px 6px 6px 6px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+  border-radius: 6px 6px 6px 6px;
+  position: relative;
+  width: 100%;
+}
+
+div.jp-audio div.jp-type-single div.jp-interface {
+  border-bottom: none;
+  height: 66px;
+}
+
+div.jp-interface ul.jp-controls {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+div.jp-interface ul.jp-controls li {
+  display: inline;
+}
+
+div.jp-interface ul.jp-controls a {
+  overflow: hidden;
+  position: absolute;
+  text-indent:-9999px;
+}
+
+a.jp-play,
+a.jp-pause {
+  height: 40px;
+  width: 40px;
+  z-index: 1;
+}
+
+div.jp-audio div.jp-type-single a.jp-play,
+div.jp-audio div.jp-type-single a.jp-pause {
+  left: 10px;
+  top: 10px;
+}
+
+a.jp-play {
+  background: url(jplayer.light.png) 0 0 no-repeat;
+}
+
+a.jp-play:hover {
+  background: url(jplayer.light.png) -41px 0 no-repeat;
+}
+
+a.jp-pause {
+  background: url(jplayer.light.png) 0 -42px no-repeat;
+  display: none;
+}
+
+a.jp-pause:hover {
+  background: url(jplayer.light.png) -41px -42px no-repeat;
+}
+
+div.jp-audio div.jp-type-single a.jp-stop {
+  left: 55px;
+  top: 17px;
+}
+
+a.jp-stop {
+  background: url(jplayer.light.png) 0 -83px no-repeat;
+  height: 28px;
+  width: 28px;
+  z-index: 1;
+}
+
+a.jp-stop:hover {
+  background: url(jplayer.light.png) -29px -83px no-repeat;
+}
+
+div.jp-progress {
+  overflow: hidden;
+  position: absolute;
+}
+
+div.jp-audio div.jp-type-single div.jp-progress {
+  height: 15px;
+  left: 92px;
+  top: 25px;
+  width: 122px;
+}
+
+div.jp-seek-bar {
+  background: url(jplayer.light.png) 0 -202px repeat-x;
+  cursor: pointer;
+  height:100%;
+  width:0px;
+}
+
+div.jp-play-bar {
+  background: url(jplayer.light.png) 0 -218px repeat-x;
+  height: 100%;
+  width: 0px;
+}
+
+/* The seeking class is added/removed inside jPlayer */
+div.jp-seeking-bg {
+  background: url(jplayer.light.pbar-ani.gif);
+}
+
+a.jp-mute,
+a.jp-unmute {
+  height: 15px;
+  width: 18px;
+}
+
+div.jp-audio div.jp-type-single a.jp-mute,
+div.jp-audio div.jp-type-single a.jp-unmute {
+  left: 225px;
+  top: 27px;
+}
+
+a.jp-mute {
+  background: url(jplayer.light.png) 0 -186px no-repeat;
+}
+
+a.jp-mute:hover {
+  background: url(jplayer.light.png) -19px -170px no-repeat;
+}
+
+a.jp-unmute {
+  background: url(jplayer.light.png) 0 -170px no-repeat;
+  display: none;
+}
+
+a.jp-unmute:hover {
+  background: url(jplayer.light.png) -19px -186px no-repeat;
+}
+
+div.jp-volume-bar {
+  background: url(jplayer.light.png) 0 -250px repeat-x;
+  cursor: pointer;
+  height: 5px;
+  overflow: hidden;
+  position: absolute;
+  width: 72px;
+}
+
+div.jp-audio div.jp-type-single div.jp-volume-bar {
+  left: 250px;
+  top: 32px;
+}
+
+div.jp-volume-bar-value {
+  background: url(jplayer.light.png) 0 -256px repeat-x;
+  height: 5px;
+  width: 0px;
+}
+
+div.jp-current-time,
+div.jp-duration {
+  font-size: .64em;
+  position: absolute;
+  text-shadow: 0 1px 1px #FFF;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, .8);
+}
+
+div.jp-duration {
+  text-align: right;
+}
+
+div.jp-audio div.jp-type-single div.jp-current-time,
+div.jp-audio div.jp-type-single div.jp-duration {
+  left: 92px;
+  top: 42px;
+  width: 122px;
+}
+
+div.jp-jplayer {
+  height: 0px;
+  width: 0px;
+}
+
+div.jp-jplayer {
+  background-color: #000;
+}

@@ -10,8 +10,8 @@
   %strong Comments Count:
   = @post.comments_count
 %p
-  %strong Slug:
-  = @post.slug
+  - @post.audios.each do |audio|
+    = render 'player', :url => audio.url
 
 %p
   = link_to "Edit", edit_post_path(@post)
