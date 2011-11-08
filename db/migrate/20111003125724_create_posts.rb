@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string  :title
       t.text    :content
       t.integer :comments_count, :default => 0
+      t.string  :status
       t.string  :slug
       t.timestamps
     end

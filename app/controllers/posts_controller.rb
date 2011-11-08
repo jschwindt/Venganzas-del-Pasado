@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   def index
-    page = params[:page].present? ? params[:page] : Post.page.num_pages
-    @posts = Post.order("created_at ASC").page page
+    @posts = Post.published.lifo.page params[:page]
   end
 
   def show

@@ -39,6 +39,7 @@ module Wordpress
       record.content    = post_content
       record.created_at = post_date
       record.updated_at = post_modified
+      record.status     = 'published'
       record.save!
     end
   end
@@ -59,6 +60,7 @@ module Wordpress
       record.author_ip  = comment_author_IP
       record.content    = comment_content
       record.created_at = comment_date
+      record.status     = 'approved'
       record.save!
     end
   end

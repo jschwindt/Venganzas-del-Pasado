@@ -7,4 +7,7 @@ class Post < ActiveRecord::Base
   
   validates :title, :presence => true
   
+  scope :published, where(:status => 'published')
+  scope :lifo, order('created_at DESC')
+  
 end

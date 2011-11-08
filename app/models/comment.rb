@@ -3,4 +3,8 @@ class Comment < ActiveRecord::Base
   
   validates :content, :presence => true
   
+  scope :approved, where(:status => 'approved')
+  scope :fifo, order('created_at ASC')
+  
+  
 end

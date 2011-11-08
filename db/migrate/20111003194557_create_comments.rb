@@ -7,7 +7,9 @@ class CreateComments < ActiveRecord::Migration
       t.string  :author_url
       t.string  :author_ip
       t.text    :content
+      t.string  :status
       t.timestamps
     end
+    add_index :comments, [:post_id, :created_at]
   end
 end

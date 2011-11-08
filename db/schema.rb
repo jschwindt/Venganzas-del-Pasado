@@ -28,14 +28,18 @@ ActiveRecord::Schema.define(:version => 20111105191653) do
     t.string   "author_url"
     t.string   "author_ip"
     t.text     "content"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "comments", ["post_id", "created_at"], :name => "index_comments_on_post_id_and_created_at"
 
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "content"
     t.integer  "comments_count", :default => 0
+    t.string   "status"
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
