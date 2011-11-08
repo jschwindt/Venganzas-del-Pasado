@@ -22,7 +22,12 @@
 
 %hr/
 %h3 Comentarios:
-- @post.comments.order("created_at DESC").page(params[:page]).each do |comment|
+- page = params[:page].present? ? params[:page] : @post.comments.page.num_pages
+- comments = @post.comments.order("created_at ASC").page(page)
+- comments.each do |comment|
   = markdown_format comment.content
   %hr
+%p
+  = paginate comments
+
   

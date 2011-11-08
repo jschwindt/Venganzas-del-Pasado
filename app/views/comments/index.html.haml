@@ -5,15 +5,16 @@
     %th Post
     %th Author
     %th Author email
-    %th Author url
+    %th Comment/Date/Time
     %th Author ip
     %th Content
+    %th{ :colspan => 3} Actions
   - for comment in @comments
     %tr
       %td= comment.post_id
       %td= comment.author
       %td= comment.author_email
-      %td= comment.author_url
+      %td= l comment.created_at
       %td= comment.author_ip
       %td= markdown_format comment.content
       %td= link_to 'Show', [@post, comment]

@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.order("created_at DESC").page params[:page]
+    page = params[:page].present? ? params[:page] : Post.page.num_pages
+    @posts = Post.order("created_at ASC").page page
   end
 
   def show

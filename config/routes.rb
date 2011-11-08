@@ -1,7 +1,11 @@
 VenganzasDelPasado::Application.routes.draw do
 
   resources :posts do
-    resources :comments
+    get 'page/:page', :action => :index, :on => :collection
+    get 'page/:page', :action => :show, :on => :member
+    resources :comments do
+      get 'page/:page', :action => :index, :on => :collection
+    end
   end
 
   root :to => 'posts#index'

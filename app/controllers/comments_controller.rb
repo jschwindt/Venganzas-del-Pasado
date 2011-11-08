@@ -2,7 +2,8 @@ class CommentsController < ApplicationController
   before_filter :find_post
   
   def index
-    @comments = @post.comments.order("created_at DESC").page params[:page]
+    page = params[:page].present? ? params[:page] : @post.comments.page.num_pages
+    @comments = @post.comments.order("created_at ASC").page page
   end
 
   def show
