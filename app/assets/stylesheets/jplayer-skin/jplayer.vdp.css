@@ -2,16 +2,13 @@
  * Skin for jPlayer Plugin (jQuery JavaScript Library)
  * http://www.happyworm.com/jquery/jplayer
  *
- * Skin Name: Blue Monday
+ * Skin Name: VdP
  *
- * Copyright (c) 2010-2011 Happyworm Ltd
- * Dual licensed under the MIT and GPL licenses.
- *  - http://www.opensource.org/licenses/mit-license.php
- *  - http://www.gnu.org/copyleft/gpl.html
- *
- * Author: Silvia Benvenuti
- * Skin Version: 4.0 (jPlayer 2.1.0)
- * Date: 1st September 2011
+ * Base on: Black and yellow skin
+ *          Author: Luke McDonald (lukemcdonald.com)
+ *          Skin Design: Orman Clark (premiumpixels.com)
+ *     and: Blue Monday skin
+ *          Author: Silvia Benvenuti
  */
 
 div.jp-audio {
@@ -85,6 +82,7 @@ a.jp-pause {
   width: 33px;
   height: 30px;
   z-index: 1;
+  border: 1px solid #242526;
   outline: none;
 }
 
