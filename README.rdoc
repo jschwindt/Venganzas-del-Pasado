@@ -3,6 +3,26 @@
 Este es el futuro sitio de Venganzas del Pasado (http://venganzasdelpasado.com.ar)
 y que va a reemplazar al actual WordPress
 
+== Desarrollo
+
+Está abierto a todos los que quieran particiar. La forma de hacerlo es haciendo
+fork del repositorio y mandando pull requests con alguno de los temas de la wishlist.
+
+== Wishlist (desordenada)
+
+* Omniauth (¿con Devise?).
+* Comentarios con usuario logueado.
+* Aprobación automática para usuarios con buen karma.
+* Moderación para usuarios nuevos o con mal karma.
+* Perfiles: moderador de comentarios, editor (puede actualizar posts) y admin.
+* Post con markdown y sin html.
+* Comentarios con markdown (no sé si es buena idea). Tal vez sólo texto sea mejor.
+* Limitación del largo de un comentario y la frecuencia (tal vez con lo del karma alcance).
+* Migración del contenido actual: Post, audios, comentarios, tal vez páginas y usuarios.
+* Resetear contraseña para usuarios migrados ya que el hashing no es standard.
+* Página en Facebook con navegación sencilla que permita escuchar los audios.
+* Admin sencillo con Activeadmin que sirva inicialmente para moderar, cambiar karma manualmente y crear posts.
+
 == Author
 
 Juan Schwindt
