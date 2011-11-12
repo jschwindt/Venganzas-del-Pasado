@@ -1,21 +1,35 @@
 !!!
 %html
-
   %head
-    %title
-      = yield(:title) || "Venganzas Del Pasado"
-    %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
+    %title Venganzas del Pasado
+    /[if lt IE 9]
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
+    = yield :head
     = csrf_meta_tag
-    = yield(:head)
-
+    %meta{ :charset => "utf-8"}
   %body
-    #container
-      - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}"
-
-      - if show_title?
-        %h1= yield(:title)
-
-      = yield
+    .topbar
+      .fill
+        .container
+          = link_to 'VdP', '/', :class => 'brand'
+          = render 'layouts/navigation_menu'
+    .container
+      -if notice.present?
+        .alert-message.success.fade.in
+          %a{ :class => "close", :href => "#" }
+            &times;
+          = notice
+            
+      -if alert.present?
+        .alert-message.error.fade.in
+          %a{ :class => "close", :href => "#" }
+            &times;
+          = alert
+            
+      .row
+        = yield
+        
+      %footer
+        Pie de página

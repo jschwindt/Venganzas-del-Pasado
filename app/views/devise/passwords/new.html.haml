@@ -1,0 +1,12 @@
+%div.well.span8
+  %h2 Recuperación de contraseña
+  = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
+    = devise_error_messages!
+    %fieldset
+      .inputs
+        .clearfix
+          = f.label :email
+          = f.text_field :email
+      .actions
+        = f.submit "Enviar instrucciones", :class => 'btn primary'
+  = render "devise/shared/links"

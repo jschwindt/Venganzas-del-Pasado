@@ -1,0 +1,18 @@
+%div.well.span8
+  %h2 Registración
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = devise_error_messages!
+    %fieldset
+      .inputs
+        .clearfix
+          = f.label :email
+          = f.text_field :email
+        .clearfix
+          = f.label :password
+          = f.password_field :password
+        .clearfix
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation
+      .actions
+        = f.submit "Enviar", :class => 'btn primary'
+  = render "devise/shared/links"

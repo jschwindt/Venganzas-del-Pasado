@@ -4,20 +4,10 @@
 *= require_self
 */
 body {
-/*  padding-top: 60px;
-*/
-  padding: 5px;
-}
-
-select.date {
-  width: 80px;
+  padding: 60px 5px 5px 5px;
 }
 
 label {
   margin-right: 20px;
 }
 
-.help-error {
-  color: red;
-  margin-left: 5px;
-}

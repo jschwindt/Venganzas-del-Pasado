@@ -1,0 +1,8 @@
+-if user_signed_in?
+  %li.secondary
+    = link_to(destroy_user_session_path) do
+      %span{:class => 'label important'}
+        Cerrar sesión
+-else
+  %li.secondary
+    = link_to('Ingresar', new_user_session_path)

@@ -1,5 +1,9 @@
 VenganzasDelPasado::Application.routes.draw do
 
+  ActiveAdmin.routes(self)
+
+  devise_for :users
+
   resources :posts do
     get 'page/:page', :action => :index, :on => :collection
     get 'page/:page', :action => :show, :on => :member

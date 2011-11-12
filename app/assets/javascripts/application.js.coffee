@@ -4,3 +4,7 @@
 //= require jquery.jplayer
 //= require jplayer
 //= require_self
+
+jQuery ->
+  $(".alert-message").alert()
+  

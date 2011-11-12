@@ -1,0 +1,23 @@
+%div.well.span8
+  %h2 Editar usuario
+  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+    = devise_error_messages!
+    %fieldset
+      .inputs
+        .clearfix
+          = f.label :email
+          = f.text_field :email
+        .clearfix
+          = f.label :password
+          %i (dejar en blanco si no se desea cambiar)
+          = f.password_field :password
+        .clearfix
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation
+        .clearfix
+          = f.label :current_password
+          = f.password_field :current_password
+      .actions
+        = f.submit "Actualizar", :class => 'btn primary'
+    = link_to "Eliminar definitivamente la cuenta", registration_path(resource_name),
+      :confirm => "¿Está seguro?", :method => :delete, :class => 'btn danger'

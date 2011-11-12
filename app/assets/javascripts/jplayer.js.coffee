@@ -1,4 +1,4 @@
-jQuery ($) ->
+jQuery ->
 
   $.jPlayer.timeFormat.showHour = true
   

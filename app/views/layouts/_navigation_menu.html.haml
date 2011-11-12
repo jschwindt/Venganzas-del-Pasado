@@ -1,0 +1,9 @@
+%ul.nav
+  -if user_signed_in?
+    =link_to 'Admin', admin_dashboard_path
+
+.pull-right
+  %ul
+    = render 'devise/menu/registration_items'
+    = render 'devise/menu/login_items'
+

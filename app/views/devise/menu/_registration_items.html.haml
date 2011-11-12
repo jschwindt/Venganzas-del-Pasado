@@ -1,0 +1,6 @@
+-if user_signed_in?
+  %li.secondary
+    = link_to(current_user.email, edit_user_registration_path)
+-else
+  %li.secondary
+    = link_to('Registrarse', new_user_registration_path)
