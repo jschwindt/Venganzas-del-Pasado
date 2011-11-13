@@ -50,6 +50,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.3)
+    colored (1.2)
     devise (1.4.9)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -106,6 +107,7 @@ GEM
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
+    progressbar (0.9.1)
     rack (1.3.5)
     rack-cache (1.1)
       rack (>= 0.4)
@@ -123,6 +125,13 @@ GEM
       activesupport (= 3.1.1)
       bundler (~> 1.0)
       railties (= 3.1.1)
+    rails_best_practices (1.3.0)
+      activesupport
+      colored
+      erubis
+      i18n
+      progressbar
+      sexp_processor
     railties (3.1.1)
       actionpack (= 3.1.1)
       activesupport (= 3.1.1)
@@ -143,6 +152,7 @@ GEM
       sprockets (~> 2.0.0)
       tilt (~> 1.3.2)
     sequel (3.29.0)
+    sexp_processor (3.0.7)
     sprockets (2.0.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -171,6 +181,7 @@ DEPENDENCIES
   friendly_id (~> 4.0.0.beta14)
   haml-rails
   hirb
+  inherited_resources
   jquery-rails
   kaminari
   meta_search (>= 1.1.0.pre)
@@ -179,6 +190,7 @@ DEPENDENCIES
   nifty-generators
   omniauth
   rails (= 3.1.1)
+  rails_best_practices
   rake (~> 0.9.3.beta.1)
   redcarpet (~> 2.0.0b5)
   sass-rails (~> 3.1.4)
