@@ -23,7 +23,6 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   def test_create_invalid
-    Post.any_instance.stubs(:valid?).returns(false)
     post :create, :post => {}
     assert_response :success
     assert_not_nil assigns(:post)
@@ -44,11 +43,10 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   def test_update_invalid
-    Post.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => posts(:one)
+    put :update, :id => posts(:one), :post => {:title => ''}
+    assert_not_nil assigns(:post)
     assert_response :success
     assert_template 'edit'
-    assert_not_nil assigns(:post)
   end
 
   def test_update_valid

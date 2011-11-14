@@ -26,8 +26,8 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   def test_create_invalid
-    Comment.any_instance.stubs(:valid?).returns(false)
-    post :create, :post_id => posts(:one)
+#    Comment.any_instance.stubs(:valid?).returns(false)
+    post :create, :post_id => posts(:one), :comment => {}
     assert_not_nil assigns(:post)
     assert_not_nil assigns(:comment)
     assert_response :success
