@@ -28,7 +28,6 @@ module Wordpress
 
   class Post < Sequel::Model(:wp_posts)
     set_dataset from(:wp_posts).filter(:post_status => 'publish')
-#    one_to_many :comments, :key => :comment_post_ID
 
     include Importable
 
@@ -44,25 +43,69 @@ module Wordpress
     end
   end
 
+  class User < Sequel::Model(:wp_users)
+    set_dataset from(:wp_users).reverse_order(:ID)
+
+    include Importable
+
+    def import
+      if user_email.present?
+        record = ::User.find_or_initialize_by_email(user_email)
+      else
+        if fbconnect_userid != '0'
+          fb_id = fbconnect_userid
+        else
+          fb_id = user_login.split('_')[1]
+        end
+        record = ::User.find_or_initialize_by_fb_userid(fbconnect_userid)
+        record.email = "invalid-#{pk}@email.info"
+      end
+      unless record.persisted?
+        generated_password = Devise.friendly_token.first(10)
+        record.password              = generated_password
+        record.password_confirmation = generated_password
+        record.id         = pk
+        record.fb_userid  = fbconnect_userid.to_i == 0 ? nil : fbconnect_userid
+        record.alias      = user_login.match(/^fb_/i) ? display_name : user_login
+        record.karma      = 0
+        unless record.valid?
+          record.alias = record.alias + '-0'
+        end
+        record.save!
+      end
+    end
+  end
+
   class Comment < Sequel::Model(:wp_comments)
     set_dataset from(:wp_comments).filter(:comment_approved => 1)
-#    many_to_one :post, :key => :comment_post_ID
 
     include Importable
 
     def import
       record = ::Comment.find_or_initialize_by_id(pk)
-      record.id         = pk
-      record.post_id    = comment_post_ID
-      record.author     = comment_author
-      record.author_email = comment_author_email
-      record.author_url = comment_author_url
-      record.author_ip  = comment_author_IP
-      record.content    = comment_content
-      record.created_at = comment_date
-      record.status     = 'approved'
-      record.save!
+      unless record.persisted?
+        record.id         = pk
+        record.user_id    = user_id.to_i > 0 ? user_id.to_i : find_author(comment_author_email)
+        record.post_id    = comment_post_ID
+        record.author     = comment_author
+        record.author_email = comment_author_email
+        record.author_ip  = comment_author_IP
+        record.content    = comment_content
+        record.created_at = comment_date
+        record.status     = 'approved'
+        record.save!
+      end
     end
+
+    def find_author(email)
+      @@authors ||= {}
+      unless @@authors.include? email
+        user = ::User.find_by_email email
+        @@authors[email] = user.id if user
+      end
+      @@authors[email]
+    end
+
   end
 
   class Meta < Sequel::Model(:wp_postmeta)
@@ -81,6 +124,7 @@ module Wordpress
 
   def self.import
     Post.import
+    User.import
     Meta.import
     Comment.import
   end
