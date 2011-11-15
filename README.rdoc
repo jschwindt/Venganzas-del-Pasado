@@ -10,7 +10,7 @@ fork del repositorio y mandando pull requests con alguno de los temas de la wish
 
 == Wishlist (desordenada)
 
-* Omniauth (¿con Devise?).
+* Omniauth para login con Facebook.
 * Comentarios con usuario logueado.
 * Aprobación automática para usuarios con buen karma.
 * Moderación para usuarios nuevos o con mal karma.
@@ -18,10 +18,10 @@ fork del repositorio y mandando pull requests con alguno de los temas de la wish
 * Post con markdown y sin html.
 * Comentarios con markdown (no sé si es buena idea). Tal vez sólo texto sea mejor.
 * Limitación del largo de un comentario y la frecuencia (tal vez con lo del karma alcance).
-* Migración del contenido actual: Post, audios, comentarios, tal vez páginas y usuarios.
-* Resetear contraseña para usuarios migrados ya que el hashing no es standard.
-* Página en Facebook con navegación sencilla que permita escuchar los audios.
 * Admin sencillo con Activeadmin que sirva inicialmente para moderar, cambiar karma manualmente y crear posts.
+* Página en Facebook con navegación sencilla que permita escuchar los audios.
+* Migración del contenido actual: Post, audios, comentarios, usuarios y tal vez páginas. ✔
+* Resetear contraseña para usuarios migrados ya que el hashing no es standard. ✔
 
 == Author
 
