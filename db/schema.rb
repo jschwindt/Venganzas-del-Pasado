@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111114013432) do
+ActiveRecord::Schema.define(:version => 20111110210121) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -66,6 +66,11 @@ ActiveRecord::Schema.define(:version => 20111114013432) do
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "alias",                                                 :null => false
+    t.string   "slug"
+    t.string   "role"
+    t.integer  "karma"
+    t.string   "fb_userid"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -74,16 +79,15 @@ ActiveRecord::Schema.define(:version => 20111114013432) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "alias",                                                 :null => false
-    t.string   "fb_userid"
-    t.string   "slug"
-    t.string   "role"
-    t.integer  "karma"
   end
 
-  add_index "users", ["alias"], :name => "index_users_on_alias"
+  add_index "users", ["alias"], :name => "index_users_on_alias", :unique => true
+  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["fb_userid"], :name => "index_users_on_fb_userid"
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
