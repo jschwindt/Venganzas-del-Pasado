@@ -6,6 +6,8 @@
 #
 one:
   email: foo@example.com
+  alias: foo
 
 two:
   email: bar@example.com
+  alias: bar
