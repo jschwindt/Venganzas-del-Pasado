@@ -18,5 +18,5 @@ class CommentsController < InheritedResources::Base
       success.html { redirect_to collection_url }
     end
   end
-  
+
 end

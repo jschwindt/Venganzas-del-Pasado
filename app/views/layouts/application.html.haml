@@ -21,15 +21,15 @@
           %a{ :class => "close", :href => "#" }
             &times;
           = notice
-            
+
       -if alert.present?
         .alert-message.error.fade.in
           %a{ :class => "close", :href => "#" }
             &times;
           = alert
-            
+
       .row
         = yield
-        
+
       %footer
         Pie de página
