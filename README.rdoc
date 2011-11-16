@@ -20,6 +20,10 @@ fork del repositorio y mandando pull requests con alguno de los temas de la wish
 * Limitación del largo de un comentario y la frecuencia (tal vez con lo del karma alcance).
 * Admin sencillo con Activeadmin que sirva inicialmente para moderar, cambiar karma manualmente y crear posts.
 * Página en Facebook con navegación sencilla que permita escuchar los audios.
+* Gravatars.
+* RSS feeds de posts, torrents y, tal vez, comentarios.
+* Sitemap.
+* Redirects del sitio viejo para mantener SEO.
 * Migración del contenido actual: Post, audios, comentarios, usuarios y tal vez páginas. ✔
 * Resetear contraseña para usuarios migrados ya que el hashing no es standard. ✔
 
