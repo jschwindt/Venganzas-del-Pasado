@@ -4,7 +4,25 @@
 *= require_self
 */
 body {
-  padding: 60px 5px 5px 5px;
+  padding-top: 50px;
+}
+
+.container-fluid > .sidebar-right {
+  float: left;
+  width: 220px;
+}
+
+.container-fluid > .sidebar-banner {
+  float: left;
+  width: 160px;
+  height: 600px;
+  border: 1px solid black;
+}
+
+.container-fluid > .main {
+  float: left;
+  margin-right: 10px;
+  width: 75%;
 }
 
 label {

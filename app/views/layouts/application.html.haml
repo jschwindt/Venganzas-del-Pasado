@@ -11,25 +11,46 @@
     %meta{ :charset => "utf-8"}
   %body
     .topbar
-      .fill
-        .container
+      .topbar-inner
+        .container-fluid
           = link_to 'VdP', '/', :class => 'brand'
           = render 'layouts/navigation_menu'
-    .container
-      -if notice.present?
-        .alert-message.success.fade.in
-          %a{ :class => "close", :href => "#" }
-            &times;
-          = notice
 
-      -if alert.present?
-        .alert-message.error.fade.in
-          %a{ :class => "close", :href => "#" }
-            &times;
-          = alert
+    .container-fluid
+      .main
+        -if notice.present?
+          .alert-message.success.fade.in
+            %a{ :class => "close", :href => "#" }
+              &times;
+            = notice
 
-      .row
+        -if alert.present?
+          .alert-message.error.fade.in
+            %a{ :class => "close", :href => "#" }
+              &times;
+            = alert
+
         = yield
 
-      %footer
-        Pie de página
+      .sidebar-right
+        .well
+          %h5
+            Sidebar
+          %ul
+            %li= link_to "Link 1", "#"
+            %li= link_to "Link 2", "#"
+            %li= link_to "Link 3", "#"
+            %li= link_to "Link 4", "#"
+          %h5
+            Sidebar
+          %ul
+            %li= link_to "Link 1", "#"
+            %li= link_to "Link 2", "#"
+            %li= link_to "Link 3", "#"
+            %li= link_to "Link 4", "#"
+
+      .sidebar-banner
+        Banner 600x160
+
+    %footer
+      Pie de página
