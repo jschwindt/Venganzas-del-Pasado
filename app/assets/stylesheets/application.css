@@ -4,28 +4,59 @@
 *= require_self
 */
 body {
-  padding-top: 50px;
+  padding-top: 40px;
 }
 
-.container-fluid > .sidebar-right {
-  float: left;
-  width: 220px;
+#header .logo {
+  border: 1px solid green;
+  height: 90px;
+  margin: 5px 0 5px 0;
 }
 
-.container-fluid > .sidebar-banner {
-  float: left;
+#header .banner {
+  border: 1px solid green;
+  width: 728px;
+  height: 90px;
+  margin: 5px;
+}
+
+#menu {
+  border: 1px solid #ddd;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+          box-shadow: 0 1px 2px rgba(0,0,0,.075);
+  width: 158px;
+  min-height: 500px;
+}
+
+#content {
+  min-height: 500px;
+}
+
+#sidebar {
+  border: 1px solid #ddd;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+          box-shadow: 0 1px 2px rgba(0,0,0,.075);
+  width: 218px;
+  min-height: 500px;
+}
+
+#sidebar .banner {
+  border: 1px solid green;
   width: 160px;
   height: 600px;
-  border: 1px solid black;
-}
-
-.container-fluid > .main {
-  float: left;
-  margin-right: 10px;
-  width: 75%;
+  margin-left: 30px;
 }
 
 label {
   margin-right: 20px;
 }
 
+.banner

@@ -5,13 +5,8 @@
   - post.audios.each do |audio|
     = render 'player', :url => audio.url, :id => audio.id
   %p= markdown_format post.content
-  %p
-    Comentarios:
-    = link_to post.comments_count, post_comments_path(post)
-  %p
-    = link_to 'Show', post
-    \|
-    = link_to 'Edit', edit_post_path(post)
-
+  %h5
+    = link_to "Comentarios: #{post.comments_count}", post_comments_path(post)
+  %hr/
 %p
   = paginate @posts

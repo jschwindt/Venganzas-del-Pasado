@@ -12,28 +12,47 @@
   %body
     .topbar
       .topbar-inner
-        .container-fluid
-          = link_to 'VdP', '/', :class => 'brand'
+        .container
+          = link_to 'Venganzas del Pasado', '/', :class => 'brand'
           = render 'layouts/navigation_menu'
+          
+    #header.container
+      .row
+        .span3
+          .logo
+            Hello World!
+        .span13
+          .banner
+            Banner 728x60
 
-    .container-fluid
-      .main
-        -if notice.present?
-          .alert-message.success.fade.in
-            %a{ :class => "close", :href => "#" }
-              &times;
-            = notice
+    .container
+      .row
+        #menu.span3
+          %h5
+            Menú
+          %ul
+            %li= link_to "Portada", root_path
+            %li= link_to "Último programa", "#"
+            %li= link_to "Descargas", "#"
+            %li= link_to "Acerca de este sitio", "#"
+            %li= link_to "VdP en Facebook", "https://www.facebook.com/VenganzasDelPasado"
 
-        -if alert.present?
-          .alert-message.error.fade.in
-            %a{ :class => "close", :href => "#" }
-              &times;
-            = alert
+        #content.span9
+          -if notice.present?
+            .alert-message.success.fade.in
+              %a{ :class => "close", :href => "#" }
+                &times;
+              = notice
 
-        = yield
+          -if alert.present?
+            .alert-message.error.fade.in
+              %a{ :class => "close", :href => "#" }
+                &times;
+              = alert
 
-      .sidebar-right
-        .well
+          = yield
+
+        #sidebar.span4
           %h5
             Sidebar
           %ul
@@ -49,8 +68,8 @@
             %li= link_to "Link 3", "#"
             %li= link_to "Link 4", "#"
 
-      .sidebar-banner
-        Banner 600x160
+          .banner
+            Banner 600x160
 
     %footer
       Pie de página
