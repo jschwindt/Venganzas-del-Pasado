@@ -8,16 +8,43 @@ body {
 }
 
 #header .logo {
+  background-image: url(<%= asset_path 'logo.png' %>);
+  border: 1px solid #ddd;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
+          box-shadow: 0 1px 2px rgba(0,0,0,.075);
+  display: inline;
+  float: left;
+  margin-left: 20px;
+  height: 90px;
+  margin: 5px 5px 5px 20px;
+  width: 203px;
+  position: relative;
+}
+
+.logo h3 {
+  position: absolute;
+  bottom: 0px;
+  right: 5px;
+  color: white;
+}
+
+#header .banner {
+  display: inline;
+  float: left;
+  margin-left: 20px;
   border: 1px solid green;
+  width: 728px;
   height: 90px;
   margin: 5px 0 5px 0;
 }
 
-#header .banner {
-  border: 1px solid green;
-  width: 728px;
-  height: 90px;
-  margin: 5px;
+.slogan {
+  text-align: center;
+  margin-bottom: 5px;
 }
 
 #menu {
@@ -28,6 +55,7 @@ body {
   -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.075);
      -moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
           box-shadow: 0 1px 2px rgba(0,0,0,.075);
+  background: #FEFBF3;
   width: 158px;
   min-height: 500px;
 }
