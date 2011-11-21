@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111110210121) do
+ActiveRecord::Schema.define(:version => 20111121031237) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20111110210121) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "gravatar_hash"
   end
 
   add_index "users", ["alias"], :name => "index_users_on_alias", :unique => true
