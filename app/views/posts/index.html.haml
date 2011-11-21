@@ -1,12 +1,12 @@
 - title "Posts"
 
 - @posts.each do |post|
-  %h2= post.title
+  %h2= link_to post.title, post
   - post.audios.each do |audio|
     = render 'player', :url => audio.url, :id => audio.id
   %p= markdown_format post.content
   %h5
-    = link_to "Comentarios: #{post.comments_count}", post_comments_path(post)
+    = link_to "Comentarios: #{post.comments_count}", post_path(post, :anchor => "comments")
   %hr/
 %p
   = paginate @posts

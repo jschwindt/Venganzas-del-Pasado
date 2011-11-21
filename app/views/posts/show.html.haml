@@ -1,18 +1,12 @@
-- title "Post"
+- title @post.title
 
 %p
-  %strong Title:
-  = @post.title
-%p
-  %strong Content:
-  = markdown_format @post.content
-%p
-  %strong Comments Count:
-  = @post.comments_count
+  %h2= @post.title
 %p
   - @post.audios.each do |audio|
     = render 'player', :url => audio.url, :id => audio.id
-
+%p
+  = markdown_format @post.content
 %p
   = link_to "Edit", edit_post_path(@post)
   |
@@ -20,13 +14,13 @@
   |
   = link_to "View All", posts_path
 
-%hr/
-%h3 Comentarios:
+%a{ :name => "comments"}
+%h3 Comentarios (#{@post.comments.approved.count}):
 - page = params[:page].present? ? params[:page] : @post.comments.approved.page.num_pages
 - comments = @post.comments.approved.fifo.page page
 - comments.each do |comment|
   = markdown_format comment.content
-  %hr
+  %hr/
 %p
   = paginate comments
 
