@@ -82,7 +82,10 @@ a.jp-pause {
   width: 33px;
   height: 30px;
   z-index: 1;
-  border: 1px solid #242526;
+  border: 1px solid #666;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
   outline: none;
 }
 
