@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rake', '~> 0.9.3.beta.1'
-gem 'rails', '3.1.1'
+gem 'rails', '3.1.3'
 
 gem 'sqlite3'
 gem 'mysql2'
