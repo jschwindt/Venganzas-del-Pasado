@@ -19,8 +19,13 @@
 - page = params[:page].present? ? params[:page] : @post.comments.approved.page.num_pages
 - comments = @post.comments.approved.fifo.page page
 - comments.each do |comment|
-  = markdown_format comment.content
-  %hr/
+  .comment
+    %strong
+      = comment.author
+    dice:
+    %img{ :src => gravatar_url_for(comment), :class => 'gravatar', :alt => comment.author }
+    = markdown_format comment.content
+
 %p
   = paginate comments
 

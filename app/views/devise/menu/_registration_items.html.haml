@@ -1,4 +1,6 @@
 -if user_signed_in?
+  %li.secondary.current-user-avatar
+    %img{ :src => gravatar_url_for(current_user), :width => 32, :height => 32 }
   %li.secondary
     = link_to(current_user.email, edit_user_registration_path)
 -else

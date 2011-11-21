@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111121031237) do
+ActiveRecord::Schema.define(:version => 20111121202900) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20111121031237) do
     t.text     "content"
     t.string   "status"
     t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string   "gravatar_hash"
   end
 
   add_index "comments", ["post_id", "created_at"], :name => "index_comments_on_post_id_and_created_at"

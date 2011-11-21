@@ -88,7 +88,8 @@ module Wordpress
         record.user_id    = user_id.to_i > 0 ? user_id.to_i : find_author(comment_author_email)
         record.post_id    = comment_post_ID
         record.author     = comment_author
-        record.author_email = comment_author_email
+        record.author_email  = comment_author_email
+        record.gravatar_hash = Digest::MD5.hexdigest(comment_author_email.strip.downcase)
         record.author_ip  = comment_author_IP
         record.content    = comment_content
         record.created_at = comment_date

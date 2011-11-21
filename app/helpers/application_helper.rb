@@ -27,4 +27,10 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
+  def gravatar_url_for(object)
+    if object.respond_to? :gravatar_hash
+      "http://www.gravatar.com/avatar/#{object.gravatar_hash}?s=60&d=mm"
+    end
+  end
+
 end
