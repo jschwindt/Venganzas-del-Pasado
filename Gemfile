@@ -19,7 +19,7 @@ gem 'kaminari'
 gem 'friendly_id', '~> 4.0.0.beta14'
 gem 'sequel'
 gem 'redcarpet', '~> 2.0.0b5'
-gem 'omniauth'
+gem "omniauth-facebook"
 gem 'sass-rails',   '~> 3.1.5'
 gem 'meta_search',    '>= 1.1.0.pre'
 gem 'activeadmin'

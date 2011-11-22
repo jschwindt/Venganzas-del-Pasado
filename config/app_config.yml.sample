@@ -1,0 +1,15 @@
+
+development:
+  facebook:
+    app_id: "12345"
+    app_secret: "d25ff5359489635"
+
+test:
+  facebook:
+    app_id: "12345"
+    app_secret: "d25ff5359489635"
+
+production:
+  facebook:
+    app_id: "12345"
+    app_secret: "d25ff5359489635"
