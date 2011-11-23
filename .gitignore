@@ -1,7 +1,7 @@
 .DS_Store
 .bundle
 .pt
-config/database.yml
+config/*.yml
 db/*.sqlite3
 log/*.log
 script/*.sh

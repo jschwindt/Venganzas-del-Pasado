@@ -58,7 +58,7 @@ module Wordpress
           fb_id = user_login.split('_')[1]
         end
         record = ::User.find_or_initialize_by_fb_userid(fbconnect_userid)
-        record.email = "invalid-#{pk}@email.info"
+        record.email = "invalid-#{pk}@example.com"
       end
       unless record.persisted?
         generated_password = Devise.friendly_token.first(10)
