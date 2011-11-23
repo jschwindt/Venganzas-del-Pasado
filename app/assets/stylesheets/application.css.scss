@@ -5,11 +5,11 @@
 */
 body {
   padding-top: 40px;
-  background: url(<%= asset_path 'gradient.png' %>) #FFF repeat-x;
+  background: asset-url('gradient.png', image) #FFF repeat-x;
 }
 
 #header .logo {
-  background-image: url(<%= asset_path 'logo.png' %>);
+  background-image: asset-url('logo.png', image);
   border: 1px solid #ddd;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
