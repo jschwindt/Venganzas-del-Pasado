@@ -25,6 +25,7 @@ gem 'meta_search',    '>= 1.1.0.pre'
 gem 'activeadmin'
 gem 'bootstrap-sass'
 gem 'inherited_resources'
+gem 'pandoc-ruby'
 
 group :development do
   gem 'nifty-generators'

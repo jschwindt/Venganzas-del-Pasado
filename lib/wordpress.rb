@@ -1,3 +1,5 @@
+require 'pandoc-ruby'
+
 module Wordpress
   module Importable
     module ClassMethods
@@ -35,7 +37,11 @@ module Wordpress
       record = ::Post.find_or_initialize_by_id(pk)
       record.id         = pk
       record.title      = post_title
-      record.content    = post_content
+      if post_content.match(/<[^>]+>/)
+        record.content  = PandocRuby.html(post_content, :normalize).to_markdown
+      else
+        record.content = post_content
+      end 
       record.created_at = post_date
       record.updated_at = post_modified
       record.status     = 'published'
