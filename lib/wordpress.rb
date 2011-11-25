@@ -64,10 +64,13 @@ module Wordpress
         generated_password = Devise.friendly_token.first(10)
         record.password              = generated_password
         record.password_confirmation = generated_password
-        record.id         = pk
-        record.fb_userid  = fbconnect_userid.to_i == 0 ? nil : fbconnect_userid
-        record.alias      = user_login.match(/^fb_/i) ? display_name : user_login
-        record.karma      = 0
+        record.id           = pk
+        record.fb_userid    = fbconnect_userid.to_i == 0 ? nil : fbconnect_userid
+        record.alias        = user_login.match(/^fb_/i) ? display_name : user_login
+        record.karma        = 0
+        record.created_at   = user_registered
+        record.updated_at   = user_registered
+        record.confirmed_at = user_registered
         unless record.valid?
           record.alias = record.alias + '-0'
         end

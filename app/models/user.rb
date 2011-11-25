@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, # :confirmable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
@@ -27,9 +27,11 @@ class User < ActiveRecord::Base
                   :password   => generated_password,
                   :password_confirmation => generated_password,
                   :alias      => data.username || data.name,
+                  :confirmed_at => Time.zone.now
               )
       user.fb_userid = data.id
-      user.save!
+      user.skip_confirmation! 
+      user.save
       user
     end
   end
