@@ -24,9 +24,9 @@ class User < ActiveRecord::Base
     else # Create a user with a stub password. 
       generated_password = Devise.friendly_token.first(10)
       user = User.new( :email => data.email,
+                  :alias      => data.username || data.name,
                   :password   => generated_password,
                   :password_confirmation => generated_password,
-                  :alias      => data.username || data.name,
                   :confirmed_at => Time.zone.now
               )
       user.fb_userid = data.id
@@ -38,8 +38,15 @@ class User < ActiveRecord::Base
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["user_hash"]
-        user.email = data["email"]
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email         = params[:email]
+        user.alias         = params[:alias]
+        user.fb_userid     = data["id"]
+        generated_password = Devise.friendly_token.first(10)
+        user.password      = generated_password
+        user.password_confirmation = generated_password
+        user.confirmed_at  = Time.zone.now
+        user.skip_confirmation!
       end
     end
   end

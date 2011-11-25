@@ -10,12 +10,13 @@
         .clearfix
           = f.label :alias
           = f.text_field :alias
-        .clearfix
-          = f.label :password
-          = f.password_field :password
-        .clearfix
-          = f.label :password_confirmation
-          = f.password_field :password_confirmation
+        - if session["devise.facebook_data"].blank?
+          .clearfix
+            = f.label :password
+            = f.password_field :password
+          .clearfix
+            = f.label :password_confirmation
+            = f.password_field :password_confirmation
       .actions
         = f.submit "Enviar", :class => 'btn primary'
   = render "devise/shared/links"

@@ -32,7 +32,7 @@ es:
       send_paranoid_instructions: 'Si su email existe en nuestra base de datos, en minutos recibirá instrucciones acerca de cómo confirmar su cuenta.'
       confirmed: 'Su cuenta ha sido confirmada exitosamente. Ahora usted puede ingresar.'
     registrations:
-      signed_up: "Se ha registrado con exito. Si está activado, la confirmación será enviada a su correo electrónico."
+      signed_up: "Se ha registrado exitosamente."
       inactive_signed_up: 'Se ha registrado exitosamente, si embargo no ha podido ingresar porque su cuenta está %{reason}.'
       updated: 'Ha actualizado su cuenta exitosamente.'
       destroyed: '¡Adios! Su cuenta ha sido cancelada exitosamente. Esperamos verlo pronto.'
