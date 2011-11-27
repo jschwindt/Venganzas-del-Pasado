@@ -3,7 +3,7 @@ VenganzasDelPasado::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } do
-    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
+    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru', :as => :user_omniauth
   end
 
   resources :posts do
