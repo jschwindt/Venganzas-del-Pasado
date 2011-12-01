@@ -1,0 +1,28 @@
+.post
+  .date
+    = post.created_at.strftime('%d de %B')
+  %h3.post-title
+    = link_to post.title, post
+  .audios
+    - post.audios.each do |audio|
+      .row.audio
+        .span6
+          = render 'posts/player', :url => audio.url, :id => audio.id
+        .span4
+          =link_to "Descargar MP3", audio.url, :class => "btn small"
+  .content
+    - unless post.content == ''
+      = markdown_format post.content
+    - else
+      Aún no hay información disponible sobre este programa. Colaborá con la comunidad
+      = link_to "editándolo", edit_post_path(post)
+  .meta
+    %span.comments
+      Comentarios: 
+      = link_to post.comments_count, post_path(post, :anchor => "comments")
+    %span.tags
+      Temas:
+      <span class="label">Gatos</span>
+      <span class="label">Francia</span>
+      <span class="label">Médicos</span>
+      <span class="label">Autos</span>
