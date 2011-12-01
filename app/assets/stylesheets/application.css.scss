@@ -76,8 +76,26 @@ a:hover {
 
 .topbar {
 
+  font-size: $basefont * 0.75;
+
   .brand {
     display: none;
+  }
+  
+  h5 {
+    display: none;
+  }
+  
+  .avatar img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: top;
+  }
+  
+  .fb {
+    padding-bottom: 0px;
+    padding-top: 8px;
   }
 
 }
