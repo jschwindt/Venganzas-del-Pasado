@@ -1,11 +1,6 @@
--if user_signed_in?
-  %li
-    = link_to(destroy_user_session_path) do
-      %span{:class => 'label important'}
-        Cerrar sesión
--else
+-unless user_signed_in?
   %li
     = link_to('Ingresar', new_user_session_path)
   %li
-    = link_to user_omniauth_path(:facebook) do
+    = link_to user_omniauth_path(:facebook), :class => 'fb' do
       = image_tag 'fb-login.jpg'

@@ -1,8 +1,284 @@
 /*
 *= require bootstrap
-*= require jplayer-skin/jplayer.vdp
 *= require_self
 */
+
+/*******************************************************************************
+** Paleta de Colores
+*******************************************************************************/
+$rose: #D65045;
+$gris: #404040;
+$claro: #CCC;
+
+
+/*******************************************************************************
+** Sobreescribiendo Bootstrap
+*******************************************************************************/
+@import "bootstrap/reset";
+@import "bootstrap/variables";
+
+$linkColor: $rose;
+$linkColorHover: darken($rose, 15) !default;
+
+/* grilla de 14 en lugar de 16 */
+$gridColumns: 14;
+$siteWidth: ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
+
+/* aumentando un poco*/
+$basefont: 18px;
+$baseline: 24px;
+
+@import "bootstrap/mixins";
+
+@import "bootstrap/scaffolding";
+
+@import "bootstrap/type";
+@import "bootstrap/forms";
+@import "bootstrap/tables";
+@import "bootstrap/patterns";
+
+@import "jplayer-skin/jplayer.vdp";
+
+/*******************************************************************************
+** Tipografía
+*******************************************************************************/
+@font-face {
+    font-family: 'EBGaramondRegular';
+    src: url('../fonts/eb-garamond-fontfacekit/EBGaramond-webfont.eot');
+    src: url('../fonts/eb-garamond-fontfacekit/EBGaramond-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/eb-garamond-fontfacekit/EBGaramond-webfont.woff') format('woff'),
+         url('../fonts/eb-garamond-fontfacekit/EBGaramond-webfont.ttf') format('truetype'),
+         url('../fonts/eb-garamond-fontfacekit/EBGaramond-webfont.svg#EBGaramondRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'EBGaramondSC';
+    src: url('../fonts/eb-garamond-fontfacekit/EBGaramondSC-webfont.eot');
+    src: url('../fonts/eb-garamond-fontfacekit/EBGaramondSC-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/eb-garamond-fontfacekit/EBGaramondSC-webfont.woff') format('woff'),
+         url('../fonts/eb-garamond-fontfacekit/EBGaramondSC-webfont.ttf') format('truetype'),
+         url('../fonts/eb-garamond-fontfacekit/EBGaramondSC-webfont.svg#EBGaramondSC') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+* {
+  font-family: serif;
+}
+
+a:hover {
+  color: darken($rose, 15);
+}
+
+.topbar {
+
+  font-size: $basefont * 0.75;
+
+  .brand {
+    display: none;
+  }
+  
+  h5 {
+    display: none;
+  }
+  
+  .avatar img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: top;
+  }
+  
+  .fb {
+    padding-bottom: 0px;
+    padding-top: 8px;
+  }
+
+}
+
+header {
+  padding-top: 60px;
+  background: asset-url('redtexture.jpg', image);
+  $shadow: 0 1px 3px rgba(0,0,0,1), inset 0 -1px 0 rgba(0,0,0,.1);
+  @include box-shadow($shadow);
+  
+  .title-container {
+  
+    h1{
+      display: block;
+      font-size: 0;
+      height: 100%;
+      width: 100%;
+      
+      a {
+        display: block;
+        font-size: 0;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+  
+  .slogan p {
+    font-family: 'EBGaramondRegular', serif;
+    color: $black;
+    text-align: center;
+  }
+}
+
+header.home {
+
+  .title-container {
+
+    background: asset-url('splash.png', image) no-repeat;
+    height: 228px;
+  
+  }
+  
+  .slogan p {
+    font-size: 30px;
+    line-height: 36px;
+  }
+  
+}
+
+header.internal {
+
+  .title-container {
+
+    background: asset-url('splash-small.png', image) no-repeat;
+    height: 61px;
+  
+  }
+  
+  .slogan p {
+    font-size: $basefont * 1.2;
+    line-height: $baseline * 1.2;
+  }
+  
+}
+
+.subheader {
+  padding-top: 5px;
+  background: $gris;
+  $shadow: 0 1px 3px rgba(0,0,0,.50), inset 0 -1px 0 rgba(0,0,0,.1);
+  @include box-shadow($shadow);
+}
+
+.main {
+  
+  padding-top:24px;
+
+}
+
+h1, h2.fancy-title {
+  font-family: 'EBGaramondRegular', serif;
+  font-size: 36px;
+  margin-bottom: 24px;
+  
+  a {
+    color: $gris;
+  }
+}
+
+.banner-728 {
+  text-align: center;
+  background-color: $gris;
+  padding: 5px;
+}
+
+.banner-468 {
+  text-align: center;
+  padding: 24px 0px;
+}
+
+
+footer {
+  background: $gris;
+  padding-bottom: 48px;
+  $shadow: 0 1px 3px rgba(0,0,0,.50), inset 0 -1px 0 rgba(0,0,0,.1);
+  @include box-shadow($shadow);
+  
+  * {
+    color: #CCC;
+    font-size: $basefont * 0.75
+  }
+  
+  ul {
+    list-style: none;
+    margin-left: 0px;
+  }
+}
+
+.post {
+  margin-bottom: $baseline;
+
+
+  .date {
+    font-size: 0.75em;
+    font-style: italic;
+  }
+  
+  h3.post-title {
+    font-size: $basefont * 1.25;
+    line-height: 24px;
+  }
+  
+  .audios {
+    padding-top: 20px;
+    
+    .audio {
+      margin-bottom: $baseline;
+
+      .jp-current-time {
+        font-family: Verdana,Arial,sans-serif;
+        font-size: 11px;
+      }
+    }
+  }
+  
+  .content {
+    margin-bottom: $baseline;
+    
+    * {
+      color: $gris;
+      line-height: $baseline;
+      font-size: $basefont;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      margin-bottom: $baseline / 2;
+    }
+  
+  }
+  
+  .meta {
+    font-size: 0.75em;
+    
+    > span {
+      margin-right: 20px;
+    }    
+  }
+
+}
+
+.activity {
+
+  .description{
+    padding-top: 5px;
+  }
+
+}
+
+
+
+/*******************************************************************************
+** Estilos Anteriores deshabilitados
+
 body {
   padding-top: 40px;
   background: asset-url('gradient.png', image) #FFF repeat-x;
@@ -106,3 +382,4 @@ label {
   content: "";
   clear: both;
 }
+*/

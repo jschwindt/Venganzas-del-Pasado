@@ -1,5 +1,7 @@
 VenganzasDelPasado::Application.routes.draw do
 
+  get "home/index"
+
   ActiveAdmin.routes(self)
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } do
@@ -14,7 +16,7 @@ VenganzasDelPasado::Application.routes.draw do
     end
   end
 
-  root :to => 'posts#index'
+  root :to => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,33 @@
+%h2.fancy-title
+  Programas más recientes
+
+.posts
+  =render @posts
+  %p
+    =link_to "Ver todos los programas", :posts
+
+%hr/
+
+=render 'layouts/banners/b468x60'
+
+%hr/
+
+%h2.fancy-title
+  Actividad de los Usuarios
+
+.activities
+  - 5.times do
+    =render "activities/activity"
+
+%hr/
+
+=render 'layouts/banners/b468x60'
+
+%hr/
+
+%h2.fancy-title
+  ¡Necesitamos tu ayuda!
+%p
+  Con tu colaboración podemos hacer que el contenido se enriquezca. Hay dos formas de participar: enviando comentarios a cada post o registrándote como usuario y editando los post. Entre todos podemos hacer un sitio que nos permita saber de qué se habló en <em>La Venganza será Terrible</em>.
+%p
+  =link_to "Más información", '#'
