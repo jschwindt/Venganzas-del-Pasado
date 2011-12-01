@@ -1,0 +1,7 @@
+%ul.nav
+  -if user_signed_in?
+    =link_to 'Administrador del Sitio', admin_dashboard_path
+%ul.nav.secondary-nav
+  = render 'devise/menu/registration_items'
+  = render 'devise/menu/login_items'
+

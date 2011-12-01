@@ -14,63 +14,26 @@
       .topbar-inner
         .container
           = link_to 'Venganzas del Pasado', '/', :class => 'brand'
-          = render 'layouts/navigation_menu'
+          = render 'layouts/menus/navigation'
 
-    #header.container
-      .row
-        .logo
-          %h3 VdP
-        .banner
-          = render 'layouts/top_banner'
-      .row
-        %h4.span16.slogan
-          Encontrá todos los archivos de audio en mp3 del programa de radio "La Venganza Será Terrible" de Alejandro Dolina.
+    = render 'layouts/header'
 
-    .container
+    .container.main
       .row
-        #menu.span3
-          %h5
-            Menú
-          %ul
-            %li= link_to "Portada", root_path
-            %li= link_to "Último programa", "#"
-            %li= link_to "Descargas", "#"
-            %li= link_to "Acerca de este sitio", "#"
-            %li= link_to "VdP en Facebook", "https://www.facebook.com/VenganzasDelPasado"
-
-        #content.span9
+        #content.span10
           -if notice.present?
             .alert-message.success.fade.in
               %a{ :class => "close", :href => "#" }
                 &times;
               = notice
-
           -if alert.present?
             .alert-message.error.fade.in
               %a{ :class => "close", :href => "#" }
                 &times;
               = alert
-
           = yield
 
-        #sidebar.span4
-          %h5
-            Sidebar
-          %ul
-            %li= link_to "Link 1", "#"
-            %li= link_to "Link 2", "#"
-            %li= link_to "Link 3", "#"
-            %li= link_to "Link 4", "#"
-          %h5
-            Sidebar
-          %ul
-            %li= link_to "Link 1", "#"
-            %li= link_to "Link 2", "#"
-            %li= link_to "Link 3", "#"
-            %li= link_to "Link 4", "#"
+        .span4
+          = render 'layouts/sidebar'
 
-          .banner
-            Banner 600x160
-
-    %footer
-      Pie de página
+    = render 'layouts/footer'
