@@ -1,12 +1,7 @@
 - title @post.title
 
-%p
-  %h2= @post.title
-%p
-  - @post.audios.each do |audio|
-    = render 'player', :url => audio.url, :id => audio.id
-%p
-  = markdown_format @post.content
+=render @post
+
 %p
   = link_to "Edit", edit_post_path(@post)
   |
