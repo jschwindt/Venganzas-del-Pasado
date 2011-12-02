@@ -1,26 +1,16 @@
-- title @post.title
+- content_for :head do
+  %title="#{@post.title} - Venganzas del Pasado"
 
-=render @post
+.post-show
+  =render @post
 
-%p
-  = link_to "Edit", edit_post_path(@post)
-  |
-  = link_to "Destroy", @post, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", posts_path
-
-%a{ :name => "comments"}
+%a{ :name => "comments" }
 %h3 Comentarios (#{@post.comments.approved.count}):
-- page = params[:page].present? ? params[:page] : @post.comments.approved.page.num_pages
-- comments = @post.comments.approved.fifo.page page
-- comments.each do |comment|
-  .comment
-    %strong
-      = comment.author
-    dice:
-    %img{ :src => gravatar_url_for(comment), :class => 'gravatar', :alt => comment.author }
-    = markdown_format comment.content
 
-%p
-  = paginate comments
-
+.comments
+  - if @post.comments.approved.count > 0
+    =render @post.comments
+  - else
+    %p
+      No hay comentarios.
+      =link_to "Primereá", "#"

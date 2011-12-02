@@ -16,13 +16,18 @@
     - else
       Aún no hay información disponible sobre este programa. Colaborá con la comunidad
       = link_to "editándolo", edit_post_path(post)
-  .meta
+  %p.meta
     %span.comments
       Comentarios: 
-      = link_to post.comments_count, post_path(post, :anchor => "comments")
-    %span.tags
-      Temas:
-      <span class="label">Gatos</span>
-      <span class="label">Francia</span>
-      <span class="label">Médicos</span>
-      <span class="label">Autos</span>
+      = link_to post.comments.approved.count, post_path(post, :anchor => "comments")
+    /
+      %span.tags
+        Temas:
+        <span class="label">Gatos</span>
+        <span class="label">Francia</span>
+        <span class="label">Médicos</span>
+        <span class="label">Autos</span>
+  %p.edit
+    = link_to "Edit", edit_post_path(post)
+    |
+    = link_to "Destroy", @post, :confirm => 'Are you sure?', :method => :delete
