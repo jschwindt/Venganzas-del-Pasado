@@ -240,6 +240,10 @@ header.internal {
 
 #sidebar {
   font-size: $basefont * 0.75;
+  
+  li.divider {
+    display: none;
+  }
 }
 
 .widget {

@@ -4,7 +4,8 @@
       %span.user
         %span.avatar= image_tag gravatar_url_for(current_user)
         %span.alias= current_user.alias
-    =render 'layouts/menus/user'
+    %ul.menu-dropdown
+      =render 'layouts/menus/user_items'
 -else
   %li
     = link_to('Registrarse', new_user_registration_path)
