@@ -1,7 +1,8 @@
 !!!
 %html
   %head
-    %title Venganzas del Pasado
+    - content_for :head do
+      %title Venganzas del Pasado
     /[if lt IE 9]
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     = stylesheet_link_tag "application"
