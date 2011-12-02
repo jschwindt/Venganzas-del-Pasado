@@ -1,10 +1,10 @@
 # encoding: utf-8
 
 class PostsController < InheritedResources::Base
-
+  
   protected
   def collection
-    @posts ||= end_of_association_chain.published.lifo.page(params[:page])
+    @posts ||= end_of_association_chain.published.lifo.page(params[:page]).per(5)
   end
 
 end

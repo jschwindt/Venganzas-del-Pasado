@@ -25,7 +25,7 @@ $gridColumns: 14;
 $siteWidth: ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
 
 /* aumentando un poco*/
-$basefont: 18px;
+$basefont: 16px;
 $baseline: 24px;
 
 @import "bootstrap/mixins";
@@ -77,25 +77,52 @@ a:hover {
 }
 
 .main {
-  padding-top:24px;
+  padding-top: $baseline;
 }
 
-h1, h2.fancy-title {
+.fancy-title {
   font-family: 'EBGaramondRegular', serif;
-  font-size: 36px;
-  margin-bottom: 24px;
+  font-size: $basefont * 3;
+  margin-bottom: $baseline;
   
   a {
     color: $gris;
   }
+  
+  small {
+    font-size: $basefont * 2;
+    color: $claro;
+  }
 }
 
+.pagination {
+  text-align: center;
+  
+  ul {
+    border: none;
+    @include box-shadow(none);
+    
+    li {
+      a {
+        border: none;
+      }
+      
+      a:hover {
+        background: $claro;
+      }
+    }
+    
+    li.active a {
+      background: none;
+      color: $gris;
+    }
+  }
+}
 
 //******************************************************************************
 // Top Bar
 //******************************************************************************
 .topbar {
-
   font-size: $basefont * 0.75;
 
   .brand {
@@ -166,11 +193,14 @@ header.home {
   .slogan p {
     font-size: 30px;
     line-height: 36px;
+    margin-bottom: 20px;
   }
   
 }
 
 header.internal {
+
+  padding-bottom: 10px;
 
   .title-container {
 
@@ -180,8 +210,8 @@ header.internal {
   }
   
   .slogan p {
-    font-size: $basefont * 1.2;
-    line-height: $baseline * 1.2;
+    font-size: 22px;
+    line-height: 28px;
   }
   
 }
@@ -208,6 +238,10 @@ header.internal {
   padding: $baseline 0px;
 }
 
+#sidebar {
+  font-size: $basefont * 0.75;
+}
+
 .widget {
   margin-bottom: $baseline;
   
@@ -230,12 +264,12 @@ footer {
   
   * {
     color: #CCC;
-    font-size: $basefont * 0.75
   }
   
   ul {
     list-style: none;
     margin-left: 0px;
+    font-size: $basefont * 0.75;
   }
 }
 
@@ -245,20 +279,22 @@ footer {
 //******************************************************************************
 .post {
   margin-bottom: $baseline;
-
+  border-bottom: 1px $claro solid;
 
   .date {
-    font-size: 0.75em;
+    font-size: $basefont * 0.75;
     font-style: italic;
+    color: $claro;
   }
   
-  h3.post-title {
-    font-size: $basefont * 1.25;
-    line-height: 24px;
+  h2.post-title, h3.post-title {
+    font-size: $basefont * 2;
+    line-height: $baseline;
+    font-family: 'EBGaramondRegular', serif;
   }
   
   .audios {
-    padding-top: 20px;
+    padding-top: $baseline;
     
     .audio {
       margin-bottom: $baseline;
@@ -286,8 +322,6 @@ footer {
   }
   
   .meta {
-    font-size: 0.75em;
-    
     > span {
       margin-right: 20px;
     }    
@@ -295,14 +329,53 @@ footer {
 
 }
 
+.post-show {
+  .post{
+    .date {
+      font-size: $basefont;
+    }
+    h3.post-title {
+      font-family: 'EBGaramondRegular', serif;
+      font-size: $basefont * 3;
+      line-height: $baseline * 2;
+      
+      a {
+        color: $gris;
+      }
+    }
+    
+    .meta .comments {
+      display: none;
+    }
+  }
+}
 
 //******************************************************************************
 // Activities
 //******************************************************************************
 .activity {
 
+  .avatar img {
+    width: 40px;
+    height: 40px;
+  }
+
   .description{
     padding-top: 5px;
+  }
+
+}
+
+
+.comment {
+
+  .avatar img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .description{
+
   }
 
 }
