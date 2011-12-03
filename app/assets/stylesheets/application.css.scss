@@ -84,11 +84,11 @@ a:hover {
   font-family: 'EBGaramondRegular', serif;
   font-size: $basefont * 3;
   margin-bottom: $baseline;
-  
+
   a {
     color: $gris;
   }
-  
+
   small {
     font-size: $basefont * 2;
     color: $claro;
@@ -97,26 +97,32 @@ a:hover {
 
 .pagination {
   text-align: center;
-  
+
   ul {
     border: none;
     @include box-shadow(none);
-    
+
     li {
       a {
         border: none;
       }
-      
+
       a:hover {
         background: $claro;
       }
     }
-    
+
     li.active a {
       background: none;
       color: $gris;
     }
   }
+}
+
+fieldset {
+  label {
+    margin-right: 20px;
+  } 
 }
 
 //******************************************************************************
@@ -128,18 +134,18 @@ a:hover {
   .brand {
     display: none;
   }
-  
+
   h5 {
     display: none;
   }
-  
+
   .avatar img {
     width: 20px;
     height: 20px;
     margin-right: 5px;
     vertical-align: top;
   }
-  
+
   .fb {
     padding-bottom: 0px;
     padding-top: 8px;
@@ -156,15 +162,15 @@ header {
   background: asset-url('redtexture.jpg', image);
   $shadow: 0 1px 3px rgba(0,0,0,1), inset 0 -1px 0 rgba(0,0,0,.1);
   @include box-shadow($shadow);
-  
+
   .title-container {
-  
+
     h1{
       display: block;
       font-size: 0;
       height: 100%;
       width: 100%;
-      
+
       a {
         display: block;
         font-size: 0;
@@ -173,7 +179,7 @@ header {
       }
     }
   }
-  
+
   .slogan p {
     font-family: 'EBGaramondRegular', serif;
     color: $black;
@@ -187,15 +193,15 @@ header.home {
 
     background: asset-url('splash.png', image) no-repeat;
     height: 228px;
-  
+
   }
-  
+
   .slogan p {
     font-size: 30px;
     line-height: 36px;
     margin-bottom: 20px;
   }
-  
+
 }
 
 header.internal {
@@ -206,14 +212,14 @@ header.internal {
 
     background: asset-url('splash-small.png', image) no-repeat;
     height: 61px;
-  
+
   }
-  
+
   .slogan p {
     font-size: 22px;
     line-height: 28px;
   }
-  
+
 }
 
 .subheader {
@@ -244,7 +250,7 @@ header.internal {
 
 .widget {
   margin-bottom: $baseline;
-  
+
   .twtr-tweet-text p {
     font-family: serif;
     font-size: $basefont * 0.75;
@@ -261,11 +267,11 @@ footer {
   padding-bottom: 48px;
   $shadow: 0 1px 3px rgba(0,0,0,.50), inset 0 -1px 0 rgba(0,0,0,.1);
   @include box-shadow($shadow);
-  
+
   * {
     color: #CCC;
   }
-  
+
   ul {
     list-style: none;
     margin-left: 0px;
@@ -286,16 +292,16 @@ footer {
     font-style: italic;
     color: $claro;
   }
-  
+
   h2.post-title, h3.post-title {
     font-size: $basefont * 2;
     line-height: $baseline;
     font-family: 'EBGaramondRegular', serif;
   }
-  
+
   .audios {
     padding-top: $baseline;
-    
+
     .audio {
       margin-bottom: $baseline;
 
@@ -305,26 +311,26 @@ footer {
       }
     }
   }
-  
+
   .content {
     margin-bottom: $baseline;
-    
+
     * {
       color: $gris;
       line-height: $baseline;
       font-size: $basefont;
     }
-    
+
     h1, h2, h3, h4, h5, h6 {
       margin-bottom: $baseline / 2;
     }
-  
+
   }
-  
+
   .meta {
     > span {
       margin-right: 20px;
-    }    
+    }
   }
 
 }
@@ -338,12 +344,12 @@ footer {
       font-family: 'EBGaramondRegular', serif;
       font-size: $basefont * 3;
       line-height: $baseline * 2;
-      
+
       a {
         color: $gris;
       }
     }
-    
+
     .meta .comments {
       display: none;
     }
