@@ -6,3 +6,8 @@
 %h2.fancy-title= title
 
 = render 'form', :post => @post
+
+%p
+  = link_to "Ver post", @post
+  |
+  = link_to "Ir al listado", posts_path
