@@ -1,16 +1,17 @@
-= form_for @post do |f|
-  - if @post.errors.any?
-    #error_explanation
-      %h2 #{pluralize(@post.errors.count, "error") } prohibited this Post from being saved:
+= form_for post do |f|
+  - if post.errors.any?
+    .alert-message.block-message.error
+      = link_to "x", "#", :class => 'close'
+      %p
+        %strong= pluralize(post.errors.count, "error")
       %ul
-      - @post.errors.full_messages.each do |msg|
-        %li= msg
+        - post.errors.full_messages.each do |msg|
+          %li= msg
 
   %p
-    = f.label :title
-    = f.text_field :title
+    = f.text_field :title, :class => 'xxlarge'
   %p
-    = f.label :content
     = f.text_area :content, :class => 'xxlarge'
   %p
-    = f.submit
+    = f.submit 'Publicar', :class => 'btn primary'
+    = link_to 'Cancelar', :back, :class => 'btn'

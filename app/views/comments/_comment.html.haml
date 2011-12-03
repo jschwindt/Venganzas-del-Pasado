@@ -1,9 +1,19 @@
+%a{ :name => "comment#{comment.id}" }
 .row.comment
   .span1.avatar
     %img{ :src => gravatar_url_for(comment), :class => 'gravatar', :alt => comment.author }
   .span9.description
-    .author
+    %p.author
       =link_to comment.author, '#'
-      dijo:
+      %small
+        hace
+        =time_ago_in_words(comment.created_at)
+        dijo:
     .content
       = markdown_format comment.content
+    %p.meta
+      %span.permalink=link_to "Permalink", post_path(comment.post, :anchor => "comment#{comment.id}")
+      - if can? :edit, comment
+        %span.edit=link_to "Editar", edit_post_comment_path(comment)
+      - if can? :delete, comment
+        %span.delete=link_to "Eliminar", post_comment_path(comment), :confirm => '¿Estás seguro?', :method => :delete

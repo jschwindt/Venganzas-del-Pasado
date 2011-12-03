@@ -1,33 +1,35 @@
 .post
+
   .date
     = post.created_at.strftime('%d de %B')
+
   %h3.post-title
     = link_to post.title, post
+
   .audios
-    - post.audios.each do |audio|
-      .row.audio
-        .span6
-          = render 'posts/player', :url => audio.url, :id => audio.id
-        .span4
-          =link_to "Descargar MP3", audio.url, :class => "btn small"
+    = render post.audios
+      
   .content
     - unless post.content == ''
       = markdown_format post.content
     - else
       Aún no hay información disponible sobre este programa. Colaborá con la comunidad
       = link_to "editándolo", edit_post_path(post)
+      
   %p.meta
     %span.comments
       Comentarios: 
       = link_to post.comments.approved.count, post_path(post, :anchor => "comments")
-    /
-      %span.tags
-        Temas:
-        <span class="label">Gatos</span>
-        <span class="label">Francia</span>
-        <span class="label">Médicos</span>
-        <span class="label">Autos</span>
-  %p.edit
-    = link_to "Edit", edit_post_path(post)
-    |
-    = link_to "Destroy", @post, :confirm => 'Are you sure?', :method => :delete
+    %span.permalink=link_to "Permalink", @post
+    - if can? :edit, post
+      %span.edit= link_to "Editar", edit_post_path(post)
+    - if can? :delete, post
+      %span.delete= link_to "Eliminar", post, :confirm => '¿Estás seguro?', :method => :delete
+
+  /
+    .tags
+      Temas:
+      <span class="label">Gatos</span>
+      <span class="label">Francia</span>
+      <span class="label">Médicos</span>
+      <span class="label">Autos</span>

@@ -72,8 +72,18 @@ body {
   font-family: serif;
 }
 
+h4 {
+  margin-bottom: $baseline;
+}
+
 a:hover {
   color: darken($rose, 15);
+}
+
+
+.avatar img {
+  width: 40px;
+  height: 40px;
 }
 
 .main {
@@ -117,6 +127,20 @@ a:hover {
       color: $gris;
     }
   }
+}
+
+.btn {
+  font-family: inherit;
+  @include gradientBar($claro, darken($claro, 10));
+  
+  &.primary {
+    @include gradientBar($rose, darken($rose, 10));
+  }
+}
+
+.field_with_errors input{
+  border-color: #EE5F5B;
+  color: #B94A48;
 }
 
 //******************************************************************************
@@ -283,7 +307,6 @@ footer {
 //******************************************************************************
 .post {
   margin-bottom: $baseline;
-  border-bottom: 1px $claro solid;
 
   .date {
     font-size: $basefont * 0.75;
@@ -314,9 +337,12 @@ footer {
     margin-bottom: $baseline;
     
     * {
-      color: $gris;
       line-height: $baseline;
       font-size: $basefont;
+    }
+    
+    li {
+      color: $gris;
     }
     
     h1, h2, h3, h4, h5, h6 {
@@ -326,9 +352,12 @@ footer {
   }
   
   .meta {
+    border-top: 1px $claro solid;
+    font-size: 0.75 * $basefont;
+    
     > span {
       margin-right: 20px;
-    }    
+    }
   }
 
 }
@@ -358,12 +387,6 @@ footer {
 // Activities
 //******************************************************************************
 .activity {
-
-  .avatar img {
-    width: 40px;
-    height: 40px;
-  }
-
   .description{
     padding-top: 5px;
   }
@@ -371,17 +394,29 @@ footer {
 }
 
 
+//******************************************************************************
+// Comments
+//******************************************************************************
 .comment {
-
-  .avatar img {
-    width: 40px;
-    height: 40px;
+  margin-bottom: $baseline;
+  
+  
+  .author {
+    small {
+      font-size: 0.75 * $basefont;
+      color: $claro;
+      font-style: italic;
+    }
   }
-
-  .description{
-
+  
+  .meta {
+    border-top: 1px $claro solid;
+    font-size: 0.75 * $basefont;
+    
+    > span {
+      margin-right: 20px;
+    }
   }
-
 }
 
 

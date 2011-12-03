@@ -1,8 +1,7 @@
-- title "Edit Post"
+- content_for :head do
+  %title Editando Post ##{@post.id} - Venganzas del Pasado
 
-= render 'form'
+%h2.fancy-title
+  Editando Post ##{@post.id}
 
-%p
-  = link_to "Show", @post
-  |
-  = link_to "View All", posts_path
+= render 'form', :post => @post

@@ -1,23 +1,12 @@
-= form_for [@post, @comment] do |f|
-  %p
-    = f.label :post_id
-    %br
-    = f.number_field :post_id
-  %p
-    = f.label :author
-    %br
-    = f.text_field :author
-  %p
-    = f.label :author_email
-    %br
-    = f.text_field :author_email
-  %p
-    = f.label :author_ip
-    %br
-    = f.text_field :author_ip
-  %p
-    = f.label :content
-    %br
-    = f.text_area :content, :class => 'xxlarge'
-  %p
-    = f.submit
+%h3 Escribí un comentario
+
+.row
+  .span1.avatar
+    %img{ :src => gravatar_url_for(comment), :class => 'gravatar', :alt => comment.author }
+  .span9.description
+    = form_for [post, comment] do |f|
+      = f.hidden_field :post_id
+      %p
+        = f.text_area :content, :class => 'xxlarge', :rows => 5
+      %p
+        = f.submit 'Publicar', :class => 'btn primary'

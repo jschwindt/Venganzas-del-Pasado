@@ -5,12 +5,14 @@
   =render @post
 
 %a{ :name => "comments" }
-%h3 Comentarios (#{@post.comments.approved.count}):
+%h4 Comentarios (#{@post.comments.approved.count}):
 
 .comments
+
   - if @post.comments.approved.count > 0
     =render @post.comments
   - else
     %p
-      No hay comentarios.
-      =link_to "Primereá", "#"
+      No hay comentarios. ¡Podés ser el primero en comentar!
+      
+  = render 'comments/form', :post => @post, :comment => @post.comments.build
