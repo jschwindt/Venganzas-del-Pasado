@@ -1,12 +1,14 @@
-%h3 Escribí un comentario
+.comments-form
 
-.row
-  .span1.avatar
-    %img{ :src => gravatar_url_for(comment), :class => 'gravatar', :alt => comment.author }
-  .span9.description
-    = form_for [post, comment] do |f|
-      = f.hidden_field :post_id
-      %p
-        = f.text_area :content, :class => 'xxlarge', :rows => 5
-      %p
-        = f.submit 'Publicar', :class => 'btn primary'
+  %h3 Escribí un comentario
+
+  .row
+    .span1.avatar
+      %img{ :src => gravatar_url_for(current_user), :class => 'gravatar', :alt => comment.author }
+    .span9.description
+      = form_for [post, comment] do |f|
+        = f.hidden_field :post_id
+        %p
+          = f.text_area :content, :class => 'xlarge', :rows => 5
+        %p
+          = f.submit 'Publicar', :class => 'btn primary'

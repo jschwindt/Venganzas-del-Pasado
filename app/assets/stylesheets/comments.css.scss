@@ -1,0 +1,28 @@
+.comment {
+  margin-bottom: $baseline;
+  
+  
+  .author {
+    small {
+      font-size: 0.75 * $basefont;
+      color: $claro;
+      font-style: italic;
+    }
+  }
+  
+  .meta {
+    border-top: 1px $claro solid;
+    font-size: 0.75 * $basefont;
+    
+    > span {
+      margin-right: 20px;
+    }
+  }
+}
+
+
+.comments-form{  
+  textarea {
+    width: 510px;
+  }
+}

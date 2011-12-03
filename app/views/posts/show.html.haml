@@ -1,5 +1,7 @@
+- title = @post.title
+
 - content_for :head do
-  %title="#{@post.title} - Venganzas del Pasado"
+  %title #{title} - Venganzas del Pasado
 
 .post-show
   =render @post
@@ -15,4 +17,9 @@
     %p
       No hay comentarios. ¡Podés ser el primero en comentar!
       
-  = render 'comments/form', :post => @post, :comment => @post.comments.build
+  - if can? :create, :comment
+    = render 'comments/form', :post => @post, :comment => @post.comments.build
+  - else
+    .row
+      .offset1
+        Tenés que #{link_to "iniciar sesión", new_user_session_path} para comentar

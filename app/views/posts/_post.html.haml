@@ -20,7 +20,7 @@
     %span.comments
       Comentarios: 
       = link_to post.comments.approved.count, post_path(post, :anchor => "comments")
-    %span.permalink=link_to "Permalink", @post
+    %span.permalink=link_to "Permalink", post
     - if can? :edit, post
       %span.edit= link_to "Editar", edit_post_path(post)
     - if can? :delete, post

@@ -25,7 +25,16 @@ class Ability
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     
-    user ||= User.new # guest user (not logged in)
-    can :manage, :all
+    user ||= User.new
+    if user.email == 'test@fcingolani.com.ar' # :P
+      can :manage, :all
+    else
+      can :read, :all
+    end
+    
+    unless user.new_record?
+      can :create, :comment
+    end
+
   end
 end
