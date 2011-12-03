@@ -1,6 +1,11 @@
-- title "Editar Post"
+- title = "Editando Post ##{@post.id}"
 
-= render 'form'
+- content_for :head do
+  %title #{title} - Venganzas del Pasado
+
+%h2.fancy-title= title
+
+= render 'form', :post => @post
 
 %p
   = link_to "Ver post", @post

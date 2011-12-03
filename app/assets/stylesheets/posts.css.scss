@@ -1,0 +1,77 @@
+.post {
+  margin-bottom: $baseline;
+
+  .date {
+    font-size: $basefont * 0.75;
+    font-style: italic;
+    color: $claro;
+  }
+  
+  h2.post-title, h3.post-title {
+    font-size: $basefont * 2;
+    line-height: $baseline;
+    font-family: 'EBGaramondRegular', serif;
+  }
+  
+  .audios {
+    padding-top: $baseline;
+    
+    .audio {
+      margin-bottom: $baseline;
+
+      .jp-current-time {
+        font-family: Verdana,Arial,sans-serif;
+        font-size: 11px;
+      }
+    }
+  }
+  
+  .content {
+    margin-bottom: $baseline;
+    
+    * {
+      line-height: $baseline;
+      font-size: $basefont;
+    }
+    
+    li {
+      color: $gris;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      margin-bottom: $baseline / 2;
+    }
+  
+  }
+  
+  .meta {
+    border-top: 1px $claro solid;
+    font-size: 0.75 * $basefont;
+    
+    > span {
+      margin-right: 20px;
+    }
+  }
+
+}
+
+.post-show {
+  .post{
+    .date {
+      font-size: $basefont;
+    }
+    h3.post-title {
+      font-family: 'EBGaramondRegular', serif;
+      font-size: $basefont * 3;
+      line-height: $baseline * 2;
+      
+      a {
+        color: $gris;
+      }
+    }
+    
+    .meta .comments {
+      display: none;
+    }
+  }
+}

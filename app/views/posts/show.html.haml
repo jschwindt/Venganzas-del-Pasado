@@ -1,16 +1,25 @@
+- title = @post.title
+
 - content_for :head do
-  %title="#{@post.title} - Venganzas del Pasado"
+  %title #{title} - Venganzas del Pasado
 
 .post-show
   =render @post
 
 %a{ :name => "comments" }
-%h3 Comentarios (#{@post.comments.approved.count}):
+%h4 Comentarios (#{@post.comments.approved.count}):
 
 .comments
+
   - if @post.comments.approved.count > 0
     =render @post.comments
   - else
     %p
-      No hay comentarios.
-      =link_to "Primereá", "#"
+      No hay comentarios. ¡Podés ser el primero en comentar!
+      
+  - if can? :create, :comment
+    = render 'comments/form', :post => @post, :comment => @post.comments.build
+  - else
+    .row
+      .offset1
+        Tenés que #{link_to "iniciar sesión", new_user_session_path} para comentar

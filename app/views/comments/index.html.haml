@@ -1,27 +1,16 @@
-- title "Comments"
+- content_for :head do
+  - if params[:page].nil?
+    %title Comentarios de #{@post.title} - Venganzas del Pasado
+  - else
+    %title Comentarios de #{@post.title} - Página #{params[:page]} - Venganzas del Pasado
 
-%table
-  %tr
-    %th Post
-    %th Author
-    %th Author email
-    %th Comment/Date/Time
-    %th Author ip
-    %th Content
-    %th{ :colspan => 3} Actions
-  - for comment in @comments
-    %tr
-      %td= comment.post_id
-      %td= comment.author
-      %td= comment.author_email
-      %td= l comment.created_at
-      %td= comment.author_ip
-      %td= markdown_format comment.content
-      %td= link_to 'Show', [@post, comment]
-      %td= link_to 'Edit', edit_post_comment_path(@post, comment)
-      %td= link_to 'Destroy', [@post, comment], :confirm => 'Are you sure?', :method => :delete
+%h2.fancy-title
+  Comentarios de #{@post.title}
+  - unless params[:page].nil?
+    %small
+      pág. #{params[:page]}
 
-%p
-  = paginate @comments
+.comments
+  = render @comments
 
-%p= link_to "New Comment", new_post_comment_path(@post)
+= paginate @comments, :window => 2

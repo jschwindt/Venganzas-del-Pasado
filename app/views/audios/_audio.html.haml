@@ -1,0 +1,5 @@
+.row.audio
+  .span6
+    = render 'audios/player', :url => audio.url, :id => audio.id
+  .span4
+    =link_to "Descargar MP3", audio.url, :class => "btn small"

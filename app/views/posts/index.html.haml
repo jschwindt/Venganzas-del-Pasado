@@ -1,8 +1,10 @@
+- if params[:page].nil?
+  - title = "Programas de La Venganza será Terrible"
+- else
+  - title = "Programas de La Venganza será Terrible - Página #{params[:page]}"
+
 - content_for :head do
-  - if params[:page].nil?
-    %title Programas de La Venganza será Terrible - Venganzas del Pasado
-  - else
-    %title="Programas de La Venganza será Terrible - Página #{params[:page]} - Venganzas del Pasado"
+  %title #{title} - Venganzas del Pasado
 
 %h2.fancy-title
   Todos los programas
