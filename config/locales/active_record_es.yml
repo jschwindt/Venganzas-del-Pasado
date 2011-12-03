@@ -2,6 +2,7 @@ es:
   # Attributes names common to most models
   attributes:
     title: Título
+    content: Contenido
 
     #created_at: "Created at"
     #updated_at: "Updated at"

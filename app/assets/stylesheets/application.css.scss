@@ -119,11 +119,17 @@ a:hover {
   }
 }
 
+label {
+  text-align: left;
+}
+
 fieldset {
   label {
     margin-right: 20px;
+    text-align: right;
   } 
 }
+
 
 //******************************************************************************
 // Top Bar
