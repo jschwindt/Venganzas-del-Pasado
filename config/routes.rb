@@ -14,6 +14,10 @@ VenganzasDelPasado::Application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :comments
+  end
+
   root :to => 'home#index'
 
   # The priority is based upon order of creation:
