@@ -1,6 +1,6 @@
 - title "Edit Comment"
 
-= render 'form'
+= render 'form', :comment => @comment, :post => @post
 
 %p
   = link_to "Show", [@post, @comment]

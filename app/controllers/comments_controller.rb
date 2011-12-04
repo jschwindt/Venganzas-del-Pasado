@@ -32,7 +32,7 @@ class CommentsController < InheritedResources::Base
 
     @comment.gravatar_hash = current_user.gravatar_hash
     
-    create! { "#{collection_url}#comment#{@comment.id}" }
+    create! { "#{parent_url}#comment#{@comment.id}" }
   end
 
   def update
