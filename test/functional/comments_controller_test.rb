@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class CommentsControllerTest < ActionController::TestCase
+  def setup
+    sign_in users(:one)
+  end
+
   def test_index
     get :index, :post_id => posts(:one)
     assert_not_nil assigns(:post)
