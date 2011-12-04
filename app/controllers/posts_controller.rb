@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 class PostsController < InheritedResources::Base
+  load_and_authorize_resource
   
   def show
     show! do | format |

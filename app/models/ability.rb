@@ -2,38 +2,38 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    # Define abilities for the passed in user here. For example:
-    #
-    #   user ||= User.new # guest user (not logged in)
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
-    #     can :read, :all
-    #   end
-    #
-    # The first argument to `can` is the action you are giving the user permission to do.
-    # If you pass :manage it will apply to every action. Other common actions here are
-    # :read, :create, :update and :destroy.
-    #
-    # The second argument is the resource the user can perform the action on. If you pass
-    # :all it will apply to every resource. Otherwise pass a Ruby class of the resource.
-    #
-    # The third argument is an optional hash of conditions to further filter the objects.
-    # For example, here the user can only update published articles.
-    #
-    #   can :update, Article, :published => true
-    #
-    # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
-    
     user ||= User.new
-    if user.email == 'test@fcingolani.com.ar' # :P
-      can :manage, :all
-    else
-      can :read, :all
+    
+    can :read, :all
+    
+    if user.karma.nil?
+      user.karma = 0
     end
     
-    unless user.new_record?
-      can :create, :comment
+    if user.karma > 0
+      can :create, Comment
+      can [:edit, :delete, :update], Comment, :user_id => user.id
+    end
+    
+    if user.karma > 100
+      can :approve, Comment, :user_id => user.id
+    end
+    
+    if user.karma > 200
+      can :approve, Comment
+    end
+    
+    if user.karma > 300
+      can [:edit, :delete, :update], Comment
+    end
+    
+    if user.karma > 400
+      can :create, Post
+      can [:edit, :delete, :update], Post
+    end
+    
+    if user.karma > 9000
+      can :manage, :all
     end
 
   end

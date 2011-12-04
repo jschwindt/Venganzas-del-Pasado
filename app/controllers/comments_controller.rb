@@ -2,6 +2,7 @@
 
 class CommentsController < InheritedResources::Base
   belongs_to :post
+  load_and_authorize_resource
 
   def index
     @post = Post.find params[:post_id]
@@ -24,7 +25,7 @@ class CommentsController < InheritedResources::Base
     @comment.author_email = current_user.email
     @comment.author_ip = request.remote_ip
     
-    if can? :autoapprove, @comment 
+    if can? :approve, @comment 
       @comment.status =  'approved'
     else
       @comment.status = 'pending'
