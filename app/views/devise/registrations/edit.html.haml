@@ -1,26 +1,46 @@
-%div.well.span8
-  %h2 Editar usuario
+- page_title('Editando Preferencias')
+
+%h2.fancy-title= html_page_title
+
+= devise_error_messages!
+
+%div
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-    = devise_error_messages!
     %fieldset
       .inputs
         .clearfix
           = f.label :email
-          = f.text_field :email
+          .input
+            = f.text_field :email
+            %span.help-block Esta dirección de mail es privada, no será publicada.
         .clearfix
           = f.label :alias
-          = f.text_field :alias
+          .input
+            = f.text_field :alias
+            %span.help-block El nombre que los demás usuarios verán.
         .clearfix
           = f.label :password
-          %i (dejar en blanco si no se desea cambiar)
-          = f.password_field :password
+          .input
+            = f.password_field :password
+            %span.help-block Dejar en blanco si no se desea cambiar.
         .clearfix
           = f.label :password_confirmation
-          = f.password_field :password_confirmation
+          .input
+            = f.password_field :password_confirmation
+            %span.help-block Repetir la contraseña de arriba, si deseás cambiar la actual.
         .clearfix
           = f.label :current_password
-          = f.password_field :current_password
+          .input
+            = f.password_field :current_password
+            %span.help-block Ingresar contraseña actual para guardar cambios.
       .actions
         = f.submit "Actualizar", :class => 'btn primary'
-    = link_to "Eliminar definitivamente la cuenta", registration_path(resource_name),
-      :confirm => "¿Está seguro?", :method => :delete, :class => 'btn danger'
+        = link_to 'Cancelar', :back, :class => 'btn'
+
+%h3 Eliminar la cuenta
+%p
+  Esto no puede deshacerse, por favor pensalo bien antes de hacer click, ya que
+  no habrá forma de recuperar tus datos.
+
+= link_to "Eliminar definitivamente la cuenta", registration_path(resource_name),
+      :confirm => "¿Está seguro?", :method => :delete
