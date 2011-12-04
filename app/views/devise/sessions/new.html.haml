@@ -1,18 +1,26 @@
-%div.well.span8
-  %h2 Ingresar
+- page_title('Iniciar Sesión')
+
+%h2.fancy-title= html_page_title
+
+%div
   = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
     %fieldset
       .inputs
         .clearfix
           = f.label :email
-          = f.text_field :email
+          .input= f.text_field :email
         .clearfix
           = f.label :password
-          = f.password_field :password
+          .input= f.password_field :password
         - if devise_mapping.rememberable?
           .clearfix
-            = f.label :remember_me, "Recordar"
-            = f.check_box :remember_me
+            .input
+              %ul.inputs-list
+                %li
+                  %label
+                    = f.check_box :remember_me
+                    %span Mantener mi sesión abierta
       .actions
         = f.submit "Ingresar", :class => 'btn primary'
+
   = render "devise/shared/links"
