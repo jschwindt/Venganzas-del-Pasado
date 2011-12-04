@@ -8,7 +8,7 @@
 
   .audios
     = render post.audios
-      
+
   .content
     - if post.content?
       = markdown_format post.content
@@ -20,10 +20,10 @@
       - else
         Colaborá con la comunidad,
         = link_to "postulate a editor", '#'
-      
+
   %p.meta
     %span.comments
-      Comentarios: 
+      Comentarios:
       = link_to post.comments.approved.count, post_path(post, :anchor => "comments")
     %span.permalink=link_to "Permalink", post
     - if can? :update, post

@@ -41,7 +41,7 @@ module Wordpress
         record.content  = PandocRuby.html(post_content, :normalize).to_markdown
       else
         record.content = post_content
-      end 
+      end
       record.created_at = post_date
       record.updated_at = post_modified
       record.status     = 'published'

@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
         user.save!
       end
       user
-    else # Create a user with a stub password. 
+    else # Create a user with a stub password.
       generated_password = Devise.friendly_token.first(10)
       user = User.new( :email => data.email,
                   :alias      => data.username || data.name,
@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
                   :confirmed_at => Time.zone.now
               )
       user.fb_userid = data.id
-      user.skip_confirmation! 
+      user.skip_confirmation!
       user.save
       user
     end
