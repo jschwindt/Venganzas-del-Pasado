@@ -4,7 +4,6 @@
       %img{ :src => gravatar_url_for(current_user), :class => 'gravatar' }
     .span9.description
       = form_for [post, comment] do |f|
-        = f.hidden_field :post_id
         %p
           = f.text_area :content, :class => 'xlarge', :rows => 5
         %p

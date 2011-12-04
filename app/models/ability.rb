@@ -12,7 +12,7 @@ class Ability
     
     if user.karma >= 0
       can :create, Comment
-      can [:delete, :update], Comment, :user_id => user.id
+      can [:destroy, :update], Comment, :user_id => user.id
     end
     
     if user.karma > 500
@@ -20,7 +20,7 @@ class Ability
     end
     
     if ['admin','moderator','editor'].include? user.role
-      can [:delete, :update], Comment
+      can [:destroy, :update], Comment
     end
     
     if ['admin', 'editor'].include? user.role

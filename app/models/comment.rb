@@ -8,7 +8,11 @@ class Comment < ActiveRecord::Base
   scope :fifo, order('created_at ASC')
 
   def self.approved_or_from_user( user )
-    where( 'status = ? OR user_id = ?', 'approved', user.id )
+    if user
+      where( 'status = ? OR user_id = ?', 'approved', user.id )
+    else
+      approved
+    end
   end
 
 end
