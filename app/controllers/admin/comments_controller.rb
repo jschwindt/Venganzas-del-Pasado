@@ -1,4 +1,6 @@
 # encoding: utf-8
 
-class Admin::CommentsController < InheritedResources::Base
+module Admin
+  class CommentsController < BaseController
+  end
 end
