@@ -5,7 +5,10 @@ class Comment < ActiveRecord::Base
   validates :content, :presence => true
 
   scope :approved, where( :status => 'approved' )
-  scope :approved_or_from_user, lambda { |user|  where( 'status = ? OR user_id = ?', 'approved', user.id ) }
   scope :fifo, order('created_at ASC')
+
+  def self.approved_or_from_user( user )
+    where( 'status = ? OR user_id = ?', 'approved', user.id )
+  end
 
 end
