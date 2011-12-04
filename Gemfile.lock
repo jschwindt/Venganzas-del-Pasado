@@ -106,7 +106,6 @@ GEM
     multi_json (1.0.4)
     multipart-post (1.1.4)
     mysql2 (0.3.10)
-    nifty-generators (0.4.6)
     oauth2 (0.5.1)
       faraday (~> 0.7.4)
       multi_json (~> 1.0.3)
@@ -203,7 +202,6 @@ DEPENDENCIES
   meta_search (>= 1.1.0.pre)
   mocha
   mysql2
-  nifty-generators
   omniauth-facebook
   pandoc-ruby
   rails (= 3.1.3)

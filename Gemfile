@@ -29,7 +29,6 @@ gem 'pandoc-ruby'
 gem 'cancan'
 
 group :development do
-  gem 'nifty-generators'
   gem 'hirb'
   gem 'wirble'
   gem 'rails_best_practices'
