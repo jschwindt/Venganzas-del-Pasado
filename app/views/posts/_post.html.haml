@@ -13,15 +13,20 @@
     - if post.content?
       = markdown_format post.content
     - else
-      Aún no hay información disponible sobre este programa. Colaborá con la comunidad
-      = link_to "editándolo", edit_post_path(post)
+      Aún no hay información disponible sobre este programa.
+      - if can? :update, post
+        Colaborá con la comunidad
+        = link_to "editándolo", edit_post_path(post)
+      - else
+        Colaborá con la comunidad,
+        = link_to "postulate a editor", '#'
       
   %p.meta
     %span.comments
       Comentarios: 
       = link_to post.comments.approved.count, post_path(post, :anchor => "comments")
     %span.permalink=link_to "Permalink", post
-    - if can? :edit, post
+    - if can? :update, post
       %span.edit= link_to "Editar", edit_post_path(post)
-    - if can? :delete, post
+    - if can? :destroy, post
       %span.delete= link_to "Eliminar", post, :confirm => '¿Estás seguro?', :method => :delete
