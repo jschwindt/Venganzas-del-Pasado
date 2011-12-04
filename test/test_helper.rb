@@ -9,6 +9,9 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
+end
+
+class ActionController::TestCase
   # Add more helper methods to be used by all tests here...
   include Devise::TestHelpers
 end

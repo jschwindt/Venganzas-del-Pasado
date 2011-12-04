@@ -29,7 +29,6 @@ gem 'pandoc-ruby'
 gem 'cancan'
 
 group :development do
-  gem 'nifty-generators'
   gem 'hirb'
   gem 'wirble'
   gem 'rails_best_practices'
@@ -39,4 +38,6 @@ group :test do
   # Pretty printed test output
   # gem 'turn', :require => false
   gem 'mocha'
+  gem 'shoulda'
+  gem 'shoulda-matchers'
 end
