@@ -77,6 +77,9 @@ module Wordpress
         record.created_at   = user_registered
         record.updated_at   = user_registered
         record.confirmed_at = user_registered
+        if record.email == 'juan@schwindt.org'
+          record.role = 'admin'
+        end
         unless record.valid?
           record.alias = record.alias + '-0'
         end

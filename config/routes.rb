@@ -2,8 +2,6 @@ VenganzasDelPasado::Application.routes.draw do
 
   get "home/index"
 
-  ActiveAdmin.routes(self)
-
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru', :as => :user_omniauth
   end
@@ -14,6 +12,10 @@ VenganzasDelPasado::Application.routes.draw do
     resources :comments do
       get 'page/:page', :action => :index, :on => :collection
     end
+  end
+
+  namespace :admin do
+    resources :comments
   end
 
   root :to => 'home#index'
