@@ -21,6 +21,7 @@
       = paginate @comments, :window => 2
 
   - if can? :create, :comment
+    %h3 Escribí un comentario
     = render 'comments/form', :post => @post, :comment => @post.comments.build
   - else
     .row

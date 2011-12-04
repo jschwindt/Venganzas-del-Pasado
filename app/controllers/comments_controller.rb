@@ -37,7 +37,7 @@ class CommentsController < InheritedResources::Base
 
   def update
     update! do |success, failure|
-      success.html { redirect_to collection_url }
+      success.html { redirect_to resource_url }
     end
   end
 
