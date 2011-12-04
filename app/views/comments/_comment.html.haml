@@ -14,8 +14,8 @@
     %p.meta
       - if comment.status == 'pending'
         %span.pending Aguardando moderación
-      %span.permalink=link_to "Permalink", post_path(comment.post, :anchor => "comment#{comment.id}")
+      %span.permalink=link_to "Permalink", post_comment_path(comment.post, comment)
       - if can? :edit, comment
-        %span.edit=link_to "Editar", '#'
+        %span.edit=link_to "Editar", edit_post_comment_path(comment.post, comment)
       - if can? :delete, comment
-        %span.delete=link_to "Eliminar", '#', :confirm => '¿Estás seguro?', :method => :delete
+        %span.delete=link_to "Eliminar", post_comment_path(comment.post, comment), :confirm => '¿Estás seguro?', :method => :delete

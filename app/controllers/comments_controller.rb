@@ -15,12 +15,13 @@ class CommentsController < InheritedResources::Base
     page = params[:page].present? ? params[:page] : comments_collection.page.num_pages
     
     @comments = comments_collection.page page
-
   end
 
   def create
     @comment = Comment.new(params[:comment])
     @comment.user_id = current_user.id
+    @comment.author = current_user.alias
+    @comment.author_email = current_user.email
     @comment.author_ip = request.remote_ip
     
     if can? :autoapprove, @comment 
@@ -28,6 +29,8 @@ class CommentsController < InheritedResources::Base
     else
       @comment.status = 'pending'
     end
+
+    @comment.gravatar_hash = current_user.gravatar_hash
     
     create! { "#{collection_url}#comment#{@comment.id}" }
   end
