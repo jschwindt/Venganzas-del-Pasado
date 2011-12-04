@@ -1,8 +1,19 @@
-- title "Edit Comment"
+- title = "Editando el Comentario ##{@comment.id}"
 
-= render 'form'
+- content_for :head do
+  %title #{title} - Venganzas del Pasado
+
+%h2.fancy-title
+  #{title} de #{link_to @post.title, @post}
+
+.row
+  .span10
+    = form_for [@post, @comment] do |f|
+      %p
+        = f.text_area :content, :class => 'xlarge', :rows => 10
+      %p
+        = f.submit 'Guardar', :class => 'btn primary'
+        = link_to 'Cancelar', :back, :class => 'btn'
 
 %p
-  = link_to "Show", [@post, @comment]
-  |
-  = link_to "View All", post_comments_path(@post)
+  = link_to "Ver comentario original", [@post, @comment]

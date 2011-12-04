@@ -1,5 +1,4 @@
 es:
-  hello: "Hello world"
   views:
     pagination:
       first: "|&lt;"
