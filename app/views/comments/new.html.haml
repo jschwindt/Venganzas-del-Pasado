@@ -1,5 +1,11 @@
-- title "New Comment"
+- title = "Nuevo Comentario en #{@post}"
 
-= render 'form'
+- content_for :head do
+  %title #{title} - Venganzas del Pasado
+
+%h2.fancy-title
+  Nuevo Comentario en #{link_to @post.title, @post}
+
+= render 'form', :post => @post, :comment => @comment
 
 %p= link_to "Back to List", post_comments_path(@post)

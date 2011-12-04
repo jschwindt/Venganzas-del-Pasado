@@ -10,7 +10,7 @@
     = render post.audios
       
   .content
-    - unless post.content == ''
+    - if post.content?
       = markdown_format post.content
     - else
       Aún no hay información disponible sobre este programa. Colaborá con la comunidad

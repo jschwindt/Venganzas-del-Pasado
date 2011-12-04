@@ -1,16 +1,32 @@
+- if params[:page].nil?
+  - title = "Comentarios de #{@post.title}"
+- else
+  - title = "Comentarios de #{@post.title} - Página #{params[:page]}"
+
 - content_for :head do
-  - if params[:page].nil?
-    %title Comentarios de #{@post.title} - Venganzas del Pasado
-  - else
-    %title Comentarios de #{@post.title} - Página #{params[:page]} - Venganzas del Pasado
+  %title #{title} - Venganzas del Pasado
 
 %h2.fancy-title
-  Comentarios de #{@post.title}
+  Comentarios de #{link_to @post.title, @post}
   - unless params[:page].nil?
     %small
       pág. #{params[:page]}
 
 .comments
-  = render @comments
+  - if @comments.count > 0
+    = render @comments
+  - else
+    %p
+      No hay comentarios. ¡Podés ser el primero en comentar!
 
-= paginate @comments, :window => 2
+  .row
+    .offset1
+      = paginate @comments, :window => 2
+
+  - if can? :create, :comment
+    %h3 Escribí un comentario
+    = render 'comments/form', :post => @post, :comment => @post.comments.build
+  - else
+    .row
+      .offset1
+        Tenés que #{link_to "iniciar sesión", new_user_session_path} para comentar.
