@@ -38,4 +38,6 @@ group :test do
   # Pretty printed test output
   # gem 'turn', :require => false
   gem 'mocha'
+  gem 'shoulda'
+  gem 'shoulda-matchers'
 end
