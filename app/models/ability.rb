@@ -12,27 +12,22 @@ class Ability
     
     if user.karma > 0
       can :create, Comment
-      can [:edit, :delete, :update], Comment, :user_id => user.id
+      can [:delete, :update], Comment, :user_id => user.id
     end
     
-    if user.karma > 100
+    if user.karma > 500
       can :approve, Comment, :user_id => user.id
     end
     
-    if user.karma > 200
-      can :approve, Comment
+    if ['admin','moderator','editor'].include? user.role
+      can [:delete, :update], Comment
     end
     
-    if user.karma > 300
-      can [:edit, :delete, :update], Comment
+    if ['admin', 'editor'].include? user.role
+      can :update, Post
     end
     
-    if user.karma > 400
-      can :create, Post
-      can [:edit, :delete, :update], Post
-    end
-    
-    if user.karma > 9000
+    if user.role == 'admin'
       can :manage, :all
     end
 
