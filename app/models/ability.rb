@@ -16,14 +16,14 @@ class Ability
     end
     
     if user.karma > 500
-      can :approve, Comment, :user_id => user.id
+      can :approve, Comment
     end
     
-    if ['admin','moderator','editor'].include? user.role
+    if ['moderator','editor'].include? user.role
       can [:destroy, :update], Comment
     end
     
-    if ['admin', 'editor'].include? user.role
+    if ['editor'].include? user.role
       can :update, Post
     end
     

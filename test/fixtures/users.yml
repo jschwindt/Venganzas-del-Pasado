@@ -11,3 +11,18 @@ one:
 two:
   email: bar@example.com
   alias: bar
+
+admin:
+  email: admin@example.com
+  alias: theadmin
+  role: admin
+
+editor:
+  email: editor@example.com
+  alias: theeditor
+  role: editor
+
+moderator:
+  email: moderator@example.com
+  alias: themoderator
+  role: moderator
