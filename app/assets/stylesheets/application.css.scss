@@ -72,8 +72,18 @@ body {
   font-family: serif;
 }
 
+h4 {
+  margin-bottom: $baseline;
+}
+
 a:hover {
   color: darken($rose, 15);
+}
+
+
+.avatar img {
+  width: 40px;
+  height: 40px;
 }
 
 .main {
@@ -119,6 +129,22 @@ a:hover {
   }
 }
 
+
+.btn {
+  font-family: inherit;
+  @include gradientBar($claro, darken($claro, 10));
+  
+  &.primary {
+    @include gradientBar($rose, darken($rose, 10));
+  }
+}
+
+.field_with_errors input{
+  border-color: #EE5F5B;
+  color: #B94A48;
+}
+
+
 label {
   text-align: left;
 }
@@ -161,82 +187,6 @@ fieldset {
 
 
 //******************************************************************************
-// Header
-//******************************************************************************
-header {
-  padding-top: 60px;
-  background: asset-url('redtexture.jpg', image);
-  $shadow: 0 1px 3px rgba(0,0,0,1), inset 0 -1px 0 rgba(0,0,0,.1);
-  @include box-shadow($shadow);
-
-  .title-container {
-
-    h1{
-      display: block;
-      font-size: 0;
-      height: 100%;
-      width: 100%;
-
-      a {
-        display: block;
-        font-size: 0;
-        height: 100%;
-        width: 100%;
-      }
-    }
-  }
-
-  .slogan p {
-    font-family: 'EBGaramondRegular', serif;
-    color: $black;
-    text-align: center;
-  }
-}
-
-header.home {
-
-  .title-container {
-
-    background: asset-url('splash.png', image) no-repeat;
-    height: 228px;
-
-  }
-
-  .slogan p {
-    font-size: 30px;
-    line-height: 36px;
-    margin-bottom: 20px;
-  }
-
-}
-
-header.internal {
-
-  padding-bottom: 10px;
-
-  .title-container {
-
-    background: asset-url('splash-small.png', image) no-repeat;
-    height: 61px;
-
-  }
-
-  .slogan p {
-    font-size: 22px;
-    line-height: 28px;
-  }
-
-}
-
-.subheader {
-  padding-top: 5px;
-  background: $gris;
-  $shadow: 0 1px 3px rgba(0,0,0,.50), inset 0 -1px 0 rgba(0,0,0,.1);
-  @include box-shadow($shadow);
-}
-
-
-//******************************************************************************
 // Sidebars y Widgets
 //******************************************************************************
 .banner-728 {
@@ -252,6 +202,10 @@ header.internal {
 
 #sidebar {
   font-size: $basefont * 0.75;
+  
+  li.divider {
+    display: none;
+  }
 }
 
 .widget {
@@ -265,239 +219,9 @@ header.internal {
 }
 
 
-//******************************************************************************
-// Footer
-//******************************************************************************
-footer {
-  background: $gris;
-  padding-bottom: 48px;
-  $shadow: 0 1px 3px rgba(0,0,0,.50), inset 0 -1px 0 rgba(0,0,0,.1);
-  @include box-shadow($shadow);
+@import 'layouts/header';
+@import 'layouts/footer';
 
-  * {
-    color: #CCC;
-  }
-
-  ul {
-    list-style: none;
-    margin-left: 0px;
-    font-size: $basefont * 0.75;
-  }
-}
-
-
-//******************************************************************************
-// Posts
-//******************************************************************************
-.post {
-  margin-bottom: $baseline;
-  border-bottom: 1px $claro solid;
-
-  .date {
-    font-size: $basefont * 0.75;
-    font-style: italic;
-    color: $claro;
-  }
-
-  h2.post-title, h3.post-title {
-    font-size: $basefont * 2;
-    line-height: $baseline;
-    font-family: 'EBGaramondRegular', serif;
-  }
-
-  .audios {
-    padding-top: $baseline;
-
-    .audio {
-      margin-bottom: $baseline;
-
-      .jp-current-time {
-        font-family: Verdana,Arial,sans-serif;
-        font-size: 11px;
-      }
-    }
-  }
-
-  .content {
-    margin-bottom: $baseline;
-
-    * {
-      color: $gris;
-      line-height: $baseline;
-      font-size: $basefont;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      margin-bottom: $baseline / 2;
-    }
-
-  }
-
-  .meta {
-    > span {
-      margin-right: 20px;
-    }
-  }
-
-}
-
-.post-show {
-  .post{
-    .date {
-      font-size: $basefont;
-    }
-    h3.post-title {
-      font-family: 'EBGaramondRegular', serif;
-      font-size: $basefont * 3;
-      line-height: $baseline * 2;
-
-      a {
-        color: $gris;
-      }
-    }
-
-    .meta .comments {
-      display: none;
-    }
-  }
-}
-
-//******************************************************************************
-// Activities
-//******************************************************************************
-.activity {
-
-  .avatar img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .description{
-    padding-top: 5px;
-  }
-
-}
-
-
-.comment {
-
-  .avatar img {
-    width: 40px;
-    height: 40px;
-  }
-
-  .description{
-
-  }
-
-}
-
-
-
-/*******************************************************************************
-** Estilos Anteriores deshabilitados
-
-body {
-  padding-top: 40px;
-  background: asset-url('gradient.png', image) #FFF repeat-x;
-}
-
-#header .logo {
-  background-image: asset-url('logo.png', image);
-  border: 1px solid #ddd;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.075);
-     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
-          box-shadow: 0 1px 2px rgba(0,0,0,.075);
-  display: inline;
-  float: left;
-  margin-left: 20px;
-  height: 90px;
-  margin: 5px 5px 5px 20px;
-  width: 203px;
-  position: relative;
-}
-
-.logo h3 {
-  position: absolute;
-  bottom: 0px;
-  right: 5px;
-  color: white;
-}
-
-#header .banner {
-  display: inline;
-  float: left;
-  margin-left: 20px;
-  width: 728px;
-  height: 90px;
-  margin: 6px 0 6px 0;
-  background: #DEF;
-}
-
-.slogan {
-  text-align: center;
-  margin-bottom: 5px;
-}
-
-#menu {
-  border: 1px solid #ddd;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.075);
-     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
-          box-shadow: 0 1px 2px rgba(0,0,0,.075);
-  background: #FEFBF3;
-  width: 158px;
-  min-height: 500px;
-}
-
-#content {
-  min-height: 500px;
-}
-
-#sidebar {
-  border: 1px solid #ddd;
-  -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-          border-radius: 6px;
-  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.075);
-     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.075);
-          box-shadow: 0 1px 2px rgba(0,0,0,.075);
-  width: 218px;
-  min-height: 500px;
-}
-
-#sidebar .banner {
-  border: 1px solid green;
-  width: 160px;
-  height: 600px;
-  margin-left: 30px;
-}
-
-label {
-  margin-right: 20px;
-}
-
-.current-user-avatar {
-  margin-top: 3px;
-}
-
-.gravatar {
-  float: left;
-  margin: 0 5px 5px 0;
-}
-
-.comment {
-  border-bottom: 1px solid black;
-  margin: 5px;
-}
-.comment:after {
-  display: table;
-  content: "";
-  clear: both;
-}
-*/
+@import 'posts';
+@import 'comments';
+@import 'activities';

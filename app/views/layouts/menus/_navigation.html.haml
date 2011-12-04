@@ -1,9 +1,5 @@
 %ul.nav
-  %li=link_to 'Home', :root
-  %li=link_to 'Programas Recientes', posts_path
-  %li=link_to 'Ayuda', '#'
-  -if user_signed_in?
-    %li=link_to 'Administrador del Sitio', admin_dashboard_path
+  = render 'layouts/menus/main_items'
 %ul.nav.secondary-nav
   = render 'devise/menu/registration_items'
   = render 'devise/menu/login_items'

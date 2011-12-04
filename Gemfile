@@ -26,6 +26,7 @@ gem 'activeadmin'
 gem 'bootstrap-sass'
 gem 'inherited_resources'
 gem 'pandoc-ruby'
+gem 'cancan'
 
 group :development do
   gem 'nifty-generators'

@@ -2,8 +2,10 @@
   .container
     .row
       .span3
-        = render 'layouts/menus/about'
+        %ul
+          = render 'layouts/menus/about_items'
       .span3
-        = render 'layouts/menus/main'
+        %ul
+          = render 'layouts/menus/main_items'
       .span3.offset4
         = render 'layouts/banners/b200x200'

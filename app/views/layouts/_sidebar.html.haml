@@ -1,6 +1,8 @@
 #sidebar
   .widget
-    = render 'layouts/menus/main'
+    %ul
+      = render 'layouts/menus/main_items'
+      = render 'layouts/menus/user_items'
   .widget
     = render 'layouts/banners/b160x600'
   .widget
