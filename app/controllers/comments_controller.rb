@@ -5,12 +5,31 @@ class CommentsController < InheritedResources::Base
 
   def index
     @post = Post.find params[:post_id]
-    page = params[:page].present? ? params[:page] : @post.comments.approved.page.num_pages
-    @comments = @post.comments.approved.fifo.page page
+    
+    if(current_user)
+      comments_collection = @post.comments.approved_or_from_user(current_user).fifo
+    else
+      comments_collection = @post.comments.approved.fifo
+    end
+    
+    page = params[:page].present? ? params[:page] : comments_collection.page.num_pages
+    
+    @comments = comments_collection.page page
+
   end
 
   def create
-    create! { collection_url }
+    @comment = Comment.new(params[:comment])
+    @comment.user_id = current_user.id
+    @comment.author_ip = request.remote_ip
+    
+    if can? :autoapprove, @comment 
+      @comment.status =  'approved'
+    else
+      @comment.status = 'pending'
+    end
+    
+    create! { "#{collection_url}#comment#{@comment.id}" }
   end
 
   def update
