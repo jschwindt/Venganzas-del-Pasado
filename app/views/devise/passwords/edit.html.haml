@@ -1,16 +1,24 @@
-%div.well.span8
-  %h2 Cambiar clave
+- page_title('Cambio de Contraseña')
+
+%h2.fancy-title= html_page_title
+
+= devise_error_messages!
+
+%div
   = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
-    = devise_error_messages!
     = f.hidden_field :reset_password_token
     %fieldset
       .inputs
         .clearfix
           = f.label :password
-          = f.password_field :password
+          .input
+            = f.password_field :password
+            %span.help-block Nueva contraseña.
         .clearfix
           = f.label :password_confirmation
-          = f.password_field :password_confirmation
+          .input
+            = f.password_field :password_confirmation
+            %span.help-block Repetí la nueva contraseña
       .actions
         = f.submit "Cambiar contraseña", :class => 'btn primary'
   = render "devise/shared/links"
