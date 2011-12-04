@@ -10,16 +10,19 @@
 %h4 Comentarios (#{@post.comments.approved.count}):
 
 .comments
-
-  - if @post.comments.approved.count > 0
-    =render @post.comments
+  - if @comments.count > 0
+    = render @comments
   - else
     %p
       No hay comentarios. ¡Podés ser el primero en comentar!
-      
+
+  .row
+    .offset1
+      = paginate @comments, :window => 2
+
   - if can? :create, :comment
     = render 'comments/form', :post => @post, :comment => @post.comments.build
   - else
     .row
       .offset1
-        Tenés que #{link_to "iniciar sesión", new_user_session_path} para comentar
+        Tenés que #{link_to "iniciar sesión", new_user_session_path} para comentar.
