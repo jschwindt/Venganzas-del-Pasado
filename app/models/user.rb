@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :nullify
   validates :alias, :presence => true, :uniqueness => { :case_sensitive => false }
   before_save :update_gravatar_hash
+  delegate :can?, :cannot?, :to => :ability
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -49,6 +50,10 @@ class User < ActiveRecord::Base
         user.skip_confirmation!
       end
     end
+  end
+
+  def ability
+    @ability ||= Ability.new(self)
   end
 
   private
