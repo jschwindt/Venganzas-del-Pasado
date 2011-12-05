@@ -1,9 +1,6 @@
-- title = "Editando Post ##{@post.id}"
+- page_title("Editando Post ##{@post.id}")
 
-- content_for :head do
-  %title #{title} - Venganzas del Pasado
-
-%h2.fancy-title= title
+%h2.fancy-title= html_page_title
 
 = render 'form', :post => @post
 

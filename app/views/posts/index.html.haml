@@ -1,16 +1,9 @@
 - if params[:page].nil?
-  - title = "Programas de La Venganza será Terrible"
+  - page_title("Programas de La Venganza será Terrible")
 - else
-  - title = "Programas de La Venganza será Terrible - Página #{params[:page]}"
+  - page_title("Programas de La Venganza será Terrible <small>Página #{params[:page]}</small>")
 
-- content_for :head do
-  %title #{title} - Venganzas del Pasado
-
-%h2.fancy-title
-  Todos los programas
-  - unless params[:page].nil?
-    %small
-      pág. #{params[:page]}
+%h2.fancy-title!= html_page_title
 
 .posts
   = render @posts

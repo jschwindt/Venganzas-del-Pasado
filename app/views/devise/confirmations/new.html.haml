@@ -1,12 +1,24 @@
-%div.well.span8
-  %h2 Reenviar instrucciones de confirmación
+- page_title('Reenviar Instrucciones de Confirmación')
+
+%h2.fancy-title= html_page_title
+
+%p
+  Si no recibiste tu email de confirmación de cuenta, podés reenviarlo
+  completando el siguiente formulario. Por las dudas, verificá que no los estés
+  recibiendo como <em>correo no deseado</em> o <em>spam</em> en tu cuenta de
+  e-mail.
+
+= devise_error_messages!
+
+%div
   = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
-    = devise_error_messages!
     %fieldset
       .inputs
         .clearfix
           = f.label :email
-          = f.text_field :email
+          .input
+            = f.text_field :email
+            %span.help-block La dirección con la que creaste tu cuenta.
       .actions
-        = f.submit "Reenviar", :class => 'btn primary'
+        = f.submit "Reenviar Confirmación", :class => 'btn primary'
   = render "devise/shared/links"

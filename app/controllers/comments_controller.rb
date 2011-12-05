@@ -9,24 +9,12 @@ class CommentsController < InheritedResources::Base
     comments_collection = @post.comments.approved_or_from_user(current_user).fifo
 
     page = params[:page].present? ? params[:page] : comments_collection.page.num_pages
-    @comments = comments_collection.page page
+    @comments = comments_collection.page(page).per(VenganzasDelPasado::Application.config.comments_per_page)
   end
 
   def create
     @comment = @post.comments.new(params[:comment])
-    @comment.user_id = current_user.id
-    @comment.author = current_user.alias
-    @comment.author_email = current_user.email
-    @comment.author_ip = request.remote_ip
-
-    if can? :approve, @comment
-      @comment.status =  'approved'
-    else
-      @comment.status = 'pending'
-    end
-
-    @comment.gravatar_hash = current_user.gravatar_hash
-
+    @comment.publish_as(current_user, request)
     create! { "#{parent_url}#comment#{@comment.id}" }
   end
 
