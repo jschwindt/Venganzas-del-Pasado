@@ -1,10 +1,6 @@
-- title = "Comentario ##{@comment.id}"
+- page_title("Comentario ##{@comment.id} de #{link_to @post.title, @post}")
 
-- content_for :head do
-  %title #{title} - Venganzas del Pasado
-
-%h2.fancy-title
-  #{title} de #{link_to @post.title, @post}
+%h2.fancy-title!= html_page_title
 
 .post-show
   =render @comment

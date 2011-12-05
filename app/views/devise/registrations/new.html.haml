@@ -1,22 +1,33 @@
-%div.well.span8
-  %h2 Registración
+- page_title('Registración')
+
+%h2.fancy-title= html_page_title
+
+= devise_error_messages!
+
+%div
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-    = devise_error_messages!
     %fieldset
       .inputs
         .clearfix
           = f.label :email
-          = f.text_field :email
+          .input
+            = f.text_field :email
+            %span.help-block Esta dirección de mail es privada, no será publicada.
         .clearfix
           = f.label :alias
-          = f.text_field :alias
+          .input
+            = f.text_field :alias
+            %span.help-block El nombre que los demás usuarios verán.
         - if session["devise.facebook_data"].blank?
           .clearfix
             = f.label :password
-            = f.password_field :password
+            .input
+              = f.password_field :password
           .clearfix
             = f.label :password_confirmation
-            = f.password_field :password_confirmation
+            .input
+              = f.password_field :password_confirmation
+              %span.help-block Repetí la contraseña de arriba.
       .actions
-        = f.submit "Enviar", :class => 'btn primary'
+        = f.submit "Registrarse", :class => 'btn primary'
   = render "devise/shared/links"
