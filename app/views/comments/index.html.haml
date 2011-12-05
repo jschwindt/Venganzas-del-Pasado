@@ -1,16 +1,9 @@
 - if params[:page].nil?
-  - title = "Comentarios de #{@post.title}"
+  - page_title("Comentarios de #{link_to @post.title, @post}")
 - else
-  - title = "Comentarios de #{@post.title} - Página #{params[:page]}"
+  - page_title("Comentarios de #{link_to @post.title, @post} <small>página #{params[:page]}</small>")
 
-- content_for :head do
-  %title #{title} - Venganzas del Pasado
-
-%h2.fancy-title
-  Comentarios de #{link_to @post.title, @post}
-  - unless params[:page].nil?
-    %small
-      pág. #{params[:page]}
+%h2.fancy-title!= html_page_title
 
 .comments
   - if @comments.count > 0
