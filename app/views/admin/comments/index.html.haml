@@ -1,2 +1,18 @@
-%h2.fancy-title
+%h2
   Comentarios
+
+%ul.tabs
+  %li.active
+    = link_to "Todos", admin_comments_path
+  %li
+    = link_to "Pendientes", admin_comments_path(:pending => true)
+
+
+- @comments.each do |comment|
+  = comment.content
+  %hr
+  
+  
+  
+  
+= paginate @comments

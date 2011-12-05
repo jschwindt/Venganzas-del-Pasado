@@ -1,0 +1,19 @@
+es:
+
+  # Pagination
+  views:
+    pagination:
+      first: "|&lt;"
+      previous: "&lt;"
+      next: "&gt;"
+      last: "&gt;|"
+      truncate: "..."
+
+  # Cancan
+  unauthorized:
+    not_admin: "Tiene que ser 'admin' para acceder a esta sección."
+    manage:
+      all: "No autorizado a %{action} %{subject}."
+      user: "Not allowed to manage other user accounts."
+    update:
+      project: "Not allowed to update this project."

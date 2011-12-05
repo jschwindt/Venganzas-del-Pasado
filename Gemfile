@@ -24,6 +24,7 @@ gem "omniauth-facebook"
 gem 'sass-rails',   '~> 3.1.5'
 gem 'bootstrap-sass'
 gem 'inherited_resources'
+gem 'has_scope'
 gem 'pandoc-ruby'
 gem 'cancan'
 

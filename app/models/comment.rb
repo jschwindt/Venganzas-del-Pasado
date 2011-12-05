@@ -5,7 +5,9 @@ class Comment < ActiveRecord::Base
   validates :content, :presence => true
 
   scope :approved, where( :status => 'approved' )
+  scope :pending,  where( :status => 'pending' )
   scope :fifo, order('created_at ASC')
+  scope :lifo, order('created_at DESC')
 
   def self.approved_or_from_user( user )
     if user

@@ -176,6 +176,7 @@ DEPENDENCIES
   devise
   friendly_id (~> 4.0.0.beta14)
   haml-rails
+  has_scope
   hirb
   inherited_resources
   jquery-rails

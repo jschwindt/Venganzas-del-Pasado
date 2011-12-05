@@ -1,8 +1,0 @@
-es:
-  views:
-    pagination:
-      first: "|&lt;"
-      previous: "&lt;"
-      next: "&gt;"
-      last: "&gt;|"
-      truncate: "..."
