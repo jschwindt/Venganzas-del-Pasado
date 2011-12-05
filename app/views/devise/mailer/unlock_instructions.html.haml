@@ -1,5 +1,5 @@
 %p
   Hola #{@resource.email}!
 %p Tu cuenta fue bloqueada debido a una cantidad excesiva de intentos fallidos de inicio de sesión.
-%p Clickeá en link a continuación para desbloquear tu cuenta.
+%p Hacé click en siguiente link para desbloquear tu cuenta.
 %p= link_to 'Desbloquear mi cuenta', unlock_url(@resource, :unlock_token => @resource.unlock_token)

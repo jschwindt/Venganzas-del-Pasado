@@ -1,4 +1,4 @@
 %p
-  Bienvenido #{@resource.alias} a Venganzas del Pasado!
-%p Podés confirmar tu cuenta haciendo click en el vínculo a continuación:
+  ¡Bienvenido #{@resource.alias} a Venganzas del Pasado!
+%p Podés confirmar tu cuenta haciendo click en el siguiente vínculo:
 %p= link_to 'Confirmar mi cuenta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
