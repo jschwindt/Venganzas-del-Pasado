@@ -14,19 +14,7 @@ class CommentsController < InheritedResources::Base
 
   def create
     @comment = @post.comments.new(params[:comment])
-    @comment.user_id = current_user.id
-    @comment.author = current_user.alias
-    @comment.author_email = current_user.email
-    @comment.author_ip = request.remote_ip
-
-    if can? :approve, @comment
-      @comment.status =  'approved'
-    else
-      @comment.status = 'pending'
-    end
-
-    @comment.gravatar_hash = current_user.gravatar_hash
-
+    @comment.publish_as(current_user, request)
     create! { "#{parent_url}#comment#{@comment.id}" }
   end
 
