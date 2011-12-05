@@ -1,56 +1,56 @@
 es:
   errors:
     messages:
-      expired: "ha expirado, solicite otro"
+      expired: "expiró, solicitá otro"
       not_found: "no encontrado"
       already_confirmed: "ya fue confirmado"
       not_locked: "no ha sido desbloqueado"
-      not_saved: 
+      not_saved:
         one: "Un error impide continuar:"
         other: "%{count} errores impiden continuar:"
 
   devise:
     failure:
       already_authenticated: 'Ya está validado.'
-      unauthenticated: 'Necesita ingresar o registrarse para continuar.'
-      unconfirmed: 'Necesita confirmar su cuenta antes de continuar.'
-      locked: 'Su cuenta ha sido bloqueada.'
-      invalid: "Email o Contraseña invalido."
-      invalid_token: "Llave de Autenticación invalida."
-      timeout: "Su sesión ha expirado, por favor ingrese nuevamente para continuar."
-      inactive: 'Su cuenta aun no ha sido activada.'
+      unauthenticated: 'Es necesario ingresar o registrarse para continuar.'
+      unconfirmed: 'Es necesario tu cuenta antes de continuar.'
+      locked: 'Tu cuenta ha sido bloqueada.'
+      invalid: "Email o Contraseña inválido."
+      invalid_token: "Llave de Autenticación inválida."
+      timeout: "Tu sesión ha expirado, por favor ingresá nuevamente para continuar."
+      inactive: 'Tu cuenta aun no ha sido activada.'
     sessions:
       signed_in: "Sesión iniciada exitosamente."
       signed_out: 'Sesión cerrada exitosamente.'
     passwords:
-      send_instructions: "Usted recibirá un email con instrucciones sobre como re establecer su contraseña en unos minutos."
-      send_paranoid_instructions: "Si su email existe en nuestra base de datos, recibirá un correo con instrucciones para recuperar su clave."
-      updated: "Su contraseña ha sido cambiada exitosamente. Ahora usted puede ingresar."
-      updated_not_active: 'Su contraseña ha sido cambiada exitosamente.'
+      send_instructions: "Recibirás un email con instrucciones sobre como restablecer tu contraseña en unos minutos."
+      send_paranoid_instructions: "Si tu email existe en nuestra base de datos, recibirás un correo con instrucciones para recuperar tu clave."
+      updated: "Tu contraseña ha sido cambiada exitosamente. Ahora podés ingresar."
+      updated_not_active: 'Tu contraseña ha sido cambiada exitosamente.'
     confirmations:
-      send_instructions: 'Usted recibirá un email con instrucciones de como confirmar su cuenta en unos minutos.'
-      send_paranoid_instructions: 'Si su email existe en nuestra base de datos, en minutos recibirá instrucciones acerca de cómo confirmar su cuenta.'
-      confirmed: 'Su cuenta ha sido confirmada exitosamente. Ahora usted puede ingresar.'
+      send_instructions: 'Recibirás un email con instrucciones de como confirmar tu cuenta en unos minutos.'
+      send_paranoid_instructions: 'Si tu email existe en nuestra base de datos, en minutos recibirás instrucciones acerca de cómo confirmar tu cuenta.'
+      confirmed: 'Tu cuenta ha sido confirmada exitosamente. Ahora podés ingresar.'
     registrations:
-      signed_up: "Se ha registrado exitosamente."
-      inactive_signed_up: 'Se ha registrado exitosamente, si embargo no ha podido ingresar porque su cuenta está %{reason}.'
-      updated: 'Ha actualizado su cuenta exitosamente.'
-      destroyed: '¡Adios! Su cuenta ha sido cancelada exitosamente. Esperamos verlo pronto.'
+      signed_up: "Te has registrado exitosamente."
+      inactive_signed_up: 'Te has registrado exitosamente, sin embargo no has podido ingresar porque tu cuenta está %{reason}.'
+      updated: 'Actualizaste tu cuenta exitosamente.'
+      destroyed: '¡Adios! Tu cuenta ha sido eliminada exitosamente. Esperamos verte pronto.'
       reasons:
         inactive: 'inactiva'
         unconfirmed: 'sin confirmar'
         locked: 'blockeada'
     unlocks:
-      send_instructions: "Usted recibirá un email con instrucciones sobre como des bloquear su cuenta en unos minutos."
-      unlocked: 'Su cuenta ha sido des bloqueada exitosamente. Ahora usted ingresar.'
-      send_paranoid_instructions: 'Si su cuenta existe en nuestra base de datos, recibirá un correo con instrucciones para desbloquearla.'
+      send_instructions: "Recibirás un email con instrucciones sobre como desbloquear tu cuenta en unos minutos."
+      unlocked: 'Tu cuenta ha sido desbloqueada exitosamente. Ahora podés ingresar.'
+      send_paranoid_instructions: 'Si tu cuenta existe en nuestra base de datos, recibirás un correo con instrucciones para desbloquearla.'
     omniauth_callbacks:
       success: 'Correctamente autorizado con la cuenta de  %{kind}.'
-      failure: 'No pudo ingresar con la cuenta de %{kind}, causa: "%{reason}".'
+      failure: 'No pudiste ingresar con la cuenta de %{kind}, causa: "%{reason}".'
     mailer:
       confirmation_instructions:
         subject: "Instrucciones de Confirmación"
       reset_password_instructions:
-        subject: "Instrucciones para re establecer contraseña"
+        subject: "Instrucciones para restablecer tu contraseña"
       unlock_instructions:
-        subject: 'Instrucciones para des bloquear'
+        subject: 'Instrucciones para desbloquear tu cuenta'
