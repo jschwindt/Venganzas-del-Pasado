@@ -10,14 +10,14 @@ fork del repositorio y mandando pull requests con alguno de los temas de la wish
 
 == Wishlist (desordenada)
 
-* Comentarios con usuario logueado.
+* Comentarios con usuario logueado.  ✔
 * Aprobación automática para usuarios con buen karma.
 * Moderación para usuarios nuevos o con mal karma.
 * Perfiles: moderador de comentarios, editor (puede actualizar posts) y admin.
-* Post con markdown y sin html.
-* Comentarios con markdown (no sé si es buena idea). Tal vez sólo texto sea mejor.
+* Post con markdown y sin html.  ✔
+* Comentarios con markdown.  ✔
 * Limitación del largo de un comentario y la frecuencia (tal vez con lo del karma alcance).
-* Admin sencillo con Activeadmin que sirva inicialmente para moderar, cambiar karma manualmente y crear posts.
+* Admin sencillo que sirva inicialmente para moderar, cambiar karma manualmente y crear posts.
 * Página en Facebook con navegación sencilla que permita escuchar los audios.
 * RSS feeds de posts, torrents y, tal vez, comentarios.
 * Sitemap.
