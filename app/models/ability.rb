@@ -15,7 +15,7 @@ class Ability
       can [:destroy, :update], Comment, :user_id => user.id
     end
 
-    if user.karma > 500
+    if user.karma > VenganzasDelPasado::Application.config.good_user_karma_treshold
       can :approve, Comment
     end
 
