@@ -1,7 +1,4 @@
-- title = @post.title
-
-- content_for :head do
-  %title #{title} - Venganzas del Pasado
+- page_title(@post.title)
 
 .post-show
   =render @post

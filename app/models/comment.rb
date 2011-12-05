@@ -17,4 +17,19 @@ class Comment < ActiveRecord::Base
     end
   end
 
+  def publish_as(user, request)
+    self.user_id = user.id
+    self.author = user.alias
+    self.author_email = user.email
+    self.author_ip = request.remote_ip
+
+    if user.can? :approve, self
+      self.status =  'approved'
+    else
+      self.status = 'pending'
+    end
+
+    self.gravatar_hash = user.gravatar_hash
+  end
+
 end

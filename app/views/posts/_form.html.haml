@@ -14,5 +14,5 @@
   %p
     = f.text_area :content, :class => 'xxlarge'
   %p
-    = f.submit 'Publicar', :class => 'btn primary'
+    = f.submit ( post.new_record? ? 'Publicar' : 'Guardar' ), :class => 'btn primary'
     = link_to 'Cancelar', :back, :class => 'btn'

@@ -1,12 +1,24 @@
-%div.well.span8
-  %h2 Recuperación de contraseña
+- page_title('Recuperación de Contraseña')
+
+%h2.fancy-title= html_page_title
+
+%p
+  Si olvidaste tu contraseña podrás resetearla mediante este formulario. Luego
+  de completarlo recibirás instrucciones en tu cuenta de e-mail para recuperar
+  el acceso a tu cuenta.
+
+
+= devise_error_messages!
+
+%div
   = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f|
-    = devise_error_messages!
     %fieldset
       .inputs
         .clearfix
           = f.label :email
-          = f.text_field :email
+          .input
+            = f.text_field :email
+            %span.help-block La dirección con la que creaste tu cuenta.
       .actions
-        = f.submit "Enviar instrucciones", :class => 'btn primary'
+        = f.submit "Enviar Instrucciones", :class => 'btn primary'
   = render "devise/shared/links"

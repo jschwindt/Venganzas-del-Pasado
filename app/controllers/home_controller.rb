@@ -1,13 +1,7 @@
 class HomeController < ApplicationController
+
   def index
-    @posts = Post.published.lifo.find(:all, :limit => 3)
-    @activities = [
-      {},
-      {},
-      {},
-      {},
-      {}
-    ]
+    @posts = Post.published.lifo.limit(VenganzasDelPasado::Application.config.home_posts_count)
   end
 
 end
