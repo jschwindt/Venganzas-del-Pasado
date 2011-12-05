@@ -10,7 +10,7 @@ class Ability
       user.karma = 0
     end
 
-    if user.karma >= 0
+    if user.persisted? && user.karma >= 0
       can :create, Comment
       can [:destroy, :update], Comment, :user_id => user.id
     end

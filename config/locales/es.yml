@@ -13,7 +13,7 @@ es:
   unauthorized:
     not_admin: "Tiene que ser 'admin' para acceder a esta sección."
     manage:
-      all: "No autorizado a %{action} %{subject}."
+      all: "No tenés los permisos necesarios para esto."
       user: "Not allowed to manage other user accounts."
     update:
       project: "Not allowed to update this project."
