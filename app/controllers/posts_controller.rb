@@ -1,9 +1,8 @@
 class PostsController < ApplicationController
   load_and_authorize_resource
-  before_filter :find_post, :only => [:show, :edit, :update]
 
   def index
-    @posts = Post.published.lifo.page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
+    @posts = @posts.published.lifo.page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
   end
 
   def show
@@ -22,12 +21,6 @@ class PostsController < ApplicationController
     else
       render 'edit'
     end
-  end
-
-  protected
-
-  def find_post
-    @post = Post.find(params[:id])
   end
 
 end
