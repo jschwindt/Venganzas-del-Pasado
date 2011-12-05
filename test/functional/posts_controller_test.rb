@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
+  def setup
+    sign_in users(:editor)
+  end
+
   def test_index
     get :index
     assert_response :success
@@ -13,26 +17,6 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success
     assert_template 'show'
     assert_not_nil assigns(:post)
-  end
-
-  def test_new
-    get :new
-    assert_response :success
-    assert_template 'new'
-    assert_not_nil assigns(:post)
-  end
-
-  def test_create_invalid
-    post :create, :post => {}
-    assert_response :success
-    assert_not_nil assigns(:post)
-    assert_template 'new'
-  end
-
-  def test_create_valid
-    Post.any_instance.stubs(:valid?).returns(true)
-    post :create, :post => { :title => 'test title' }
-    assert_redirected_to post_url(assigns(:post))
   end
 
   def test_edit
@@ -55,10 +39,4 @@ class PostsControllerTest < ActionController::TestCase
     assert_redirected_to post_url(assigns(:post))
   end
 
-  def test_destroy
-    post = posts(:one)
-    delete :destroy, :id => post
-    assert_redirected_to posts_url
-    assert !Post.exists?(post.id)
-  end
 end

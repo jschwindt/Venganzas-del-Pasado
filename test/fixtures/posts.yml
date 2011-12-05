@@ -7,7 +7,9 @@
 one:
   title: One
   content: the content one
-  
+  slug: one
+
 two:
   title: Two
   content: the content two
+  slug: two

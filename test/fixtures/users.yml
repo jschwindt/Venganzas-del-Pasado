@@ -7,22 +7,27 @@
 one:
   email: foo@example.com
   alias: foo
+  confirmed_at: <%= 1.day.ago %>
 
 two:
   email: bar@example.com
   alias: bar
+  confirmed_at: <%= 1.day.ago %>
 
 admin:
   email: admin@example.com
   alias: theadmin
   role: admin
+  confirmed_at: <%= 1.day.ago %>
 
 editor:
   email: editor@example.com
   alias: theeditor
   role: editor
+  confirmed_at: <%= 1.day.ago %>
 
 moderator:
   email: moderator@example.com
   alias: themoderator
   role: moderator
+  confirmed_at: <%= 1.day.ago %>
