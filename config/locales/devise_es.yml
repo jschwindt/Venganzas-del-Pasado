@@ -33,7 +33,7 @@ es:
       confirmed: 'Tu cuenta ha sido confirmada exitosamente. Ahora podés ingresar.'
     registrations:
       signed_up: "Te has registrado exitosamente."
-      inactive_signed_up: 'Te has registrado exitosamente, sin embargo no has podido ingresar porque tu cuenta está %{reason}.'
+      inactive_signed_up: 'Te has registrado exitosamente, sin embargo no has podido ingresar porque tu cuenta está %{reason}. Recibirás un mail con instrucciones.'
       updated: 'Actualizaste tu cuenta exitosamente.'
       destroyed: '¡Adios! Tu cuenta ha sido eliminada exitosamente. Esperamos verte pronto.'
       reasons:
