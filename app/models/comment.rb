@@ -34,4 +34,12 @@ class Comment < ActiveRecord::Base
     self
   end
 
+  def approved?
+    self.status == 'approved'
+  end
+
+  def pending?
+    self.status == 'pending'
+  end
+
 end
