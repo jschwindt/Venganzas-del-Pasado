@@ -1,7 +1,0 @@
-- page_title("Nuevo Comentario en #{link_to @post.title, @post}")
-
-%h2.fancy-title!= html_page_title
-
-= render 'form', :post => @post, :comment => @comment
-
-%p= link_to "Back to List", post_comments_path(@post)
