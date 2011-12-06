@@ -2,6 +2,15 @@
 
 %h2.fancy-title= html_page_title
 
+%p
+  Si poseés una cuenta en #{link_to "Facebook", 'http://facebook.com'} podés iniciar sesión haciendo click en el siguiente botón:
+
+%p.facebook-login-container
+  = link_to 'Login con Facebook', user_omniauth_path(:facebook), :class => 'facebook-login-button'
+
+%p
+  Si ya tenés una cuenta en este sitio, podés ingresar mediante el siguiente formulario.
+
 %div
   = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
     %fieldset
