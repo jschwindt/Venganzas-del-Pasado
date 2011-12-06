@@ -3,13 +3,16 @@ development:
   facebook:
     app_id: "12345"
     app_secret: "d25ff5359489635"
+    scope: "email,offline_access,read_stream"
 
 test:
   facebook:
     app_id: "12345"
     app_secret: "d25ff5359489635"
+    scope: "email,offline_access"
 
 production:
   facebook:
     app_id: "12345"
     app_secret: "d25ff5359489635"
+    scope: "email"
