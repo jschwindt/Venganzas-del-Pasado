@@ -14,7 +14,8 @@
     %p.meta
       - if comment.status == 'pending'
         %span.pending Aguardando moderación
-      %span.permalink=link_to "Permalink", post_comment_path(comment.post, comment)
+      - if can? :read, comment
+        %span.permalink=link_to "Permalink", post_comment_path(comment.post, comment)
       - if can? :update, comment
         %span.edit=link_to "Editar", edit_post_comment_path(comment.post, comment)
       - if can? :destroy, comment

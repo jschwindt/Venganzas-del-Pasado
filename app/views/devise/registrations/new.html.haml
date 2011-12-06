@@ -2,6 +2,15 @@
 
 %h2.fancy-title= html_page_title
 
+%p
+  Si poseés una cuenta en #{link_to "Facebook", 'http://facebook.com'} podés registrarte fácilmente haciendo click en el siguiente botón:
+
+%p.facebook-login-container
+  = link_to 'Login con Facebook', user_omniauth_path(:facebook), :class => 'facebook-login-button'
+
+%p
+  Si no tenés una cuenta en Facebook o simplemente preferís no utilizarla para registrarte, te invitamos a crear una nueva cuenta mediante el siguiente formulario.
+
 = devise_error_messages!
 
 %div

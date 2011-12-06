@@ -9,9 +9,7 @@ VenganzasDelPasado::Application.routes.draw do
   resources :posts do
     get 'page/:page', :action => :index, :on => :collection
     get 'page/:page', :action => :show, :on => :member
-    resources :comments do
-      get 'page/:page', :action => :index, :on => :collection
-    end
+    resources :comments, :except => [:index, :new]
   end
 
   namespace :admin do

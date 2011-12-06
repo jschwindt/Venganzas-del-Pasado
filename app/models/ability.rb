@@ -4,10 +4,15 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    can :read, :all
-
     if user.karma.nil?
       user.karma = 0
+    end
+
+    can :read, Post, :status => 'published'
+    can :read, Comment, :status => 'approved'
+
+    if user.persisted?
+      can :read, Comment, :user_id => user.id
     end
 
     if user.persisted? && user.karma >= 0
@@ -24,6 +29,7 @@ class Ability
     end
 
     if ['editor'].include? user.role
+      can :read, Post
       can :update, Post
     end
 
