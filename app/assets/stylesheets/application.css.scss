@@ -170,7 +170,26 @@ fieldset {
   border-color: $rose;
 }
 
+.facebook-login-container {
+  margin-bottom: $baseline;
+  text-align: center;
+}
 
+.facebook-login-button {
+  background: asset-url('signin_facebook.png', image) no-repeat;
+  width: 150px;
+  height: 22px;
+  font-size: 0em;
+  display: block;
+
+  &:hover {
+    background-position: 0 -24px;
+  }
+
+  &:active {
+    background-position: 0 -48px;
+  }
+}
 //******************************************************************************
 // Top Bar
 //******************************************************************************
@@ -195,6 +214,11 @@ fieldset {
   .fb {
     padding-bottom: 0px;
     padding-top: 8px;
+  }
+
+  .facebook-login-button {
+    padding: 0;
+    margin: 10px 10px 11px;
   }
 
 }
