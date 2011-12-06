@@ -11,7 +11,7 @@ class Comment < ActiveRecord::Base
 
   def self.approved_or_from_user( user )
     if user
-      where( 'status = ? OR user_id = ?', 'approved', user.id )
+      where( 'status = ? OR (user_id = ? AND status != ?)', 'approved', user.id, 'deleted' )
     else
       approved
     end
@@ -30,6 +30,8 @@ class Comment < ActiveRecord::Base
     end
 
     self.gravatar_hash = user.gravatar_hash
+
+    self
   end
 
 end
