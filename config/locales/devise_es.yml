@@ -23,13 +23,13 @@ es:
       signed_in: "Sesión iniciada exitosamente."
       signed_out: 'Sesión cerrada exitosamente.'
     passwords:
-      send_instructions: "Recibirás un email con instrucciones sobre como restablecer tu contraseña en unos minutos."
+      send_instructions: "Recibirás un email con instrucciones sobre cómo restablecer tu contraseña."
       send_paranoid_instructions: "Si tu email existe en nuestra base de datos, recibirás un correo con instrucciones para recuperar tu clave."
       updated: "Tu contraseña ha sido cambiada exitosamente. Ahora podés ingresar."
       updated_not_active: 'Tu contraseña ha sido cambiada exitosamente.'
     confirmations:
-      send_instructions: 'Recibirás un email con instrucciones de como confirmar tu cuenta en unos minutos.'
-      send_paranoid_instructions: 'Si tu email existe en nuestra base de datos, en minutos recibirás instrucciones acerca de cómo confirmar tu cuenta.'
+      send_instructions: 'Recibirás un email con instrucciones de cómo confirmar tu cuenta.'
+      send_paranoid_instructions: 'Si tu email existe en nuestra base de datos, recibirás instrucciones acerca de cómo confirmar tu cuenta.'
       confirmed: 'Tu cuenta ha sido confirmada exitosamente. Ahora podés ingresar.'
     registrations:
       signed_up: "Te has registrado exitosamente."
@@ -41,7 +41,7 @@ es:
         unconfirmed: 'sin confirmar'
         locked: 'blockeada'
     unlocks:
-      send_instructions: "Recibirás un email con instrucciones sobre como desbloquear tu cuenta en unos minutos."
+      send_instructions: "Recibirás un email con instrucciones sobre cómo desbloquear tu cuenta."
       unlocked: 'Tu cuenta ha sido desbloqueada exitosamente. Ahora podés ingresar.'
       send_paranoid_instructions: 'Si tu cuenta existe en nuestra base de datos, recibirás un correo con instrucciones para desbloquearla.'
     omniauth_callbacks:
