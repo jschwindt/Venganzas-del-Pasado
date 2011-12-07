@@ -16,6 +16,7 @@ fork del repositorio y mandando pull requests con alguno de los temas de la wish
 * Perfiles: moderador de comentarios, editor (puede actualizar posts) y admin.
 * Post con markdown y sin html.  ✔
 * Comentarios con markdown.  ✔
+* Página del usuario con su gravatar (más grande), todos sus comentarios y link a perfil en FB, si tiene.
 * Limitación del largo de un comentario y la frecuencia (tal vez con lo del karma alcance).
 * Admin sencillo que sirva inicialmente para moderar, cambiar karma manualmente y crear posts.
 * Página en Facebook con navegación sencilla que permita escuchar los audios.
