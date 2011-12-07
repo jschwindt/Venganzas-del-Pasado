@@ -7,7 +7,7 @@
   %li{:class => params[:pending].present? ? 'active' : nil}
     = link_to "Pendientes", admin_comments_path(:pending => true)
   %li{:class => params[:deleted].present? ? 'active' : nil}
-    = link_to "Borrados", admin_comments_path(:deleted => true)
+    = link_to "En papelera", admin_comments_path(:deleted => true)
 
 .admin
   = render @comments

@@ -17,6 +17,7 @@ VenganzasDelPasado::Application.routes.draw do
     resources :comments do
       member do
         get 'approve'
+        get 'trash'
       end
     end
   end
