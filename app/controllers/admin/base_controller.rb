@@ -18,6 +18,10 @@ module Admin
       end
     end
 
+    def dashboard
+
+    end
+
     private
 
     def verify_admin

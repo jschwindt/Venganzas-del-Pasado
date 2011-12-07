@@ -15,7 +15,7 @@ VenganzasDelPasado::Application.routes.draw do
   resources :articles, :only => :show
 
   namespace :admin do
-    match '/' => 'comments#index', :as => :dashboard
+    match '/' => 'base#dashboard', :as => :dashboard
     resources :comments do
       member do
         get 'approve'
