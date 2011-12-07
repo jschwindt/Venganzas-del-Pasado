@@ -1,7 +1,7 @@
 .comment {
-  margin-bottom: $baseline;
-  
-  
+  margin-bottom: $baseline * 0.5;
+  padding-top: $baseline * 0.5;
+
   .author {
     small {
       font-size: 0.75 * $basefont;
@@ -9,11 +9,11 @@
       font-style: italic;
     }
   }
-  
+
   .meta {
     border-top: 1px $claro solid;
     font-size: 0.75 * $basefont;
-    
+
     > span {
       margin-right: 20px;
     }
@@ -27,4 +27,8 @@
   .comment.deleted {
     background-color: lighten($rose, 40%);
   }
+}
+
+.post .comment .where {
+  display: none;
 }

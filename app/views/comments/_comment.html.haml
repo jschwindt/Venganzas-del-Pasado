@@ -6,14 +6,20 @@
     %p.author
       =link_to comment.author, '#'
       %small
-        hace
-        =time_ago_in_words(comment.created_at)
+        %span.when
+          hace
+          =time_ago_in_words(comment.created_at)
+        %span.where
+          en
+          = link_to comment.post.title, comment.post
         dijo:
     .content
       = markdown_format comment.content
     %p.meta
       - if comment.pending?
         %span.pending Aguardando moderación
+      - if comment.deleted?
+        %span.deleted Eliminado
       - if can? :read, comment
         %span.permalink=link_to "Permalink", post_comment_path(comment.post, comment)
       - if can? :update, comment
