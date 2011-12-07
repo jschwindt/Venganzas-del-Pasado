@@ -6,6 +6,7 @@ class Comment < ActiveRecord::Base
 
   scope :approved, where( :status => 'approved' )
   scope :pending,  where( :status => 'pending' )
+  scope :deleted,  where( :status => 'deleted' )
   scope :fifo, order('created_at ASC')
   scope :lifo, order('created_at DESC')
 

@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
     @ability ||= Ability.new(self)
   end
 
+  def admin?
+    role == 'admin'
+  end
+
   private
 
   def update_gravatar_hash

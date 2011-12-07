@@ -13,7 +13,12 @@ VenganzasDelPasado::Application.routes.draw do
   end
 
   namespace :admin do
-    resources :comments
+    match '/' => 'comments#index', :as => :dashboard
+    resources :comments do
+      member do
+        get 'approve'
+      end
+    end
   end
 
   root :to => 'home#index'
