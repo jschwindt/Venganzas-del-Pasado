@@ -4,6 +4,7 @@ module Admin
   class CommentsController < BaseController
     has_scope :pending, :type => :boolean
     has_scope :deleted, :type => :boolean
+    has_scope :has_status
     has_scope :lifo, :type => :boolean, :default => true
 
     def approve

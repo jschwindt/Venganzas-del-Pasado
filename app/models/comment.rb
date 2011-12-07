@@ -38,6 +38,10 @@ class Comment < ActiveRecord::Base
     self
   end
 
+  def self.has_status(status)
+    where( 'status = ?', status ) unless status == :any
+  end
+
   def approved?
     self.status == 'approved'
   end

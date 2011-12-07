@@ -1,14 +1,18 @@
-- page_title("Comentarios")
+- page_title("Administración de Comentarios")
 
 %h2.fancy-title= html_page_title
 
 %ul.tabs
-  %li{:class => (params[:pending].blank? && params[:deleted].blank?) ? 'active' : nil}
+  %li{:class => (params[:has_status].blank? ? 'active' : nil)}
     = link_to "Todos", admin_comments_path
-  %li{:class => params[:pending].present? ? 'active' : nil}
-    = link_to "Pendientes", admin_comments_path(:pending => true)
-  %li{:class => params[:deleted].present? ? 'active' : nil}
-    = link_to "En papelera", admin_comments_path(:deleted => true)
+  %li{:class => active_if_current( :has_status => 'approved' )}
+    = link_to "Aprobados", admin_comments_path(:has_status => 'approved')
+  %li{:class => active_if_current( :has_status => 'pending' )}
+    = link_to "Pendientes", admin_comments_path(:has_status => 'pending')
+  %li{:class => active_if_current( :has_status => 'flagged' )}
+    = link_to "Denunciados", admin_comments_path(:has_status => 'flagged')
+  %li{:class => active_if_current( :has_status => 'deleted' )}
+    = link_to "En papelera", admin_comments_path(:has_status => 'deleted')
 
 .admin
   = render @comments

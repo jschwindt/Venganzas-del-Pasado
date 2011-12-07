@@ -3,7 +3,7 @@
 module Admin
   class BaseController < InheritedResources::Base
     before_filter :authenticate_user!
-    before_filter :verify_admin
+    before_filter :verify_admin, :default => :any
     has_scope :page, :default => 1
 
     def update
