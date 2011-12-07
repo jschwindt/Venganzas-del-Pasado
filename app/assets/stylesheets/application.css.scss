@@ -18,7 +18,7 @@ $claro: #CCC;
 @import "bootstrap/variables";
 
 $linkColor: $rose;
-$linkColorHover: darken($rose, 15) !default;
+$linkColorHover: darken($rose, 15);
 
 /* grilla de 14 en lugar de 16 */
 $gridColumns: 14;
@@ -161,8 +161,12 @@ fieldset {
     width: 510px;
 }
 
-.span10 > form textarea{
-    width: 570px;
+.span10 > form textarea.xxlarge{
+    width: 530px;
+}
+
+.span10 > form input.xxlarge{
+    width: 530px;
 }
 
 .alert-message.block-message.error {
@@ -190,6 +194,33 @@ fieldset {
     background-position: 0 -48px;
   }
 }
+
+
+
+.title {
+  font-size: $basefont * 2;
+  line-height: $baseline;
+  font-family: 'EBGaramondRegular', serif;
+  margin-bottom: $baseline;
+}
+
+
+
+.meta {
+  border-top: 1px $claro solid;
+  font-size: 0.75 * $basefont;
+
+  > span {
+    margin-right: 20px;
+  }
+}
+
+legend {
+  small {
+    font-size: $basefont * 0.75;
+  }
+}
+
 //******************************************************************************
 // Top Bar
 //******************************************************************************
