@@ -3,17 +3,14 @@
 %h2.fancy-title= html_page_title
 
 %ul.tabs
-  %li.active
+  %li{:class => (params[:pending].blank? && params[:deleted].blank?) ? 'active' : nil}
     = link_to "Todos", admin_comments_path
-  %li
+  %li{:class => params[:pending].present? ? 'active' : nil}
     = link_to "Pendientes", admin_comments_path(:pending => true)
+  %li{:class => params[:deleted].present? ? 'active' : nil}
+    = link_to "En papelera", admin_comments_path(:deleted => true)
 
-
-- @comments.each do |comment|
-  = comment.content
-  %hr
-
-
-
+.admin
+  = render @comments
 
 = paginate @comments

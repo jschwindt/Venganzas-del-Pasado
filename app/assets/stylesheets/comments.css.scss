@@ -19,3 +19,12 @@
     }
   }
 }
+
+.admin {
+  .comment.pending {
+    background-color: lightYellow;
+  }
+  .comment.deleted {
+    background-color: lighten($rose, 40%);
+  }
+}

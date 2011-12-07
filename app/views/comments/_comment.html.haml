@@ -12,7 +12,7 @@
     .content
       = markdown_format comment.content
     %p.meta
-      - if comment.status == 'pending'
+      - if comment.pending?
         %span.pending Aguardando moderación
       - if can? :read, comment
         %span.permalink=link_to "Permalink", post_comment_path(comment.post, comment)

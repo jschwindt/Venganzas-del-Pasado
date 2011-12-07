@@ -1,5 +1,5 @@
 %li=link_to 'Home', :root
 %li=link_to 'Programas Recientes', posts_path
 %li=link_to 'Ayuda', '#'
-/ -if user_signed_in?
-/   %li=link_to 'Administrador del Sitio', admin_dashboard_path
+-if current_user.try(:admin?)
+  %li=link_to 'Administración', admin_dashboard_path
