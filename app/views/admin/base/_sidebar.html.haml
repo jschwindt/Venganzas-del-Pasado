@@ -1,5 +1,11 @@
 #sidebar
   .widget
-    %h3 Admin menú
+    %h3 Administración
     %ul
-      %li= link_to "Comentarios", admin_comments_path
+      %li
+        = link_to "Comentarios", admin_comments_path
+    %ul
+      %li
+        = link_to "Artículos", admin_articles_path
+        %ul
+          %li= link_to "Crear Artículo", new_admin_article_path

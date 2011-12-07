@@ -1,5 +1,6 @@
-%h2
-  Comentarios
+- page_title("Comentarios")
+
+%h2.fancy-title= html_page_title
 
 %ul.tabs
   %li.active
@@ -11,8 +12,8 @@
 - @comments.each do |comment|
   = comment.content
   %hr
-  
-  
-  
-  
+
+
+
+
 = paginate @comments

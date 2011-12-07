@@ -12,8 +12,11 @@ VenganzasDelPasado::Application.routes.draw do
     resources :comments, :except => [:index, :new]
   end
 
+  resources :articles, :only => :show
+
   namespace :admin do
     resources :comments
+    resources :articles
   end
 
   root :to => 'home#index'

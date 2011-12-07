@@ -9,6 +9,7 @@ class Ability
     end
 
     can :read, Post, :status => 'published'
+    can :read, Article, :status => 'published'
     can :read, Comment, :status => 'approved'
 
     if user.persisted?

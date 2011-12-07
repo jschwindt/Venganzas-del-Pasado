@@ -1,0 +1,8 @@
+- if user_signed_in? and current_user.role == 'admin'
+  %li.menu
+    %a.menu{:href=>'#'}
+      Administrador
+    %ul.menu-dropdown
+      %li= link_to "Posts", "#"
+      %li= link_to "Comentarios", admin_comments_path
+      %li= link_to "Artículos", admin_articles_path
