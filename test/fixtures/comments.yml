@@ -11,3 +11,13 @@ one:
 two:
   post: one
   content: comentario 2
+
+approved:
+  post: published
+  content: comentario aprobado
+  status: approved
+
+pending:
+  post: pending
+  content: comentario pendiente de aprobación
+  status: pending

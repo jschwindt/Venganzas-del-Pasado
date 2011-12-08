@@ -9,8 +9,9 @@ class Ability
     end
 
     can :read, Post, :status => 'published'
-    can :read, Article, :status => 'published'
+    can :read, Article
     can :read, Comment, :status => 'approved'
+    can :read, User, :active? => true
 
     if user.persisted?
       can :read, Comment, :user_id => user.id
@@ -19,7 +20,6 @@ class Ability
 
     if user.persisted? && user.karma >= 0
       can :create, Comment
-      can [:destroy, :update], Comment, :user_id => user.id
     end
 
     if user.karma > VenganzasDelPasado::Application.config.good_user_karma_treshold
@@ -27,7 +27,7 @@ class Ability
     end
 
     if ['moderator','editor'].include? user.role
-      can [:destroy, :update], Comment
+      can [:approve, :trash], Comment
     end
 
     if ['editor'].include? user.role

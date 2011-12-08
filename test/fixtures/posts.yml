@@ -13,3 +13,15 @@ two:
   title: Two
   content: the content two
   slug: two
+
+published:
+  title: Published post
+  content: the content
+  slug: published-post
+  status: published
+
+draft:
+  title: Draft post
+  content: the content
+  slug: draft-post
+  status: draft

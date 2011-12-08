@@ -67,8 +67,14 @@ class User < ActiveRecord::Base
     role == 'admin'
   end
 
+  def active?
+    last_sign_in_at.present? || confirmed_at.present?
+  end
+
   def self.active
-    where('last_sign_in_at is not NULL')
+    # Los usuarios migrados de WP tienen confirmed_ar
+    # pero no necesariamente last_sign_in_at
+    where('last_sign_in_at IS NOT NULL OR confirmed_at IS NOT NULL')
   end
 
   private
