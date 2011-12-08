@@ -17,4 +17,11 @@ class CommentsController < ApplicationController
     redirect_to "#{post_path(@post)}#comment#{@comment.id}"
   end
 
+  def flag
+    @comment.status = 'flagged'
+    @comment.save!
+    flash[:notice] = "El comentario ha sido denunciado."
+    redirect_to @post
+  end
+
 end

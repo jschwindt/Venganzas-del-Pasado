@@ -51,4 +51,8 @@ class Comment < ActiveRecord::Base
     self.status == 'deleted'
   end
 
+  def flagged?
+    self.status == 'flagged'
+  end
+
 end

@@ -9,7 +9,11 @@ VenganzasDelPasado::Application.routes.draw do
   resources :posts do
     get 'page/:page', :action => :index, :on => :collection
     get 'page/:page', :action => :show, :on => :member
-    resources :comments, :only => [:show, :create]
+    resources :comments, :only => [:show, :create] do
+      member do
+        get 'flag'
+      end
+    end
   end
 
   resources :articles, :only => :show

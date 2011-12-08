@@ -14,6 +14,7 @@ class Ability
 
     if user.persisted?
       can :read, Comment, :user_id => user.id
+      can :flag, Comment
     end
 
     if user.persisted? && user.karma >= 0
