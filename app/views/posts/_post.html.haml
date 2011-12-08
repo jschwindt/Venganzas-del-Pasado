@@ -16,7 +16,7 @@
       Aún no hay información disponible sobre este programa.
       - if can? :update, post
         Colaborá con la comunidad
-        = link_to "editándolo", edit_post_path(post)
+        = link_to "editándolo", edit_admin_post_path(post)
       - else
         Colaborá con la comunidad,
         = link_to "postulate a editor", '#'
@@ -27,4 +27,4 @@
       = link_to post.comments.approved_or_from_user(current_user).count, post_path(post, :anchor => "comments")
     %span.permalink=link_to "Permalink", post
     - if can? :update, post
-      %span.edit= link_to "Editar", edit_post_path(post)
+      %span.edit= link_to "Editar", edit_admin_post_path(post)

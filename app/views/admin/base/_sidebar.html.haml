@@ -7,6 +7,10 @@
       %li
         = link_to "Comentarios", admin_comments_path
       %li
+        = link_to "Posts", admin_posts_path
+        %ul
+          %li= link_to "Crear Post", new_admin_post_path
+      %li
         = link_to "Artículos", admin_articles_path
         %ul
           %li= link_to "Crear Artículo", new_admin_article_path

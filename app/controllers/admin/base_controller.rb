@@ -13,7 +13,7 @@ module Admin
     end
 
     def create
-      create! do |success, failure|
+      create!(:notice => "Creado correctamente.") do |success, failure|
         success.html { redirect_to edit_resource_url }
       end
     end
