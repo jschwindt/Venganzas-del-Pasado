@@ -1,0 +1,23 @@
+= alert_message_for(post)
+
+= form_for [:admin, post], :html => { :class => 'form-stacked' } do |f|
+  %fieldset
+
+    - if post.persisted?
+      %legend
+        Editando Post ##{post.id}
+        - if post.persisted?
+          %small= link_to "Ver original", post, :target => '_blank'
+
+    .clearfix
+      = f.label :title
+      .input
+        = f.text_field :title, :class => 'xxlarge'
+    .clearfix
+      = f.label :content
+      .input
+        = f.text_area :content, :class => 'xxlarge'
+
+    .actions
+      = f.submit ( post.new_record? ? 'Publicar' : 'Guardar' ), :class => 'btn primary'
+      = link_to 'Cancelar', admin_posts_path, :class => 'btn'

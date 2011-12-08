@@ -2,21 +2,28 @@
 
 module Admin
   class CommentsController < BaseController
-    has_scope :pending, :type => :boolean
-    has_scope :deleted, :type => :boolean
+    has_scope :has_status
     has_scope :lifo, :type => :boolean, :default => true
 
     def approve
-      @comment = Comment.find params[:id]
-      @comment.status = 'approved'
-      @comment.save!
-      redirect_to collection_url
+      set_status 'approved' do
+        flash[:notice] = "Se ha aprobado el comentario."
+      end
     end
 
     def trash
+      set_status 'deleted' do
+        flash[:notice] = "Se ha eliminado el comentario."
+      end
+    end
+
+    private
+
+    def set_status( status, &block )
       @comment = Comment.find params[:id]
-      @comment.status = 'deleted'
+      @comment.status = status
       @comment.save!
+      yield
       redirect_to collection_url
     end
 

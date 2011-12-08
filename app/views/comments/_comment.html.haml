@@ -6,17 +6,26 @@
     %p.author
       =link_to comment.author, '#'
       %small
-        hace
-        =time_ago_in_words(comment.created_at)
+        %span.when
+          hace
+          =time_ago_in_words(comment.created_at)
+        %span.where
+          en
+          = link_to comment.post.title, comment.post
         dijo:
     .content
       = markdown_format comment.content
     %p.meta
-      - if comment.pending?
-        %span.pending Aguardando moderación
-      - if can? :read, comment
-        %span.permalink=link_to "Permalink", post_comment_path(comment.post, comment)
-      - if can? :update, comment
-        %span.edit=link_to "Editar", edit_post_comment_path(comment.post, comment)
-      - if can? :destroy, comment
-        %span.delete=link_to "Eliminar", post_comment_path(comment.post, comment), :confirm => '¿Estás seguro?', :method => :delete
+      - if comment.deleted?
+        %span.deleted Eliminado
+      - else
+        - if comment.pending?
+          %span.pending Aguardando moderación
+        - if can? :approve, comment
+          %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
+        - if can? :read, comment
+          %span.permalink=link_to "Permalink", post_comment_path(comment.post, comment)
+        - if can? :flag, comment
+          %span.permalink=link_to "Denunciar", flag_post_comment_path(comment.post, comment), :confirm => '¿Estás seguro?'
+        - if can? :destroy, comment
+          %span.delete=link_to "Eliminar", trash_admin_comment_path(comment), :confirm => '¿Estás seguro?'

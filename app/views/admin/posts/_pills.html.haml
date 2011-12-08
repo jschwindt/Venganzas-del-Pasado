@@ -1,0 +1,3 @@
+%ul.pills
+  %li{:class=>active_if_current(:action => :index)}= link_to "Listar Todos", admin_posts_path
+  %li{:class=>active_if_current(:action => :new)}= link_to "Crear Nuevo", new_admin_post_path

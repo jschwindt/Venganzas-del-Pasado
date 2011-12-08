@@ -9,10 +9,12 @@ class Ability
     end
 
     can :read, Post, :status => 'published'
+    can :read, Article, :status => 'published'
     can :read, Comment, :status => 'approved'
 
     if user.persisted?
       can :read, Comment, :user_id => user.id
+      can :flag, Comment
     end
 
     if user.persisted? && user.karma >= 0
