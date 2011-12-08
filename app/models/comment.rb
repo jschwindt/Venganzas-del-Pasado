@@ -14,7 +14,7 @@ class Comment < ActiveRecord::Base
     if user
       where( 'status = ? OR (user_id = ? AND status != ?)', 'approved', user.id, 'deleted' )
     else
-      approved
+      where( 'status = ?', 'approved' )
     end
   end
 
