@@ -18,11 +18,12 @@
     %p.meta
       - if comment.pending?
         %span.pending Aguardando moderación
+        - if can? :approve, comment
+          %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
       - if comment.deleted?
         %span.deleted Eliminado
       - if can? :read, comment
         %span.permalink=link_to "Permalink", post_comment_path(comment.post, comment)
-      - if can? :update, comment
-        %span.edit=link_to "Editar", edit_post_comment_path(comment.post, comment)
+
       - if can? :destroy, comment
-        %span.delete=link_to "Eliminar", post_comment_path(comment.post, comment), :confirm => '¿Estás seguro?', :method => :delete
+        %span.delete=link_to "Eliminar", trash_admin_comment_path(comment), :confirm => '¿Estás seguro?', :method => :delete

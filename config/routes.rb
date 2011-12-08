@@ -9,7 +9,7 @@ VenganzasDelPasado::Application.routes.draw do
   resources :posts do
     get 'page/:page', :action => :index, :on => :collection
     get 'page/:page', :action => :show, :on => :member
-    resources :comments, :except => [:index, :new]
+    resources :comments, :only => [:show, :create]
   end
 
   resources :articles, :only => :show
