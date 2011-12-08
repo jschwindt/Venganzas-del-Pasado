@@ -7,7 +7,7 @@ class PostsController < ApplicationController
 
   def show
     comments_collection = @post.comments.approved_or_from_user(current_user).fifo
-    page = params[:page].present? ? params[:page] : comments_collection.page.num_pages
+    page = params[:comments_page].present? ? params[:comments_page] : comments_collection.page.num_pages
     @comments = comments_collection.page(page).per(VenganzasDelPasado::Application.config.comments_per_page)
   end
 

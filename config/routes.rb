@@ -7,8 +7,6 @@ VenganzasDelPasado::Application.routes.draw do
   end
 
   resources :posts, :only => [:index, :show] do
-    get 'page/:page', :action => :index, :on => :collection
-    get 'page/:page', :action => :show, :on => :member
     resources :comments, :only => [:show, :create] do
       member do
         get 'flag'
