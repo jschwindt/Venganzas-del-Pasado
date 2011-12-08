@@ -6,8 +6,8 @@
     - if article.persisted?
       %legend
         Editando Artículo ##{article.id}
-        - if @article.persisted?
-          %small= link_to "Ver original", @article, :target => '_blank'
+        - if article.persisted?
+          %small= link_to "Ver original", article, :target => '_blank'
 
     .clearfix
       = f.label :title
