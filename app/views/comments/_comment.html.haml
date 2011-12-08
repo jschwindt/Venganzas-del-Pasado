@@ -26,4 +26,4 @@
         %span.permalink=link_to "Permalink", post_comment_path(comment.post, comment)
 
       - if can? :destroy, comment
-        %span.delete=link_to "Eliminar", trash_admin_comment_path(comment), :confirm => '¿Estás seguro?', :method => :delete
+        %span.delete=link_to "Eliminar", trash_admin_comment_path(comment), :confirm => '¿Estás seguro?'
