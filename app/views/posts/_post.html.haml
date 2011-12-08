@@ -6,6 +6,11 @@
   %h3.title
     = link_to post.title, post
 
+  %p.share
+    Compartir este post:
+    %span.twitter-share= tweet_button_for post
+    %span.facebook-share= fb_like_button_for post
+
   .audios
     = render post.audios
 
