@@ -22,7 +22,7 @@
         - if comment.pending?
           %span.pending Aguardando moderación
         - if can? :approve, comment
-            %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
+          %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
         - if can? :read, comment
           %span.permalink=link_to "Permalink", post_comment_path(comment.post, comment)
         - if can? :flag, comment
