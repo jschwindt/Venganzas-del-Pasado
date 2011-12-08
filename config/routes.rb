@@ -26,7 +26,7 @@ VenganzasDelPasado::Application.routes.draw do
       end
     end
     resources :articles
-    resources :users
+    resources :users, :only => [:index, :edit, :update]
     resources :posts
   end
 
