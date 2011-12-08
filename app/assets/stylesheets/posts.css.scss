@@ -38,7 +38,7 @@
 
 }
 
-.post-show {
+.posts-show {
   .post{
     .date {
       font-size: $basefont;
@@ -57,4 +57,9 @@
       display: none;
     }
   }
+
+  .comment .where {
+    display: none;
+  }
+
 }

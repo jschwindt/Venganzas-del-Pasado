@@ -16,16 +16,7 @@ VenganzasDelPasado::Application.routes.draw do
     end
   end
 
-  resources :users, :only => [:index, :show] do
-    get 'page/:page', :action => :index, :on => :collection
-    get 'page/:page', :action => :show, :on => :member
-    resources :posts, :only => :index
-    resources :comments, :only => :index
-    member do
-      get 'about'
-    end
-  end
-
+  resources :users, :only => :show
   resources :articles, :only => :show
 
   namespace :admin do

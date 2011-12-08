@@ -80,12 +80,6 @@ a:hover {
   color: darken($rose, 15);
 }
 
-
-.avatar img {
-  width: 40px;
-  height: 40px;
-}
-
 .main {
   padding-top: $baseline;
 }
@@ -155,18 +149,6 @@ fieldset {
     margin-right: 20px;
     text-align: right;
   }
-}
-
-.span9 > form textarea {
-    width: 510px;
-}
-
-.span10 > form textarea.xxlarge{
-    width: 530px;
-}
-
-.span10 > form input.xxlarge{
-    width: 530px;
 }
 
 .alert-message.block-message.error {
@@ -297,4 +279,5 @@ legend {
 
 @import 'posts';
 @import 'comments';
+@import 'users';
 @import 'activities';

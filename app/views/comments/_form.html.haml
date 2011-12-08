@@ -1,10 +1,10 @@
-.comments-form
-  .row
-    .span1.avatar
-      %img{ :src => gravatar_url_for(current_user), :class => 'gravatar' }
-    .span9.description
-      = form_for [post, comment] do |f|
-        %p
-          = f.text_area :content, :class => 'xlarge', :rows => 5
-        %p
-          = f.submit 'Publicar', :class => 'btn primary'
+.row.comment-form
+  .span1.avatar
+    %img{ :src => gravatar_url_for(current_user, :s => 40), :class => 'gravatar' }
+  .span9.description
+    = form_for [post, comment], :html => { :class => 'form-stacked' } do |f|
+      .clearfix
+        .input
+          = f.text_area :content, :rows => 5
+      .actions
+        = f.submit 'Publicar', :class => 'btn primary'

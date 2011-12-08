@@ -1,10 +1,10 @@
 %a{ :name => "comment#{comment.id}" }
 .row.comment{ :class => "#{comment.status}"}
   .span1.avatar
-    %img{ :src => gravatar_url_for(comment), :class => 'gravatar', :alt => comment.author }
+    %img{ :src => gravatar_url_for(comment, :s => 40), :class => 'gravatar', :alt => comment.author }
   .span9.description
     %p.author
-      =link_to comment.author, '#'
+      %span.who= link_to comment.author, comment.user
       %small
         %span.when
           hace
@@ -21,8 +21,8 @@
       - else
         - if comment.pending?
           %span.pending Aguardando moderación
-        - if can? :approve, comment
-          %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
+          - if can? :approve, comment
+            %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
         - if can? :read, comment
           %span.permalink=link_to "Permalink", post_comment_path(comment.post, comment)
         - if can? :flag, comment
