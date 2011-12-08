@@ -9,6 +9,28 @@ module ApplicationHelper
     @page_title
   end
 
+  def alert_message_for(object)
+    if object.respond_to? :errors and object.errors.any?
+      messages = object.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
+
+      html = <<-HTML
+      <div class="alert-message block-message error">
+        #{ link_to "x", "#", :class => 'close' }
+        <p>
+          <strong>Se ha encontrado #{pluralize(object.errors.count, "error")}</strong>
+        </p>
+        <ul>#{ messages }</ul>
+      </div>
+      HTML
+
+      html.html_safe
+    end
+  end
+
+  def active_if_current(action)
+    current_page?(action) ? 'active' : 'inactive'
+  end
+
   def stylesheet(*args)
     content_for(:head) { stylesheet_link_tag(*args) }
   end

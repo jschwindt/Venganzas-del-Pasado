@@ -7,9 +7,6 @@ class Comment < ActiveRecord::Base
 
   validates :content, :presence => true
 
-  scope :approved, where( :status => 'approved' )
-  scope :pending,  where( :status => 'pending' )
-  scope :deleted,  where( :status => 'deleted' )
   scope :fifo, order('created_at ASC')
   scope :lifo, order('created_at DESC')
 
@@ -38,6 +35,10 @@ class Comment < ActiveRecord::Base
     self
   end
 
+  def self.has_status(status)
+    where( 'status = ?', status ) unless status.nil?
+  end
+
   def approved?
     self.status == 'approved'
   end
@@ -48,6 +49,10 @@ class Comment < ActiveRecord::Base
 
   def deleted?
     self.status == 'deleted'
+  end
+
+  def flagged?
+    self.status == 'flagged'
   end
 
 end

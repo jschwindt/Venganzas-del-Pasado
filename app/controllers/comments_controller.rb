@@ -17,16 +17,11 @@ class CommentsController < ApplicationController
     redirect_to "#{post_path(@post)}#comment#{@comment.id}"
   end
 
-  def update
-    @comment.update_attributes(params[:comment])
-    flash[:notice] = "Los cambios al comentario han sido guardados."
-    redirect_to post_comment_path(@post, @comment)
-  end
-
-  def destroy
-    @comment.destroy
-    flash[:notice] = "El comentario ha sido eliminado."
-    redirect_to post_path(@post)
+  def flag
+    @comment.status = 'flagged'
+    @comment.save!
+    flash[:notice] = "El comentario ha sido denunciado."
+    redirect_to @post
   end
 
 end

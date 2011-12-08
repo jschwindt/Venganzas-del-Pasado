@@ -11,16 +11,4 @@ class PostsController < ApplicationController
     @comments = comments_collection.page(page).per(VenganzasDelPasado::Application.config.comments_per_page)
   end
 
-  def edit
-  end
-
-  def update
-    if @post.update_attributes(params[:post])
-      flash[:notice] = "Successfully updated post."
-      redirect_to @post
-    else
-      render 'edit'
-    end
-  end
-
 end

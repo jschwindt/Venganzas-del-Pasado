@@ -6,20 +6,38 @@ VenganzasDelPasado::Application.routes.draw do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru', :as => :user_omniauth
   end
 
-  resources :posts do
+  resources :posts, :only => [:index, :show] do
     get 'page/:page', :action => :index, :on => :collection
     get 'page/:page', :action => :show, :on => :member
-    resources :comments, :except => [:index, :new]
+    resources :comments, :only => [:show, :create] do
+      member do
+        get 'flag'
+      end
+    end
   end
 
+  resources :users, :only => [:index, :show] do
+    get 'page/:page', :action => :index, :on => :collection
+    get 'page/:page', :action => :show, :on => :member
+    resources :posts, :only => :index
+    resources :comments, :only => :index
+    member do
+      get 'about'
+    end
+  end
+
+  resources :articles, :only => :show
+
   namespace :admin do
-    match '/' => 'comments#index', :as => :dashboard
+    match '/' => 'base#dashboard', :as => :dashboard
     resources :comments do
       member do
         get 'approve'
         get 'trash'
       end
     end
+    resources :articles
+    resources :posts
   end
 
   root :to => 'home#index'

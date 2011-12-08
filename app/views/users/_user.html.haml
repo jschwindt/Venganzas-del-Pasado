@@ -1,0 +1,11 @@
+.row.user
+
+  .span1
+    %img{ :src => gravatar_url_for(user), :class => 'gravatar', :alt => user.alias }
+  .span9
+    %h3.title
+      = link_to user.alias, user
+      %small= user.role
+    %p.bio Como será la laguna que el chancho la cruza al trote
+    %p.data
+      Karma: 175 - Comentarios: 45
