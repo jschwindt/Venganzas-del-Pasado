@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :alias
 
+
+  scope :lifo, order('created_at DESC')
+
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
     if user = User.where('email = ? OR fb_userid = ?', data.email, data.id).first
@@ -58,6 +61,10 @@ class User < ActiveRecord::Base
 
   def admin?
     role == 'admin'
+  end
+
+  def self.active
+    where('last_sign_in_at is not NULL')
   end
 
   private

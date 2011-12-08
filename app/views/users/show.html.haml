@@ -1,0 +1,14 @@
+- page_title("Perfil de #{@user.alias}")
+
+.user-show
+  = render @user
+
+%ul.tabs
+  %li{:class => active_if_current( :sarasa => 'show' )}
+    = link_to "Actividad", @user
+  %li{:class => active_if_current( :sarasa => 'index' )}
+    = link_to "Posts", user_posts_path(@user)
+  %li{:class => active_if_current( :sarasa => 'comments' )}
+    = link_to "Comentarios", user_comments_path(@user)
+  %li{:class => active_if_current( :sarasa => 'about' )}
+    = link_to "Acerca de #{@user.alias}", about_user_path(@user)
