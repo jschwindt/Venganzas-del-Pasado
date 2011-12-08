@@ -1,5 +1,7 @@
 VenganzasDelPasado::Application.routes.draw do
 
+  get "torrent/index"
+
   get "home/index"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } do
@@ -16,6 +18,7 @@ VenganzasDelPasado::Application.routes.draw do
 
   resources :users, :only => :show
   resources :articles, :only => :show
+  resources :torrents, :only => :index
 
   namespace :admin do
     match '/' => 'base#dashboard', :as => :dashboard

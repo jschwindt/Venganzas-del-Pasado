@@ -1,0 +1,11 @@
+- if params[:page].nil?
+  - page_title("Torrents de audios de La Venganza será Terrible")
+- else
+  - page_title("Torrents de audios de La Venganza será Terrible <small>Página #{params[:page]}</small>")
+
+%h2.fancy-title!= html_page_title
+
+.posts
+  = render :partial => 'torrent', :collection => @torrents
+
+= paginate @torrents, :window => 2
