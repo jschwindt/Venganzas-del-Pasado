@@ -24,7 +24,7 @@
   %p.meta
     %span.comments
       Comentarios:
-      = link_to post.comments.approved.count, post_path(post, :anchor => "comments")
+      = link_to post.comments.approved_or_from_user(current_user).count, post_path(post, :anchor => "comments")
     %span.permalink=link_to "Permalink", post
     - if can? :update, post
       %span.edit= link_to "Editar", edit_post_path(post)
