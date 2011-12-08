@@ -39,7 +39,7 @@ class Comment < ActiveRecord::Base
   end
 
   def self.has_status(status)
-    where( 'status = ?', status ) unless status == :any
+    where( 'status = ?', status ) unless status.nil?
   end
 
   def approved?
