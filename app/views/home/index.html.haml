@@ -11,17 +11,16 @@
 =render 'layouts/banners/b468x60'
 
 %h2.fancy-title
-  Actividad de los Usuarios
-
-.activities
-  - 5.times do
-    =render "activities/activity"
-
-=render 'layouts/banners/b468x60'
-
-%h2.fancy-title
   ¡Necesitamos tu ayuda!
 %p
   Con tu colaboración podemos hacer que el contenido se enriquezca. Hay dos formas de participar: enviando comentarios a cada post o registrándote como usuario y editando los post. Entre todos podemos hacer un sitio que nos permita saber de qué se habló en <em>La Venganza será Terrible</em>.
 %p
-  =link_to "Más información", '#'
+  =link_to "Más información", '/articles/colabora'
+
+=render 'layouts/banners/b468x60'
+
+%h2.fancy-title
+  Comentarios Recientes
+
+.comments
+  =render @comments
