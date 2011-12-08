@@ -1,0 +1,27 @@
+= alert_message_for(user)
+
+= form_for [:admin, user] do |f|
+  %fieldset
+
+    - if user.persisted?
+      %legend
+        Editando user ##{user.id}
+        - if user.persisted?
+          %small= link_to "Ver perfil", user, :target => '_blank'
+
+    .clearfix
+      = f.label :alias
+      .input
+        = f.text_field :alias
+    .clearfix
+      = f.label :karma
+      .input
+        = f.text_field :karma
+    .clearfix
+      = f.label :role
+      .input
+        = f.select :role, User.roles
+
+    .actions
+      = f.submit ( user.new_record? ? 'Crear' : 'Guardar' ), :class => 'btn primary'
+      = link_to 'Cancelar', admin_users_path, :class => 'btn'

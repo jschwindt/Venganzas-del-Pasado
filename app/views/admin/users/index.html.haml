@@ -1,0 +1,26 @@
+- page_title("Administración de Usuarios")
+
+%h2.fancy-title= html_page_title
+
+= render 'pills'
+
+- if @users.empty?
+  %p No se han encontrado usuarios
+-else
+  %table
+    %thead
+      %tr
+        %th #
+        %th Nombre
+        %th
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.id
+          %td= user.alias
+          %td
+            =link_to "Permalink", user, :target => '_blank'
+            =link_to "Editar", edit_admin_user_path(user)
+            =link_to "Eliminar", admin_user_path(user), :method => :delete, :confirm => "¿Estás seguro?"
+
+  = paginate @users

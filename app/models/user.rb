@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   friendly_id :alias, :use => :slugged
   has_many :comments, :dependent => :nullify
   validates :alias, :presence => true, :uniqueness => { :case_sensitive => false }
-  before_save :update_gravatar_hash
+  before_save :update_gravatar_hash, :clean_role
   delegate :can?, :cannot?, :to => :ability
 
   # Include default devise modules. Others available are:
@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
 
 
   scope :lifo, order('created_at DESC')
+
+  def self.roles
+    ['', 'admin', 'editor', 'moderator']
+  end
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
@@ -73,5 +77,9 @@ class User < ActiveRecord::Base
     if email_changed?
       self.gravatar_hash = Digest::MD5.hexdigest(email.strip.downcase)
     end
+  end
+
+  def clean_role
+    self.role = '' unless User.roles.include? self.role
   end
 end

@@ -26,6 +26,7 @@ VenganzasDelPasado::Application.routes.draw do
       end
     end
     resources :articles
+    resources :users
     resources :posts
   end
 
