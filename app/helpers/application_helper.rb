@@ -9,6 +9,10 @@ module ApplicationHelper
     @page_title
   end
 
+  def body_class
+    "#{controller.controller_name}-#{controller.action_name}"
+  end
+
   def alert_message_for(object)
     if object.respond_to? :errors and object.errors.any?
       messages = object.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
@@ -49,9 +53,10 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
-  def gravatar_url_for(object)
+  def gravatar_url_for(object, options = {})
     if object.respond_to? :gravatar_hash
-      "http://www.gravatar.com/avatar/#{object.gravatar_hash}?s=60&d=mm"
+      default_options = { :s => 60, :d => 'mm' }
+      "http://www.gravatar.com/avatar/#{object.gravatar_hash}?#{default_options.merge!(options).to_query}"
     end
   end
 
