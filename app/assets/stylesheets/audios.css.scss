@@ -1,0 +1,27 @@
+.audio {
+
+  .well {
+    -webkit-border-top-right-radius: 0px;
+    -moz-border-top-right-radius: 0px;
+    border-top-right-radius: 0px;
+    -webkit-border-top-right-radius: 0px;
+    -moz-border-top-right-radius: 0px;
+    border-top-right-radius: 0px;
+    border-top: none;
+  }
+
+  .downloads {
+
+    span {
+      margin-left: 40px;
+
+      small {
+        margin-left: 10px;
+        font-size: 0.75em;
+        a {font-style: italic;}
+      }
+
+    }
+
+  }
+}
