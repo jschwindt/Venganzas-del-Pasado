@@ -1,5 +1,8 @@
-.row.audio
-  .span6
-    = render 'audios/player', :url => audio.url, :id => audio.id
-  .span4
-    =link_to "Descargar MP3", audio.url, :class => "btn small"
+.audio
+  = render 'audios/player', :url => audio.url, :id => audio.id
+  .downloads.well
+    Descargar MP3:
+    %span.direct=link_to "Descarga Directa", audio.url
+    %span.torrent
+      =link_to ".torrent", audio.torrent_url
+      %small= link_to "¿Qué es esto?", '/articles/descargas#torrent'
