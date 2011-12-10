@@ -8,6 +8,9 @@ VenganzasDelPasado::Application.routes.draw do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru', :as => :user_omniauth
   end
 
+  match 'posts/archive/:year(/:month(/:day))' => 'posts#archive', :constraints => {
+    :year => /\d{4}/, :month => /\d{2}/, :day => /\d{2}/
+  }
   resources :posts, :only => [:index, :show] do
     resources :comments, :only => [:show, :create] do
       member do

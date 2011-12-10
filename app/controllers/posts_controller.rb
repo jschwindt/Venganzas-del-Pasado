@@ -11,4 +11,8 @@ class PostsController < ApplicationController
     @comments = comments_collection.page(page).per(VenganzasDelPasado::Application.config.comments_per_page)
   end
 
+  def archive
+    @posts = @posts.published.created_on(params[:year],params[:month],params[:day]).lifo.page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
+  end
+
 end
