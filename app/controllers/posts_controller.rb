@@ -12,7 +12,9 @@ class PostsController < ApplicationController
   end
 
   def archive
-    @posts = @posts.published.created_on(params[:year],params[:month],params[:day]).lifo.page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
+    @posts = @posts.published.lifo.
+              created_on(params[:year], params[:month], params[:day]).
+              page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
   end
 
 end
