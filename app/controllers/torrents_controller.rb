@@ -1,5 +1,5 @@
 class TorrentsController < ApplicationController
-  
+
   def index
     @torrents = Audio.includes(:post).
                     order('posts.created_at DESC').

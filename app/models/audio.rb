@@ -2,7 +2,7 @@ class Audio < ActiveRecord::Base
   belongs_to :post
 
   validates :url, :presence => true
-  
+
   def torrent_url
     # Pasa de http://venganzasdelpasado.com.ar/2011/lavenganza_2011-11-22.mp3
     #       a    http://s3.schwindt.org/dolina/2011/lavenganza_2011-11-22.mp3?torrent
