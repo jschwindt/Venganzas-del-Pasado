@@ -1,0 +1,18 @@
+- if params[:day].present?
+  - title_part = "Archivo del #{params[:day]}/#{params[:month]}/#{params[:year]}"
+- elsif params[:month].present?
+  - title_part = "Archivo del #{params[:month]}/#{params[:year]}"
+- else
+  - title_part = "Archivo del año #{params[:year]}"
+
+- if params[:page].nil?
+  - page_title(title_part)
+- else
+  - page_title("#{title_part} <small>Página #{params[:page]}</small>")
+
+%h2.fancy-title!= html_page_title
+
+.posts
+  = render @posts
+
+= paginate @posts, :window => 2
