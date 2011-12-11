@@ -217,6 +217,10 @@ select, input[type=file] {
   .twitter-share {
     margin-left: 20px;
   }
+
+  .facebook-share {
+    iframe { width: 120px; }
+  }
 }
 
 //******************************************************************************

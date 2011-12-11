@@ -2,7 +2,7 @@
 .row.comment{ :class => "#{comment.status}"}
   .span1.avatar
     %img{ :src => gravatar_url_for(comment, :s => 40), :class => 'gravatar', :alt => comment.author }
-  .span9.description
+  .span8.description
     %p.author
       %span.who= link_to comment.author, comment.user
       %small

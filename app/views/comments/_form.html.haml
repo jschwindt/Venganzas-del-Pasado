@@ -1,7 +1,7 @@
 .row.comment-form
   .span1.avatar
     %img{ :src => gravatar_url_for(current_user, :s => 40), :class => 'gravatar' }
-  .span9.description
+  .span8.description
     = form_for [post, comment], :html => { :class => 'form-stacked' } do |f|
       .clearfix
         .input

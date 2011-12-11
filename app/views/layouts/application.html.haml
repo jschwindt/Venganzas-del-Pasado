@@ -22,7 +22,7 @@
 
     .container.main
       .row
-        #content.span10
+        #content.span9
           -if notice.present?
             .alert-message.success.fade.in
               %a{ :class => "close", :href => "#" }
@@ -35,7 +35,7 @@
               = alert
           = yield
 
-        .span4
+        .span4.offset1
           = render 'sidebar'
 
     = render 'footer'
