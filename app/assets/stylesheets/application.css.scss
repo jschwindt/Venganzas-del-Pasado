@@ -283,6 +283,12 @@ select, input[type=file] {
     font-size: $basefont * 0.75;
     color: lighten($gris, 20)
   }
+
+  .archive {
+    .months {
+      display: none;
+    }
+  }
 }
 
 

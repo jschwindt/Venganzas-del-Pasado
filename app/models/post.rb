@@ -28,4 +28,23 @@ class Post < ActiveRecord::Base
 
     where(:created_at => range_date)
   end
+
+  def self.post_count_by_month
+    sql = <<-SQL
+    SELECT DISTINCT
+	    YEAR(created_at) "year",
+	    MONTH(created_at) "month",
+	    COUNT(*) AS count
+    FROM
+	    posts
+    WHERE
+	    status = 'published'
+    GROUP BY
+	    year, month
+    ORDER BY
+	    year DESC, month DESC
+	  SQL
+
+	  self.find_by_sql(sql)
+  end
 end

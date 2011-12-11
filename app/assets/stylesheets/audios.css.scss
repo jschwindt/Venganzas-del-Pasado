@@ -8,12 +8,14 @@
     -moz-border-top-right-radius: 0px;
     border-top-right-radius: 0px;
     border-top: none;
+    padding: 5px 10px;
+
   }
 
   .downloads {
 
     span {
-      margin-left: 40px;
+      margin-left: 50px;
 
       small {
         margin-left: 10px;
@@ -24,4 +26,6 @@
     }
 
   }
+
+
 }

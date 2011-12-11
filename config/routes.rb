@@ -8,8 +8,8 @@ VenganzasDelPasado::Application.routes.draw do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru', :as => :user_omniauth
   end
 
-  match 'posts/:year(/:month(/:day))' => 'posts#archive', :constraints => {
-    :year => /\d{4}/, :month => /\d{2}/, :day => /\d{2}/
+  get 'posts/:year(/:month(/:day))' => 'posts#archive', :as => :posts_archive, :constraints => {
+    :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
   }
   resources :posts, :only => [:index, :show] do
     resources :comments, :only => [:show, :create] do
@@ -35,21 +35,21 @@ VenganzasDelPasado::Application.routes.draw do
     resources :users, :only => [:index, :edit, :update]
     resources :posts
   end
-  
+
   # Redirects for old site
-  
+
   #   /2011/12/09/la-venganza-sera-terrible-2011-12-09/ => /posts/la-venganza-sera-terrible-del-28-11-2011
   #   /2011/12/09/                                      => /posts/la-venganza-sera-terrible-del-28-11-2011
   match '/:year/:month/:day(/:slug)/' =>
         redirect("/posts/la-venganza-sera-terrible-del-%{day}-%{month}-%{year}"),
         :constraints => { :year => /\d{4}/, :month => /\d{2}/, :day => /\d{2}/ }
 
-  match '/:year/:month/' => 
+  match '/:year/:month/' =>
         redirect("/posts/%{year}/%{month}"),
         :constraints => { :year => /\d{4}/, :month => /\d{2}/ }
 
   root :to => 'home#index'
-  
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

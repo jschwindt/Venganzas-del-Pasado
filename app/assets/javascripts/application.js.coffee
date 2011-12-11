@@ -9,3 +9,10 @@
 jQuery ->
   $(".alert-message").alert()
   $('.topbar').dropdown()
+  $('.widget .archive .year > a').click (event) ->
+    months = $(this).next()
+    if months.is ':visible'
+      months.slideUp()
+    else
+      months.slideDown()
+    return false

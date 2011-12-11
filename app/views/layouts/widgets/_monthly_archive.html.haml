@@ -1,0 +1,10 @@
+.archive
+  %h3 Archivo de Programas
+  %ul.years
+    - Post.post_count_by_month.group_by(&:year).each do |year, months|
+      %li.year
+        =link_to "Año #{year}", posts_archive_path(year)
+        %ul.months
+          - months.each do |month|
+            - date = Date.new month.year, month.month
+            %li.month= link_to "#{date.strftime('%B')} de #{date.year} (#{month.count})", posts_archive_path(year, month.month)
