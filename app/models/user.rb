@@ -77,6 +77,16 @@ class User < ActiveRecord::Base
     where('last_sign_in_at IS NOT NULL OR confirmed_at IS NOT NULL')
   end
 
+  def has_facebook_profile?
+    self.fb_userid.present?
+  end
+
+  def facebook_profile_url
+    unless self.fb_userid.blank?
+      'http://www.facebook.com/profile.php?id=' + self.fb_userid
+    end
+  end
+
   private
 
   def update_gravatar_hash
