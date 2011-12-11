@@ -289,6 +289,22 @@ select, input[type=file] {
       display: none;
     }
   }
+
+  .archive.daily {
+
+    td {
+      font-size: 0.75 * $basefont;
+      padding: 0;
+    }
+
+    th {
+      padding: 0;
+    }
+
+    .notmonth { color: $claro }
+    .future { color: $claro }
+
+  }
 }
 
 
