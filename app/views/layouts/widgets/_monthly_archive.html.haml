@@ -1,4 +1,4 @@
-.archive
+.archive.monthly
   %h3 Archivo de Programas
   %ul.years
     - Post.post_count_by_month.group_by(&:year).each do |year, months|

@@ -29,6 +29,8 @@ gem 'has_scope'
 gem 'pandoc-ruby'
 gem 'cancan'
 
+gem 'table_builder', :git => "git://github.com/p8/table_builder.git"
+
 group :development do
   gem 'hirb'
   gem 'wirble'

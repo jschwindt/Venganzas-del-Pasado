@@ -1,0 +1,12 @@
+.archive.daily
+  %h3 Programas de #{Date.today.strftime('%B')}
+  = calendar_for Post.published.this_month.all, :year => Date.today.year, :month => Date.today.month do |calendar|
+    = calendar.head('D', 'L', 'M', 'X', 'J', 'V', 'S')
+    - calendar.day(:day_method => :creation_date) do |date, posts|
+      - puts posts
+      - if posts.empty?
+        = date.day
+      - elsif posts.count == 1
+        = link_to date.day, posts.first
+      - else
+        = link_to date.day, posts_archive_path(date.year, date.month, date.day)

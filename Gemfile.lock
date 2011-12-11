@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/p8/table_builder.git
+  revision: e36c64aa4f77960a1b1ea66de5a610d84d32a32e
+  specs:
+    table_builder (0.2.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -197,6 +203,7 @@ DEPENDENCIES
   shoulda
   shoulda-matchers
   sqlite3
+  table_builder!
   therubyracer
   uglifier (>= 1.0.3)
   wirble

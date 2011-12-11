@@ -9,6 +9,7 @@ class Post < ActiveRecord::Base
 
   scope :published, where(:status => 'published')
   scope :lifo, order('created_at DESC')
+  scope :this_month, where(:created_at => Date.today.beginning_of_month..Date.today.end_of_month)
 
 
   def self.created_on(year, month = nil, day = nil)
@@ -47,4 +48,9 @@ class Post < ActiveRecord::Base
 
 	  self.find_by_sql(sql)
   end
+
+  def creation_date
+    self.created_at.to_datetime
+  end
+
 end
