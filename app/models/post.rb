@@ -6,11 +6,15 @@ class Post < ActiveRecord::Base
   has_many :audios,   :dependent => :destroy
 
   validates :title, :presence => true
+  validate :validate_status
 
   scope :published, where(:status => 'published')
   scope :lifo, order('created_at DESC')
   scope :this_month, where(:created_at => Date.today.beginning_of_month..Date.today.end_of_month)
 
+  def self.statuses
+    ['published', 'draft', 'deleted']
+  end
 
   def self.created_on(year, month = nil, day = nil)
     date = Date.new year.to_i
@@ -52,5 +56,13 @@ class Post < ActiveRecord::Base
   def creation_date
     self.created_at.to_datetime
   end
+
+  protected
+
+    def validate_status
+      unless Post.statuses.include?(status)
+        self.errors.add(:status, I18n.t("activerecord.errors.models.post.attributes.status.inclusion"))
+      end
+    end
 
 end
