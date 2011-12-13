@@ -7,7 +7,7 @@ module Admin
 
     def verify_admin
       unless current_user.can? :update, Post
-        redirect_to root_url, :alert => I18n.t('unauthorized.not_admin')
+        render '403', :status => 403
       end
     end
   end
