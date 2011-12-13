@@ -1,2 +1,10 @@
 .banner-728
-  =image_tag('http://placehold.it/728x90/')
+  - if Rails.env.production?
+    :javascript
+      google_ad_client = "ca-pub-9541275144173875";
+      google_ad_slot = "4964831168";
+      google_ad_width = 728;
+      google_ad_height = 90;
+    %script{ :type => "text/javascript", :src => "http://pagead2.googlesyndication.com/pagead/show_ads.js" }
+  - else
+    =image_tag('http://placehold.it/728x90/')
