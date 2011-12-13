@@ -23,11 +23,11 @@ class Ability
     end
 
     if user.karma > VenganzasDelPasado::Application.config.good_user_karma_treshold
-      can :approve, Comment
+      can :approve, Comment, :user_id => user.id
     end
 
     if ['moderator','editor'].include? user.role
-      can [:approve, :trash], Comment
+      can :manage, Comment
     end
 
     if ['editor'].include? user.role
