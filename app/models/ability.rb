@@ -18,7 +18,7 @@ class Ability
       can :flag, Comment
     end
 
-    if user.persisted? && user.karma >= 0
+    if user.persisted? && user.karma >= VenganzasDelPasado::Application.config.bad_user_karma_treshold
       can :create, Comment
     end
 
