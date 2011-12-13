@@ -8,11 +8,13 @@ one:
   title: One
   content: the content one
   slug: one
+  status: published
 
 two:
   title: Two
   content: the content two
   slug: two
+  status: published
 
 published:
   title: Published post
