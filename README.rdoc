@@ -5,24 +5,24 @@ y que va a reemplazar al actual WordPress
 
 == Desarrollo
 
-Está abierto a todos los que quieran particiar. La forma de hacerlo es haciendo
+Está abierto a todos los que quieran participar. La forma de hacerlo es haciendo
 fork del repositorio y mandando pull requests con alguno de los temas de la wishlist.
 
 == Wishlist (desordenada)
 
+* Sitemap.
+* Redirects del sitio viejo para mantener SEO.
+* Página en Facebook con navegación sencilla que permita escuchar los audios.
+* Limitación del largo de un comentario y la frecuencia (tal vez con lo del karma alcance).
+* RSS feeds de posts ✔, torrents ✔ y, tal vez, comentarios ✘.
 * Comentarios con usuario logueado.  ✔
-* Aprobación automática para usuarios con buen karma.
-* Moderación para usuarios nuevos o con mal karma.
-* Perfiles: moderador de comentarios, editor (puede actualizar posts) y admin.
+* Aprobación automática para usuarios con buen karma.  ✔
+* Moderación para usuarios nuevos o con mal karma.  ✔
+* Perfiles: moderador de comentarios, editor (puede actualizar posts) y admin.  ✔
 * Post con markdown y sin html.  ✔
 * Comentarios con markdown.  ✔
 * Página del usuario con su gravatar (más grande), todos sus comentarios y link a perfil en FB, si tiene.  ✔
-* Limitación del largo de un comentario y la frecuencia (tal vez con lo del karma alcance).
-* Admin sencillo que sirva inicialmente para moderar, cambiar karma manualmente y crear posts.
-* Página en Facebook con navegación sencilla que permita escuchar los audios.
-* RSS feeds de posts, torrents y, tal vez, comentarios.
-* Sitemap.
-* Redirects del sitio viejo para mantener SEO.
+* Admin sencillo que sirva inicialmente para moderar, cambiar karma manualmente y crear posts.  ✔
 * Omniauth para login con Facebook. ✔
 * Gravatars. ✔
 * Migración del contenido actual: Post, audios, comentarios, usuarios y tal vez páginas. ✔
