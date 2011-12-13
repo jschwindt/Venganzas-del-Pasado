@@ -6,6 +6,9 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
+    = auto_discovery_link_tag :rss, posts_path(:format => :rss),
+      { :title => "RSS feed de Venganzas del Pasado" }
+    = favicon_link_tag
     %title= yield :title
     = yield :head
     = csrf_meta_tag
