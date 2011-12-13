@@ -25,8 +25,8 @@ module Admin
     private
 
     def verify_admin
-      unless ['moderator','editor','admin'].include?(current_user.try(:role))
-        redirect_to root_url, :alert => I18n.t('unauthorized.not_admin')
+      unless current_user.try(:can_admin?)
+        render '403', :status => 403
       end
     end
   end

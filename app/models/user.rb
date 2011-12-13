@@ -63,8 +63,8 @@ class User < ActiveRecord::Base
     @ability ||= Ability.new(self)
   end
 
-  def admin?
-    role == 'admin'
+  def can_admin?
+    ['moderator','editor','admin'].include? role
   end
 
   def active?

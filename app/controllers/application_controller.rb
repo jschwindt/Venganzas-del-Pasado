@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  rescue_from ActiveRecord::RecordNotFound do |exception|
+    render '404', :status => 404
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => exception.message
+    render '403', :status => 403, :alert => exception.message
   end
 end
