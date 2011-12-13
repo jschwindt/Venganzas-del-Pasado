@@ -48,6 +48,8 @@ VenganzasDelPasado::Application.routes.draw do
         redirect("/posts/%{year}/%{month}"),
         :constraints => { :year => /\d{4}/, :month => /\d{2}/ }
 
+  match '/feed' => redirect("/posts.rss")
+
   root :to => 'home#index'
 
 

@@ -10,8 +10,11 @@ xml.rss :version => "2.0" do
         xml.title post.title
         xml.description markdown_format post.content
         xml.pubDate post.created_at.to_s(:rfc822)
-        xml.link post_path post, :only_path => false
-        xml.guid post_path post, :only_path => false
+        xml.link post_url post
+        xml.guid post_url post
+        post.audios.each do |audio|
+          xml.enclosure :url => audio.url, :length => audio.bytes, :type => "audio/mpeg"
+        end
       end
     end
   end
