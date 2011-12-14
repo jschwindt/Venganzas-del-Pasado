@@ -11,7 +11,7 @@ class Ability
     can :read, Post, :status => 'published'
     can :read, Article
     can :read, Comment, :status => 'approved'
-    can :read, User, :active? => true
+    can :read, User
 
     if user.persisted?
       can :read, Comment, :user_id => user.id
