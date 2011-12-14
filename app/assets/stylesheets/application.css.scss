@@ -8,7 +8,7 @@
 //******************************************************************************
 $rose: #D65045;
 $gris: #404040;
-$claro: #CCC;
+$claro: #CCCCCC;
 
 
 //******************************************************************************
@@ -262,6 +262,10 @@ select, input[type=file] {
     margin: 10px 10px 11px;
   }
 
+}
+
+.topbar-inner, .topbar .fill {
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0); // IE9 and down
 }
 
 
