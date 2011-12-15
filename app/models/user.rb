@@ -35,7 +35,6 @@ class User < ActiveRecord::Base
                   :alias      => data.username || data.name,
                   :password   => generated_password,
                   :password_confirmation => generated_password,
-                  :confirmed_at => Time.zone.now
               )
       user.fb_userid = data.id
       user.skip_confirmation!
@@ -53,7 +52,6 @@ class User < ActiveRecord::Base
         generated_password = Devise.friendly_token.first(10)
         user.password      = generated_password
         user.password_confirmation = generated_password
-        user.confirmed_at  = Time.zone.now
         user.skip_confirmation!
       end
     end
