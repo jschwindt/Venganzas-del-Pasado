@@ -31,6 +31,8 @@ gem 'cancan'
 
 gem 'table_builder', :git => "git://github.com/p8/table_builder.git"
 
+gem 'memcache-client'
+
 group :development do
   gem 'hirb'
   gem 'wirble'

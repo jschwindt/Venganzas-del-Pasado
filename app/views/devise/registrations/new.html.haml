@@ -27,7 +27,7 @@
           .input
             = f.text_field :alias
             %span.help-block El nombre que los demás usuarios verán.
-        - if session["devise.facebook_data"].blank?
+        - unless resource.has_facebook_profile?
           .clearfix
             = f.label :password
             .input
