@@ -18,21 +18,22 @@
           .input
             = f.text_field :alias
             %span.help-block El nombre que los demás usuarios verán.
-        .clearfix
-          = f.label :password
-          .input
-            = f.password_field :password
-            %span.help-block Dejar en blanco si no se desea cambiar.
-        .clearfix
-          = f.label :password_confirmation
-          .input
-            = f.password_field :password_confirmation
-            %span.help-block Repetir la contraseña de arriba, si deseás cambiar la actual.
-        .clearfix
-          = f.label :current_password
-          .input
-            = f.password_field :current_password
-            %span.help-block Ingresar contraseña actual para guardar cambios.
+        - unless resource.has_facebook_profile?
+          .clearfix
+            = f.label :password
+            .input
+              = f.password_field :password
+              %span.help-block Dejar en blanco si no se desea cambiar.
+          .clearfix
+            = f.label :password_confirmation
+            .input
+              = f.password_field :password_confirmation
+              %span.help-block Repetir la contraseña de arriba, si deseás cambiar la actual.
+          .clearfix
+            = f.label :current_password
+            .input
+              = f.password_field :current_password
+              %span.help-block Ingresar contraseña actual para guardar cambios.
       .actions
         = f.submit "Actualizar", :class => 'btn primary'
         = link_to 'Cancelar', :back, :class => 'btn'

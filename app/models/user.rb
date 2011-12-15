@@ -57,6 +57,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Overrides Devise method to allow non-password updates for Facebook users
+  def update_with_password(params={})
+    if has_facebook_profile?
+      params.delete(:current_password)
+      self.update_without_password(params)
+    else
+      super
+    end
+  end
+
   def ability
     @ability ||= Ability.new(self)
   end
