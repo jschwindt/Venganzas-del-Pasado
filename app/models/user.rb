@@ -24,23 +24,28 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
     if user = User.where('email = ? OR fb_userid = ?', data.email, data.id).first
-      if user.email != data.email
-        user.email = data.email
+      if user.email != data.email || user.fb_userid != data.id
+        user.email     = data.email
+        user.fb_userid = data.id
         user.save!
       end
       user
-    else # Create a user with a stub password.
-      generated_password = Devise.friendly_token.first(10)
-      user = User.new( :email => data.email,
-                  :alias      => data.username || data.name,
-                  :password   => generated_password,
-                  :password_confirmation => generated_password,
-              )
-      user.fb_userid = data.id
-      user.skip_confirmation!
-      user.save
-      user
+    else
+      create_from_facebook data
     end
+  end
+
+  def self.create_from_facebook(fb_data)
+    generated_password = Devise.friendly_token.first(10)
+    user = User.new( :email => fb_data.email,
+                :alias      => fb_data.username || fb_data.name,
+                :password   => generated_password,
+                :password_confirmation => generated_password,
+            )
+    user.fb_userid = fb_data.id
+    user.skip_confirmation!
+    user.save
+    user
   end
 
   def self.new_with_session(params, session)
