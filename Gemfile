@@ -29,6 +29,7 @@ gem 'has_scope'
 gem 'pandoc-ruby'
 gem 'cancan'
 
+gem 'sitemap_generator'
 gem 'table_builder', :git => "git://github.com/p8/table_builder.git"
 
 gem 'memcache-client'

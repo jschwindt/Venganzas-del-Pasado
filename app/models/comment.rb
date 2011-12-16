@@ -9,6 +9,7 @@ class Comment < ActiveRecord::Base
 
   scope :fifo, order('created_at ASC')
   scope :lifo, order('created_at DESC')
+  scope :approved, where( 'status = ?', 'approved' )
 
   def self.approved_or_from_user( user )
     if user

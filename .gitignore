@@ -4,5 +4,6 @@
 config/*.yml
 db/*.sqlite3
 log/*.log
+public/sitemaps/*
 script/*.sh
 tmp/
