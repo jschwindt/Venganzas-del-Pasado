@@ -12,6 +12,8 @@ VenganzasDelPasado::Application.routes.draw do
     :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
   }
   resources :posts, :only => [:index, :show] do
+    get 'page/:page', :action => :index, :on => :collection   # SEO friendly pagination for posts
+    get 'page/:page', :action => :show, :on => :member        # SEO friendly pag. for post's comments
     resources :comments, :only => [:show, :create] do
       member do
         get 'flag'
@@ -49,6 +51,8 @@ VenganzasDelPasado::Application.routes.draw do
         :constraints => { :year => /\d{4}/, :month => /\d{2}/ }
 
   match '/feed' => redirect("/posts.rss")
+
+  match '/descargas' => redirect("/posts/descargas")
 
   root :to => 'home#index'
 

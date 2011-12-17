@@ -15,7 +15,7 @@
 
     .row
       .offset1
-        = paginate @comments, :window => 2, :param_name => 'comments_page'
+        = paginate @comments, :window => 2
 
     - if can? :create, Comment
       %h3 Escribí un comentario
