@@ -13,5 +13,3 @@
           %li
             = link_to "Torrents", torrents_url
             = link_to "(RSS)", torrents_url(:format => :rss)
-          -if current_user.try(:can_admin?)
-            %li=link_to 'Administración', admin_dashboard_path
