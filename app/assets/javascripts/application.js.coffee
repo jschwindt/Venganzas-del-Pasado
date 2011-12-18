@@ -21,4 +21,7 @@ jQuery ->
     return false
 
 window.open_player = (url) ->
-  window.open url, 'player', 'height=75,width=520,status=no,menubar=no,location=no,toolbar=no,scrollbars=no'
+  nw = window.open url, 'player', 'height=185,width=580,status=0,menubar=0,location=0,toolbar=0,scrollbars=0'
+  if window.focus
+    nw.focus()
+  return false

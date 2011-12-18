@@ -32,3 +32,19 @@
 
 
 }
+
+body.popup.audios-show {
+  overflow: hidden;
+  padding: 10px;
+  background: asset-url('redtexture.jpg', image);
+
+  .row {
+    padding: 10px;
+    background: $white;
+    margin-left: 0px;
+
+    .span9 {
+      margin-left: 0px;
+    }
+  }
+}
