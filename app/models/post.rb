@@ -37,20 +37,20 @@ class Post < ActiveRecord::Base
   def self.post_count_by_month
     sql = <<-SQL
     SELECT DISTINCT
-	    YEAR(created_at) "year",
-	    MONTH(created_at) "month",
-	    COUNT(*) AS count
+      YEAR(created_at) "year",
+      MONTH(created_at) "month",
+      COUNT(*) AS count
     FROM
-	    posts
+      posts
     WHERE
-	    status = 'published'
+      status = 'published'
     GROUP BY
-	    year, month
+      year, month
     ORDER BY
-	    year DESC, month DESC
-	  SQL
+      year DESC, month DESC
+    SQL
 
-	  self.find_by_sql(sql)
+    self.find_by_sql(sql)
   end
 
   def creation_date
