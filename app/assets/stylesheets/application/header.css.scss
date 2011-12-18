@@ -3,15 +3,15 @@ header {
   background: asset-url('redtexture.jpg', image);
   $shadow: 0 1px 3px rgba(0,0,0,1), inset 0 -1px 0 rgba(0,0,0,.1);
   @include box-shadow($shadow);
-  
+
   .title-container {
-  
+
     h1{
       display: block;
       font-size: 0;
       height: 100%;
       width: 100%;
-      
+
       a {
         display: block;
         font-size: 0;
@@ -20,7 +20,7 @@ header {
       }
     }
   }
-  
+
   .slogan p {
     font-family: 'EBGaramondRegular', serif;
     color: $black;
@@ -34,15 +34,15 @@ header.home {
 
     background: asset-url('splash.png', image) no-repeat;
     height: 228px;
-  
+
   }
-  
+
   .slogan p {
     font-size: 30px;
     line-height: 36px;
     margin-bottom: 20px;
   }
-  
+
 }
 
 header.internal {
@@ -53,14 +53,14 @@ header.internal {
 
     background: asset-url('splash-small.png', image) no-repeat;
     height: 61px;
-  
+
   }
-  
+
   .slogan p {
     font-size: 22px;
     line-height: 28px;
   }
-  
+
 }
 
 .subheader {

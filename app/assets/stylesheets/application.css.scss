@@ -269,65 +269,7 @@ select, input[type=file] {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0); // IE9 and down
 }
 
-
-//******************************************************************************
-// Sidebars y Widgets
-//******************************************************************************
-.banner-728 {
-  text-align: center;
-  background-color: $gris;
-  padding: 5px;
-}
-
-.banner-468 {
-  text-align: center;
-  padding: $baseline 0px;
-}
-
-#sidebar {
-  font-size: $basefont * 0.75;
-
-  li.divider {
-    display: none;
-  }
-}
-
-.widget {
-  margin-bottom: $baseline;
-
-  .twtr-tweet-text p {
-    font-family: serif;
-    font-size: $basefont * 0.75;
-    color: lighten($gris, 20)
-  }
-
-  .archive.monthly {
-    .months {
-      display: none;
-    }
-  }
-
-  .archive.daily {
-
-    td {
-      font-size: 0.75 * $basefont;
-      padding: 0;
-    }
-
-    th {
-      padding: 0;
-    }
-
-    .notmonth { color: $claro }
-    .future { color: $claro }
-    .today { font-weight: bold; }
-
-  }
-}
-
-
-@import 'layouts/header';
-@import 'layouts/footer';
+@import 'application/*';
 
 @import 'posts';
 @import 'audios';
