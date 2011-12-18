@@ -5,7 +5,24 @@
 
 %h2.fancy-title!= html_page_title
 
-.posts
-  = render :partial => 'torrent', :collection => @torrents
+=render 'layouts/banners/b468x60'
+
+.alert-message.block-message.warning
+  %a{ class: "close", href: "#"}
+    ×
+  %p
+    ¿Estás buscando el Torrent RSS para programarlo en tu cliente BitTorrent favorito?
+    .alert-actions
+      =link_to "Ir al RSS", torrents_url(:format => :rss), class: "btn success small"
+      =link_to "¿Qué es un Torrent?", '/articles/torrent', class: "btn small"
+
+.torrents
+  %table
+    %tbody
+      - @torrents.each do |torrent|
+        %tr
+          %td= torrent.post.title
+          %td= link_to "Ver Post", torrent.post
+          %td= link_to "Descargar", torrent.torrent_url
 
 = paginate @torrents, :window => 2
