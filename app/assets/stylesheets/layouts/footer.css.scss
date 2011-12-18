@@ -21,8 +21,7 @@ footer {
     text-align: right;
   }
 
-  .retrato {
-    float: left;
-    line-height: 0px;
+  .container {
+    background: asset-url('retrato.png', 'image') no-repeat;
   }
 }
