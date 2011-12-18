@@ -7,6 +7,7 @@ Kaminari.configure do |config|
   # config.param_name = :page
 end
 
+# FROM: http://stackoverflow.com/questions/5488064/how-to-force-kaminari-to-always-include-page-param
 module Kaminari
   module Helpers
     class Tag

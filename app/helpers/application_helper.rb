@@ -35,14 +35,6 @@ module ApplicationHelper
     current_page?(action) ? 'active' : 'inactive'
   end
 
-  def stylesheet(*args)
-    content_for(:head) { stylesheet_link_tag(*args) }
-  end
-
-  def javascript(*args)
-    content_for(:head) { javascript_include_tag(*args) }
-  end
-
   def markdown_format(text)
     rndr = Redcarpet::Render::HTML.new(:filter_html => true, :hard_wrap => true)
     markdown = Redcarpet::Markdown.new(

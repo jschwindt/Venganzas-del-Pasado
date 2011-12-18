@@ -7,56 +7,17 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-article = Article.find_or_create_by_title("Markdown")
-article.content = <<-CONTENT
-Markdown es un lenguaje simple para formatear textos. Permite mediante texto plano utilizar de elementos propios de HTML.
+# Carga los artículos que están en db/articles/*. El nombre del archivo pasa a
+# ser el título del artículo.
 
-A continuación encontrarás unos ejemplos básicos. Para mayor información, podés consultar [el sitio de su inventor](http://daringfireball.net/projects/markdown/syntax)
+articles_path = File.join(Rails.root, 'db', 'articles')
+base_pathname = Pathname.new(articles_path)
+Dir[File.join(articles_path, '*')].each do |file|
+  name = Pathname.new(file).relative_path_from(base_pathname).to_s
 
-### Texto y Links
+  article = Article.find_or_create_by_title(name)
+  article.content = IO.read(file)
+  article.save
+  puts "Art. '#{name}' cargado."
+end
 
-`*cursiva*`: *cursiva*
-`_cursiva_`: _cursiva_
-`**negrita**`: **negrita**
-`__negrita__`: __negrita__
-`[Link a VdP](http://venganzasdelpasado.com.ar/)`: [Link a VdP](http://venganzasdelpasado.com.ar/)
-
-Citas:
-`> Cómo será la laguna, que el chancho la cruza al trote`
-
-> Cómo será la laguna, que el chancho la cruza al trote
-
-### Listas
-
-Listas Numeradas:
-`1.  Primer Elemento`
-`2.  Segundo Elemento`
-
-1.  Primer Elemento
-2.  Segundo Elemento
-
-Listas con Viñetas
-`* Un Elemento`
-`* Otro Elemento`
-
-* Un Elemento
-* Otro Elemento
-
-### Encabezados
-
-Los encabezados se inician con <#>:
-
-`# Encabezado 1`
-`## Encabezado 2`
-`### Encabezado 3`
-`#### Encabezado 4`
-`##### Encabezado 5`
-
-# Encabezado 1
-## Encabezado 2
-### Encabezado 3
-#### Encabezado 4
-##### Encabezado 5
-CONTENT
-
-article.save

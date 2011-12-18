@@ -1,6 +1,6 @@
-%li= link_to "El Proyecto", "/articles/el-proyecto"
-%li= link_to "Colaborá", "/articles/colabora"
-%li= link_to "Créditos", "/articles/créditos"
+%li= link_to "El Proyecto", article_path('el-proyecto')
+%li= link_to "Colaborá", article_path('colabora')
+%li= link_to "Créditos", article_path('creditos')
 %li
   = link_to "Torrents", torrents_url
   = link_to "(RSS)", torrents_url(:format => :rss)

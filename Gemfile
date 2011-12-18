@@ -19,7 +19,7 @@ gem 'haml-rails'
 gem 'kaminari'
 gem 'friendly_id', '~> 4.0.0.beta14'
 gem 'sequel'
-gem 'redcarpet', '~> 2.0.0b5'
+gem 'redcarpet'
 gem 'devise'
 gem "omniauth-facebook"
 gem 'sass-rails',   '~> 3.1.5'
