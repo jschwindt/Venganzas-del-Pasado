@@ -1,7 +1,7 @@
 - if params[:day].present?
   - title_part = "Archivo del #{params[:day]}/#{params[:month]}/#{params[:year]}"
 - elsif params[:month].present?
-  - title_part = "Archivo del #{params[:month]}/#{params[:year]}"
+  - title_part = "Archivo de #{Date.new(params[:year].to_i, params[:month].to_i).strftime("%B del año %Y")}"
 - else
   - title_part = "Archivo del año #{params[:year]}"
 
@@ -11,6 +11,8 @@
   - page_title("#{title_part} <small>Página #{params[:page]}</small>")
 
 %h2.fancy-title!= html_page_title
+
+=render 'layouts/banners/b468x60'
 
 .posts
   = render @posts
