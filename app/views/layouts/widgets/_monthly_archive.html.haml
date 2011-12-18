@@ -7,4 +7,4 @@
         %ul.months
           - months.each do |month|
             - date = Date.new month.year, month.month
-            %li.month= link_to "#{date.strftime('%B')} de #{date.year} (#{month.count})", posts_archive_path(year, month.month)
+            %li.month= link_to "#{I18n.t('date.month_names')[date.month]} de #{date.year} (#{month.count})", posts_archive_path(year, month.month)
