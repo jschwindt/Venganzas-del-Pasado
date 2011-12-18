@@ -9,6 +9,9 @@ class Ability
     end
 
     can :read, Post, :status => 'published'
+    can :read, Audio do |audio|
+      audio.post.published?
+    end
     can :read, Article
     can :read, Comment, :status => 'approved'
     can :read, User

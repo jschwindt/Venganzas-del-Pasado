@@ -19,6 +19,7 @@ VenganzasDelPasado::Application.routes.draw do
         get 'flag'
       end
     end
+    resources :audios, :only => :show
   end
 
   resources :users, :only => :show

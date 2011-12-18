@@ -57,6 +57,10 @@ class Post < ActiveRecord::Base
     self.created_at.to_datetime
   end
 
+  def published?
+    self.status == 'published'
+  end
+
   protected
 
     def validate_status

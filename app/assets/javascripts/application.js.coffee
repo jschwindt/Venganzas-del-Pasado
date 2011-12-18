@@ -16,3 +16,9 @@ jQuery ->
     else
       months.slideDown()
     return false
+  $('.open_player').click (event) ->
+    open_player this.href
+    return false
+
+window.open_player = (url) ->
+  window.open url, 'player', 'height=75,width=520,status=no,menubar=no,location=no,toolbar=no,scrollbars=no'

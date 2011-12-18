@@ -9,8 +9,8 @@ module ApplicationHelper
     @page_title
   end
 
-  def body_class
-    "#{controller.controller_name}-#{controller.action_name}"
+  def body_class(klass = nil)
+    "#{controller.controller_name}-#{controller.action_name} #{klass}"
   end
 
   def alert_message_for(object)

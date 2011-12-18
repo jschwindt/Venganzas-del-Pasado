@@ -12,7 +12,7 @@ fork del repositorio y mandando pull requests con alguno de los temas de la wish
 
 * Sitemap.  ✔
 * Redirects del sitio viejo para mantener SEO.  ✔
-* Player en popup de manera de poder seguir escuchando mientras se navega el sitio.
+* Player en popup de manera de poder seguir escuchando mientras se navega el sitio.  ✔
 * Página en Facebook con navegación sencilla que permita escuchar los audios.
 * Limitación del largo de un comentario y la frecuencia (tal vez con lo del karma alcance).
 * RSS feeds de posts ✔, torrents ✔ y, tal vez, comentarios ✘.
@@ -41,4 +41,3 @@ Federico Cingolani https://github.com/fcingolani
 == License
 
 MIT License. Copyright 2011 Juan Pablo Schwindt.
-

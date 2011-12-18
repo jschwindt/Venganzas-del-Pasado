@@ -15,12 +15,15 @@
   .downloads {
 
     span {
-      margin-left: 50px;
+      margin-left: 20px;
 
       small {
-        margin-left: 10px;
         font-size: 0.75em;
         a {font-style: italic;}
+      }
+
+      &.popup {
+        float: right;
       }
 
     }

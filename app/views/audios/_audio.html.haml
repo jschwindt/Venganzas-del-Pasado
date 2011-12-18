@@ -6,3 +6,8 @@
     %span.torrent
       =link_to ".torrent", audio.torrent_url
       %small= link_to "¿Qué es esto?", article_path('torrent')
+    %span.popup
+      =link_to "Abrir Player", post_audio_path(audio.post, audio),
+        :class => 'open_player',
+        :post_id => audio.post.friendly_id,
+        :audio_id => audio.id

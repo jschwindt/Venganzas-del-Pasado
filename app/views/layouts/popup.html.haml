@@ -1,0 +1,20 @@
+- page_title(" - Venganzas del Pasado")
+!!!
+%html
+  %head
+    /[if lt IE 9]
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application"
+    = favicon_link_tag
+    %title= yield :title
+    = csrf_meta_tag
+    %meta{ :name => 'description', :content => 'MP3 de La Venganza Será Terrible de Alejandro Dolina para descargar.'}
+    %meta{ :charset => "utf-8"}
+    - if Rails.env.production?
+      = render 'analytics'
+  %body{ :class => body_class('popup') }
+
+    .row
+      #content.span9
+        = yield
