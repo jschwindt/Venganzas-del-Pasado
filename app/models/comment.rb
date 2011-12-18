@@ -4,6 +4,7 @@ class Comment < ActiveRecord::Base
 
   # Warning: los siguientes son los únicos attributos accesibles con asignación masiva
   attr_accessible :content
+  attr_accessible :status, :as => :admin
 
   validates :content, :presence => true
 
