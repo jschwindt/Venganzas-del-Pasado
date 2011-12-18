@@ -3,6 +3,8 @@
 .post-show
   =render @post
 
+  =render 'layouts/banners/b468x60'
+
   %a{ :name => "comments" }
   %h4 Comentarios (#{@post.comments.approved_or_from_user(current_user).count}):
 
