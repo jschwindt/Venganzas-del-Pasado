@@ -1,9 +1,5 @@
 #sidebar
   .widget
-    %ul
-      = render 'layouts/menus/main_items'
-      = render 'layouts/menus/user_items'
-  .widget
     = render 'layouts/banners/b160x600'
   - cache "posts_archive-#{Post.last.id}", :expires_in => 4.hours do
     .widget
