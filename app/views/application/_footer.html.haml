@@ -1,11 +1,19 @@
 %footer
   .container
     .row
-      .span3
+      .span2.retrato
+        =image_tag('retrato.png')
+      .span7.title
+        Venganzas del Pasado
+      .span4.offset1
         %ul
-          = render 'layouts/menus/about_items'
-      .span3
-        %ul
-          = render 'layouts/menus/main_items'
-      .span3.offset4
-        = render 'layouts/banners/b200x200'
+          %li=link_to 'Inicio', :root
+          %li=link_to 'Acerca de', '/articles/acerca-de-este-sitio'
+          %li
+            = link_to 'Programas Recientes', posts_path
+            = link_to "(RSS)", posts_path(:format => :rss)
+          %li
+            = link_to "Torrents", torrents_url
+            = link_to "(RSS)", torrents_url(:format => :rss)
+          -if current_user.try(:can_admin?)
+            %li=link_to 'Administración', admin_dashboard_path
