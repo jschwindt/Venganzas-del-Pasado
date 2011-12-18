@@ -11,12 +11,12 @@
     = auto_discovery_link_tag :rss, torrents_path(:format => :rss),
       { :title => "Torrent RSS de Venganzas del Pasado" }
     = favicon_link_tag
-
     %title= yield :title
-    = yield :head
     = csrf_meta_tag
     %meta{ :name => 'description', :content => 'MP3 de La Venganza Será Terrible de Alejandro Dolina para descargar.'}
     %meta{ :charset => "utf-8"}
+    - if Rails.env.production?
+      = render 'analytics'
   %body{ :class => body_class }
     .topbar
       .topbar-inner
