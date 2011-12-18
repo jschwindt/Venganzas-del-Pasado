@@ -1,0 +1,5 @@
+Torrent (o mejor dicho: BitTorrent) es un protocolo que permite el intercambio de archivos entre usuarios o "pares" (P2P o *peer to peer* en inglés).
+
+La ventaja de utilizar este protocolo es que el ancho de banda disponible para descargar un archivo se distribuye entre todos los usuarios. Esto hace que el archivo se pueda descargar más rápido y que el servidor no tenga que "gastar" tanto ancho de banda.
+
+Ampliaremos esta información para que sepas cómo utilizar el BitTorrent de VdP, mientras tanto podés informarte en [Wikipedia](http://es.wikipedia.org/wiki/BitTorrent_(protocolo\)).
