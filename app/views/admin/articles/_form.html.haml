@@ -10,6 +10,9 @@
           %small= link_to "Ver original", article, :target => '_blank'
 
     .clearfix
+      %p Podés darle estilo y formato al texto utilizando #{link_to "Markdown", article_path('markdown')}.
+
+    .clearfix
       = f.label :title
       .input
         = f.text_field :title, :class => 'xxlarge'
