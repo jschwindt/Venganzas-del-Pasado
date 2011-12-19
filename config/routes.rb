@@ -55,6 +55,8 @@ VenganzasDelPasado::Application.routes.draw do
 
   match '/descargas' => redirect("/posts/descargas")
 
+  match '/torrent-feed.xml' => redirect("/torrents.rss")
+
   root :to => 'home#index'
 
 
