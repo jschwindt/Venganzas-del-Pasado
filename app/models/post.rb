@@ -81,11 +81,11 @@ class Post < ActiveRecord::Base
   end
 
   def previous
-    Post.lifo.published.where('created_at < ?', self.created_at).limit(1).first
+    Post.lifo.published.where('created_at < ?', self.created_at).first
   end
 
   def next
-    Post.lifo.published.where('created_at > ?', self.created_at).limit(1).first
+    Post.lifo.published.where('created_at > ?', self.created_at).last
   end
 
   protected
