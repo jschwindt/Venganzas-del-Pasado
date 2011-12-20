@@ -45,7 +45,7 @@ VenganzasDelPasado::Application.routes.draw do
 
   #   /2011/12/09/la-venganza-sera-terrible-2011-12-09/ => /posts/la-venganza-sera-terrible-del-28-11-2011
   #   /2011/12/09/                                      => /posts/la-venganza-sera-terrible-del-28-11-2011
-  match '/:year/:month/:day(/:slug)/' =>
+  match '/:year/:month/:day(/:slug)/(:etc)' =>
         redirect("/posts/la-venganza-sera-terrible-del-%{day}-%{month}-%{year}"),
         :constraints => { :year => /\d{4}/, :month => /\d{2}/, :day => /\d{2}/ }
 
@@ -58,6 +58,8 @@ VenganzasDelPasado::Application.routes.draw do
   match '/descargas' => redirect("/posts/descargas")
 
   match '/torrent-feed.xml' => redirect("/torrents.rss")
+
+  match '/page(/:page)/(:etc)' => redirect("/")
 
   root :to => 'home#index'
 
