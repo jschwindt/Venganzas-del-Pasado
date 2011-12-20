@@ -39,6 +39,15 @@
 }
 
 .posts-show {
+
+  .prev-post, .next-post {
+    font-size: 0.75 * $basefont;
+  }
+
+  .next-post {
+    text-align: right;
+  }
+
   .post{
     .date {
       font-size: $basefont;

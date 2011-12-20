@@ -61,6 +61,14 @@ class Post < ActiveRecord::Base
     self.status == 'published'
   end
 
+  def previous
+    Post.lifo.published.where('created_at < ?', self.created_at).limit(1).first
+  end
+
+  def next
+    Post.lifo.published.where('created_at > ?', self.created_at).limit(1).first
+  end
+
   protected
 
     def validate_status
