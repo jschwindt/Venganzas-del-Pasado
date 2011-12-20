@@ -1,0 +1,7 @@
+- Poner link en perfil de usuario que mande a editar el perfil por el admin.
+- Poner link a /articles/markdown en edición de post.
+- Poder eliminar definitivamente comentarios en papelera.
+- Poder aprobar comentarios en papelera.
+- Mandar mail cuando hay comentarios pendientes de moderación.
+- Ver si sirve poner link a "Último programa" para no pasar siempre por "Home".
+- Bug: El perfil de usuario muestra los comentarios en un orden raro, debería ser el más nuevo primero.

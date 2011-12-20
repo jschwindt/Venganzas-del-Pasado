@@ -22,7 +22,9 @@ VenganzasDelPasado::Application.routes.draw do
     resources :audios, :only => :show
   end
 
-  resources :users, :only => :show
+  resources :users, :only => :show do
+    get 'page/:page', :action => :show, :on => :member        # SEO friendly pag. for user's comments
+  end
   resources :articles, :only => :show
   resources :torrents, :only => :index
 

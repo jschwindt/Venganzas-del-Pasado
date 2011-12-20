@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Post < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, :use => :slugged
@@ -51,6 +53,23 @@ class Post < ActiveRecord::Base
     SQL
 
     self.find_by_sql(sql)
+  end
+
+  def self.create_from_audio_file(filename)
+    if File.exists?(filename) && filename =~ /lavenganza_(\d{4})-(\d{2})-(\d{2}).mp3/
+      day, mon, year = $3, $2, $1
+      title = "La venganza será terrible del #{day}/#{mon}/#{year}"
+      post = find_or_create_by_title(title)
+      unless post.persisted?
+        post.created_at = Time.zone.parse('#{year}-#{mon}-#{day} 03:00:00')
+        post.status     = 'published'
+        post.content    = ''
+        audio           = Audio.find_or_initialize_by_url("http://venganzasdelpasado.com.ar/#{year}/lavenganza_#{year}-#{mon}-#{day}.mp3")
+        audio.bytes     = File.size(filename)
+        post.audios << audio
+        post.save!
+      end
+    end
   end
 
   def creation_date
