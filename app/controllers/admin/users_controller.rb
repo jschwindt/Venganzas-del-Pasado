@@ -1,5 +1,6 @@
 module Admin
   class UsersController < BaseController
+    load_and_authorize_resource
     has_scope :has_status
     has_scope :lifo, :type => :boolean, :default => true
 

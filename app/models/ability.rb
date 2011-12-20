@@ -30,7 +30,7 @@ class Ability
       end
 
       if ['moderator','editor'].include? user.role
-        can :manage, Comment
+        can [:read, :approve, :trash], Comment
       end
 
       if ['editor'].include? user.role

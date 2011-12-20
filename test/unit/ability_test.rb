@@ -65,11 +65,11 @@ class AbilityTest < ActiveSupport::TestCase
     assert ability.can?(:flag, Comment.new)
   end
 
-  test "good users can approve comments" do
+  test "good users can approve their comments" do
     user = users(:one)
     user.karma = 600
     ability = Ability.new(user)
-    assert ability.can?(:approve, Comment.new)
+    assert ability.can?(:approve, user.comments.build)
   end
 
   test "user cannot manage all" do

@@ -9,7 +9,7 @@
         %li
           = link_to "Usuarios", admin_users_path
 
-      - if can? :manage, Comment
+      - if can? :approve, Comment
         %li
           = link_to "Comentarios", admin_comments_path
 

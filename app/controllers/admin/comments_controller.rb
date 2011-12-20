@@ -2,6 +2,7 @@
 
 module Admin
   class CommentsController < BaseController
+    load_and_authorize_resource
     has_scope :has_status
     has_scope :lifo, :type => :boolean, :default => true
 
@@ -28,7 +29,7 @@ module Admin
     end
 
     def verify_admin
-      unless current_user.can? :manage, Comment
+      unless current_user.can?(:approve, Comment)
         render '403', :status => 403
       end
     end

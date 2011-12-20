@@ -1,5 +1,6 @@
 module Admin
   class ArticlesController < BaseController
+    load_and_authorize_resource
 
     private
 
