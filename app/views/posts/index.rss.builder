@@ -1,7 +1,7 @@
 xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0" do
   xml.channel do
-    xml.title "Publicaciones Recientes"
+    xml.title "Programas Recientes - Venganzas del Pasado"
     xml.description "Archivos MP3 del programa de radio La Venganza Será Terrible de Alejandro Dolina"
     xml.link posts_path(:rss, :only_path => false)
 
