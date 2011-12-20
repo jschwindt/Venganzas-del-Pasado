@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111206181800) do
+ActiveRecord::Schema.define(:version => 20111220211442) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20111206181800) do
     t.string   "gravatar_hash"
   end
 
+  add_index "comments", ["created_at"], :name => "index_comments_on_created_at"
   add_index "comments", ["post_id", "created_at"], :name => "index_comments_on_post_id_and_created_at"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
@@ -56,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20111206181800) do
     t.datetime "updated_at"
   end
 
+  add_index "posts", ["created_at"], :name => "index_posts_on_created_at"
   add_index "posts", ["slug"], :name => "index_posts_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
