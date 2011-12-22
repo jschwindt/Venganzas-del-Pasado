@@ -4,6 +4,7 @@
 //= require bootstrap-dropdown
 //= require jquery.jplayer
 //= require jplayer
+//= require flash_player
 //= require_self
 
 jQuery ->

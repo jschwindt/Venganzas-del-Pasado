@@ -1,5 +1,8 @@
 .audio
-  = render 'audios/player', :url => audio.url, :id => audio.id
+  - if flash_player?
+    .flash-player{:href => "#{audio.url}"}
+  - else
+    = render 'audios/player', :url => audio.url, :id => audio.id
   .downloads.well
     Descargar MP3:
     %span.direct=link_to "Descarga Directa", audio.url

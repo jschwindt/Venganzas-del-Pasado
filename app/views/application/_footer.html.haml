@@ -13,3 +13,5 @@
           %li
             = link_to "Torrents", torrents_url
             = link_to "(RSS)", torrents_url(:format => :rss)
+          %li
+            = link_to "Usar Player #{flash_player? ? 'HTML5' : 'Flash'}", switch_player_path

@@ -69,4 +69,8 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def flash_player?
+    cookies[:player] == 'flash'
+  end
+
 end

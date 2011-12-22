@@ -57,6 +57,7 @@ VenganzasDelPasado::Application.routes.draw do
 
   match '/page(/:page)/(:etc)' => redirect("/")
 
+  get '/switch_player', :controller => :home, :action => :switch_player
   root :to => 'home#index'
 
 

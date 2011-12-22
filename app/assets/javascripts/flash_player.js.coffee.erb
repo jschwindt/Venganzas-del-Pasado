@@ -1,0 +1,8 @@
+//= require flowplayer-3.2.6.min
+
+jQuery ->
+  flowplayer(".flash-player", "<%= asset_path('flowplayer-3.2.7.swf') %>", {
+    plugins: { controls: { fullscreen: false, height: 40, autoHide: false } },
+    clip: { autoPlay: false } }
+  );
+

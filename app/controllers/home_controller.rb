@@ -5,4 +5,9 @@ class HomeController < ApplicationController
     @comments = Comment.approved_or_from_user(current_user).lifo.limit(VenganzasDelPasado::Application.config.home_comments_count)
   end
 
+  def switch_player
+    cookies.permanent[:player] = cookies[:player] == 'flash' ? 'html5' : 'flash'
+    redirect_to root_path
+  end
+
 end
