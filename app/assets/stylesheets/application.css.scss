@@ -49,6 +49,10 @@ body {
   font-family: $defaultFontFamily;
 }
 
+small {
+  text-shadow: none;
+}
+
 a:hover {
   color: darken($rose, 15);
 }

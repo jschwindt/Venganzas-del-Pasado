@@ -1,9 +1,12 @@
 - if params[:page].nil?
-  - page_title("Torrents de audios de La Venganza será Terrible")
+  - page_title("Torrents de MP3 de La Venganza será Terrible")
 - else
-  - page_title("Torrents de audios de La Venganza será Terrible <small>Página #{params[:page]}</small>")
+  - page_title("Torrents de MP3 de La Venganza será Terrible <small>Página #{params[:page]}</small>")
 
-%h2.fancy-title!= html_page_title
+.ribbon
+  Descargas P2P
+
+%h2.title!= html_page_title
 
 =render 'layouts/banners/b468x60'
 
@@ -11,7 +14,8 @@
   %a{ class: "close", href: "#"}
     ×
   %p
-    ¿Estás buscando el Torrent RSS para programarlo en tu cliente BitTorrent favorito?
+    ¿Estás buscando el RSS de los torrents para agregarlo a tu cliente
+    BitTorrent favorito y automatizar las descargas?
     .alert-actions
       =link_to "Ir al RSS", torrents_url(:format => :rss), class: "btn success small"
       =link_to "¿Qué es un Torrent?", '/articles/torrent', class: "btn small"
@@ -22,7 +26,7 @@
       - @torrents.each do |torrent|
         %tr
           %td= torrent.post.title
-          %td= link_to "Ver Post", torrent.post
+          %td= link_to "Ver Post", torrent.post, :target => '_blank'
           %td= link_to "Descargar", torrent.torrent_url
 
 = paginate @torrents, :window => 2

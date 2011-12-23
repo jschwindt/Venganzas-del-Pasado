@@ -1,9 +1,12 @@
 - page_title("Perfil de #{@user.alias}")
 
+.ribbon
+  Perfil del Usuario
+
 = render @user
 
+%h3 Comentarios Recientes
 .comments
-  %h3 Comentarios Recientes
   = render @comments
 
 %p= paginate @comments
