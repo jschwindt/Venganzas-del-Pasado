@@ -1,0 +1,33 @@
+.topbar {
+  font-size: $basefont * 0.75;
+
+  .brand {
+    display: none;
+  }
+
+  h5 {
+    display: none;
+  }
+
+  .avatar img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: top;
+  }
+
+  .fb {
+    padding-bottom: 0px;
+    padding-top: 8px;
+  }
+
+  .facebook-login-button {
+    padding: 0;
+    margin: 10px 10px 11px;
+  }
+
+}
+
+.topbar-inner, .topbar .fill {
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0); // IE9 and down
+}

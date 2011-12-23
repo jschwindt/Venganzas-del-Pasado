@@ -14,11 +14,14 @@ footer {
   }
 
   .title {
+    font-family: 'EBGaramondRegular', serif;
     color: lighten($gris, 10);
     text-transform: uppercase;
     font-size: $basefont * 4;
     line-height: $baseline * 2;
     text-align: right;
+    text-shadow: none;
+    border: none;
   }
 
   .container {

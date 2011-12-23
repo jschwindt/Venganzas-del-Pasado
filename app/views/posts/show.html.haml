@@ -1,7 +1,7 @@
 - page_title(@post.title)
 
 
-.row
+.row.post-nav
   - if prev_post = @post.previous
     .span4.prev-post= link_to "← #{prev_post.title}", prev_post
   - if next_post = @post.next

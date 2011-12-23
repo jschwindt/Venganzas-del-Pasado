@@ -20,6 +20,17 @@
 .widget {
   margin-bottom: $baseline;
 
+  .ribbon {
+    background: $gris;
+    padding: $baseline*0.25 $gridGutterWidth;
+    $shadow: 0 1px 3px rgba(0,0,0,1), inset 0 -1px 0 rgba(0,0,0,.1);
+    @include box-shadow($shadow);
+    font-family: $defaultFontFamily;
+    font-weight: normal;
+    font-size: $basefont;
+    text-shadow: none;
+  }
+
   .twtr-tweet-text p {
     font-family: serif;
     font-size: $basefont * 0.75;

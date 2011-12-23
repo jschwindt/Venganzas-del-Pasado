@@ -1,11 +1,7 @@
 .post {
-  margin-bottom: $baseline;
-
-  .date {
-    font-size: $basefont * 0.75;
-    font-style: italic;
-    color: $claro;
-  }
+  margin-bottom: $baseline*2;
+  padding-bottom: $baseline;
+  border-bottom: 1px solid $gris;
 
   .audios {
     .audio {
@@ -36,35 +32,49 @@
 
   }
 
+  .meta {
+    color: $gris;
+    font-size: 0.75 * $basefont;
+
+    > span {
+      margin-right: 20px;
+    }
+
+    .date {
+      font-style: italic;
+    }
+
+    .share {
+      float: right;
+      margin-right: 0;
+
+      .facebook-share {
+        iframe { width: 75px; }
+      }
+    }
+  }
+
 }
 
 .posts-show {
 
-  .prev-post, .next-post {
-    font-size: 0.75 * $basefont;
-  }
+  .post-nav {
+    margin-bottom: $baseline;
 
-  .next-post {
-    text-align: right;
+    .prev-post, .next-post {
+      font-size: 0.75 * $basefont;
+    }
+
+    .next-post {
+      text-align: right;
+    }
+
   }
 
   .post{
-    .date {
-      font-size: $basefont;
-    }
-    h3.post-title {
-      font-family: 'EBGaramondRegular', serif;
-      font-size: $basefont * 3;
-      line-height: $baseline * 2;
-
-      a {
-        color: $gris;
-      }
-    }
-
-    .meta .comments {
-      display: none;
-    }
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
   }
 
   .comment .where {

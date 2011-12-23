@@ -1,5 +1,5 @@
 .archive.daily
-  %h3 Programas de #{I18n.t('date.month_names')[Date.today.month]}
+  %h3.ribbon Programas de #{I18n.t('date.month_names')[Date.today.month]}
   = calendar_for Post.published.this_month.all, :year => Date.today.year, :month => Date.today.month do |calendar|
     = calendar.head('D', 'L', 'M', 'X', 'J', 'V', 'S')
     - calendar.day(:day_method => :creation_date) do |date, posts|

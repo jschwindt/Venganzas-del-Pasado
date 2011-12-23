@@ -1,15 +1,19 @@
 .post
 
-  .date
-    = post.created_at.strftime('%d de %B')
-
   %h3.title
     = link_to post.title, post
 
-  %p.share
-    Compartir este post:
-    %span.twitter-share= tweet_button_for post
-    %span.facebook-share= fb_like_button_for post
+  %p.meta
+    %span.date
+      #{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i]} de #{post.created_at.year}
+    %span.comments
+      Comentarios:
+      = link_to post.comments.approved_or_from_user(current_user).count, post_path(post, :anchor => "comments")
+    - if can? :update, post
+      %span.edit= link_to "Editar", edit_admin_post_path(post)
+    %span.share
+      %span.twitter-share= tweet_button_for post
+      %span.facebook-share= fb_like_button_for post
 
   .audios
     = render post.audios
@@ -17,16 +21,3 @@
   .content
     - if post.content?
       = markdown_format post.content
-    - else
-      Aún no hay información disponible sobre este programa.
-      - if can? :update, post
-        Colaborá con la comunidad
-        = link_to "editándolo", edit_admin_post_path(post)
-
-  %p.meta
-    %span.comments
-      Comentarios:
-      = link_to post.comments.approved_or_from_user(current_user).count, post_path(post, :anchor => "comments")
-    %span.permalink=link_to "Permalink", post
-    - if can? :update, post
-      %span.edit= link_to "Editar", edit_admin_post_path(post)

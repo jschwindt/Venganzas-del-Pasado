@@ -39,41 +39,14 @@ $baseline: 24px;
 
 @import "jplayer-skin/jplayer.vdp";
 
-//******************************************************************************
-// Tipografía
-//******************************************************************************
-@font-face {
-    font-family: 'EBGaramondRegular';
-    src: font-url('eb-garamond-fontfacekit/EBGaramond-webfont.eot');
-    src: font-url('eb-garamond-fontfacekit/EBGaramond-webfont.eot?#iefix') format('embedded-opentype'),
-         font-url('eb-garamond-fontfacekit/EBGaramond-webfont.woff') format('woff'),
-         font-url('eb-garamond-fontfacekit/EBGaramond-webfont.ttf') format('truetype'),
-         font-url('eb-garamond-fontfacekit/EBGaramond-webfont.svg#EBGaramondRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'EBGaramondSC';
-    src: font-url('eb-garamond-fontfacekit/EBGaramondSC-webfont.eot');
-    src: font-url('eb-garamond-fontfacekit/EBGaramondSC-webfont.eot?#iefix') format('embedded-opentype'),
-         font-url('eb-garamond-fontfacekit/EBGaramondSC-webfont.woff') format('woff'),
-         font-url('eb-garamond-fontfacekit/EBGaramondSC-webfont.ttf') format('truetype'),
-         font-url('eb-garamond-fontfacekit/EBGaramondSC-webfont.svg#EBGaramondSC') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
 
 //******************************************************************************
 // General
 //******************************************************************************
-body {
-  font-family: serif;
-}
+$defaultFontFamily: Georgia, Georgia, serif;
 
-h4 {
-  margin-bottom: $baseline;
+body {
+  font-family: $defaultFontFamily;
 }
 
 a:hover {
@@ -82,23 +55,6 @@ a:hover {
 
 .main {
   padding-top: $baseline;
-}
-
-.fancy-title {
-  font-family: 'EBGaramondRegular', serif;
-  font-size: $basefont * 3;
-  margin-bottom: $baseline;
-  text-shadow: $claro 1px 2px;
-
-  a {
-    color: $rose;
-  }
-
-  small {
-    font-size: $basefont * 2;
-    color: $claro;
-    text-shadow: none;
-  }
 }
 
 .pagination {
@@ -127,7 +83,7 @@ a:hover {
 
 
 .btn {
-  font-family: inherit;
+  font-family: $defaultFontFamily;
   @include gradientBar($claro, darken($claro, 10));
 
   &.primary {
@@ -178,26 +134,6 @@ fieldset {
   }
 }
 
-
-
-.title {
-  font-size: $basefont * 2;
-  line-height: $baseline;
-  font-family: 'EBGaramondRegular', serif;
-  margin-bottom: $baseline;
-}
-
-
-
-.meta {
-  border-top: 1px $claro solid;
-  font-size: 0.75 * $basefont;
-
-  > span {
-    margin-right: 20px;
-  }
-}
-
 legend {
   small {
     font-size: $basefont * 0.75;
@@ -220,54 +156,80 @@ select, input[type=file] {
 
 }
 
-.share {
-  vertical-align: top;
-
-  .twitter-share {
-    margin-left: 20px;
-  }
-
-  .facebook-share {
-    iframe { width: 120px; }
-  }
-}
 
 //******************************************************************************
-// Top Bar
+// Títulos
 //******************************************************************************
-.topbar {
-  font-size: $basefont * 0.75;
 
-  .brand {
-    display: none;
-  }
-
-  h5 {
-    display: none;
-  }
-
-  .avatar img {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-    vertical-align: top;
-  }
-
-  .fb {
-    padding-bottom: 0px;
-    padding-top: 8px;
-  }
-
-  .facebook-login-button {
-    padding: 0;
-    margin: 10px 10px 11px;
-  }
-
+h4 {
+  margin-bottom: $baseline;
 }
 
-.topbar-inner, .topbar .fill {
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#222222', GradientType=0); // IE9 and down
+.title {
+  font-size: $basefont * 2;
+  line-height: $baseline * 1.75;
+  font-family: 'TrajanProRegular', serif;
+  text-shadow: $claro 1px 2px;
+  border-bottom: 1px $claro solid;
+  margin-bottom: $baseline * 0.25;
+  padding-bottom: $baseline * 0.25;
 }
+
+.ribbon {
+  position: relative;
+  color: #fff;
+  margin: 0 $gridGutterWidth*-1 $gridGutterWidth $gridGutterWidth*-1;
+  background: asset-url('redtexture.jpg', image);
+  padding: $baseline*0.5 $gridGutterWidth;
+  $shadow: 0 1px 3px rgba(0,0,0,1), inset 0 -1px 0 rgba(0,0,0,.1);
+  @include box-shadow($shadow);
+  text-shadow: $gris 1px 1px;
+  font-family: 'EBGaramondRegular', serif;
+  font-size: $basefont * 1.25;
+  line-height: $baseline;
+
+   &:before, &:after
+    {
+        content: '';
+        position: absolute;
+        border-style: solid;
+        border-color: transparent;
+        bottom: -10px;
+    }
+
+    &:before
+    {
+        border-width: 0 10px 10px 0;
+        border-right-color: #222;
+        left: 0;
+    }
+
+    &:after
+    {
+        border-width: 0 0 10px 10px;
+        border-left-color: #222;
+        right: 0;
+    }
+}
+
+.fancy-title {
+  font-family: 'EBGaramondRegular', serif;
+  font-weight: regular;
+  font-size: $basefont * 3;
+  margin-bottom: $baseline;
+  text-shadow: $claro 1px 2px;
+
+  a {
+    color: $rose;
+  }
+
+  small {
+    font-size: $basefont * 2;
+    color: $claro;
+    text-shadow: none;
+  }
+}
+
 
 @import 'application/*';
 
