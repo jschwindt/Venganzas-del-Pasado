@@ -6,7 +6,8 @@
       .span4.offset1
         %ul
           %li=link_to 'Inicio', :root
-          %li=link_to 'Acerca de', '/articles/acerca-de-este-sitio'
+          %li=link_to 'Ayuda', article_path('ayuda')
+          %li=link_to 'Acerca de VdP', article_path('acerca-de-este-sitio')
           %li
             = link_to 'Programas Recientes', posts_path
             = link_to "(RSS)", posts_path(:format => :rss)
