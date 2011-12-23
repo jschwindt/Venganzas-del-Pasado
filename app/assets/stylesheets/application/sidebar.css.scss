@@ -15,10 +15,6 @@
   li.divider {
     display: none;
   }
-}
-
-.widget {
-  margin-bottom: $baseline;
 
   .ribbon {
     background: $gris;
@@ -30,6 +26,10 @@
     font-size: $basefont;
     text-shadow: none;
   }
+}
+
+.widget {
+  margin-bottom: $baseline;
 
   .twtr-tweet-text p {
     font-family: serif;

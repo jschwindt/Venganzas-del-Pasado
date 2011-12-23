@@ -1,6 +1,7 @@
 #sidebar
   -if user_signed_in?
     .widget
+      %h3.ribbon= current_user.alias
       %ul
         = render 'layouts/menus/user_items'
   .widget
@@ -10,6 +11,7 @@
       = render 'layouts/widgets/daily_archive'
     .widget
       = render 'layouts/widgets/monthly_archive'
+  %h3.ribbon Seguí a Venganzas del Pasado
   .widget
     = render 'layouts/widgets/facebook'
   .widget
