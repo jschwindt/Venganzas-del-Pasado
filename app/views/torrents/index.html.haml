@@ -18,7 +18,7 @@
     BitTorrent favorito y automatizar las descargas?
     .alert-actions
       =link_to "Ir al RSS", torrents_url(:format => :rss), class: "btn success small"
-      =link_to "¿Qué es un Torrent?", '/articles/torrent', class: "btn small"
+      =link_to "¿Qué es un Torrent?", article_path('torrent'), class: "btn small"
 
 .torrents
   %table
