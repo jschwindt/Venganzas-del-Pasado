@@ -1,9 +1,15 @@
-%h2 Resend unlock instructions
+- page_title('Reenviá las Instrucciones de Desbloqueo')
+
+.ribbon
+  ¿Problemas para iniciar sesión?
+
+%h2.title= html_page_title
+
 = form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f|
   = devise_error_messages!
   %p
     = f.label :email
     %br/
     = f.text_field :email
-  %p= f.submit "Resend unlock instructions"
+  %p= f.submit "Reenviar instrucciones"
 = render "devise/shared/links"

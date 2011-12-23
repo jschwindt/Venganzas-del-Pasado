@@ -1,6 +1,9 @@
-- page_title('Registración')
+- page_title('Registrate en Venganzas del Pasado')
 
-%h2.fancy-title= html_page_title
+.ribbon
+  Participá en la comunidad
+
+%h2.title= html_page_title
 
 %p
   Si tenés una cuenta en #{link_to "Facebook", 'http://facebook.com'} podés registrarte fácilmente haciendo click en el siguiente botón:
@@ -38,5 +41,5 @@
               = f.password_field :password_confirmation
               %span.help-block Repetí la contraseña de arriba.
       .actions
-        = f.submit "Registrarse", :class => 'btn primary'
+        = f.submit "Crear Cuenta", :class => 'btn primary'
   = render "devise/shared/links"
