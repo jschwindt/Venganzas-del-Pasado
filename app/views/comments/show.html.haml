@@ -1,6 +1,7 @@
 - page_title("Comentario ##{@comment.id} de #{link_to @post.title, @post}")
 
-%h2.fancy-title!= html_page_title
+%h1.title!= link_to @post.title, @post
+%h2.title!= "Comentario ##{@comment.id}"
 
 .post-show
   =render @comment
