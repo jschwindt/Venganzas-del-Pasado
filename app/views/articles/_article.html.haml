@@ -3,10 +3,9 @@
   %h3.title
     = link_to article.title, article
 
-  .content
-    = markdown_format article.content
-
   %p.meta
-    %span.permalink=link_to "Permalink", article
     - if can? :update, article
       %span.edit= link_to "Editar", edit_admin_article_path(article)
+
+  .content
+    = markdown_format article.content
