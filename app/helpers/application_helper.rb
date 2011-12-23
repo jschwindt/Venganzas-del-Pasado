@@ -2,7 +2,10 @@ module ApplicationHelper
 
   def page_title( page_title )
     @page_title = page_title
-    content_for(:title) { strip_tags(@page_title) }
+    full_title = ''
+    full_title = "#{page_title} - " if page_title.present?
+    full_title += "Venganzas del Pasado"
+    content_for(:title) { strip_tags(full_title) }
   end
 
   def html_page_title
