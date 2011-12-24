@@ -3,23 +3,17 @@
 = form_for [:admin, article], :html => { :class => 'form-stacked' } do |f|
   %fieldset
 
-    - if article.persisted?
-      %legend
-        Editando Artículo ##{article.id}
-        - if article.persisted?
-          %small= link_to "Ver original", article, :target => '_blank'
-
     .clearfix
       %p Podés darle estilo y formato al texto utilizando #{link_to "Markdown", article_path('markdown'), :target => '_blank' }.
 
     .clearfix
       = f.label :title
       .input
-        = f.text_field :title, :class => 'xxlarge'
+        = f.text_field :title, :class => 'adjusted'
     .clearfix
       = f.label :content
       .input
-        = f.text_area :content, :class => 'xxlarge'
+        = f.text_area :content, :class => 'adjusted'
 
     .actions
       = f.submit ( article.new_record? ? 'Publicar' : 'Guardar' ), :class => 'btn primary'

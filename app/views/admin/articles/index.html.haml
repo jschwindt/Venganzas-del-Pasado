@@ -1,8 +1,10 @@
-- page_title("Administración de Artículos")
+- page_title("Listado de Artículos")
 
-%h2.fancy-title= html_page_title
+.ribbon Administración de Artículos
 
 = render 'pills'
+
+%h2.title= html_page_title
 
 - if @articles.empty?
   %p No se han encontrado artículos
