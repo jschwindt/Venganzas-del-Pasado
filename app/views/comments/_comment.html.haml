@@ -14,7 +14,7 @@
           = link_to comment.post.title, comment.post
         dijo:
     .content
-      = markdown_format comment.content
+      = replace_smileys(markdown_format(comment.content))
     %p.meta
       - if comment.deleted?
         %span.deleted Eliminado
