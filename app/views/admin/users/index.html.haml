@@ -1,8 +1,10 @@
-- page_title("Administración de Usuarios")
+- page_title("Listado de Usuarios")
 
-%h2.fancy-title= html_page_title
+.ribbon Administración de Usuarios
 
 = render 'pills'
+
+%h2.title= html_page_title
 
 - if @users.empty?
   %p No se han encontrado usuarios

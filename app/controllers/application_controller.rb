@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  helper :smilies
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
     render '404', :status => 404

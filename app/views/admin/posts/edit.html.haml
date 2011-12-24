@@ -1,7 +1,11 @@
 - page_title("Editando Post")
 
-%h2.fancy-title Administración de Posts
+.ribbon Administración de Posts
 
 = render 'pills'
+
+%h2.title
+  Editando Post ##{@article.id}
+  %small= link_to "Ver original", @article, :target => '_blank'
 
 = render 'form', :post => @post

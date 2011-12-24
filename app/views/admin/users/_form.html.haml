@@ -3,12 +3,6 @@
 = form_for [:admin, user] do |f|
   %fieldset
 
-    - if user.persisted?
-      %legend
-        Editando user ##{user.id}
-        - if user.persisted?
-          %small= link_to "Ver perfil", user, :target => '_blank'
-
     .clearfix
       = f.label :alias
       .input

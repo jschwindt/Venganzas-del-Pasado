@@ -1,7 +1,9 @@
-- page_title("Crear nuevo Artículo")
+- page_title("Nuevo Artículo")
 
-%h2.fancy-title Administración de Artículos
+.ribbon Administración de Artículos
 
 = render 'pills'
+
+%h2.title= html_page_title
 
 = render 'form', :article => @article

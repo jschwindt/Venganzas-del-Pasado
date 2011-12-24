@@ -3,12 +3,6 @@
 = form_for [:admin, post], :html => { :class => 'form-stacked' } do |f|
   %fieldset
 
-    - if post.persisted?
-      %legend
-        Editando Post ##{post.id}
-        - if post.persisted?
-          %small= link_to "Ver original", post, :target => '_blank'
-
     .clearfix
       %p Podés darle estilo y formato al texto utilizando #{link_to "Markdown", article_path('markdown'), :target => '_blank' }.
 

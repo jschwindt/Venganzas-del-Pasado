@@ -1,0 +1,73 @@
+.smiley {
+  height: 15px;
+  width: 15px;
+  font-size: 0em;
+  display: inline-block;
+
+  &.mrgreen{
+    background: asset-url('smilies/icon_mrgreen.gif', image) no-repeat;
+  }
+  &.neutral{
+    background: asset-url('smilies/icon_neutral.gif', image) no-repeat;
+  }
+  &.twisted{
+    background: asset-url('smilies/icon_twisted.gif', image) no-repeat;
+  }
+  &.arrow{
+    background: asset-url('smilies/icon_arrow.gif', image) no-repeat;
+  }
+  &.eek{
+    background: asset-url('smilies/icon_eek.gif', image) no-repeat;
+  }
+  &.smile{
+    background: asset-url('smilies/icon_smile.gif', image) no-repeat;
+  }
+  &.confused{
+    background: asset-url('smilies/icon_confused.gif', image) no-repeat;
+  }
+  &.cool{
+    background: asset-url('smilies/icon_cool.gif', image) no-repeat;
+  }
+  &.evil{
+    background: asset-url('smilies/icon_evil.gif', image) no-repeat;
+  }
+  &.biggrin{
+    background: asset-url('smilies/icon_biggrin.gif', image) no-repeat;
+  }
+  &.idea{
+    background: asset-url('smilies/icon_idea.gif', image) no-repeat;
+  }
+  &.redface{
+    background: asset-url('smilies/icon_redface.gif', image) no-repeat;
+  }
+  &.razz{
+    background: asset-url('smilies/icon_razz.gif', image) no-repeat;
+  }
+  &.rolleyes{
+    background: asset-url('smilies/icon_rolleyes.gif', image) no-repeat;
+  }
+  &.wink{
+    background: asset-url('smilies/icon_wink.gif', image) no-repeat;
+  }
+  &.cry{
+    background: asset-url('smilies/icon_cry.gif', image) no-repeat;
+  }
+  &.surprised{
+    background: asset-url('smilies/icon_surprised.gif', image) no-repeat;
+  }
+  &.lol{
+    background: asset-url('smilies/icon_lol.gif', image) no-repeat;
+  }
+  &.mad{
+    background: asset-url('smilies/icon_mad.gif', image) no-repeat;
+  }
+  &.sad{
+    background: asset-url('smilies/icon_sad.gif', image) no-repeat;
+  }
+  &.exclaim{
+    background: asset-url('smilies/icon_exclaim.gif', image) no-repeat;
+  }
+  &.question{
+    background: asset-url('smilies/icon_question.gif', image) no-repeat;
+  }
+}
