@@ -1,8 +1,10 @@
-- page_title("Administración de Posts")
+- page_title("Listado de Posts")
 
-%h2.fancy-title= html_page_title
+.ribbon Administración de Posts
 
 = render 'pills'
+
+%h2.title= html_page_title
 
 - if @posts.empty?
   %p No se han encontrado posts

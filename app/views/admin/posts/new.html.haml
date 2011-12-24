@@ -1,7 +1,9 @@
-- page_title("Crear nuevo Post")
+- page_title("Nuevo Post")
 
-%h2.fancy-title Administración de Posts
+.ribbon Administración de Posts
 
 = render 'pills'
+
+%h2.title= html_page_title
 
 = render 'form', :post => @post
