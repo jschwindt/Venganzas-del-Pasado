@@ -25,7 +25,7 @@ footer {
   }
 
   .container {
-    background: asset-url('retrato.png', 'image') no-repeat;
+    background: asset-url('retrato.png', 'image') no-repeat left bottom;
     padding-bottom: 10px;
   }
 }
