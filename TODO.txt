@@ -1,2 +1,1 @@
-- Mandar mail cuando hay comentarios pendientes de moderación.
 - Ver si sirve poner link a "Último programa" para no pasar siempre por "Home".
