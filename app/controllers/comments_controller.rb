@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
       flash[:notice] = "Tu comentario ha sido publicado."
     else
       flash[:notice] = "Tu comentario se ha guardado, y está pendiente de aprobación."
+      CommentMailer.modetation_needed(c).deliver
     end
 
     redirect_to "#{post_path(@post)}#comment#{@comment.id}"
