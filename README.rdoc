@@ -1,7 +1,6 @@
 == Venganzas del Pasado
 
-Este es el futuro sitio de Venganzas del Pasado (http://venganzasdelpasado.com.ar)
-y que va a reemplazar al actual WordPress
+Este es el sitio actual de Venganzas del Pasado (http://venganzasdelpasado.com.ar) que reemplaza al anterior hecho con WordPress.
 
 == Desarrollo
 
