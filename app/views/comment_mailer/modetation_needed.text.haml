@@ -1,12 +1,11 @@
-%p
-  Hay un nuevo comentario para moderar:
+Hay un nuevo comentario para moderar
+De: #{@comment.author}, #{user_url(@comment.user)}
+En: #{@comment.post.title}, #{post_url(@comment.post)}
 
-%p
-  = link_to @comment.author, user_url(@comment.user)
-  en #{link_to @comment.post.title, post_url(@comment.post)} dijo:
-.content
-  = @comment.content
+Comentario:
+\---------------------------------------------------------------------
+#{@comment.content}
+\---------------------------------------------------------------------
 
-%p
-  %span.approve=link_to "Aprobar", approve_admin_comment_url(@comment)
-  %span.delete=link_to "Eliminar", trash_admin_comment_url(@comment)
+Aprobar: #{approve_admin_comment_url(@comment)}
+Eliminar: #{trash_admin_comment_url(@comment)}
