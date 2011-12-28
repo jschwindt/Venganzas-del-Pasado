@@ -17,7 +17,7 @@ end
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'kaminari'
-gem 'friendly_id', '~> 4.0.0.rc2'
+gem 'friendly_id', '~> 4.0.0'
 gem 'sequel'
 gem 'redcarpet'
 gem 'devise'
