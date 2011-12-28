@@ -1,6 +1,13 @@
-# See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
-#
-# To ban all spiders from the entire site uncomment the next two lines:
-# User-Agent: *
-# Disallow: /
+User-agent: *
+Disallow: /assets/
+Disallow: /images/
+Disallow: /1998/
+Disallow: /2001/
+Disallow: /2007/
+Disallow: /2008/
+Disallow: /2009/
+Disallow: /2010/
+Disallow: /2011/
+Disallow: /2012/
+
 Sitemap: http:/venganzasdelpasado.com.ar/sitemaps/sitemap_index.xml.gz
