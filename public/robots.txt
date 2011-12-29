@@ -1,6 +1,5 @@
 User-agent: *
 Disallow: /assets/
-Disallow: /images/
 Disallow: /1998/
 Disallow: /2001/
 Disallow: /2007/
