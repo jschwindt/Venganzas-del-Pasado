@@ -1,4 +1,9 @@
 #sidebar
+  .widget
+    %h3.ribbon Buscador
+    = form_tag search_path(what: 'posts'), method: 'get' do
+      = text_field_tag :q, params[:q], placeholder: 'Ingresá el texto que buscás'
+      = submit_tag "Buscar", class: 'btn default'
   -if user_signed_in?
     .widget
       %h3.ribbon= current_user.alias

@@ -57,4 +57,11 @@ class Comment < ActiveRecord::Base
     self.status == 'flagged'
   end
 
+  define_index do
+    indexes content
+    indexex author
+    has created_at
+    where "status = 'approved'"
+  end
+
 end

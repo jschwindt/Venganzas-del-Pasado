@@ -2,8 +2,10 @@
 .bundle
 .pt
 config/*.yml
+config/*.conf
 db/*.sqlite3
-log/*.log
+db/sphinx/
+log/
 public/sitemaps/*
 script/*.sh
 tmp/
