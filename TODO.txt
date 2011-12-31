@@ -1,1 +1,3 @@
+- Agregar Buscador.
+- Hacer mejoras de SEO.
 - Ver si sirve poner link a "Último programa" para no pasar siempre por "Home".
