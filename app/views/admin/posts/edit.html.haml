@@ -5,7 +5,7 @@
 = render 'pills'
 
 %h2.title
-  Editando Post ##{@article.id}
-  %small= link_to "Ver original", @article, :target => '_blank'
+  Editando Post ##{@post.id}
+  %small= link_to "Ver original", @post, :target => '_blank'
 
 = render 'form', :post => @post
