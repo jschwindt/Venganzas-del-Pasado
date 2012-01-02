@@ -1,5 +1,7 @@
-- page_title(@post.title)
-
+- if params[:page].nil?
+  - page_title(@post.title)
+- else
+  - page_title(@post.title + " - Página #{params[:page]} de comentarios")
 
 .row.post-nav
   - if prev_post = @post.previous
