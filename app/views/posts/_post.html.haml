@@ -2,7 +2,7 @@
 
   %header
     %h1.title{:itemprop=>'name'}
-      = link_to post.title, post, :itemprop => 'url'
+      = link_to post.title, post, :itemprop => 'url', :rel => 'bookmark'
 
   %footer.meta
     %span.date
