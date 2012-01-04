@@ -1,11 +1,13 @@
-.post
+%article.post{:id=>"post-#{post.id}"}
 
-  %h3.title
-    = link_to post.title, post
+  %header
+    %h1.title
+      = link_to post.title, post
 
-  %p.meta
+  %footer.meta
     %span.date
-      #{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i]} de #{post.created_at.year}
+      %time{:pubdate=>true, :datetime=>post.created_at.xmlschema}
+        #{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i]} de #{post.created_at.year}
     %span.comments
       Comentarios:
       = link_to post.comments.approved_or_from_user(current_user).count, post_path(post, :anchor => "comments")
@@ -21,3 +23,29 @@
   .content
     - if post.content?
       = markdown_format post.content
+
+  - if defined? comments
+
+    =render 'layouts/banners/b468x60'
+
+    %section.comments
+      %a{ :name => "comments" }
+      %h1.ribbon Comentarios (#{@post.comments.approved_or_from_user(current_user).count}):
+
+      - if comments.count > 0
+        = render comments
+      - else
+        %p
+          No hay comentarios. ¡Podés ser el primero en comentar!
+
+      .row
+        .offset1
+          = paginate comments, :window => 2
+
+      - if can? :create, Comment
+        %h2 Escribí un comentario
+        = render 'comments/form', :post => @post, :comment => @post.comments.build
+      - else
+        .row
+          .offset1
+            Tenés que #{link_to "iniciar sesión", new_user_session_path} para comentar.

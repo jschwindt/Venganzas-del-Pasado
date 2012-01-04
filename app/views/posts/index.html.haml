@@ -3,12 +3,9 @@
 - else
   - page_title("Programas de La Venganza será Terrible <small>Página #{params[:page]}</small>")
 
-%h2.ribbon!= html_page_title
-
-.posts
+%section.posts
+  %h1.ribbon!= html_page_title
+  =render 'layouts/banners/b468x60'
   = render @posts
 
 = paginate @posts, :window => 2
-
-=render 'layouts/banners/b468x60'
-

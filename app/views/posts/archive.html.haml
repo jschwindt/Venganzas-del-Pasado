@@ -10,11 +10,9 @@
 - else
   - page_title("#{title_part} <small>Página #{params[:page]}</small>")
 
-%h2.ribbon!= html_page_title
-
-=render 'layouts/banners/b468x60'
-
-.posts
+%section.posts
+  %h1.ribbon!= html_page_title
+  =render 'layouts/banners/b468x60'
   = render @posts
 
 = paginate @posts, :window => 2

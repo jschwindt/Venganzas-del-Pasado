@@ -1,4 +1,4 @@
-footer {
+body > footer {
   background: $gris;
   $shadow: 0 1px 3px rgba(0,0,0,.50), inset 0 -1px 0 rgba(0,0,0,.1);
   @include box-shadow($shadow);
