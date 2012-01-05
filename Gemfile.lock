@@ -55,6 +55,8 @@ GEM
       orm_adapter (~> 0.0.3)
       warden (~> 1.1)
     erubis (2.7.0)
+    exceptional (2.0.32)
+      rack
     execjs (1.2.13)
       multi_json (~> 1.0)
     faraday (0.7.5)
@@ -192,6 +194,7 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 3.1.1)
   devise
+  exceptional
   friendly_id (~> 4.0.0)
   haml-rails
   has_scope

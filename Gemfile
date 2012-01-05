@@ -49,3 +49,5 @@ group :test do
   gem 'shoulda'
   gem 'shoulda-matchers'
 end
+
+gem 'exceptional'
