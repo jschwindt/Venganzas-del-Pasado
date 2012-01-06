@@ -1,6 +1,7 @@
 .comment {
   margin-bottom: $baseline * 0.5;
   padding-top: $baseline * 0.5;
+  overflow: hidden;
 
   .author {
     small {
