@@ -88,9 +88,11 @@ common: &common
     U+1EF9->y"
 
 development:
+  sql_range_step: 10000000
   <<: *common
 
 test:
+  sql_range_step: 10000000
   <<: *common
 
 production:

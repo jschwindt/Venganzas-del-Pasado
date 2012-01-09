@@ -9,7 +9,7 @@ one:
   content: comentario 1
 
 two:
-  post: one
+  post: two
   content: comentario 2
 
 approved:
@@ -18,6 +18,6 @@ approved:
   status: approved
 
 pending:
-  post: pending
+  post: two
   content: comentario pendiente de aprobación
   status: pending
