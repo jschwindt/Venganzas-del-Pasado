@@ -27,10 +27,10 @@ class Post < ActiveRecord::Base
         date = date.change( :day => day.to_i )
         range_date = date.beginning_of_day..date.end_of_day
       else
-        range_date = date.beginning_of_month..date.end_of_month
+        range_date = date.beginning_of_month.beginning_of_day..date.end_of_month.end_of_day
       end
     else
-      range_date = date.beginning_of_year..date.end_of_year
+      range_date = date.beginning_of_year.beginning_of_day..date.end_of_year.end_of_day
     end
 
     where(:created_at => range_date)
