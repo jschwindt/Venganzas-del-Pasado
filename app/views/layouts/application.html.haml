@@ -1,9 +1,9 @@
 !!!
-%html{ :lang => 'es' }
+%html{ :lang => "es" }
   %head
     %title= yield :title
-    %meta{ :'http-equiv' => "Content-Type", :content => "text/html; charset=UTF-8" }
-    %meta{ :name => 'description', :content => 'El sitio donde podés escuchar y descargar los archivos de audio en MP3 del programa La Venganza será Terrible de Alejandro Dolina.'}
+    %meta{ :"http-equiv" => "Content-Type", :content => "text/html; charset=UTF-8" }
+    %meta{ :name => "description", :content => "El sitio donde podés escuchar y descargar los archivos de audio en MP3 del programa La Venganza será Terrible de Alejandro Dolina."}
     /[if lt IE 9]
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     = stylesheet_link_tag "application"
@@ -13,6 +13,7 @@
     = auto_discovery_link_tag :rss, torrents_path(:format => :rss),
       { :title => "Torrent RSS de Venganzas del Pasado" }
     = favicon_link_tag
+    = tag "link", :rel => "image_src", :href => asset_path('vdp_logo.png')
     = csrf_meta_tag
     - if Rails.env.production?
       = render 'analytics'
