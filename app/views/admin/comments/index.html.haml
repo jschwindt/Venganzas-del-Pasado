@@ -12,9 +12,9 @@
   %li{:class => active_if_current( :has_status => 'pending' )}
     = link_to "Pendientes", admin_comments_path(:has_status => 'pending')
   %li{:class => active_if_current( :has_status => 'flagged' )}
-    = link_to "Denunciados", admin_comments_path(:has_status => 'flagged')
+    = link_to "Denuncias", admin_comments_path(:has_status => 'flagged')
   %li{:class => active_if_current( :has_status => 'deleted' )}
-    = link_to "En papelera", admin_comments_path(:has_status => 'deleted')
+    = link_to "Papelera", admin_comments_path(:has_status => 'deleted')
 
 .admin
   = render :partial => 'comments/comment', :collection => @comments
