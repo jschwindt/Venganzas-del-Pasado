@@ -8,3 +8,7 @@
           = f.text_area :content, :rows => 5
       .actions
         = f.submit 'Publicar', :class => 'btn primary'
+        %p.comment-help
+          ¿No sabés cómo agregar una imagen a tu cuenta?
+          ¿Tenés problemas con el player? Consultá la página de
+          =link_to 'Ayuda.', article_path('ayuda')
