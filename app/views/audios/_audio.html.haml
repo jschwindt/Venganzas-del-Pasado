@@ -5,9 +5,9 @@
     = render 'audios/player', :url => audio.url, :id => audio.id
   .downloads.well
     Descargar MP3:
-    %span.direct=link_to "Descarga Directa", audio.url
+    %span.direct=link_to "Descarga Directa", audio.url, :rel => 'nofollow'
     %span.torrent
-      =link_to ".torrent", audio.torrent_url
+      =link_to ".torrent", audio.torrent_url, :rel => 'nofollow'
       %small= link_to "¿Qué es esto?", article_path('torrent')
     %span.popup
       =link_to "Abrir Player", post_audio_path(audio.post, audio),
