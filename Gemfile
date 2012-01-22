@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rake', '~> 0.9.3.beta.1'
-gem 'rails', '3.1.3'
+gem 'rails', '3.2.0'
 
 gem 'sqlite3'
 gem 'mysql2'
@@ -9,10 +8,11 @@ gem 'mysql2'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'coffee-rails', '~> 3.1.1'
-  gem 'uglifier',     '>= 1.0.3'
+  gem 'coffee-rails', '~> 3.2.1'
   gem 'therubyracer'
+  gem 'uglifier', '>= 1.0.3'
 end
+gem 'sass-rails',   '~> 3.2.3'
 
 gem 'jquery-rails'
 gem 'haml-rails'
@@ -22,7 +22,6 @@ gem 'sequel'
 gem 'redcarpet'
 gem 'devise'
 gem "omniauth-facebook"
-gem 'sass-rails',   '~> 3.1.5'
 gem 'bootstrap-sass'
 gem 'inherited_resources'
 gem 'has_scope'
@@ -34,7 +33,7 @@ gem 'table_builder', :git => "git://github.com/p8/table_builder.git"
 
 gem 'memcache-client'
 
-gem 'thinking-sphinx', '~> 2.0.10'
+gem 'thinking-sphinx', '~> 2.0.11'
 
 group :development do
   gem 'hirb'
