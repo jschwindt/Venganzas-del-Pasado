@@ -51,6 +51,10 @@ VenganzasDelPasado::Application.routes.draw do
         redirect("/posts/%{year}/%{month}"),
         :constraints => { :year => /\d{4}/, :month => /\d{2}/ }
 
+  match '/:year/:month/page/:page' =>
+        redirect("/posts/%{year}/%{month}?page=%{page}"),
+        :constraints => { :year => /\d{4}/, :month => /\d{2}/ }
+
   match '/feed' => redirect("/posts.rss")
 
   match '/descargas' => redirect("/posts/descargas")
