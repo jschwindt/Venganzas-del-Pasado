@@ -37,22 +37,10 @@ class Post < ActiveRecord::Base
   end
 
   def self.post_count_by_month
-    sql = <<-SQL
-    SELECT DISTINCT
-      YEAR(created_at) "year",
-      MONTH(created_at) "month",
-      COUNT(*) AS count
-    FROM
-      posts
-    WHERE
-      status = 'published'
-    GROUP BY
-      year, month
-    ORDER BY
-      year DESC, month DESC
-    SQL
-
-    self.find_by_sql(sql)
+    published.
+    select('YEAR(created_at) AS year, MONTH(created_at) AS month, COUNT(*) AS count').
+    group('year, month').
+    order('year DESC, month DESC')
   end
 
   def self.create_from_audio_file(filename)
