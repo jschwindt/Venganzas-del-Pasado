@@ -43,7 +43,7 @@ VenganzasDelPasado::Application.routes.draw do
 
   root :to => 'home#index'
 
-  match '*path' => "redirects#index"
+  match '*path(.:format)' => "redirects#index"
 
 
   # The priority is based upon order of creation:
