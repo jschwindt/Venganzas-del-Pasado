@@ -6,9 +6,11 @@
   - title_part = "Archivo del año #{params[:year]}"
 
 - if params[:page].nil?
-  - page_title(title_part)
+  - the_title = title_part
 - else
-  - page_title("#{title_part} <small>Página #{params[:page]}</small>")
+  - the_title = "#{title_part} <small>Página #{params[:page]}</small>"
+- page_title the_title
+- meta_description the_title + " de La Venganza será Terrible de Alejandro Dolina"
 
 %h2.ribbon!= html_page_title
 

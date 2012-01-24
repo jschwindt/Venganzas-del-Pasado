@@ -11,7 +11,11 @@ module ApplicationHelper
   def html_page_title
     @page_title
   end
-
+  
+  def meta_description(text)
+    @meta_description = text
+  end
+  
   def body_class(klass = nil)
     "#{controller.controller_name}-#{controller.action_name} #{klass}"
   end

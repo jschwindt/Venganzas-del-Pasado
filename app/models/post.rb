@@ -76,6 +76,15 @@ class Post < ActiveRecord::Base
     Post.lifo.published.where('created_at > ?', self.created_at).last
   end
 
+  def description
+    if content.present?
+      desc = content.gsub(/[#*\r\n-]+/, ' ').truncate(200, :separator => ' ', :omission => '')
+      desc.gsub(/\s+/, ' ').strip
+    else
+      "#{title} de Alejandro Dolina"
+    end
+  end
+
   define_index do
     indexes title
     indexes content

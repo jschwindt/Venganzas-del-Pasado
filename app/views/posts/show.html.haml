@@ -1,7 +1,8 @@
 - if params[:page].nil?
-  - page_title(@post.title)
+  - page_title @post.title
 - else
-  - page_title(@post.title + " - Página #{params[:page]} de comentarios")
+  - page_title @post.title + " - Página #{params[:page]} de comentarios"
+- meta_description @post.description
 
 .row.post-nav
   - if prev_post = @post.previous

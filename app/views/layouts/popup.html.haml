@@ -8,7 +8,7 @@
     = favicon_link_tag
     %title= yield :title
     = csrf_meta_tag
-    %meta{ :name => 'description', :content => 'MP3 de La Venganza Será Terrible de Alejandro Dolina para descargar.'}
+    %meta{ :name => "description", :content => @meta_description || 'MP3 de La Venganza Será Terrible de Alejandro Dolina para descargar.'}
     %meta{ :charset => "utf-8"}
     - if Rails.env.production?
       = render 'analytics'
