@@ -1,0 +1,14 @@
+## Preguntas frecuentes
+
+***Yo tenía un usuario en la versión anterior del sitio, ¿puedo utilizarlo para ingresar?***
+
+Sí, si tenías un usuario creado en el sitio anterior, podés ingresar al actual utilizando la dirección de mail que habías registrado en su momento. El único pequeño inconveniente es que es necesario (por única vez) seguir el procedimiento de [recuperar contraseña](/users/password/new). Esto se debe a que, por cuestiones de seguridad, las contraseñas no se almacenan en el sistema.
+
+***¿Cómo pongo una imagen o avatar a mi usuario?***
+
+Para que tu usuario tenga un avatar, es necesario cargar la imagen en un sitio externo llamado *Gravatar*: http://es.gravatar.com/. El siguiente video les explica en detalle cómo hacerlo: http://www.youtube.com/watch?v=A8rpvWVMFwQ
+Para que aparezca el avatar en los comentarios, es necesario que utilicen el mismo email con el que se registraron en el sitio o, si ingresaron con la cuenta de Facebook, el email que tienen cargado ahí. Pueden verificar la dirección en las [preferencias del usuario](http://venganzasdelpasado.com.ar/users/edit).
+
+***Tengo problemas con el player, ¿qué puedo hacer?***
+
+Esta versión de del sitio utiliza por defecto un player HTML5, que es más moderno y que se adapta mejor a los distintos dispositivos actuales: navegadores, tabletas, celulares, etc. Pero, debido a que es una tecnología que está en constante cambio, en ciertas plataformas y/o navegadores puede traer algún inconveniente. Para evitar esto, existe la opción de utilizar un player con tecnología Flash, para lo cual hay un [enlace](/switch_player) en el pie de la página, que permite cambiar de un player a otro.
