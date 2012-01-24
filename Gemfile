@@ -47,6 +47,8 @@ group :test do
   gem 'mocha'
   gem 'shoulda'
   gem 'shoulda-matchers'
+  gem 'capybara'
+  gem 'database_cleaner', '~> 0.7.1'
 end
 
 gem 'exceptional'
