@@ -39,32 +39,11 @@ VenganzasDelPasado::Application.routes.draw do
     resources :posts
   end
 
-  # Redirects for old site
-
-  #   /2011/12/09/la-venganza-sera-terrible-2011-12-09/ => /posts/la-venganza-sera-terrible-del-28-11-2011
-  #   /2011/12/09/                                      => /posts/la-venganza-sera-terrible-del-28-11-2011
-  match '/:year/:month/:day(/:slug)/(:etc)' =>
-        redirect("/posts/la-venganza-sera-terrible-del-%{day}-%{month}-%{year}"),
-        :constraints => { :year => /\d{4}/, :month => /\d{2}/, :day => /\d{2}/ }
-
-  match '/:year/:month/' =>
-        redirect("/posts/%{year}/%{month}"),
-        :constraints => { :year => /\d{4}/, :month => /\d{2}/ }
-
-  match '/:year/:month/page/:page' =>
-        redirect("/posts/%{year}/%{month}?page=%{page}"),
-        :constraints => { :year => /\d{4}/, :month => /\d{2}/ }
-
-  match '/feed' => redirect("/posts.rss")
-
-  match '/descargas' => redirect("/posts/descargas")
-
-  match '/torrent-feed.xml' => redirect("/torrents.rss")
-
-  match '/page(/:page)/(:etc)' => redirect("/")
-
   get '/switch_player', :controller => :home, :action => :switch_player
+
   root :to => 'home#index'
+
+  match '*path' => "redirects#index"
 
 
   # The priority is based upon order of creation:
