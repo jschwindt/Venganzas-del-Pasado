@@ -32,8 +32,11 @@ class RedirectsController < ApplicationController
     when 'descargas'
       redirect_to "/posts/descargas",                                       :status => :moved_permanently
 
-    when 'torrent-feed'
+    when 'torrent-feed.xml'
       redirect_to "/torrents.rss",                                          :status => :moved_permanently
+
+    when 'sitemap.xml.gz'
+      redirect_to "/sitemaps/sitemap_index.xml.gz",                         :status => :moved_permanently
 
     when  %r{^(page|foro|tag)}
       redirect_to "/",                                                      :status => :moved_permanently

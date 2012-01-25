@@ -15,7 +15,9 @@ class RedirectsTest < ActionDispatch::IntegrationTest
     '/foro/'                                            => '/',
     '/page/12'                                          => '/',
     '/tags/pepe'                                        => '/',
-    '/torrent-feed'                                     => '/torrents.rss',
+    '/foro/off-topic-total-1/abc'                       => '/',
+    '/sitemap.xml.gz'                                   => '/sitemaps/sitemap_index.xml.gz',
+    '/torrent-feed.xml'                                 => '/torrents.rss',
   }
 
   test "redirects" do
