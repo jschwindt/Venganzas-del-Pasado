@@ -42,8 +42,8 @@ module ApplicationHelper
     current_page?(action) ? 'active' : 'inactive'
   end
 
-  def markdown_format(text)
-    rndr = Redcarpet::Render::HTML.new(:filter_html => true, :hard_wrap => true)
+  def markdown_format(text, options = {})
+    rndr = Redcarpet::Render::HTML.new(options.reverse_merge(:filter_html => true, :hard_wrap => true))
     markdown = Redcarpet::Markdown.new(
         rndr,
         :autolink            => true,

@@ -20,4 +20,4 @@
 
   .content
     - if post.content?
-      = markdown_format post.content
+      = markdown_format post.content, :filter_html => false
