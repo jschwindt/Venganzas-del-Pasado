@@ -78,7 +78,9 @@ class Post < ActiveRecord::Base
 
   def description
     if content.present?
-      desc = content.gsub(/[#*\r\n-]+/, ' ').truncate(200, :separator => ' ', :omission => '')
+      desc = content.gsub(%r{</?[^>]+?>}, '').  # remove html tags
+             gsub(%r{[#*\r\n-]+}, ' '). # remove some markdown
+             truncate(200, :separator => ' ', :omission => '')
       desc.gsub(/\s+/, ' ').strip
     else
       "#{title} de Alejandro Dolina"

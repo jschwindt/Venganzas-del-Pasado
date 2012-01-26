@@ -2,15 +2,13 @@ class Article < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, :use => :slugged
 
-  validates :title, :presence => true
+  validates :title, :content, :presence => true
 
   def description
-    if content.present?
-      desc = content.gsub(/[#*\r\n-]+/, ' ').truncate(200, :separator => ' ', :omission => '')
-      desc.gsub(/\s+/, ' ').strip
-    else
-      "#{title} de Alejandro Dolina"
-    end
+    desc = content.gsub(%r{</?[^>]+?>}, '').  # remove html tags
+           gsub(%r{[#*\r\n-]+}, ' '). # remove some markdown
+           truncate(200, :separator => ' ', :omission => '')
+    desc.gsub(/\s+/, ' ').strip
   end
 
 end
