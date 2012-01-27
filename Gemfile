@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.0'
+gem 'rails', '3.2.1'
 
 gem 'sqlite3'
 gem 'mysql2'
@@ -20,7 +20,7 @@ gem 'kaminari'
 gem 'friendly_id', '~> 4.0.0'
 gem 'sequel'
 gem 'redcarpet'
-gem 'devise'
+gem 'devise', '~> 1.5.3'
 gem "omniauth-facebook"
 gem 'bootstrap-sass'
 gem 'inherited_resources'
