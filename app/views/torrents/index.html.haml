@@ -1,7 +1,10 @@
 - if params[:page].nil?
-  - page_title("Torrents de MP3 de La Venganza será Terrible")
+  - the_title = "Torrents de MP3 de La Venganza será Terrible de Alejandro Dolina"
 - else
-  - page_title("Torrents de MP3 de La Venganza será Terrible <small>Página #{params[:page]}</small>")
+  - the_title = "Torrents de MP3 de La Venganza será Terrible de Alejandro Dolina, <small>Página #{params[:page]}</small>"
+- page_title the_title
+- meta_description strip_tags(the_title)
+
 
 .ribbon
   Descargas P2P

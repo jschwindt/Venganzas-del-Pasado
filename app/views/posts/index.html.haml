@@ -3,7 +3,7 @@
 - else
   - the_title = "Programas de La Venganza será Terrible de Alejandro Dolina, <small>Página #{params[:page]}</small>"
 - page_title the_title
-- meta_description the_title
+- meta_description strip_tags(the_title)
 
 %h2.ribbon!= html_page_title
 
