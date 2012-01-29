@@ -47,6 +47,14 @@ ActiveRecord::Schema.define(:version => 20120219002302) do
   add_index "comments", ["post_id", "created_at"], :name => "index_comments_on_post_id_and_created_at"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
+  create_table "media", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "asset"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "content"

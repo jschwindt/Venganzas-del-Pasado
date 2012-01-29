@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem "rake", "0.9.3.beta.1"
 gem 'rails', '3.2.1'
 
 gem 'sqlite3'
@@ -51,4 +52,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner', '~> 0.7.1'
 end
+
+gem 'carrierwave'
+gem 'mini_magick'
 
