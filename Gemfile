@@ -51,4 +51,3 @@ group :test do
   gem 'database_cleaner', '~> 0.7.1'
 end
 
-gem 'exceptional'
