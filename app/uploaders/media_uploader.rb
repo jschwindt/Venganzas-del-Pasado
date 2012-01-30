@@ -25,7 +25,7 @@ class MediaUploader < CarrierWave::Uploader::Base
   process :set_content_type
 
   # Process files as they are uploaded:
-  process :resize_to_fit => [2048, 1536]
+  process :resize_to_fit => [2048, 1536], :if => :image?
 
   # Create different versions of your uploaded files:
   version :thumb, :if => :image? do
