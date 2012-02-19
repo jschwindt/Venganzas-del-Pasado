@@ -1,9 +1,9 @@
 class CommentMailer < ActionMailer::Base
   default from: Devise.mailer_sender
 
-  def modetation_needed(comment)
+  def moderation_needed(comment, subject)
     @comment = comment
-    mail(:to => 'juan@schwindt.org', :subject => "Comentario para moderar")
+    mail(:to => 'juan@schwindt.org', :subject => subject)
   end
 
 end
