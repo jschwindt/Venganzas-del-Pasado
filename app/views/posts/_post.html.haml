@@ -8,7 +8,7 @@
       #{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i]} de #{post.created_at.year}
     %span.comments
       Comentarios:
-      = link_to post.comments.approved_or_from_user(current_user).count, post_path(post, :anchor => "comments")
+      = link_to post.comments.visible_by(current_user).count, post_path(post, :anchor => "comments")
     - if can? :update, post
       %span.edit= link_to "Editar", edit_admin_post_path(post)
     %span.share

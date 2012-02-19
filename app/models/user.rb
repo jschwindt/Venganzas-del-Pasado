@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :alias
-  attr_accessible :karma, :role, :as => :admin
+  attr_accessible :karma, :role, :alias, :as => :admin
 
   scope :lifo, order('created_at DESC')
 

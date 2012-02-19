@@ -13,20 +13,19 @@ class Ability
       audio.post.published?
     end
     can :read, Article
-    can :read, Comment, :status => 'approved'
+    can :read, Comment, :status => ['neutral', 'approved', 'flagged']
     can :read, User
 
     if user.persisted?
       can :read, Comment, :user_id => user.id
       can :flag, Comment
 
-
       if user.karma >= VenganzasDelPasado::Application.config.bad_user_karma_treshold
         can :create, Comment
       end
 
       if user.karma > VenganzasDelPasado::Application.config.good_user_karma_treshold
-        can :approve, Comment, :user_id => user.id
+        can :publish, Comment, :user_id => user.id
       end
 
       if ['moderator','editor'].include? user.role

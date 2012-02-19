@@ -27,9 +27,9 @@
           %span.pending Aguardando moderación
         / - if can? :read, comment
         /   %span.permalink=link_to "Permalink", post_comment_path(comment.post, comment)
-        - if (comment.pending? or comment.flagged?) and can? :approve, comment
+        - if (comment.pending? or comment.flagged?) and can?(:approve, comment)
           %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
-        - if (not comment.flagged?) and can? :flag, comment
+        - if comment.neutral? && can?(:flag, comment)
           %span.permalink=link_to "Denunciar", flag_post_comment_path(comment.post, comment), :confirm => '¿Estás seguro?'
         - if can? :trash, comment
           %span.delete=link_to "Eliminar", trash_admin_comment_path(comment), :confirm => '¿Estás seguro?'

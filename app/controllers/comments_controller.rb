@@ -8,19 +8,18 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(params[:comment]).publish_as(current_user, request)
     @comment.save
 
-    if @comment.approved?
-      flash[:notice] = "Tu comentario ha sido publicado."
-    else
+    if @comment.pending?
       flash[:notice] = "Tu comentario se ha guardado, y está pendiente de aprobación."
       CommentMailer.modetation_needed(@comment).deliver
+    else
+      flash[:notice] = "Tu comentario ha sido publicado."
     end
 
     redirect_to "#{post_path(@post)}#comment#{@comment.id}"
   end
 
   def flag
-    @comment.status = 'flagged'
-    @comment.save!
+    @comment.flag!
     flash[:notice] = "El comentario ha sido denunciado."
     redirect_to @post
   end
