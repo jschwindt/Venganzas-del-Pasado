@@ -22,14 +22,15 @@ gem 'sequel'
 gem 'redcarpet'
 gem 'devise', '~> 1.5.3'
 gem "omniauth-facebook"
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 1.4.4'
 gem 'inherited_resources'
 gem 'has_scope'
 gem 'pandoc-ruby'
 gem 'cancan'
+gem 'aasm'
 
 gem 'sitemap_generator'
-gem 'table_builder', :git => "git://github.com/p8/table_builder.git"
+gem "watu_table_builder", :require => "table_builder"
 
 gem 'memcache-client'
 
