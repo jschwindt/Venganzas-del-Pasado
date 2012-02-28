@@ -1,16 +1,16 @@
 - if params[:day].present?
-  - title_part = "Archivo del #{params[:day]}/#{params[:month]}/#{params[:year]}"
+  - title_part = "Archivo de programas del #{params[:day]}/#{params[:month]}/#{params[:year]}"
 - elsif params[:month].present?
-  - title_part = "Archivo de #{I18n.t('date.month_names')[params[:month].to_i]} del #{params[:year]}"
+  - title_part = "Archivo de programas de #{I18n.t('date.month_names')[params[:month].to_i]} del #{params[:year]}"
 - else
-  - title_part = "Archivo del año #{params[:year]}"
+  - title_part = "Archivo de programas del año #{params[:year]}"
 
 - if params[:page].nil?
   - the_title = title_part
 - else
   - the_title = "#{title_part}, <small>Página #{params[:page]}</small>"
 - page_title the_title
-- meta_description strip_tags(the_title)
+- meta_description strip_tags("#{the_title} de La Venganza será Terrible")
 
 %h2.ribbon!= html_page_title
 
