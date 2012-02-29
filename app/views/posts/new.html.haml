@@ -1,0 +1,7 @@
+- page_title("Nuevo Post con Audio")
+
+%h2.title= html_page_title
+
+= alert_message_for(@post)
+
+= render 'form', :post => @post

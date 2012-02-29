@@ -7,6 +7,9 @@ class Post < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :audios,   :dependent => :destroy
 
+  attr_accessible :title, :content, :created_at
+  attr_accessible :title, :content, :created_at, :status, :as => :admin
+
   validates :title, :presence => true
   validate :validate_status
 

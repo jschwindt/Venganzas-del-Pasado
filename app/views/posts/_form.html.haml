@@ -1,6 +1,4 @@
-= alert_message_for(post)
-
-= form_for [:admin, post], :html => { :class => 'form-stacked' } do |f|
+= form_for post, :html => { :class => 'form-stacked' } do |f|
   %fieldset
 
     .clearfix
@@ -12,15 +10,10 @@
         = f.text_field :title, :class => 'adjusted'
       = f.label :content
       .input
-        = f.text_area :content, :class => 'adjusted'
+        = f.text_area :content, :class => 'adjusted', :rows => 10
       .input
         = f.label :created_at, "Fecha de publicación"
         = f.date_select :created_at, :start_year => 1988, :end_year => Time.zone.now.year
-    .clearfix
-      = f.label :status
-      .input
-        = f.select :status, Post.statuses
 
     .actions
-      = f.submit ( post.new_record? ? 'Publicar' : 'Guardar' ), :class => 'btn primary'
-      = link_to 'Cancelar', admin_posts_path, :class => 'btn'
+      = f.submit ( 'Enviar' ), :class => 'btn primary'

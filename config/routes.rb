@@ -9,7 +9,7 @@ VenganzasDelPasado::Application.routes.draw do
   get 'posts/:year(/:month(/:day))' => 'posts#archive', :as => :posts_archive, :constraints => {
     :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
   }
-  resources :posts, :only => [:index, :show] do
+  resources :posts, :only => [:index, :show, :new, :create] do
     get 'page/:page', :action => :index, :on => :collection   # SEO friendly pagination for posts
     get 'page/:page', :action => :show, :on => :member        # SEO friendly pag. for post's comments
     resources :comments, :only => [:show, :create] do

@@ -20,6 +20,8 @@ class Ability
       can :read, Comment, :user_id => user.id
       can :flag, Comment
 
+      can :create, Post   # Users can contribute with audios
+
       if user.karma >= VenganzasDelPasado::Application.config.bad_user_karma_treshold
         can :create, Comment
       end

@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class PostsController < ApplicationController
   load_and_authorize_resource
   skip_authorize_resource :only => :archive
@@ -21,4 +23,18 @@ class PostsController < ApplicationController
               page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
   end
 
+  def new
+    @post = Post.new
+  end
+
+  def create
+    @post = Post.new(params[:post])
+    @post.status = 'draft'
+    @post.created_at += 4.hours
+    if @post.save
+      redirect_to new_post_url, :notice => "El archivo se subió con éxito y pronto será revisado y, si corresponde, aprobado."
+    else
+      render 'new'
+    end
+  end
 end
