@@ -6,9 +6,11 @@ class Post < ActiveRecord::Base
 
   has_many :comments, :dependent => :destroy
   has_many :audios,   :dependent => :destroy
+  has_many :media,    :dependent => :destroy
+  accepts_nested_attributes_for :media
 
-  attr_accessible :title, :content, :created_at
-  attr_accessible :title, :content, :created_at, :status, :as => :admin
+  attr_accessible :title, :content, :created_at, :media_attributes
+  attr_accessible :title, :content, :created_at, :media_attributes, :status, :as => :admin
 
   validates :title, :presence => true
   validate :validate_status

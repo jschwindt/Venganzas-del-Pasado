@@ -10,7 +10,13 @@
         = f.text_field :title, :class => 'adjusted'
       = f.label :content
       .input
-        = f.text_area :content, :class => 'adjusted', :rows => 10
+        = f.text_area :content, :class => 'adjusted', :rows => 6
+      = f.fields_for :media do |media_form|
+        .input
+          = media_form.label :media, "Archivo de audio (.mp3)"
+          = media_form.file_field :asset
+          = media_form.hidden_field :asset_cache
+
       .input
         = f.label :created_at, "Fecha de publicación"
         = f.date_select :created_at, :start_year => 1988, :end_year => Time.zone.now.year

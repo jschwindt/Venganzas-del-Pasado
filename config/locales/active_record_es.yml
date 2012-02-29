@@ -45,6 +45,8 @@ es:
       #     login: "Handle"
       # will translate User attribute "login" as "Handle"
     attributes:
+      media:
+        asset: Archivo
       user:
         password: Contraseña
         password_confirmation: Confirmación de contraseña

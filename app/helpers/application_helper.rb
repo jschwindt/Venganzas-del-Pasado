@@ -28,7 +28,7 @@ module ApplicationHelper
       <div class="alert-message block-message error">
         #{ link_to "x", "#", :class => 'close' }
         <p>
-          <strong>Se ha encontrado #{pluralize(object.errors.count, "error")}</strong>
+          <strong>Se ha#{object.errors.count > 1 ? 'n' : ''} encontrado #{object.errors.count} error#{object.errors.count > 1 ? 'es' : ''}</strong>
         </p>
         <ul>#{ messages }</ul>
       </div>
