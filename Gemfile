@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem "rake", "0.9.3.beta.1"
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.2'
 
 gem 'sqlite3'
 gem 'mysql2'
@@ -55,4 +55,3 @@ end
 
 gem 'carrierwave'
 gem 'mini_magick'
-
