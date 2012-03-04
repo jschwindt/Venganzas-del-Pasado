@@ -36,7 +36,11 @@ VenganzasDelPasado::Application.routes.draw do
     end
     resources :articles
     resources :users, :only => [:index, :edit, :update]
-    resources :posts
+    resources :posts do
+      member do
+        get 'approve_contribution'
+      end
+    end
   end
 
   get '/switch_player', :controller => :home, :action => :switch_player

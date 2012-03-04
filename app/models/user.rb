@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :alias, :use => :slugged
   has_many :comments, :dependent => :nullify
+  has_many :contributions, :class_name => 'Medium', :foreign_key => :contributor_id, :dependent => :nullify
   validates :alias, :presence => true, :uniqueness => { :case_sensitive => false }
   before_save :update_gravatar_hash, :clean_role
   delegate :can?, :cannot?, :to => :ability

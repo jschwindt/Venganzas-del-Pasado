@@ -25,16 +25,19 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @post.media.build
+    1.upto(4).each do
+      @post.media << Medium.new
+    end
   end
 
   def create
-    @post = Post.new(params[:post])
-    @post.status = 'draft'
-    @post.created_at += 4.hours
+    @post = Post.new_contribution(params[:post], current_user)
     if @post.save
-      redirect_to new_post_url, :notice => "El archivo se subió con éxito y pronto será revisado y, si corresponde, aprobado."
+      redirect_to new_post_url, :notice => "El post '#{@post.title}' se subió con éxito y pronto será revisado y, si corresponde, aprobado. Abajo tenés nuevamente el formulario por si querés cargar más programas."
     else
+      @post.media.size.upto(4) do
+        @post.media << Medium.new
+      end
       render 'new'
     end
   end

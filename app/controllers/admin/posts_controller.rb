@@ -4,6 +4,11 @@ module Admin
     has_scope :has_status
     has_scope :lifo, :type => :boolean, :default => true
 
+    def approve_contribution
+      @post.approve_contribution!
+      redirect_to @post
+    end
+
     private
 
     def verify_admin
