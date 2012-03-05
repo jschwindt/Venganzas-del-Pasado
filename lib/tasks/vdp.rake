@@ -4,7 +4,8 @@ namespace :vdp do
 
   desc "Migra el contenido de la aplicación en WP"
   task :import => :environment do
-    require "wordpress"; Wordpress.import
+#    require "wordpress"; Wordpress.import
+    puts "Disabled!"
   end
 
   desc "Publica contribuciones"

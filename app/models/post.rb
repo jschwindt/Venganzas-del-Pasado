@@ -109,7 +109,7 @@ class Post < ActiveRecord::Base
       self.audios << Audio.new(:url => "http://venganzasdelpasado.com.ar/#{year}/#{filename}", :bytes => File.size(dest_file))
 
       # Remove media
-      medium.delete
+      medium.destroy
     end
 
     # Change status to published
