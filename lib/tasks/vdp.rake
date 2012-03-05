@@ -7,4 +7,13 @@ namespace :vdp do
     require "wordpress"; Wordpress.import
   end
 
+  desc "Publica contribuciones"
+  namespace :contribuciones do
+    task :publish => :environment do
+      Post.waiting.each do |post|
+        post.publish_contribution
+      end
+    end
+  end
+
 end

@@ -16,6 +16,7 @@ class Post < ActiveRecord::Base
   validate :validate_status
 
   scope :published, where(:status => 'published')
+  scope :waiting, where(:status => 'waiting')
   scope :lifo, order('created_at DESC')
   scope :this_month, where(:created_at => Date.today.beginning_of_month..Date.today.end_of_month)
 
@@ -89,6 +90,32 @@ class Post < ActiveRecord::Base
     end
 
   end   # Class methods
+
+  def publish_contribution
+    media.each do |medium|
+      filename = "lavenganza_#{created_at.strftime("%Y-%m-%d")}_#{medium.id}.mp3"
+      year = created_at.year
+      dest_dir = "/var/www/venganzasdelpasado.com.ar/#{year}"
+      dest_file = "#{dest_dir}/#{filename}"
+
+      # Copy MP3 to local store
+      FileUtils.mkdir_p dest_dir
+      FileUtils.copy_file medium.asset.path, dest_file
+
+      # Upload to S3
+      system "/usr/bin/s3cmd -c /home/jschwindt/.s3cfg --acl-public put #{medium.asset.path} s3://s3.schwindt.org/dolina/#{year}/#{filename}"
+
+      # Create Audio record
+      self.audios << Audio.new(:url => "http://venganzasdelpasado.com.ar/#{year}/#{filename}", :bytes => File.size(dest_file))
+
+      # Remove media
+      medium.delete
+    end
+
+    # Change status to published
+    self.status = 'published'
+    save
+  end
 
   def approve_contribution!
     self.status = 'waiting'
