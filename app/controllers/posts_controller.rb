@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 class PostsController < ApplicationController
+  before_filter :authenticate_user!, :only => [:new, :create]
   load_and_authorize_resource
   skip_authorize_resource :only => :archive
 
