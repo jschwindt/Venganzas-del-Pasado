@@ -23,7 +23,7 @@
         = f.text_area :content, :class => 'adjusted', :rows => 6
       .input
         = f.label :created_at, "Fecha de publicación"
-        = f.date_select :created_at, :start_year => 1988, :end_year => Time.zone.now.year
+        = f.date_select :created_at, :start_year => 1987, :end_year => Time.zone.now.year
       %br
       %label Archivos de audio (sólo .mp3 y menos de 30MB en total)
       = f.fields_for :media do |media_form|
