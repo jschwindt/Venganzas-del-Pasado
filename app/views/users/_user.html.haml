@@ -5,7 +5,7 @@
     %h3.title
       = link_to user.alias, user
       %small= user.role
-    %p En Venganzas del Pasado desde hace #{time_ago_in_words(user.created_at)}
+    %p En Venganzas del Pasado desde #{timeago(user.created_at)}
     - if user.has_facebook_profile?
       = link_to "Perfil de #{user.alias} en Facebook", user.facebook_profile_url, :target => '_blank', :rel => 'nofollow'
     - if can? :edit, user
