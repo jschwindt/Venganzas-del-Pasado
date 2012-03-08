@@ -11,7 +11,7 @@
         = render 'layouts/menus/user_items'
   .widget
     = render 'layouts/banners/b160x600'
-  - cache [:posts_archive, Post.last_updated] do
+  - cache [:archive, Post.last_updated] do
     .widget
       = render 'layouts/widgets/daily_archive'
     .widget

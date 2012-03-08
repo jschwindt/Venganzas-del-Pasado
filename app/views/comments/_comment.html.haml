@@ -3,17 +3,18 @@
   .span1.avatar
     %img{ :src => gravatar_url_for(comment, :s => 40), :class => 'gravatar', :alt => comment.author }
   .span8.description
-    %p.author
-      %span.who= link_to comment.author, comment.user
-      %small
-        %span.when
-          = timeago(comment.created_at)
-        %span.where
-          en
-          = link_to comment.post.title, comment.post
-        dijo:
-    .content
-      = replace_smileys(markdown_format(comment.content))
+    - cache comment do
+      %p.author
+        %span.who= link_to comment.author, comment.user
+        %small
+          %span.when
+            = timeago(comment.created_at)
+          %span.where
+            en
+            = link_to comment.post.title, comment.post
+          dijo:
+      .content
+        = replace_smileys(markdown_format(comment.content))
     %p.meta
       - if comment.deleted?
         %span.deleted Eliminado
