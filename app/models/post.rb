@@ -88,6 +88,9 @@ class Post < ActiveRecord::Base
       where( 'status = ?', status )
     end
 
+    def last_updated
+      published.order('updated_at DESC').first
+    end
   end   # Class methods
 
   def publish_contribution
