@@ -6,7 +6,7 @@ class Article < ActiveRecord::Base
 
   def description
     desc = content.gsub(%r{</?[^>]+?>}, '').  # remove html tags
-           gsub(%r{[#*\r\n-]+}, ' '). # remove some markdown
+           gsub(%r{[_#*\r\n-]+}, ' '). # remove some markdown
            truncate(200, :separator => ' ', :omission => '')
     desc.gsub(/\s+/, ' ').strip
   end
