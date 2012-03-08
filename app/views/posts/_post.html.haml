@@ -14,6 +14,10 @@
     %span.share
       %span.twitter-share= tweet_button_for post
       %span.facebook-share= fb_like_button_for post
+    - if post.contributor
+      %span.contribution
+        %br/
+        (contribución de #{link_to post.contributor.alias, user_url(post.contributor)})
 
   .audios
     = render post.audios
