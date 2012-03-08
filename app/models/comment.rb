@@ -40,9 +40,9 @@ class Comment < ActiveRecord::Base
 
   def self.visible_by( user )
     if user
-      where( 'status IN (?) OR (user_id = ? AND status != ?)', ['neutral', 'approved', 'flagged``'], user.id, 'deleted' )
+      where( 'status IN (?) OR (user_id = ? AND status != ?)', ['neutral', 'approved', 'flagged'], user.id, 'deleted' )
     else
-      where( 'status IN (?)', ['neutral', 'approved'] )
+      where( 'status IN (?)', ['neutral', 'approved', 'flagged'] )
     end
   end
 
