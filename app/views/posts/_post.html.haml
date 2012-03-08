@@ -26,4 +26,4 @@
   - if can?(:update, Post) && post.pending?
     %p.meta
       = link_to "Aprobar contribución", approve_contribution_admin_post_path(post)
-      (Enviado por #{link_to post.media.first.contributor.alias, post.media.first.contributor})
+      (Enviado por #{link_to post.contributor.alias, post.contributor})

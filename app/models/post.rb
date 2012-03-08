@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :audios,   :dependent => :destroy
   has_many :media,    :dependent => :destroy
+  belongs_to :contributor, :class_name => 'User'
   accepts_nested_attributes_for :media
 
   attr_accessible :title, :content, :created_at, :media_attributes
@@ -77,9 +78,7 @@ class Post < ActiveRecord::Base
       post = new(params)
       post.status = 'pending'
       post.created_at += 4.hours   # a las 4 de la mañana, para que no interfiera con los automáticos
-      post.media.each do |medium|
-        medium.contributor = user
-      end
+      post.contributor = user
       # Agrega un media vacío si no hay ninguno, para que falle la validación
       post.media << Medium.new if post.media.size == 0
       post

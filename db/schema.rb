@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120229020055) do
+ActiveRecord::Schema.define(:version => 20120308021742) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -51,10 +51,9 @@ ActiveRecord::Schema.define(:version => 20120229020055) do
     t.string   "name"
     t.string   "description"
     t.string   "asset"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "post_id"
-    t.integer  "contributor_id"
   end
 
   create_table "posts", :force => true do |t|
@@ -65,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20120229020055) do
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "contributor_id"
   end
 
   add_index "posts", ["created_at"], :name => "index_posts_on_created_at"

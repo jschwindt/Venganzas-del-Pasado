@@ -5,7 +5,7 @@
 
 %body
   %p
-    Hay una nueva contribución para moderar:
+    Hay una nueva contribución de #{link_to @post.contributor.alias, user_url(@post.contributor)} para moderar:
   %p
     = link_to @post.title, post_url(@post)
   %p
