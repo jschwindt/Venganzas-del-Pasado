@@ -1,6 +1,8 @@
 class Audio < ActiveRecord::Base
   belongs_to :post
 
+  delegate :title, :to => :post, :prefix => true
+
   validates :url, :presence => true, :uniqueness => true
 
   def torrent_url

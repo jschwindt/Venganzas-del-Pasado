@@ -11,7 +11,7 @@
             = timeago(comment.created_at)
           %span.where
             en
-            = link_to comment.post.title, comment.post
+            = link_to comment.post_title, comment.post
           dijo:
       .content
         = replace_smileys(markdown_format(comment.content))

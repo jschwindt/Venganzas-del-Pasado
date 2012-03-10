@@ -4,6 +4,8 @@ class Comment < ActiveRecord::Base
   belongs_to :post, :counter_cache => true
   belongs_to :user
 
+  delegate :title, :to => :post, :prefix => true
+
   # Warning: los siguientes son los únicos attributos accesibles con asignación masiva
   attr_accessible :content
   attr_accessible :status, :as => :admin

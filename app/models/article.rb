@@ -3,6 +3,7 @@ class Article < ActiveRecord::Base
   friendly_id :title, :use => :slugged
 
   validates :title, :content, :presence => true
+  attr_accessible :title, :content, :as => :admin
 
   def description
     desc = content.gsub(%r{</?[^>]+?>}, '').  # remove html tags
