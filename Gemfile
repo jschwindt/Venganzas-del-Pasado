@@ -1,9 +1,8 @@
 source 'http://rubygems.org'
 
 gem "rake", "0.9.3.beta.1"
-gem 'rails', '3.2.2'
+gem 'rails', '~> 3.2.2'
 
-gem 'sqlite3'
 gem 'mysql2'
 
 # Gems used only for assets and not required
@@ -26,7 +25,7 @@ gem "omniauth-facebook"
 gem 'bootstrap-sass', '~> 1.4.4'
 gem 'inherited_resources'
 gem 'has_scope'
-gem 'pandoc-ruby'
+# gem 'pandoc-ruby'
 gem 'cancan'
 gem 'aasm'
 
