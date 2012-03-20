@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :alias, :use => :slugged
+  friendly_id :alias, :use => :history
   has_many :comments, :dependent => :nullify
   has_many :contributions, :class_name => 'Post', :foreign_key => :contributor_id, :dependent => :nullify
   validates :alias, :presence => true, :uniqueness => { :case_sensitive => false }

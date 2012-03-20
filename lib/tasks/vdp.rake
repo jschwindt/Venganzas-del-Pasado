@@ -17,4 +17,14 @@ namespace :vdp do
     end
   end
 
+  desc "Crea history de friendly_id"
+  task :create_history => :environment do
+    FriendlyId::Slug.where(:sluggable_type => 'User').delete_all
+    u = User.find 'froilan'
+    FriendlyId::Slug.create :sluggable_type => 'User', :sluggable_id => u.id, :slug => 'adolfo'
+    u = User.find 'viyi'
+    FriendlyId::Slug.create :sluggable_type => 'User', :sluggable_id => u.id, :slug => 'virginia'
+    User.update_all :slug => nil
+    User.find_each(&:save)
+  end
 end
