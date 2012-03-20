@@ -18,6 +18,12 @@ class RedirectsTest < ActionDispatch::IntegrationTest
     '/foro/off-topic-total-1/abc'                       => '/',
     '/sitemap.xml.gz'                                   => '/sitemaps/sitemap_index.xml.gz',
     '/torrent-feed.xml'                                 => '/torrents.rss',
+    '/actualizar/'                                      => '/',
+    '/actualizar'                                       => '/',
+    '/arreglar/'                                        => '/',
+    '/arreglar'                                         => '/',
+    '/donaciones/'                                      => '/',
+    '/donaciones'                                       => '/',
   }
 
   test "redirects" do

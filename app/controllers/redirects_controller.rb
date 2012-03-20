@@ -38,7 +38,7 @@ class RedirectsController < ApplicationController
     when 'sitemap.xml.gz'
       redirect_to "/sitemaps/sitemap_index.xml.gz",                         :status => :moved_permanently
 
-    when  %r{^(page|foro|tag)}
+    when  %r{^(page|foro|tag|actualizar|arreglar|donaciones)}
       redirect_to "/",                                                      :status => :moved_permanently
 
     else
