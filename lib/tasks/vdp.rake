@@ -14,6 +14,7 @@ namespace :vdp do
       Post.waiting.each do |post|
         post.publish_contribution
       end
+      CarrierWave.clean_cached_files!
     end
   end
 
