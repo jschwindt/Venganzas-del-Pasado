@@ -7,4 +7,6 @@ db/*.sqlite3
 db/sphinx/
 log/
 public/sitemaps/*
+public/assets
+public/system
 tmp/
