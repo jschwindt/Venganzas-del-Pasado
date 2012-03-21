@@ -156,6 +156,23 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     redcarpet (2.1.0)
+    redis (2.2.2)
+    redis-actionpack (3.2.2)
+      actionpack (= 3.2.2)
+      redis-rack (~> 1.4.0)
+      redis-store (~> 1.1.0)
+    redis-activesupport (3.2.2)
+      activesupport (= 3.2.2)
+      redis-store (~> 1.1.0)
+    redis-rack (1.4.1)
+      rack (= 1.4.1)
+      redis-store (~> 1.1.0)
+    redis-rails (3.2.2)
+      redis-actionpack (~> 3.2.2)
+      redis-activesupport (~> 3.2.2)
+      redis-store (~> 1.1.0)
+    redis-store (1.1.0)
+      redis (~> 2.2.0)
     responders (0.8.0)
       railties (~> 3.1)
     riddle (1.5.1)
@@ -234,6 +251,7 @@ DEPENDENCIES
   rails_best_practices
   rake (= 0.9.3.beta.1)
   redcarpet
+  redis-rails
   sass-rails (~> 3.2.3)
   sequel
   shoulda

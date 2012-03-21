@@ -29,6 +29,8 @@ gem 'has_scope'
 gem 'cancan'
 gem 'aasm'
 
+gem 'redis-rails'
+
 gem 'sitemap_generator'
 gem "watu_table_builder", :require => "table_builder"
 
