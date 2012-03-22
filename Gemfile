@@ -29,6 +29,7 @@ gem 'has_scope'
 gem 'cancan'
 gem 'aasm'
 
+gem 'likeable', :git => 'https://github.com/amrnt/Likeable.git'
 gem 'redis-rails'
 
 gem 'sitemap_generator'

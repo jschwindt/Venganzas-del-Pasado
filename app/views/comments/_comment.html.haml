@@ -15,21 +15,27 @@
           dijo:
       .content
         = replace_smileys(markdown_format(comment.content))
-    %p.meta
-      - if comment.deleted?
-        %span.deleted Eliminado
-        - if can? :approve, comment
-          %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
-        - if can? :destroy, comment
-          %span.delete=link_to "Eliminar definitivamente", admin_comment_path(comment), :method => :delete, :confirm => '¿Estás seguro?'
-      - else
-        - if comment.pending?
-          %span.pending Aguardando moderación
-        / - if can? :read, comment
-        /   %span.permalink=link_to "Permalink", post_comment_path(comment.post, comment)
-        - if (comment.pending? or comment.flagged?) and can?(:approve, comment)
-          %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
-        - if comment.neutral? && can?(:flag, comment)
-          %span.permalink=link_to "Denunciar", flag_post_comment_path(comment.post, comment), :confirm => '¿Estás seguro?'
-        - if can? :trash, comment
-          %span.delete=link_to "Eliminar", trash_admin_comment_path(comment), :confirm => '¿Estás seguro?'
+    .meta
+      .thumb
+        = link_to image_tag('thumbs-up.png'), like_post_comment_path(comment.post, comment), :method => :post, :remote => :true, :title => "¡Me gusta! :-)"
+        %span.counter{:id => "like_#{comment.id}"}= "(#{comment.like_count})"
+        = link_to image_tag('thumbs-dn.png'), dislike_post_comment_path(comment.post, comment), :method => :post, :remote => :true, :title => "¡No me gusta! :-("
+        %span.counter{:id => "dislike_#{comment.id}"}= "(#{comment.dislike_count})"
+      .action
+        - if comment.deleted?
+          %span.deleted Eliminado
+          - if can? :approve, comment
+            %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
+          - if can? :destroy, comment
+            %span.delete=link_to "Eliminar definitivamente", admin_comment_path(comment), :method => :delete, :confirm => '¿Estás seguro?'
+        - else
+          - if comment.pending?
+            %span.pending Aguardando moderación
+          =#- if can? :read, comment
+          =#  %span.permalink=link_to "Permalink", post_comment_path(comment.post, comment)
+          - if (comment.pending? or comment.flagged?) and can?(:approve, comment)
+            %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
+          - if comment.neutral? && can?(:flag, comment)
+            %span.flag=link_to "Denunciar", flag_post_comment_path(comment.post, comment), :confirm => '¿Estás seguro?'
+          - if can? :trash, comment
+            %span.delete=link_to "Eliminar", trash_admin_comment_path(comment), :confirm => '¿Estás seguro?'

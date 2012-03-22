@@ -67,6 +67,13 @@ class AbilityTest < ActiveSupport::TestCase
     assert ability.can?(:flag, Comment.new)
   end
 
+  test "user can like or dislike any comments" do
+    user = users(:one)
+    ability = Ability.new(user)
+    assert ability.can?(:like, Comment.new)
+    assert ability.can?(:dislike, Comment.new)
+  end
+
   test "good users can post their comments" do
     user = users(:one)
     user.karma = 600

@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include Likeable::UserMethods
   extend FriendlyId
   friendly_id :alias, :use => :history
   has_many :comments, :dependent => :nullify

@@ -25,4 +25,12 @@ class CommentsController < ApplicationController
     redirect_to @post
   end
 
+  def like
+    current_user.like! @comment
+  end
+
+  def dislike
+    current_user.dislike! @comment
+  end
+
 end

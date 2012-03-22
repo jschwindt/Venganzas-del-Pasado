@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   include AASM
+  include Likeable
 
   belongs_to :post, :counter_cache => true
   belongs_to :user

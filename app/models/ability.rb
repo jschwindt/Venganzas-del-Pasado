@@ -19,6 +19,8 @@ class Ability
     if user.persisted?
       can :read, Comment, :user_id => user.id
       can :flag, Comment
+      can :like, Comment
+      can :dislike, Comment
 
       can :create, Post   # Users can contribute with posts with mp3 media
 

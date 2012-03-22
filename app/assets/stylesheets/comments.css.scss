@@ -1,6 +1,6 @@
 .comment {
   margin-bottom: $baseline * 0.5;
-  padding-top: $baseline * 0.5;
+  padding-top: $baseline * 0.25;
   overflow: hidden;
 
   .author {
@@ -16,8 +16,20 @@
     font-size: 0.75 * $basefont;
     margin-bottom: 0px;
 
-    > span {
-      margin-right: 20px;
+    .thumb {
+      float:left;
+      height: 28px;
+      .counter {
+        vertical-align: top;
+      }
+    }
+
+    .action {
+      float: right;
+
+      span {
+        margin-left: 20px;
+      }
     }
   }
 }
@@ -41,5 +53,5 @@
   border-top: 1px $claro solid;
   margin-top: 20px;
   font-size: 0.90 * $basefont;
-  
+
 }

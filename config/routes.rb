@@ -15,6 +15,8 @@ VenganzasDelPasado::Application.routes.draw do
     resources :comments, :only => [:show, :create] do
       member do
         get 'flag'
+        post 'like'
+        post 'dislike'
       end
     end
     resources :audios, :only => :show
