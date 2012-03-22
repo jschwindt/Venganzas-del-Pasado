@@ -17,9 +17,9 @@
         = replace_smileys(markdown_format(comment.content))
     .meta
       .thumb
-        = link_to image_tag('thumbs-up.png'), like_post_comment_path(comment.post, comment), :method => :post, :remote => :true, :title => "¡Me gusta! :-)"
+        = link_to image_tag('thumbs-up.png'), like_comment_path(comment), :method => :post, :remote => :true, :title => "¡Me gusta! :-)"
         %span.counter{:id => "like_#{comment.id}"}= "(#{comment.like_count})"
-        = link_to image_tag('thumbs-dn.png'), dislike_post_comment_path(comment.post, comment), :method => :post, :remote => :true, :title => "¡No me gusta! :-("
+        = link_to image_tag('thumbs-dn.png'), dislike_comment_path(comment), :method => :post, :remote => :true, :title => "¡No me gusta! :-("
         %span.counter{:id => "dislike_#{comment.id}"}= "(#{comment.dislike_count})"
       .action
         - if comment.deleted?
@@ -36,6 +36,6 @@
           - if (comment.pending? or comment.flagged?) and can?(:approve, comment)
             %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
           - if comment.neutral? && can?(:flag, comment)
-            %span.flag=link_to "Denunciar", flag_post_comment_path(comment.post, comment), :confirm => '¿Estás seguro?'
+            %span.flag{:id => "flag_#{comment.id}"}=link_to "Denunciar", flag_comment_path(comment), :confirm => '¿Estás seguro?', :method => :post, :remote => :true
           - if can? :trash, comment
             %span.delete=link_to "Eliminar", trash_admin_comment_path(comment), :confirm => '¿Estás seguro?'

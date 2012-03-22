@@ -1,7 +1,8 @@
 # encoding: utf-8
 
 class CommentsController < ApplicationController
-  load_and_authorize_resource :post
+  load_and_authorize_resource :post, :optional => true
+  load_and_authorize_resource :comment
   load_and_authorize_resource :comment, :through => :post
 
   def create
@@ -20,9 +21,7 @@ class CommentsController < ApplicationController
 
   def flag
     @comment.flag!
-    flash[:notice] = "El comentario ha sido denunciado."
     CommentMailer.moderation_needed(@comment, "Comentario denunciado").deliver
-    redirect_to @post
   end
 
   def like

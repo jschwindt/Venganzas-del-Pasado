@@ -14,7 +14,23 @@ class CommentsControllerTest < ActionController::TestCase
   
   test "flag comment" do
     comment = comments(:one)
-    get :flag, :post_id => comment.post, :id => comment
+    xhr :post, :flag, :id => comment
+    assert assigns(:comment)
+    assert_template 'flag'
+  end
+
+  test "like comment" do
+    comment = comments(:one)
+    xhr :post, :like, :id => comment
+    assert assigns(:comment)
+    assert_template 'like'
+  end
+
+  test "dislike comment" do
+    comment = comments(:one)
+    xhr :post, :dislike, :id => comment
+    assert assigns(:comment)
+    assert_template 'dislike'
   end
 
 end

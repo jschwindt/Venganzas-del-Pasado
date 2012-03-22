@@ -12,14 +12,16 @@ VenganzasDelPasado::Application.routes.draw do
   resources :posts, :only => [:index, :show, :new, :create] do
     get 'page/:page', :action => :index, :on => :collection   # SEO friendly pagination for posts
     get 'page/:page', :action => :show, :on => :member        # SEO friendly pag. for post's comments
-    resources :comments, :only => [:show, :create] do
-      member do
-        get 'flag'
-        post 'like'
-        post 'dislike'
-      end
-    end
+    resources :comments, :only => [:create, :show]
     resources :audios, :only => :show
+  end
+
+  resources :comments, :only => [] do
+    member do
+      post 'flag'
+      post 'like'
+      post 'dislike'
+    end
   end
 
   resources :users, :only => :show do
