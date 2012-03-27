@@ -3,9 +3,9 @@
   .span1.avatar
     %img{ :src => gravatar_url_for(comment, :s => 40), :class => 'gravatar', :alt => comment.author }
   .span8.description
-    - cache comment do
+    - cache comment, :expires_in => 7.days do
       %p.author
-        %span.who= link_to comment.author, comment.user
+        %span.who= link_to_unless comment.user.nil?, comment.author, comment.user
         %small
           %span.when
             = timeago(comment.created_at)

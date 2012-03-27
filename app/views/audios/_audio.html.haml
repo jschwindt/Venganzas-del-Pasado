@@ -3,7 +3,7 @@
     .flash-player{:href => "#{audio.url}"}
   - else
     = render 'audios/player', :url => audio.url, :id => audio.id
-  - cache [:links, audio] do
+  - cache [:links, audio], :expires_in => 7.days do
     .downloads.well
       Descargar MP3:
       %span.direct=link_to "Descarga Directa", audio.url, :rel => 'nofollow'
