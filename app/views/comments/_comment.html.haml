@@ -17,9 +17,9 @@
         = replace_smileys(markdown_format(comment.content))
     .meta
       .thumb
-        = link_to image_tag('thumbs-up.png'), like_comment_path(comment), :method => :post, :remote => :true, :title => "¡Me gusta! :-)"
+        = link_to_unless current_user.nil?, image_tag('thumbs-up.png'), like_comment_path(comment), :method => :post, :remote => :true, :title => "¡Me gusta! :-)"
         %span.counter{:id => "like_#{comment.id}"}= "(#{comment.like_count})"
-        = link_to image_tag('thumbs-dn.png'), dislike_comment_path(comment), :method => :post, :remote => :true, :title => "¡No me gusta! :-("
+        = link_to_unless current_user.nil?, image_tag('thumbs-dn.png'), dislike_comment_path(comment), :method => :post, :remote => :true, :title => "¡No me gusta! :-("
         %span.counter{:id => "dislike_#{comment.id}"}= "(#{comment.dislike_count})"
       .action
         - if comment.deleted?
