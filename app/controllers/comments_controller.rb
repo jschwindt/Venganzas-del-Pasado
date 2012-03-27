@@ -1,9 +1,9 @@
 # encoding: utf-8
 
 class CommentsController < ApplicationController
-  load_and_authorize_resource :post, :only => :create
+  load_and_authorize_resource :post, :only => [:create, :show]
   load_and_authorize_resource :comment, :only => [:flag, :like, :dislike]
-  load_and_authorize_resource :comment, :through => :post, :only => :create
+  load_and_authorize_resource :comment, :through => :post, :only => [:create, :show]
 
   def create
     @comment = @post.comments.new(params[:comment]).publish_as(current_user, request)
