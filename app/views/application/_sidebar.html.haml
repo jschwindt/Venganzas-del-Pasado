@@ -18,6 +18,12 @@
       = render 'layouts/widgets/monthly_archive'
   %h3.ribbon Seguí a Venganzas del Pasado
   .widget
-    = render 'layouts/widgets/facebook'
+    - if Rails.env.production?
+      = render 'layouts/widgets/facebook'
+    - else
+      = image_tag('http://placehold.it/220x440/')
   .widget
-    = render 'layouts/widgets/twitter'
+    - if Rails.env.production?
+      = render 'layouts/widgets/twitter'
+    - else
+      = image_tag('http://placehold.it/220x440/')
