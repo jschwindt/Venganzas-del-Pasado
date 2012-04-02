@@ -16,6 +16,8 @@ class Post < ActiveRecord::Base
   validates :title, :presence => true
   validate :validate_status
 
+  delegate :alias, :to => :contributor, :prefix => true, :allow_nil => true
+
   scope :published, where(:status => 'published')
   scope :waiting, where(:status => 'waiting')
   scope :lifo, order('created_at DESC')
