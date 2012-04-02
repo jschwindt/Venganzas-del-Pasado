@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120320135221) do
+ActiveRecord::Schema.define(:version => 20120402225827) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20120320135221) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "gravatar_hash"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["alias"], :name => "index_users_on_alias", :unique => true

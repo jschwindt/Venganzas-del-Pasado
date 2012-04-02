@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem "rake", "0.9.3.beta.1"
-gem 'rails', '~> 3.2.2'
+gem 'rails', '3.2.2'
 
 gem 'mysql2'
 
@@ -17,10 +17,10 @@ gem 'sass-rails',   '~> 3.2.3'
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'kaminari'
-gem 'friendly_id', '~> 4.0.1'
+gem 'friendly_id', '~> 4.0.4'
 gem 'sequel'
 gem 'redcarpet'
-gem 'devise', '~> 1.5.3'
+gem 'devise'
 gem "omniauth-facebook"
 gem 'bootstrap-sass', '~> 1.4.4'
 gem 'inherited_resources'
