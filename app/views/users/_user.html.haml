@@ -1,6 +1,6 @@
 .row.user
-  .span2.avatar
-    %img{ :src => gravatar_url_for(user, :s => 100), :class => 'gravatar', :alt => user.alias }
+  .span1.avatar
+    %img{ :src => user.profile_picture_url, :alt => user.alias }
   .span7.info
     %h3.title
       = link_to user.alias, user

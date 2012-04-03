@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120402225827) do
+ActiveRecord::Schema.define(:version => 20120403155459) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(:version => 20120402225827) do
     t.string   "author_email"
     t.string   "author_ip"
     t.text     "content"
-    t.string   "status",        :default => "neutral"
+    t.string   "status",              :default => "neutral"
     t.datetime "created_at"
-    t.string   "gravatar_hash"
+    t.string   "profile_picture_url"
   end
 
   add_index "comments", ["created_at"], :name => "index_comments_on_created_at"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(:version => 20120402225827) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "gravatar_hash"
+    t.string   "profile_picture_url"
     t.string   "unconfirmed_email"
   end
 

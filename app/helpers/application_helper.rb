@@ -52,13 +52,6 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
-  def gravatar_url_for(object, options = {})
-    if object.respond_to? :gravatar_hash
-      default_options = { :s => 60, :d => 'mm' }
-      "http://www.gravatar.com/avatar/#{object.gravatar_hash}?#{default_options.merge!(options).to_query}"
-    end
-  end
-
   def fb_like_button_for(object)
     html = <<-HTML
       <iframe src="//www.facebook.com/plugins/like.php?href=#{polymorphic_url(object)}&amp;send=false&amp;layout=button_count&amp;width=120&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=128505023893262" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>

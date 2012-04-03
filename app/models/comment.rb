@@ -41,13 +41,19 @@ class Comment < ActiveRecord::Base
   scope :fifo, order('created_at ASC')
   scope :lifo, order('created_at DESC')
 
-  def self.visible_by( user )
-    if user
-      where( 'status IN (?) OR (user_id = ? AND status != ?)', ['neutral', 'approved', 'flagged'], user.id, 'deleted' )
-    else
-      where( 'status IN (?)', ['neutral', 'approved', 'flagged'] )
+  class << self
+    def visible_by( user )
+      if user
+        where( 'status IN (?) OR (user_id = ? AND status != ?)', ['neutral', 'approved', 'flagged'], user.id, 'deleted' )
+      else
+        where( 'status IN (?)', ['neutral', 'approved', 'flagged'] )
+      end
     end
-  end
+
+    def has_status(status)
+      where( 'status = ?', status ) unless status.nil?
+    end
+  end # Class methods
 
   def publish_as(user, request)
     self.user_id = user.id
@@ -59,13 +65,19 @@ class Comment < ActiveRecord::Base
       self.moderate
     end
 
-    self.gravatar_hash = user.gravatar_hash
+    self.profile_picture_url = user.profile_picture_url
 
     self
   end
 
-  def self.has_status(status)
-    where( 'status = ?', status ) unless status.nil?
+  def update_profile_picture_url
+    if user.present?
+      self.profile_picture_url = user.profile_picture_url
+    else
+      gravatar_hash = Digest::MD5.hexdigest(author_email.strip.downcase)
+      self.profile_picture_url = "http://www.gravatar.com/avatar/#{gravatar_hash}?d=mm&s=50"
+    end
+    save
   end
 
   define_index do

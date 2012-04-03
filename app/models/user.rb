@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :nullify
   has_many :contributions, :class_name => 'Post', :foreign_key => :contributor_id, :dependent => :nullify
   validates :alias, :presence => true, :uniqueness => { :case_sensitive => false }
-  before_save :update_gravatar_hash, :clean_role
+  before_save :update_profile_picture_url, :clean_role
   delegate :can?, :cannot?, :to => :ability
 
   # Include default devise modules. Others available are:
@@ -106,9 +106,12 @@ class User < ActiveRecord::Base
 
   private
 
-  def update_gravatar_hash
-    if email_changed?
-      self.gravatar_hash = Digest::MD5.hexdigest(email.strip.downcase)
+  def update_profile_picture_url
+    if has_facebook_profile?
+      self.profile_picture_url = "http://graph.facebook.com/#{fb_userid}/picture"
+    else
+      gravatar_hash = Digest::MD5.hexdigest(email.strip.downcase)
+      self.profile_picture_url = "http://www.gravatar.com/avatar/#{gravatar_hash}?d=mm&s=50"
     end
   end
 
