@@ -2,17 +2,6 @@
 
 %h2.title= html_page_title
 
-.alert-message.block-message.warning
-  %a{ class: "close", href: "#"}
-    ×
-  %p
-    %strong
-      Nota importante para usuarios ya registrados:
-    Si ya eras usuario de la versión anterior del sitio, es necesario que por única vez
-    hagas el procedimiento de recuperar contraseña mediante el siguiente botón:
-    .alert-actions
-      = link_to "Recuperar contraseña", new_user_password_path, class: "btn small"
-
 %p
   Si tenés una cuenta en #{link_to "Facebook", 'http://facebook.com'} podés iniciar sesión haciendo click en el siguiente botón:
 
