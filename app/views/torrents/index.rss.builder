@@ -1,10 +1,9 @@
 xml.instruct! :xml, :version => '1.0'
 xml.rss :version => "2.0", 'xmlns:atom' => "http://www.w3.org/2005/Atom" do
   xml.channel do
-    xml.title 'Venganzas del Pasado'
+    xml.title 'Venganzas del Pasado - Torrents de programas recientes'
     xml.description 'Torrents de audios de La Venganza será Terrible'
-    xml.link torrents_url(:rss)
-    xml.atom :link, :href => torrents_url(:rss), :rel => "self", :type => "application/rss+xml"
+    xml.link root_url
 
     for torrent in @torrents
       xml.item do

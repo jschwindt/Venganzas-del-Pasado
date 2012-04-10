@@ -1,13 +1,12 @@
 xml.instruct! :xml, :version => "1.0"
 xml.rss :version => "2.0", 'xmlns:atom' => "http://www.w3.org/2005/Atom" do
   xml.channel do
-    xml.title "Programas Recientes - Venganzas del Pasado"
-    xml.description "Archivos MP3 del programa de radio La Venganza Será Terrible de Alejandro Dolina"
+    xml.title "Venganzas del Pasado - Programas Recientes"
+    xml.description "Archivos MP3 del programa de radio 'La Venganza Será Terrible' de Alejandro Dolina"
+    xml.link root_url
     if @posts.first_page?
-      xml.link posts_url(:rss)
       xml.atom :link, :href => posts_url(:rss), :rel => "self", :type => "application/rss+xml"
     else
-      xml.link posts_url(:rss, :page => @posts.current_page)
       xml.atom :link, :href => posts_url(:rss, :page => @posts.current_page), :rel => "self", :type => "application/rss+xml"
     end
 
