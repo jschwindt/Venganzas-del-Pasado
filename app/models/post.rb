@@ -93,6 +93,10 @@ class Post < ActiveRecord::Base
     def last_updated
       published.order('updated_at DESC').first
     end
+
+    def contributions
+      where('contributor_id IS NOT NULL')
+    end
   end   # Class methods
 
   def publish_contribution

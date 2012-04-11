@@ -3,7 +3,7 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, :only => [:new, :create]
   load_and_authorize_resource
-  skip_authorize_resource :only => :archive
+  skip_authorize_resource :only => [:archive, :contributions]
 
   def index
     @posts = @posts.published.lifo.page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
@@ -21,6 +21,12 @@ class PostsController < ApplicationController
     authorize! :index, Post
     @posts = Post.published.lifo.
               created_on(params[:year], params[:month], params[:day]).
+              page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
+  end
+
+  def contributions
+    authorize! :index, Post
+    @posts = Post.contributions.published.lifo.
               page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
   end
 

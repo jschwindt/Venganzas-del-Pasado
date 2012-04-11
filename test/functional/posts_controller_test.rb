@@ -16,10 +16,17 @@ class PostsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:post)
   end
 
-  test "should get archive" do
+  test "should get archive index" do
     get :archive
     assert_response :success
     assert_template 'archive'
+    assert_not_nil assigns(:posts)
+  end
+
+  test "should get contributions index" do
+    get :contributions
+    assert_response :success
+    assert_template 'contributions'
     assert_not_nil assigns(:posts)
   end
 
