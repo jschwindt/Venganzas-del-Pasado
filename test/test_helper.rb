@@ -10,13 +10,6 @@ class ActiveSupport::TestCase
   # -- they do not yet inherit this setting
   fixtures :all
 
-  # HACK, see: http://stackoverflow.com/questions/3118866/mocha-mock-carries-to-another-test
-  def teardown
-    super
-    Mocha::Mockery.instance.teardown
-    Mocha::Mockery.reset_instance
-  end
-
 end
 
 class ActionController::TestCase
@@ -42,3 +35,6 @@ class ActionDispatch::IntegrationTest
     Capybara.use_default_driver # Revert Capybara.current_driver to Capybara.default_driver
   end
 end
+
+# Must be at the very bottom, see: http://stackoverflow.com/questions/3118866/mocha-mock-carries-to-another-test
+require 'mocha'

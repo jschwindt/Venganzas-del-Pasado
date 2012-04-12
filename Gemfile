@@ -48,7 +48,7 @@ end
 group :test do
   # Pretty printed test output
   # gem 'turn', :require => false
-  gem 'mocha'
+  gem 'mocha', :require => false
   gem 'shoulda'
   gem 'shoulda-matchers'
   gem 'capybara'
