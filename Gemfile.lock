@@ -207,6 +207,10 @@ GEM
       shoulda-matchers (~> 1.0.0)
     shoulda-context (1.0.0)
     shoulda-matchers (1.0.0)
+    simplecov (0.6.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.5.3)
+    simplecov-html (0.5.3)
     sitemap_generator (3.1.1)
       builder
     sprockets (2.1.2)
@@ -270,6 +274,7 @@ DEPENDENCIES
   sequel
   shoulda
   shoulda-matchers
+  simplecov
   sitemap_generator
   therubyracer
   thinking-sphinx (~> 2.0.11)
