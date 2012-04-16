@@ -26,7 +26,7 @@ class PostsController < ApplicationController
 
   def contributions
     authorize! :index, Post
-    @posts = Post.contributions.published.lifo.
+    @posts = Post.contributions.published.
               page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
   end
 

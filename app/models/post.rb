@@ -95,7 +95,7 @@ class Post < ActiveRecord::Base
     end
 
     def contributions
-      where('contributor_id IS NOT NULL')
+      where('contributor_id IS NOT NULL').order('updated_at DESC')
     end
   end   # Class methods
 
