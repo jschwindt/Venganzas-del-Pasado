@@ -10,11 +10,9 @@ branches:
 env:
   - DB=mysql
 
-gemfile:
-  - Gemfile
-before_script: 
-  - 'cp config/database.yml.sample config/database.yml'
-  - 'bundle exec rake db:create > /dev/null'
+before_script:
+  - cp config/database.yml.sample config/database.yml
+  - mysql -e 'create database chromotype_test'
 
-script: 'bundle exec rake test'
-
+script:
+  - RAILS_ENV=test bundle exec rake --trace db:migrate test
