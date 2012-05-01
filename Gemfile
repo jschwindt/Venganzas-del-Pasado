@@ -20,7 +20,7 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'kaminari'
 gem 'friendly_id', '~> 4.0.4'
-gem 'sequel'
+# gem 'sequel'
 gem 'redcarpet'
 gem 'devise'
 gem "omniauth-facebook"
