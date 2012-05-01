@@ -14,7 +14,7 @@ gemfile:
   - Gemfile
 before_script: 
   - 'cp config/database.yml.sample config/database.yml'
-  - 'bundle exec rake db:create db:up > /dev/null'
+  - 'bundle exec rake db:create > /dev/null'
 
 script: 'bundle exec rake test'
 
