@@ -3,7 +3,7 @@ source 'http://rubygems.org'
 gem 'simplecov', :require => false, :group => :test
 
 gem "rake", "0.9.3.beta.1"
-gem 'rails', '3.2.2'
+gem 'rails', '3.2.3'
 
 gem 'mysql2'
 
@@ -45,6 +45,7 @@ group :development do
   gem 'hirb'
   gem 'wirble'
   gem 'rails_best_practices'
+  gem 'quiet_assets'
 end
 
 group :test do
