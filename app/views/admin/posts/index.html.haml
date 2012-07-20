@@ -24,6 +24,6 @@
             =link_to "Permalink", post, :target => '_blank'
             =link_to "Editar", edit_admin_post_path(post)
             - if can? :destroy, Post
-              =link_to "Eliminar", admin_post_path(post), :method => :delete, :confirm => "¿Estás seguro?"
+              =link_to "Eliminar", admin_post_path(post), :method => :delete, :data => { :confirm => "¿Estás seguro?" }
 
   = paginate @posts

@@ -27,7 +27,7 @@
           - if can? :approve, comment
             %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
           - if can? :destroy, comment
-            %span.delete=link_to "Eliminar definitivamente", admin_comment_path(comment), :method => :delete, :confirm => '¿Estás seguro?'
+            %span.delete=link_to "Eliminar definitivamente", admin_comment_path(comment), :method => :delete, :data => { :confirm => '¿Estás seguro?' }
         - else
           - if comment.pending?
             %span.pending Aguardando moderación
@@ -36,6 +36,6 @@
           - if (comment.pending? or comment.flagged?) and can?(:approve, comment)
             %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
           - if comment.neutral? && can?(:flag, comment)
-            %span.flag{:id => "flag_#{comment.id}"}=link_to "Denunciar", flag_comment_path(comment), :confirm => '¿Estás seguro?', :method => :post, :remote => :true
+            %span.flag{:id => "flag_#{comment.id}"}=link_to "Denunciar", flag_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }, :method => :post, :remote => :true
           - if can? :trash, comment
             %span.delete=link_to "Eliminar", trash_admin_comment_path(comment), :confirm => '¿Estás seguro?'

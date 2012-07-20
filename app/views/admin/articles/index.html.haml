@@ -21,6 +21,6 @@
           %td
             =link_to "Permalink", article, :target => '_blank'
             =link_to "Editar", edit_admin_article_path(article)
-            =link_to "Eliminar", admin_article_path(article), :method => :delete, :confirm => "¿Estás seguro?"
+            =link_to "Eliminar", admin_article_path(article), :method => :delete, :data => { :confirm => "¿Estás seguro?" }
 
   = paginate @articles

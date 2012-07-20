@@ -47,4 +47,4 @@
   no habrá forma de recuperar tus datos.
 
 = link_to "Eliminar definitivamente la cuenta", registration_path(resource_name),
-      :confirm => "¿Está seguro?", :method => :delete
+      :data => { :confirm => "¿Está seguro?" }, :method => :delete
