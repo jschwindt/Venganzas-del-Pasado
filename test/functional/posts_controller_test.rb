@@ -17,7 +17,7 @@ class PostsControllerTest < ActionController::TestCase
   end
 
   test "should get archive index" do
-    get :archive
+    get :archive, :year => "2012"
     assert_response :success
     assert_template 'archive'
     assert_not_nil assigns(:posts)
