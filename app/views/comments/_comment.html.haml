@@ -38,4 +38,4 @@
           - if comment.neutral? && can?(:flag, comment)
             %span.flag{:id => "flag_#{comment.id}"}=link_to "Denunciar", flag_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }, :method => :post, :remote => :true
           - if can? :trash, comment
-            %span.delete=link_to "Eliminar", trash_admin_comment_path(comment), :confirm => '¿Estás seguro?'
+            %span.delete=link_to "Eliminar", trash_admin_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }
