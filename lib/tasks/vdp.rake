@@ -28,14 +28,4 @@ namespace :vdp do
     User.update_all :slug => nil
     User.find_each(&:save)
   end
-
-  desc "Actualiza profile_picture_url de usuarios y comentarios"
-  namespace :avatars do
-    task :update => :environment do
-      puts "Actualizando Users"
-      User.find_each(&:save)
-      puts "Actualizando Comments"
-      Comment.find_each(&:update_profile_picture_url)
-    end
-  end
 end
