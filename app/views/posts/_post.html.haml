@@ -9,15 +9,15 @@
     %span.comments
       Comentarios:
       = link_to post.comments.visible_by(current_user).count, post_path(post, :anchor => "comments")
+    - if post.contributor
+      %span.contribution
+        (contribución de #{link_to post.contributor_alias, user_url(post.contributor)})
     - if can? :update, post
       %span.edit= link_to "Editar", edit_admin_post_path(post)
     %span.share
-      %span.twitter-share= tweet_button_for post
-      %span.facebook-share= fb_like_button_for post
-    - if post.contributor
-      %span.contribution
-        %br/
-        (contribución de #{link_to post.contributor_alias, user_url(post.contributor)})
+      .g-plusone{'data-size' => "medium", 'data-href' => post_url(post)}
+      = tweet_button_for post
+      = fb_like_button_for post
 
   .audios
     = render post.audios
