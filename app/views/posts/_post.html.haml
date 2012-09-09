@@ -1,52 +1,23 @@
-%article.post{:id=>"post-#{post.id}", :itemscope=>true, :itemtype=>"http://schema.org/BlogPosting"}
+.post
 
-  %header
-    %h1.title{:itemprop=>'name'}
-      = link_to post.title, post, :itemprop => 'url', :rel => 'bookmark'
+  %h3.title
+    = link_to post.title, post
 
-  %footer.meta
+  %p.meta
     %span.date
-      %time{:itemprop=>'datePublished', :datetime=>post.created_at.xmlschema}
-        #{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i]} de #{post.created_at.year}
+      #{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i]} de #{post.created_at.year}
     %span.comments
       Comentarios:
       = link_to post.comments.approved_or_from_user(current_user).count, post_path(post, :anchor => "comments")
-      %meta{:itemprop=>"interactionCount", :content=>"#{post.comments.approved_or_from_user(current_user).count} UserComments"}/
     - if can? :update, post
       %span.edit= link_to "Editar", edit_admin_post_path(post)
     %span.share
       %span.twitter-share= tweet_button_for post
       %span.facebook-share= fb_like_button_for post
 
-  %section.audios
+  .audios
     = render post.audios
 
-  .content{:itemprop=>'articleBody'}
+  .content
     - if post.content?
       = markdown_format post.content
-
-  - if defined? comments
-
-    =render 'layouts/banners/b468x60'
-
-    %section.comments
-      %a{ :name => "comments" }
-      %h1.ribbon Comentarios (#{@post.comments.approved_or_from_user(current_user).count}):
-
-      - if comments.count > 0
-        = render comments
-      - else
-        %p
-          No hay comentarios. ¡Podés ser el primero en comentar!
-
-      .row
-        .offset1
-          = paginate comments, :window => 2
-
-      - if can? :create, Comment
-        %h2 Escribí un comentario
-        = render 'comments/form', :post => @post, :comment => @post.comments.build
-      - else
-        .row
-          .offset1
-            Tenés que #{link_to "iniciar sesión", new_user_session_path} para comentar.

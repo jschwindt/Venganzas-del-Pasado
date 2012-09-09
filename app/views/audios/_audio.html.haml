@@ -1,12 +1,11 @@
-%article.audio{:itemscope=>true, :itemtype=>"http://schema.org/AudioObject"}
-  %meta{:itemprop=>"encodingFormat", :content=>"mp3"}
+.audio
   - if flash_player?
     .flash-player{:href => "#{audio.url}"}
   - else
     = render 'audios/player', :url => audio.url, :id => audio.id
   .downloads.well
     Descargar MP3:
-    %span.direct=link_to "Descarga Directa", audio.url, :itemprop => 'contentURL'
+    %span.direct=link_to "Descarga Directa", audio.url
     %span.torrent
       =link_to ".torrent", audio.torrent_url
       %small= link_to "¿Qué es esto?", article_path('torrent')

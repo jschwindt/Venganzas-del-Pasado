@@ -9,4 +9,28 @@
   - if next_post = @post.next
     .span4.offset1.next-post= link_to "#{next_post.title} →", next_post
 
-=render @post, :comments => @comments
+=render @post
+
+=render 'layouts/banners/b468x60'
+
+%a{ :name => "comments" }
+%h4 Comentarios (#{@post.comments.approved_or_from_user(current_user).count}):
+
+.comments
+  - if @comments.count > 0
+    = render @comments
+  - else
+    %p
+      No hay comentarios. ¡Podés ser el primero en comentar!
+
+  .row
+    .offset1
+      = paginate @comments, :window => 2
+
+  - if can? :create, Comment
+    %h3 Escribí un comentario
+    = render 'comments/form', :post => @post, :comment => @post.comments.build
+  - else
+    .row
+      .offset1
+        Tenés que #{link_to "iniciar sesión", new_user_session_path} para comentar.

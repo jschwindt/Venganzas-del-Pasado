@@ -1,4 +1,4 @@
-body > header {
+header {
   padding-top: 60px;
   background: asset-url('redtexture.jpg', image);
   $shadow: 0 1px 3px rgba(0,0,0,1), inset 0 -1px 0 rgba(0,0,0,.1);
@@ -26,41 +26,41 @@ body > header {
     color: $black;
     text-align: center;
   }
+}
 
-  &.home {
+header.home {
 
-    .title-container {
+  .title-container {
 
-      background: asset-url('splash.png', image) no-repeat;
-      height: 228px;
-
-    }
-
-    .slogan p {
-      font-size: 30px;
-      line-height: 36px;
-      margin-bottom: 20px;
-    }
+    background: asset-url('splash.png', image) no-repeat;
+    height: 228px;
 
   }
 
-  &.internal {
+  .slogan p {
+    font-size: 30px;
+    line-height: 36px;
+    margin-bottom: 20px;
+  }
 
-    padding-bottom: 10px;
+}
 
-    .title-container {
+header.internal {
 
-      background: asset-url('splash-small.png', image) no-repeat;
-      height: 61px;
+  padding-bottom: 10px;
 
-    }
+  .title-container {
 
-    .slogan p {
-      font-size: 22px;
-      line-height: 28px;
-    }
+    background: asset-url('splash-small.png', image) no-repeat;
+    height: 61px;
 
   }
+
+  .slogan p {
+    font-size: 22px;
+    line-height: 28px;
+  }
+
 }
 
 .subheader {
