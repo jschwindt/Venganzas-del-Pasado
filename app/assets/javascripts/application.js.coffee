@@ -5,10 +5,13 @@
 //= require jquery.jplayer
 //= require jplayer
 //= require flash_player
+//= require jquery.timeago
+//= require jquery.timeago-es
 //= require_self
 
 jQuery ->
   $(".alert-message").alert()
+  $("abbr.timeago").timeago();
   $('.topbar').dropdown()
   $('.widget .archive .year > a').click (event) ->
     months = $(this).next()

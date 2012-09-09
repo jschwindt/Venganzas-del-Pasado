@@ -6,10 +6,11 @@
 #
 one:
   post: one
+  user: one
   content: comentario 1
 
 two:
-  post: one
+  post: two
   content: comentario 2
 
 approved:
@@ -17,7 +18,22 @@ approved:
   content: comentario aprobado
   status: approved
 
+neutral:
+  post: published
+  content: comentario autoaprobado
+  status: neutral
+
+flagged:
+  post: published
+  content: comentario denunciado
+  status: flagged
+
 pending:
-  post: pending
+  post: two
   content: comentario pendiente de aprobación
   status: pending
+
+deleted:
+  post: two
+  content: comentario borrado
+  status: deleted

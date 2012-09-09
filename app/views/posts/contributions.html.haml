@@ -1,0 +1,17 @@
+- if params[:page].nil?
+  - the_title = "Contribuciones de Programas de La Venganza será Terrible de Alejandro Dolina"
+- else
+  - the_title = "Contribuciones de Programas de La Venganza será Terrible de Alejandro Dolina, <small>Página #{params[:page]}</small>"
+- page_title the_title
+- meta_description strip_tags(the_title)
+
+%h2.ribbon
+  Programas y segmentos enviados por los usuarios
+
+.posts
+  = render @posts
+
+= paginate @posts, :window => 2
+
+=render 'layouts/banners/b468x60'
+

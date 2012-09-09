@@ -2,7 +2,7 @@
   %li.menu
     %a.menu{:href=>'#'}
       %span.user
-        %span.avatar= image_tag gravatar_url_for(current_user)
+        %span.avatar= image_tag current_user.profile_picture_url
         %span.alias= current_user.alias
     %ul.menu-dropdown
       =render 'layouts/menus/user_items'

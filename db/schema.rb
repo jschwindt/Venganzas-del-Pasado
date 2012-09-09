@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111220211442) do
+ActiveRecord::Schema.define(:version => 20120814011002) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -38,14 +38,35 @@ ActiveRecord::Schema.define(:version => 20111220211442) do
     t.string   "author_email"
     t.string   "author_ip"
     t.text     "content"
-    t.string   "status"
+    t.string   "status",              :default => "neutral"
     t.datetime "created_at"
-    t.string   "gravatar_hash"
+    t.string   "profile_picture_url"
+    t.datetime "updated_at"
   end
 
   add_index "comments", ["created_at"], :name => "index_comments_on_created_at"
   add_index "comments", ["post_id", "created_at"], :name => "index_comments_on_post_id_and_created_at"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "friendly_id_slugs", :force => true do |t|
+    t.string   "slug",                         :null => false
+    t.integer  "sluggable_id",                 :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], :name => "index_friendly_id_slugs_on_slug_and_sluggable_type", :unique => true
+  add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "media", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "asset"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "post_id"
+  end
 
   create_table "posts", :force => true do |t|
     t.string   "title"
@@ -55,10 +76,12 @@ ActiveRecord::Schema.define(:version => 20111220211442) do
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "contributor_id"
   end
 
   add_index "posts", ["created_at"], :name => "index_posts_on_created_at"
   add_index "posts", ["slug"], :name => "index_posts_on_slug", :unique => true
+  add_index "posts", ["updated_at"], :name => "index_posts_on_updated_at"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false
@@ -81,7 +104,8 @@ ActiveRecord::Schema.define(:version => 20111220211442) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "gravatar_hash"
+    t.string   "profile_picture_url"
+    t.string   "unconfirmed_email"
   end
 
   add_index "users", ["alias"], :name => "index_users_on_alias", :unique => true

@@ -1,13 +1,16 @@
+# encoding: utf-8
+
 class PostsController < ApplicationController
+  before_filter :authenticate_user!, :only => [:new, :create]
   load_and_authorize_resource
-  skip_authorize_resource :only => :archive
+  skip_authorize_resource :only => [:archive, :contributions]
 
   def index
     @posts = @posts.published.lifo.page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
   end
 
   def show
-    comments_collection = @post.comments.approved_or_from_user(current_user).fifo
+    comments_collection = @post.comments.visible_by(current_user).fifo
     page = params[:page].present? ?
              params[:page] :
              comments_collection.page.per(VenganzasDelPasado::Application.config.comments_per_page).num_pages
@@ -21,4 +24,29 @@ class PostsController < ApplicationController
               page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
   end
 
+  def contributions
+    authorize! :index, Post
+    @posts = Post.contributions.published.
+              page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
+  end
+
+  def new
+    @post = Post.new
+    1.upto(4).each do
+      @post.media << Medium.new
+    end
+  end
+
+  def create
+    @post = Post.new_contribution(params[:post], current_user)
+    if @post.save
+      PostMailer.new_contribution(@post).deliver
+      redirect_to new_post_url, :notice => "El post '#{@post.title}' se subió con éxito y pronto será revisado y, si corresponde, aprobado. Abajo tenés nuevamente el formulario por si querés cargar más programas."
+    else
+      @post.media.size.upto(4) do
+        @post.media << Medium.new
+      end
+      render 'new'
+    end
+  end
 end

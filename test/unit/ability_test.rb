@@ -12,9 +12,11 @@ class AbilityTest < ActiveSupport::TestCase
     assert ability.cannot?(:read, posts(:draft))
   end
 
-  test "logout user can read only approved comments" do
+  test "logged out user can read only neutral, approved or flagged comments" do
     ability = Ability.new(nil)
+    assert ability.can?(:read, comments(:neutral))
     assert ability.can?(:read, comments(:approved))
+    assert ability.can?(:read, comments(:flagged))
     assert ability.cannot?(:read, comments(:pending))
   end
 
@@ -65,11 +67,18 @@ class AbilityTest < ActiveSupport::TestCase
     assert ability.can?(:flag, Comment.new)
   end
 
-  test "good users can approve their comments" do
+  test "user can like or dislike any comments" do
+    user = users(:one)
+    ability = Ability.new(user)
+    assert ability.can?(:like, Comment.new)
+    assert ability.can?(:dislike, Comment.new)
+  end
+
+  test "good users can post their comments" do
     user = users(:one)
     user.karma = 600
     ability = Ability.new(user)
-    assert ability.can?(:approve, user.comments.build)
+    assert ability.can?(:publish, user.comments.build)
   end
 
   test "user cannot manage all" do

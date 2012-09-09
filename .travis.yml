@@ -1,0 +1,19 @@
+language: ruby
+
+rvm:
+  - 1.9.3
+
+branches:
+  only:
+    - master
+
+env:
+  - DB=mysql
+
+before_script:
+  - cp config/database.yml.sample config/database.yml
+  - cp config/app_config.yml.sample config/app_config.yml
+  - mysql -e 'create database vdp_test'
+
+script:
+  - RAILS_ENV=test bundle exec rake --trace db:migrate test

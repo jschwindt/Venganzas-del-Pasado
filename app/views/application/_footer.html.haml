@@ -5,9 +5,6 @@
         Venganzas del Pasado
       .span4.offset1
         %ul
-          %li=link_to 'Inicio', :root
-          %li=link_to 'Ayuda', article_path('ayuda')
-          %li=link_to 'Acerca de VdP', article_path('acerca-de-este-sitio')
           %li
             = link_to 'Programas Recientes', posts_path
             = link_to "(RSS)", posts_path(:format => :rss)
@@ -16,3 +13,16 @@
             = link_to "(RSS)", torrents_url(:format => :rss)
           %li
             = link_to "Usar Player #{flash_player? ? 'HTML5' : 'Flash'}", switch_player_path
+          %li
+            = link_to "Subir programas viejos", new_post_path
+          %li
+            = link_to "Últimas contribuciones", contributions_path
+:javascript
+  window.___gcfg = {lang: 'es-419'};
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+
+  !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");  

@@ -11,13 +11,19 @@
         = render 'layouts/menus/user_items'
   .widget
     = render 'layouts/banners/b160x600'
-  - cache "posts_archive-#{Post.last.id}", :expires_in => 4.hours do
+  - cache [:archive, Post.last_updated], :expires_in => 2.days do
     .widget
       = render 'layouts/widgets/daily_archive'
     .widget
       = render 'layouts/widgets/monthly_archive'
   %h3.ribbon Seguí a Venganzas del Pasado
   .widget
-    = render 'layouts/widgets/facebook'
+    - if Rails.env.production?
+      = render 'layouts/widgets/facebook'
+    - else
+      = image_tag('http://placehold.it/220x440/')
   .widget
-    = render 'layouts/widgets/twitter'
+    - if Rails.env.production?
+      = render 'layouts/widgets/twitter'
+    - else
+      = image_tag('http://placehold.it/220x440/')

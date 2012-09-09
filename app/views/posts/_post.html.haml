@@ -8,16 +8,26 @@
       #{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i]} de #{post.created_at.year}
     %span.comments
       Comentarios:
-      = link_to post.comments.approved_or_from_user(current_user).count, post_path(post, :anchor => "comments")
+      = link_to post.comments.visible_by(current_user).count, post_path(post, :anchor => "comments")
+    - if post.contributor
+      %span.contribution
+        (contribución de #{link_to post.contributor_alias, user_url(post.contributor)})
     - if can? :update, post
       %span.edit= link_to "Editar", edit_admin_post_path(post)
     %span.share
-      %span.twitter-share= tweet_button_for post
-      %span.facebook-share= fb_like_button_for post
+      .g-plusone{'data-size' => "medium", 'data-href' => post_url(post)}
+      = tweet_button_for post
+      = fb_like_button_for post
 
   .audios
     = render post.audios
+    = render post.media
 
   .content
     - if post.content?
-      = markdown_format post.content
+      = markdown_format post.content, :filter_html => false
+
+  - if can?(:update, Post) && post.pending?
+    %p.meta
+      = link_to "Aprobar contribución", approve_contribution_admin_post_path(post)
+      (Enviado por #{link_to post.contributor_alias, post.contributor})

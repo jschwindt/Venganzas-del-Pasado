@@ -12,6 +12,10 @@ module ApplicationHelper
     @page_title
   end
 
+  def meta_description(text)
+    @meta_description = text
+  end
+
   def body_class(klass = nil)
     "#{controller.controller_name}-#{controller.action_name} #{klass}"
   end
@@ -24,7 +28,7 @@ module ApplicationHelper
       <div class="alert-message block-message error">
         #{ link_to "x", "#", :class => 'close' }
         <p>
-          <strong>Se ha encontrado #{pluralize(object.errors.count, "error")}</strong>
+          <strong>Se ha#{object.errors.count > 1 ? 'n' : ''} encontrado #{object.errors.count} error#{object.errors.count > 1 ? 'es' : ''}</strong>
         </p>
         <ul>#{ messages }</ul>
       </div>
@@ -38,21 +42,14 @@ module ApplicationHelper
     current_page?(action) ? 'active' : 'inactive'
   end
 
-  def markdown_format(text)
-    rndr = Redcarpet::Render::HTML.new(:filter_html => true, :hard_wrap => true)
+  def markdown_format(text, options = {})
+    rndr = Redcarpet::Render::HTML.new(options.reverse_merge(:filter_html => true, :hard_wrap => true))
     markdown = Redcarpet::Markdown.new(
         rndr,
         :autolink            => true,
         :no_intra_emphasis   => true,
         :space_after_headers => true)
     markdown.render(text).html_safe
-  end
-
-  def gravatar_url_for(object, options = {})
-    if object.respond_to? :gravatar_hash
-      default_options = { :s => 60, :d => 'mm' }
-      "http://www.gravatar.com/avatar/#{object.gravatar_hash}?#{default_options.merge!(options).to_query}"
-    end
   end
 
   def fb_like_button_for(object)
@@ -63,15 +60,21 @@ module ApplicationHelper
   end
 
   def tweet_button_for(object)
-    html = <<-HTML
-      <a href="https://twitter.com/share" class="twitter-share-button" data-url="#{polymorphic_url(object)}" data-via="venganzaspasado" data-lang="es" data-hashtags="vdp">Tweet</a>
-      <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-    HTML
-    html.html_safe
+    link_to "Compartir VdP en Twitter", "https://twitter.com/share",
+            'class'     => "twitter-share-button",
+            'data-url'  => polymorphic_url(object),
+            'data-via'  => "venganzaspasado",
+            'data-lang' => "es",
+            'data-hashtags' => "vdp"
   end
 
   def flash_player?
     cookies[:player] == 'flash'
+  end
+
+  def timeago(time, options = {})
+    options[:class] ||= "timeago"
+    content_tag(:abbr, 'el' + l(time, :format => :long), options.merge(:title => time.getutc.iso8601)) if time
   end
 
 end

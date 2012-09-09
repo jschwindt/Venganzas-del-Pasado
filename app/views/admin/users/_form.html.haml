@@ -8,6 +8,10 @@
       .input
         = f.text_field :alias
     .clearfix
+      = f.label :email
+      .input
+        = f.text_field :email, :disabled => true
+    .clearfix
       = f.label :karma
       .input
         = f.text_field :karma

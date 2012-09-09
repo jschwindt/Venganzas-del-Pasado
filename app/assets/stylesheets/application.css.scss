@@ -1,5 +1,4 @@
 /*
-*= require bootstrap
 *= require_self
 */
 
@@ -150,6 +149,16 @@ legend {
 
 select, input[type=file] {
   height: 36px;
+}
+
+#post_created_at_3i {
+  width: 4em;
+}
+#post_created_at_2i {
+  width: 12em;
+}
+#post_created_at_1i {
+  width: 6em;
 }
 
 .span9 {

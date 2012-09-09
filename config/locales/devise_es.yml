@@ -24,22 +24,21 @@ es:
       signed_out: 'Sesión cerrada exitosamente.'
     passwords:
       send_instructions: "Recibirás un email con instrucciones sobre cómo restablecer tu contraseña."
-      send_paranoid_instructions: "Si tu email existe en nuestra base de datos, recibirás un correo con instrucciones para recuperar tu clave."
       updated: "Tu contraseña ha sido cambiada exitosamente. Ahora podés ingresar."
       updated_not_active: 'Tu contraseña ha sido cambiada exitosamente.'
+      send_paranoid_instructions: "Si tu email existe en nuestra base de datos, recibirás un correo con instrucciones para recuperar tu clave."
     confirmations:
       send_instructions: 'Recibirás un email con instrucciones de cómo confirmar tu cuenta.'
       send_paranoid_instructions: 'Si tu email existe en nuestra base de datos, recibirás instrucciones acerca de cómo confirmar tu cuenta.'
       confirmed: 'Tu cuenta ha sido confirmada exitosamente. Ahora podés ingresar.'
     registrations:
       signed_up: "Te has registrado exitosamente."
-      inactive_signed_up: 'Te has registrado exitosamente, sin embargo no has podido ingresar porque tu cuenta está %{reason}. Recibirás un mail con instrucciones.'
+      signed_up_but_unconfirmed: 'Se ha enviado un mensaje con un enlace de confirmación a su dirección de mail. Por favor, haga click en el enlace para confirmar su cuenta.'
+      signed_up_but_inactive: 'Te has registrado exitosamente, sin embargo no has podido ingresar porque tu cuenta está inactiva. Recibirás un mail con instrucciones.'
+      signed_up_but_locked: 'Se ha registrado correctamente. Sin embarno no podrá ingresar porque su cuenta se encuentra bloqueada.'
       updated: 'Actualizaste tu cuenta exitosamente.'
+      update_needs_confirmation: "Su cuenta se ha actualizado correctamente, pero es necesario verificar su nueva dirección de mail. Por favor, chequee su email y haga click en el enlace para finalizar el proceso."
       destroyed: '¡Adios! Tu cuenta ha sido eliminada exitosamente. Esperamos verte pronto.'
-      reasons:
-        inactive: 'inactiva'
-        unconfirmed: 'sin confirmar'
-        locked: 'blockeada'
     unlocks:
       send_instructions: "Recibirás un email con instrucciones sobre cómo desbloquear tu cuenta."
       unlocked: 'Tu cuenta ha sido desbloqueada exitosamente. Ahora podés ingresar.'

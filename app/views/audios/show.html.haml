@@ -1,9 +1,10 @@
-- page_title("Escuchando #{@audio.post.title}")
+- page_title "Escuchando #{@audio.post_title}"
+- meta_description "Audio de #{@audio.post_title}"
 
 .row
   #content.span9
 
     %h3.title
-      = link_to @audio.post.title, @audio.post, :target => '_opener'
+      = link_to @audio.post_title, @audio.post, :target => '_opener'
 
     =render @audio

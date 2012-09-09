@@ -8,4 +8,4 @@
       %span.edit= link_to "Editar", edit_admin_article_path(article)
 
   .content
-    = markdown_format article.content
+    = markdown_format article.content, :filter_html => false

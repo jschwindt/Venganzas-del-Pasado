@@ -1,6 +1,6 @@
 .row.comment-form
   .span1.avatar
-    %img{ :src => gravatar_url_for(current_user, :s => 40), :class => 'gravatar' }
+    %img{ :src => current_user.profile_picture_url, :alt => current_user.alias }
   .span8.description
     = form_for [post, comment], :html => { :class => 'form-stacked' } do |f|
       .clearfix
@@ -8,3 +8,7 @@
           = f.text_area :content, :rows => 5
       .actions
         = f.submit 'Publicar', :class => 'btn primary'
+        %p.comment-help
+          ¿No sabés cómo agregar una imagen a tu cuenta?
+          ¿Tenés problemas con el player? Consultá la página de
+          =link_to 'Ayuda.', article_path('ayuda')

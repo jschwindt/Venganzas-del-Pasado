@@ -2,22 +2,30 @@ VenganzasDelPasado::Application.routes.draw do
 
   get "search(/:what)", :action => :index, :controller => :search, :as => :search
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } do
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_scope :users do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru', :as => :user_omniauth
   end
 
   get 'posts/:year(/:month(/:day))' => 'posts#archive', :as => :posts_archive, :constraints => {
     :year => /\d{4}/, :month => /\d{1,2}/, :day => /\d{1,2}/
   }
-  resources :posts, :only => [:index, :show] do
+
+  get 'contributions(/page/:page)' => 'posts#contributions', :as => :contributions
+
+  resources :posts, :only => [:index, :show, :new, :create] do
     get 'page/:page', :action => :index, :on => :collection   # SEO friendly pagination for posts
     get 'page/:page', :action => :show, :on => :member        # SEO friendly pag. for post's comments
-    resources :comments, :only => [:show, :create] do
-      member do
-        get 'flag'
-      end
-    end
+    resources :comments, :only => [:create, :show]
     resources :audios, :only => :show
+  end
+
+  resources :comments, :only => [] do
+    member do
+      post 'flag'
+      post 'like'
+      post 'dislike'
+    end
   end
 
   resources :users, :only => :show do
@@ -36,31 +44,18 @@ VenganzasDelPasado::Application.routes.draw do
     end
     resources :articles
     resources :users, :only => [:index, :edit, :update]
-    resources :posts
+    resources :posts do
+      member do
+        get 'approve_contribution'
+      end
+    end
   end
 
-  # Redirects for old site
-
-  #   /2011/12/09/la-venganza-sera-terrible-2011-12-09/ => /posts/la-venganza-sera-terrible-del-28-11-2011
-  #   /2011/12/09/                                      => /posts/la-venganza-sera-terrible-del-28-11-2011
-  match '/:year/:month/:day(/:slug)/(:etc)' =>
-        redirect("/posts/la-venganza-sera-terrible-del-%{day}-%{month}-%{year}"),
-        :constraints => { :year => /\d{4}/, :month => /\d{2}/, :day => /\d{2}/ }
-
-  match '/:year/:month/' =>
-        redirect("/posts/%{year}/%{month}"),
-        :constraints => { :year => /\d{4}/, :month => /\d{2}/ }
-
-  match '/feed' => redirect("/posts.rss")
-
-  match '/descargas' => redirect("/posts/descargas")
-
-  match '/torrent-feed.xml' => redirect("/torrents.rss")
-
-  match '/page(/:page)/(:etc)' => redirect("/")
-
   get '/switch_player', :controller => :home, :action => :switch_player
+
   root :to => 'home#index'
+
+  match '*path(.:format)' => "redirects#index"
 
 
   # The priority is based upon order of creation:

@@ -1,0 +1,5 @@
+.audio
+  - if flash_player?
+    .flash-player{:href => "#{medium.asset_url}"}
+  - else
+    = render 'audios/player', :url => medium.asset_url, :id => medium.id

@@ -7,26 +7,27 @@ module Admin
     has_scope :lifo, :type => :boolean, :default => true
 
     def approve
-      set_status 'approved' do
-        flash[:notice] = "Se ha aprobado el comentario."
-      end
+      @comment = Comment.find params[:id]
+      @comment.approve!
+      flash[:notice] = "Se ha aprobado el comentario."
+      redirect_to collection_url(:has_status => 'pending')
     end
 
     def trash
-      set_status 'deleted' do
-        flash[:notice] = "Se ha eliminado el comentario."
+      @comment = Comment.find params[:id]
+      @comment.trash!
+      flash[:notice] = "Se ha eliminado el comentario."
+      redirect_to collection_url
+    end
+
+    def destroy
+      destroy! do
+        flash[:notice] = "Se ha eliminado definitivamente el comentario."
+        collection_url(:has_status => 'deleted')
       end
     end
 
     private
-
-    def set_status( status, &block )
-      @comment = Comment.find params[:id]
-      @comment.status = status
-      @comment.save!
-      yield
-      redirect_to collection_url
-    end
 
     def verify_admin
       unless current_user.can?(:approve, Comment)

@@ -1,7 +1,9 @@
 - if params[:page].nil?
-  - page_title("Programas de La Venganza será Terrible")
+  - the_title = "Programas de La Venganza será Terrible de Alejandro Dolina"
 - else
-  - page_title("Programas de La Venganza será Terrible <small>Página #{params[:page]}</small>")
+  - the_title = "Programas de La Venganza será Terrible de Alejandro Dolina, <small>Página #{params[:page]}</small>"
+- page_title the_title
+- meta_description strip_tags(the_title)
 
 %h2.ribbon!= html_page_title
 

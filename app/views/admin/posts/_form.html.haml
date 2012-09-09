@@ -13,6 +13,9 @@
       = f.label :content
       .input
         = f.text_area :content, :class => 'adjusted'
+      .input
+        = f.label :created_at, "Fecha de publicación"
+        = f.date_select :created_at, :start_year => 1985, :end_year => Time.zone.now.year
     .clearfix
       = f.label :status
       .input

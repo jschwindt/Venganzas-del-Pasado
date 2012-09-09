@@ -8,7 +8,7 @@
     Hay un nuevo comentario para moderar:
   %p
     = link_to @comment.author, user_url(@comment.user)
-    en #{link_to @comment.post.title, post_url(@comment.post)} dijo:
+    en #{link_to @comment.post_title, post_url(@comment.post)} dijo:
   %p
     = @comment.content
   %p

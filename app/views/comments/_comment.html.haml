@@ -1,35 +1,41 @@
 %a{ :name => "comment#{comment.id}" }
 .row.comment{ :class => "#{comment.status}"}
   .span1.avatar
-    %img{ :src => gravatar_url_for(comment, :s => 40), :class => 'gravatar', :alt => comment.author }
+    %img{ :src => comment.profile_picture_url, :alt => comment.author }
   .span8.description
-    %p.author
-      %span.who= link_to comment.author, comment.user
-      %small
-        %span.when
-          hace
-          =time_ago_in_words(comment.created_at)
-        %span.where
-          en
-          = link_to comment.post.title, comment.post
-        dijo:
-    .content
-      = replace_smileys(markdown_format(comment.content))
-    %p.meta
-      - if comment.deleted?
-        %span.deleted Eliminado
-        - if can? :approve, comment
-          %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
-        - if can? :destroy, comment
-          %span.delete=link_to "Eliminar definitivamente", admin_comment_path(comment), :method => :delete, :confirm => '¿Estás seguro?'
-      - else
-        - if comment.pending?
-          %span.pending Aguardando moderación
-        - if can? :read, comment
-          %span.permalink=link_to "Permalink", post_comment_path(comment.post, comment)
-        - if (comment.pending? or comment.flagged?) and can? :approve, comment
-          %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
-        - if (not comment.flagged?) and can? :flag, comment
-          %span.permalink=link_to "Denunciar", flag_post_comment_path(comment.post, comment), :confirm => '¿Estás seguro?'
-        - if can? :trash, comment
-          %span.delete=link_to "Eliminar", trash_admin_comment_path(comment), :confirm => '¿Estás seguro?'
+    - cache comment, :expires_in => 7.days do
+      %p.author
+        %span.who= link_to_unless comment.user.nil?, comment.author, comment.user
+        %small
+          %span.when
+            = timeago(comment.created_at)
+          %span.where
+            en
+            = link_to comment.post_title, comment.post
+          dijo:
+      .content
+        = replace_smileys(markdown_format(comment.content))
+    .meta
+      .thumb
+        = link_to_unless current_user.nil?, image_tag('thumbs-up.png'), like_comment_path(comment), :method => :post, :remote => :true, :title => "¡Me gusta! :-)"
+        %span.counter{:id => "like_#{comment.id}"}= "(#{comment.like_count})"
+        = link_to_unless current_user.nil?, image_tag('thumbs-dn.png'), dislike_comment_path(comment), :method => :post, :remote => :true, :title => "¡No me gusta! :-("
+        %span.counter{:id => "dislike_#{comment.id}"}= "(#{comment.dislike_count})"
+      .action
+        - if comment.deleted?
+          %span.deleted Eliminado
+          - if can? :approve, comment
+            %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
+          - if can? :destroy, comment
+            %span.delete=link_to "Eliminar definitivamente", admin_comment_path(comment), :method => :delete, :data => { :confirm => '¿Estás seguro?' }
+        - else
+          - if comment.pending?
+            %span.pending Aguardando moderación
+          - if can? :read, comment
+            %span.permalink=link_to "Comentario", post_comment_path(comment.post, comment)
+          - if (comment.pending? or comment.flagged?) and can?(:approve, comment)
+            %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
+          - if comment.neutral? && can?(:flag, comment)
+            %span.flag{:id => "flag_#{comment.id}"}=link_to "Denunciar", flag_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }, :method => :post, :remote => :true
+          - if can? :trash, comment
+            %span.delete=link_to "Eliminar", trash_admin_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }

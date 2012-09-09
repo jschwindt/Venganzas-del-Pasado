@@ -3,14 +3,15 @@
     .flash-player{:href => "#{audio.url}"}
   - else
     = render 'audios/player', :url => audio.url, :id => audio.id
-  .downloads.well
-    Descargar MP3:
-    %span.direct=link_to "Descarga Directa", audio.url
-    %span.torrent
-      =link_to ".torrent", audio.torrent_url
-      %small= link_to "¿Qué es esto?", article_path('torrent')
-    %span.popup
-      =link_to "Abrir Player", post_audio_path(audio.post, audio),
-        :class => 'open_player',
-        :post_id => audio.post.friendly_id,
-        :audio_id => audio.id
+  - cache [:links, audio], :expires_in => 7.days do
+    .downloads.well
+      Descargar MP3:
+      %span.direct=link_to "Descarga Directa", audio.url, :rel => 'nofollow'
+      %span.torrent
+        =link_to ".torrent", audio.torrent_url, :rel => 'nofollow'
+        %small= link_to "¿Qué es esto?", article_path('torrent')
+      %span.popup
+        =link_to "Abrir Player", post_audio_path(audio.post, audio),
+          :class => 'open_player',
+          'data-post_id' => audio.post.friendly_id,
+          'data-audio_id' => audio.id

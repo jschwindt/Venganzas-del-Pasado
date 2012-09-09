@@ -1,7 +1,9 @@
 - if params[:page].nil?
-  - page_title("Perfil de #{@user.alias}")
+  - the_title = "Perfil de #{@user.alias}"
 - else
-  - page_title("Perfil de #{@user.alias} - Página #{params[:page]} de comentarios")
+  - the_title = "Perfil de #{@user.alias} - Página #{params[:page]} de comentarios"
+- page_title the_title
+- meta_description the_title + " en Venganzas del Pasado"
 
 .ribbon
   Perfil del Usuario

@@ -1,7 +1,8 @@
 - if params[:page].nil?
-  - page_title(@post.title)
+  - page_title @post.title
 - else
-  - page_title(@post.title + " - Página #{params[:page]} de comentarios")
+  - page_title @post.title + " - Página #{params[:page]} de comentarios"
+- meta_description @post.description
 
 .row.post-nav
   - if prev_post = @post.previous
@@ -14,7 +15,7 @@
 =render 'layouts/banners/b468x60'
 
 %a{ :name => "comments" }
-%h4 Comentarios (#{@post.comments.approved_or_from_user(current_user).count}):
+%h4 Comentarios (#{@post.comments.visible_by(current_user).count}):
 
 .comments
   - if @comments.count > 0
