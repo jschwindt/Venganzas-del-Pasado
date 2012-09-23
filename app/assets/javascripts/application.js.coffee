@@ -1,8 +1,7 @@
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-alerts
-//= require bootstrap-dropdown
 //= require jquery.jplayer
+//= require bootstrap
 //= require jplayer
 //= require flash_player
 //= require jquery.timeago

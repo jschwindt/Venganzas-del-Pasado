@@ -1,0 +1,16 @@
+@import "bootstrap/_variables";
+
+$rose: #D65045;
+$gris: #404040;
+$claro: #CCCCCC;
+
+$linkColor: $rose;
+$linkColorHover: darken($rose, 15);
+
+/* grilla de 14 en lugar de 16 */
+$gridColumns: 14;
+$siteWidth: ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
+
+/* aumentando un poco*/
+$basefont: 16px;
+$baseline: 24px;

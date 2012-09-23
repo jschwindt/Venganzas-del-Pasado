@@ -24,7 +24,7 @@ gem 'friendly_id', '~> 4.0.4'
 gem 'redcarpet'
 gem 'devise'
 gem "omniauth-facebook"
-gem 'bootstrap-sass', '~> 1.4.4'
+gem 'bootstrap-sass', '~> 2.1.0.0'
 gem 'inherited_resources'
 gem 'has_scope'
 # gem 'pandoc-ruby'
