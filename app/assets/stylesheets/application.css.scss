@@ -58,10 +58,10 @@ a:hover {
 
 .btn {
   font-family: $defaultFontFamily;
-  @include gradientBar($claro, darken($claro, 10));
+  @include buttonBackground($claro, darken($claro, 10));
 
   &.primary {
-    @include gradientBar($rose, darken($rose, 10));
+    @include buttonBackground($rose, darken($rose, 10));
   }
 }
 

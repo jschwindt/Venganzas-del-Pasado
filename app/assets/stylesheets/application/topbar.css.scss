@@ -11,7 +11,7 @@
   
   .login-dropdown{
     .btn-facebook-login {
-      @include gradientBar(#3B5998, darken(#3B5998, 10));
+      @include buttonBackground(#3B5998, darken(#3B5998, 10));
     }
   
     .dropdown-menu {
