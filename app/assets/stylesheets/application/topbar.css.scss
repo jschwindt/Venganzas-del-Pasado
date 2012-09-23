@@ -1,12 +1,46 @@
-.topbar {
+#topbar {
   font-size: $basefont * 0.75;
 
   .brand {
     display: none;
   }
 
-  h5 {
-    display: none;
+  .btn-navbar {
+    float: left;
+  }
+  
+  .login-dropdown{
+    .btn-facebook-login {
+      @include gradientBar(#3B5998, darken(#3B5998, 10));
+    }
+  
+    .dropdown-menu {
+      padding: 0px;
+      
+      div.account-tools {
+        padding-top: 5px;
+      
+        & > a {
+          display: inline;
+          padding: 0px;
+          float: none;
+          clear: none;
+        }
+      }
+    }
+    
+   li {
+      padding: 20px;
+     
+      form {
+        margin-bottom: 0;
+      
+        .btn {
+          width: 100%;
+        }
+      }
+    } 
+    
   }
 
   .avatar img {
@@ -16,13 +50,8 @@
     vertical-align: top;
   }
 
-  .fb {
-    padding-bottom: 0px;
-    padding-top: 8px;
-  }
-
   .facebook-login-button {
-    padding: 0;
+    padding: 0 !important;
     margin: 10px 10px 11px;
   }
 
