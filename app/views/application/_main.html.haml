@@ -1,0 +1,16 @@
+.container.main
+  .row
+    #content.span9
+      -if notice.present?
+        .alert-message.success.fade.in
+          %a{ :class => "close", :href => "#" }
+            &times;
+          = notice
+      -if alert.present?
+        .alert-message.error.fade.in
+          %a{ :class => "close", :href => "#" }
+            &times;
+          = alert
+      = yield
+    .span4.offset1
+      = render 'sidebar'

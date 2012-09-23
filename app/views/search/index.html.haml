@@ -2,7 +2,7 @@
 
 %h2.ribbon!= html_page_title
 
-%ul.tabs
+%ul.nav.nav-tabs
   %li{:class => @what == 'posts' ? 'active' : nil}
     = link_to "Posts (#{@facets[:class]["Post"]})", search_path(params.merge(what: 'posts', page: nil))
   %li{:class => @what == 'comments' ? 'active' : nil}
