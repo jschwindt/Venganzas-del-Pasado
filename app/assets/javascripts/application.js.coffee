@@ -11,14 +11,6 @@
 jQuery ->
   $(".alert-message").alert()
   $("abbr.timeago").timeago();
-  $('.topbar').dropdown()
-  $('.widget .archive .year > a').click (event) ->
-    months = $(this).next()
-    if months.is ':visible'
-      months.slideUp()
-    else
-      months.slideDown()
-    return false
   $('.open_player').click (event) ->
     open_player this.href
     return false
