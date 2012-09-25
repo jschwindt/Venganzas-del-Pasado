@@ -1,7 +1,7 @@
 %a{ :name => "comment#{comment.id}" }
 .row.comment{ :class => "#{comment.status}"}
   .span1.avatar
-    %img{ :src => comment.profile_picture_url, :alt => comment.author }
+    %img.img-rounded{ :src => comment.profile_picture_url, :alt => comment.author }
   .span8.description
     - cache comment, :expires_in => 7.days do
       %p.author

@@ -74,7 +74,7 @@ module ApplicationHelper
 
   def timeago(time, options = {})
     options[:class] ||= "timeago"
-    content_tag(:abbr, 'el' + l(time, :format => :long), options.merge(:title => time.getutc.iso8601)) if time
+    content_tag(:abbr, 'el ' + l(time, :format => :long), options.merge(:title => time.getutc.iso8601)) if time
   end
 
 end

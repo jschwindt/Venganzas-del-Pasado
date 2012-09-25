@@ -1,6 +1,6 @@
 .row.comment-form
   .span1.avatar
-    %img{ :src => current_user.profile_picture_url, :alt => current_user.alias }
+    %img.img-rounded{ :src => current_user.profile_picture_url, :alt => current_user.alias }
   .span8.description
     = form_for [post, comment], :html => { :class => 'form-stacked' } do |f|
       .clearfix
