@@ -60,7 +60,8 @@ a:hover {
   font-family: $defaultFontFamily;
   @include buttonBackground($claro, darken($claro, 10));
 
-  &.primary {
+  &.primary,
+  &.btn-primary {
     @include buttonBackground($rose, darken($rose, 10));
   }
 }
