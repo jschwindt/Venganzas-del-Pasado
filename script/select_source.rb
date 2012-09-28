@@ -9,9 +9,12 @@ year   = yesterday.strftime('%Y')
 
 SOURCES = [
   "http://venganzasdelpasado.com.ar/st/lavenganza_#{daystr}.mp3",
-   "http://sistema.carm.com.ar/podcast/lavenganza_#{daystr}.mp3",
-   "http://www.schwindt.org/podcast/st/lavenganza_#{daystr}.mp3",
-   "http://www.schwindt.org/podcast/am/lavenganza_#{daystr}.mp3",
+  "http://sistema.carm.com.ar/podcast/lavenganza_#{daystr}.mp3",
+  "http://www.schwindt.org/podcast/st/lavenganza_#{daystr}.mp3",
+  "http://venganzasdelpasado.com.ar/st3/lavenganza_#{daystr}.mp3",
+  "http://venganzasdelpasado.com.ar/st2/lavenganza_#{daystr}.mp3",
+  "http://sistema.carm.com.ar/podcast/otro/lavenganza_#{daystr}.mp3",
+#  "http://www.schwindt.org/podcast/am/lavenganza_#{daystr}.mp3",
 ]
 
 def get_file_length(url)
