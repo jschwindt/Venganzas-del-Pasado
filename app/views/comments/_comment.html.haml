@@ -6,12 +6,11 @@
     - cache comment, :expires_in => 7.days do
       %p.author
         %span.who= link_to_unless comment.user.nil?, comment.author, comment.user
-        %small
-          %span.when
-            = timeago(comment.created_at)
-          %span.where
-            en
-            = link_to comment.post_title, comment.post
+        %span.when
+          = timeago(comment.created_at)
+        %span.where
+          en
+          = link_to comment.post_title, comment.post
           dijo:
       .content
         = replace_smileys(markdown_format(comment.content))

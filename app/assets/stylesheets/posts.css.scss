@@ -1,11 +1,9 @@
 .post {
-  margin-bottom: $baseline*2;
-  padding-bottom: $baseline;
-  border-bottom: 1px solid $gris;
-
+  margin-bottom: $baseLineHeight*2;
+  
   .audios {
     .audio {
-      margin-bottom: $baseline;
+      margin-bottom: $baseLineHeight;
 
       .jp-current-time {
         font-family: Verdana,Arial,sans-serif;
@@ -15,11 +13,10 @@
   }
 
   .content {
-    margin-bottom: $baseline;
 
     * {
-      line-height: $baseline;
-      font-size: $basefont;
+      line-height: $baseLineHeight;
+      font-size: $baseFontSize;
     }
 
     li {
@@ -27,30 +24,44 @@
     }
 
     h1, h2, h3, h4, h5, h6 {
-      margin-bottom: $baseline / 2;
+      margin-bottom: $baseLineHeight / 2;
     }
 
   }
 
-  .meta {
-    color: $gris;
-    font-size: 0.75 * $basefont;
-
-    > span {
+  .share {
+    @include clearfix();
+    margin: $baseLineHeight*0.5 0;
+    background: lighten($claro, 15);
+    padding: 10px;
+    font-size: $baseFontSize*0.75;
+  
+    & > * {
+      float: left;
+      margin-right: 10px;
+      height: 20px;
+      vertical-align: middle;
+    }
+    
+    em {
       margin-right: 20px;
     }
-
-    .date {
-      font-style: italic;
+    
+    .twitter {
     }
+    
+    .facebook {
+      iframe { width: 135px; }
+    }
+  }
 
-    .share {
-      float: right;
-      margin-right: 0;
+  footer {
+    @include clearfix();
 
-      .facebook-share {
-        iframe { width: 76px; }
-      }
+    font-size: 0.75 * $baseFontSize;
+    
+    .pull-right {
+      margin-left: 20px;
     }
   }
 
@@ -59,10 +70,10 @@
 .posts-show {
 
   .post-nav {
-    margin-bottom: $baseline;
+    margin-bottom: $baseLineHeight;
 
     .prev-post, .next-post {
-      font-size: 0.70 * $basefont;
+      font-size: 0.70 * $baseFontSize;
     }
 
     .next-post {

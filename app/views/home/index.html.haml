@@ -1,26 +1,34 @@
 - page_title(nil)
 
-.ribbon
-  Programas Recientes
+%section
+  %h2.title Programas Recientes
 
-.posts
-  =render @posts
-  %p
-    =link_to "Ver todos los programas", :posts
+  .posts
+    =render @posts
+      
+  %ul.pager
+    %li.next
+      =link_to "Ver todos los programas", :posts
 
 =render 'layouts/banners/b468x60'
 
-.ribbon
-  ¡Necesitamos tu ayuda!
-%p
-  Con tu colaboración podemos hacer que el contenido se enriquezca. Hay varias formas de participar: enviando comentarios acerca del programa, editando los posts para decir de qué se habló en el programa o #{link_to 'subiendo archivos mp3', new_post_path} de programas viejos. Entre todos podemos hacer un sitio que nos permita disfrutar al máximo <em>La Venganza será Terrible</em>.
-%p
-  =link_to "Más información", article_path('acerca-de-este-sitio')
+%section
+  %h2.title ¡Necesitamos tu ayuda!
+  
+  %p
+    Con tu colaboración podemos hacer que el contenido se enriquezca. Hay varias
+    formas de participar: enviando comentarios acerca del programa, editando los
+    posts para decir de qué se habló en el programa o
+    #{link_to 'subiendo archivos mp3', new_post_path} de programas viejos.
+    Entre todos podemos hacer un sitio que nos permita disfrutar al máximo
+    <em>La Venganza será Terrible</em>.
+    
+  %ul.pager
+    %li.next
+      =link_to "Más información", article_path('acerca-de-este-sitio')
 
-=#render 'layouts/banners/b468x60'
+%section
+  %h2.title Comentarios Recientes
 
-.ribbon
-  Comentarios Recientes
-
-.comments
-  =render @comments
+  .comments
+    =render @comments

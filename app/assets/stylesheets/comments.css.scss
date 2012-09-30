@@ -1,24 +1,18 @@
 .comment {
-  margin-bottom: $baseline * 0.5;
-  padding-top: $baseline * 0.25;
   overflow: hidden;
 
   .author {
     small {
-      font-size: 0.75 * $basefont;
       color: $claro;
       font-style: italic;
     }
   }
 
   .meta {
-    border-top: 1px $claro solid;
-    font-size: 0.75 * $basefont;
-    margin-bottom: 0px;
 
     .thumb {
       float:left;
-      height: 28px;
+
       .counter {
         vertical-align: top;
       }
@@ -52,6 +46,5 @@
 .comment-help{
   border-top: 1px $claro solid;
   margin-top: 20px;
-  font-size: 0.90 * $basefont;
-
+  font-size: 0.90 * $baseFontSize;
 }

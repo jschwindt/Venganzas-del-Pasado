@@ -1,4 +1,4 @@
-footer {
+#footer {
   background: $gris;
   $shadow: 0 1px 3px rgba(0,0,0,.50), inset 0 -1px 0 rgba(0,0,0,.1);
   @include box-shadow($shadow);
@@ -10,15 +10,15 @@ footer {
   ul {
     list-style: none;
     margin-left: 0px;
-    font-size: $basefont * 0.75;
+    font-size: $baseFontSize * 0.75;
   }
 
   .title {
     font-family: 'EBGaramondRegular', serif;
     color: lighten($gris, 10);
     text-transform: uppercase;
-    font-size: $basefont * 4;
-    line-height: $baseline * 2;
+    font-size: $baseFontSize * 4;
+    line-height: $baseLineHeight * 2;
     text-align: right;
     text-shadow: none;
     border: none;

@@ -28,7 +28,7 @@ a:hover {
 }
 
 .main {
-  padding-top: $baseline;
+  padding-top: $baseLineHeight;
 }
 
 .pagination {
@@ -89,7 +89,7 @@ fieldset {
 }
 
 .facebook-login-container {
-  margin-bottom: $baseline;
+  margin-bottom: $baseLineHeight;
   text-align: center;
 }
 
@@ -111,7 +111,7 @@ fieldset {
 
 legend {
   small {
-    font-size: $basefont * 0.75;
+    font-size: $baseFontSize * 0.75;
   }
 }
 
@@ -146,75 +146,61 @@ select, input[type=file] {
 // Títulos
 //******************************************************************************
 
-h4 {
-  margin-bottom: $baseline;
-}
+#content {
 
-.title {
-  font-size: $basefont * 2;
-  line-height: $baseline * 1.75;
-  font-family: 'TrajanProRegular', serif;
-  text-shadow: $claro 1px 2px;
-  border-bottom: 1px $claro solid;
-  margin-bottom: $baseline * 0.25;
-  padding-bottom: $baseline * 0.25;
-}
-
-.ribbon {
-  position: relative;
-  color: #fff;
-  margin: 0 $gridGutterWidth*-1 $gridGutterWidth $gridGutterWidth*-1;
-  background: asset-url('redtexture.jpg', image);
-  padding: $baseline*0.5 $gridGutterWidth;
-  $shadow: 0 1px 3px rgba(0,0,0,1), inset 0 -1px 0 rgba(0,0,0,.1);
-  @include box-shadow($shadow);
-  text-shadow: $gris 1px 1px;
-  font-family: 'EBGaramondRegular', serif;
-  font-size: $basefont * 1.25;
-  line-height: $baseline;
-
-   &:before, &:after
-    {
-        content: '';
-        position: absolute;
-        border-style: solid;
-        border-color: transparent;
-        bottom: -10px;
+  & > section {
+  
+    & > .title {
+      background: $redBackground;
+      color: $white;
+      text-shadow: $gris 1px 1px;
+      padding: $baseLineHeight*0.25 $gridGutterWidth*0.5;
+      margin-bottom: $baseLineHeight;
+      font-family: $garamondFont;
+      font-size: $baseFontSize*1.25;
+      line-height: $baseLineHeight*1.25;
+      @include border-radius(5px);
+      @include box-shadow($headerShadow);
+      
+      small {
+        color: $white;
+      }
     }
-
-    &:before
-    {
-        border-width: 0 10px 10px 0;
-        border-right-color: #222;
-        left: 0;
-    }
-
-    &:after
-    {
-        border-width: 0 0 10px 10px;
-        border-left-color: #222;
-        right: 0;
-    }
-}
-
-.fancy-title {
-  font-family: 'EBGaramondRegular', serif;
-  font-weight: regular;
-  font-size: $basefont * 3;
-  margin-bottom: $baseline;
-  text-shadow: $claro 1px 2px;
-
-  a {
-    color: $rose;
   }
-
-  small {
-    font-size: $basefont * 2;
-    color: $claro;
-    text-shadow: none;
+  
+  article {
+  
+    header {
+      .lead {
+        font-size: $baseFontSize;
+        color: lighten($gris, 20);
+        font-style: italic;
+        margin-bottom: 0px;
+      }
+      
+      .title {
+        font-size: $baseFontSize*2;
+        font-family: $trajanFont;
+        color: $rose;
+        text-shadow: $gris 1px 1px;
+        margin-top: 0px;
+      }
+    }
+    
+    footer {
+      border-top: 1px solid $gris;
+      background: lighten($claro, 15);
+      @include border-bottom-radius(10px);
+      padding: 10px;
+      color: lighten($gris, 10);
+      
+      .actions > span {
+        margin-left: 20px;
+      }
+    }
   }
+  
 }
-
 
 @import 'application/*';
 
