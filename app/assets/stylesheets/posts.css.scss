@@ -1,6 +1,24 @@
 .post {
   margin-bottom: $baseLineHeight*2;
   
+  .actions {
+  
+    .label {
+      &.status-published {
+        background-color: $successText;
+      }
+      &.status-draft,
+      &.status-pending,
+      &.status-waiting {
+        background-color: $warningText;
+      }
+      &.status-deleted {
+        background-color: $errorText;
+      }
+    }
+  
+  }
+  
   .audios {
     .audio {
       margin-bottom: $baseLineHeight;
@@ -31,7 +49,7 @@
 
   .share {
     @include clearfix();
-    margin: $baseLineHeight*0.5 0;
+    margin-bottom: $baseLineHeight*0.5;
     background: lighten($claro, 15);
     padding: 10px;
     font-size: $baseFontSize*0.75;
@@ -52,16 +70,6 @@
     
     .facebook {
       iframe { width: 135px; }
-    }
-  }
-
-  footer {
-    @include clearfix();
-
-    font-size: 0.75 * $baseFontSize;
-    
-    .pull-right {
-      margin-left: 20px;
     }
   }
 

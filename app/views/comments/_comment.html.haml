@@ -1,40 +1,92 @@
 %a{ :name => "comment#{comment.id}" }
-.row.comment{ :class => "#{comment.status}"}
+%article.row.comment{ :class => "#{comment.status}"}
+
   .span1.avatar
+
     %img.img-rounded{ :src => comment.profile_picture_url, :alt => comment.author }
+
   .span8.description
     - cache comment, :expires_in => 7.days do
-      %p.author
+      .author
         %span.who= link_to_unless comment.user.nil?, comment.author, comment.user
         %span.when
           = timeago(comment.created_at)
         %span.where
           en
           = link_to comment.post_title, comment.post
+        %span.what
           dijo:
+          
       .content
         = replace_smileys(markdown_format(comment.content))
-    .meta
-      .thumb
-        = link_to_unless current_user.nil?, image_tag('thumbs-up.png'), like_comment_path(comment), :method => :post, :remote => :true, :title => "¡Me gusta! :-)"
-        %span.counter{:id => "like_#{comment.id}"}= "(#{comment.like_count})"
-        = link_to_unless current_user.nil?, image_tag('thumbs-dn.png'), dislike_comment_path(comment), :method => :post, :remote => :true, :title => "¡No me gusta! :-("
-        %span.counter{:id => "dislike_#{comment.id}"}= "(#{comment.dislike_count})"
-      .action
-        - if comment.deleted?
-          %span.deleted Eliminado
-          - if can? :approve, comment
-            %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
-          - if can? :destroy, comment
-            %span.delete=link_to "Eliminar definitivamente", admin_comment_path(comment), :method => :delete, :data => { :confirm => '¿Estás seguro?' }
-        - else
-          - if comment.pending?
-            %span.pending Aguardando moderación
-          - if can? :read, comment
-            %span.permalink=link_to "Comentario", post_comment_path(comment.post, comment)
-          - if (comment.pending? or comment.flagged?) and can?(:approve, comment)
-            %span.approve=link_to "Aprobar", approve_admin_comment_path(comment)
-          - if comment.neutral? && can?(:flag, comment)
-            %span.flag{:id => "flag_#{comment.id}"}=link_to "Denunciar", flag_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }, :method => :post, :remote => :true
-          - if can? :trash, comment
-            %span.delete=link_to "Eliminar", trash_admin_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }
+        
+    .actions
+    
+      - if comment.deleted?
+        %span.label{ :class => "status-#{comment.status}" }
+          #{comment.status.capitalize}
+        
+        - if can? :approve, comment
+          %span.approve
+            %i.icon-ok
+            =link_to "Aprobar", approve_admin_comment_path(comment)
+        - if can? :destroy, comment
+          %span.delete
+            %i.icon-fire
+            =link_to "Eliminar definitivamente", admin_comment_path(comment), :method => :delete, :data => { :confirm => '¿Estás seguro?' }
+      
+      - else
+
+        - if can?(:approve, comment) or  can? :trash, comment
+          %span.label{ :class => "status-#{comment.status}" }
+            #{comment.status.capitalize}
+
+        - if (comment.pending? or comment.flagged?) and can?(:approve, comment)
+          %span.approve
+            %i.icon-ok
+            =link_to "Aprobar", approve_admin_comment_path(comment)
+        
+        - if can? :trash, comment
+          %span.delete
+            %i.icon-trash
+            =link_to "Eliminar", trash_admin_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }
+            
+    %footer
+      - if can? :read, comment
+        %span.permalink
+          %i.icon-bookmark
+          = link_to "Permalink", post_comment_path(comment.post, comment)
+  
+      - if current_user.nil?
+      
+        %span.thumbs-down.pull-right
+          %i.icon-thumbs-down
+          #{comment.dislike_count}
+      
+        %span.thumbs-up.pull-right
+          %i.icon-thumbs-up
+          #{comment.like_count}
+          
+      - else
+      
+        %span.thumbs-down.pull-right
+          = link_to dislike_comment_path(comment), :method => :post, :remote => :true, :title => "¡No me gusta! :-(", :class => 'btn btn-mini' do
+            %i.icon-thumbs-down
+          %span.counter{:id => "dislike_#{comment.id}"}= "#{comment.dislike_count}"
+  
+        %span.thumbs-up.pull-right
+          = link_to like_comment_path(comment), :method => :post, :remote => :true, :title => "¡Me gusta! :-)", :class => 'btn btn-mini' do
+            %i.icon-thumbs-up
+          %span.counter{:id => "like_#{comment.id}"}= "#{comment.like_count}"
+
+        
+      - if comment.neutral? && can?(:flag, comment)
+        %span.flag.pull-right{:id => "flag_#{comment.id}"}
+          %i.icon-flag
+          = link_to "Denunciar", flag_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }, :method => :post, :remote => :true
+
+          
+        //= link_to_unless current_user.nil?, image_tag('thumbs-up.png'), like_comment_path(comment), :method => :post, :remote => :true, :title => "¡Me gusta! :-)"
+        //%span.counter{:id => "like_#{comment.id}"}= "#{comment.like_count}"
+        //= link_to_unless current_user.nil?, image_tag('thumbs-dn.png'), dislike_comment_path(comment), :method => :post, :remote => :true, :title => "¡No me gusta! :-("
+        //%span.counter{:id => "dislike_#{comment.id}"}= "(#{comment.dislike_count})"

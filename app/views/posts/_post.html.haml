@@ -10,7 +10,7 @@
     -else
       %h3.title
         = link_to post.title, post
-
+        
   .share
     %em
       Compartilo:
@@ -21,6 +21,7 @@
     .gplus
       .g-plusone{'data-size' => "tall", 'data-href' => post_url(post), 'data-annotation' => "inline", 'data-recommendations' => 'false', 'data-width' => '120' }
 
+
       
   .audios
     = render post.audios
@@ -30,33 +31,35 @@
     - if post.content?
       = markdown_format post.content, :filter_html => false
   
-  %footer
   
-    .meta
-      %span.date.pull-right
-        %i.icon-calendar
-        %span{ title: "Publicado el #{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i].capitalize} de #{post.created_at.year}" }
-          #{post.created_at.strftime('%d/%m/%Y')}
-    
-      %span.comments.pull-right
-        %i.icon-comment
-        = link_to "#{post.comments.visible_by(current_user).count} Comentarios", post_path(post, :anchor => "comments"), title: "Ver los comentarios"
-        
-      %span.permalink
-        %i.icon-bookmark
-        = link_to "Enlace permanente", post
-      
-      - if post.contributor
-        %span.contribution.pull-right
-          %i.icon-user
-          =link_to post.contributor_alias, user_url(post.contributor), title: "Ver el perfil de #{post.contributor_alias}"
-    
-    .actions.pull-right
-      - if can? :update, post
-        %span.edit
-          %i.icon-edit
-          = link_to "Editar", edit_admin_post_path(post)
-      - if can?(:update, Post) && post.pending?
+  - if can? :update, post
+    .actions
+      %span.label{ :class => "status-#{post.status}" }
+        #{post.status.capitalize}
+      %span.edit
+        %i.icon-edit
+        = link_to "Editar", edit_admin_post_path(post)
+      - if post.pending?
         %span.approve
           %i.icon-ok
           = link_to "Aprobar contribución", approve_contribution_admin_post_path(post)
+  
+  %footer
+
+    %span.permalink
+      %i.icon-bookmark
+      = link_to "Enlace permanente", post
+  
+    %span.date.pull-right
+      %i.icon-calendar
+      %span{ title: "Publicado el #{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i].capitalize} de #{post.created_at.year}" }
+        #{post.created_at.strftime('%d/%m/%y')}
+  
+    %span.comments.pull-right
+      %i.icon-comment
+      = link_to "#{post.comments.visible_by(current_user).count} Comentarios", post_path(post, :anchor => "comments"), title: "Ver los comentarios"
+    
+    - if post.contributor
+      %span.contribution.pull-right
+        %i.icon-user
+        =link_to post.contributor_alias, user_url(post.contributor), title: "Ver el perfil de #{post.contributor_alias}"

@@ -55,7 +55,7 @@ a:hover {
   }
 }
 
-
+/*
 .btn {
   font-family: $defaultFontFamily;
   @include buttonBackground($claro, darken($claro, 10));
@@ -65,7 +65,7 @@ a:hover {
     @include buttonBackground($rose, darken($rose, 10));
   }
 }
-
+*/
 .field_with_errors input{
   border-color: #EE5F5B;
   color: #B94A48;
@@ -187,14 +187,29 @@ select, input[type=file] {
       }
     }
     
+    .actions {
+      margin-bottom: $baseLineHeight*0.5;
+      font-size: 0.75 * $baseFontSize;
+      
+      & > * {
+        margin-right: 20px;
+      }
+    }
+    
     footer {
-      border-top: 1px solid $gris;
-      background: lighten($claro, 15);
-      @include border-bottom-radius(10px);
-      padding: 10px;
+      @include clearfix();
+      font-size: 0.75 * $baseFontSize;
+      border-top: 1px solid $claro;
+      //background: lighten($claro, 15);
+      //@include border-bottom-radius(10px);
+      padding: 10px 0px;
       color: lighten($gris, 10);
       
-      .actions > span {
+      /*.actions > span {
+        margin-left: 20px;
+      }*/
+       
+      .pull-right {
         margin-left: 20px;
       }
     }

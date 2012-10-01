@@ -1,31 +1,39 @@
 .comment {
   overflow: hidden;
+  margin-bottom: $baseLineHeight*2;
 
   .author {
+    @include clearfix();
+    background: lighten($claro, 15);
+    @include border-radius(5px);
+    padding: 5px 10px;
+    margin-bottom: $baseLineHeight * 0.5;
+    font-size: 0.75 * $baseFontSize;
+  
     small {
       color: $claro;
       font-style: italic;
     }
   }
-
-  .meta {
-
-    .thumb {
-      float:left;
-
-      .counter {
-        vertical-align: top;
+  
+  
+  .actions {
+  
+    .label {
+      &.status-approved {
+        background-color: $successText;
+      }
+      &.status-pending,
+      &.status-flagged {
+        background-color: $warningText;
+      }
+      &.status-deleted {
+        background-color: $errorText;
       }
     }
-
-    .action {
-      float: right;
-
-      span {
-        margin-left: 20px;
-      }
-    }
+  
   }
+
 }
 
 .comment-form{
