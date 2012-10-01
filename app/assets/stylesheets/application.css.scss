@@ -170,7 +170,7 @@ select, input[type=file] {
   
   article {
   
-    header {
+    
       .lead {
         font-size: $baseFontSize;
         color: lighten($gris, 20);
@@ -185,7 +185,7 @@ select, input[type=file] {
         text-shadow: $gris 1px 1px;
         margin-top: 0px;
       }
-    }
+    
     
     .actions {
       margin-bottom: $baseLineHeight*0.5;

@@ -4,34 +4,38 @@
   - page_title @post.title + " - Página #{params[:page]} de comentarios"
 - meta_description @post.description
 
-.row.post-nav
+%ul.pager
   - if prev_post = @post.previous
-    .span4.prev-post= link_to "← #{prev_post.title}", prev_post
+    %li.previous
+      = link_to "← Anterior", prev_post, :title => prev_post.title
   - if next_post = @post.next
-    .span4.offset1.next-post= link_to "#{next_post.title} →", next_post
+    %li.next
+      = link_to "Siguiente →", next_post, :title => next_post.title
 
 =render @post
 
 =render 'layouts/banners/b468x60'
 
 %a{ :name => "comments" }
-%h4 Comentarios (#{@post.comments.visible_by(current_user).count}):
 
-.comments
-  - if @comments.count > 0
-    = render @comments
-  - else
-    %p
-      No hay comentarios. ¡Podés ser el primero en comentar!
-
-  .row
-    .offset1
-      = paginate @comments, :window => 2
-
-  - if can? :create, Comment
-    %h3 Escribí un comentario
-    = render 'comments/form', :post => @post, :comment => @post.comments.build
-  - else
+%section
+  %h4.title Comentarios (#{@post.comments.visible_by(current_user).count})
+  
+  .comments
+    - if @comments.count > 0
+      = render @comments
+    - else
+      %p
+        No hay comentarios. ¡Podés ser el primero en comentar!
+  
     .row
       .offset1
-        Tenés que #{link_to "iniciar sesión", new_user_session_path} para comentar.
+        = paginate @comments, :window => 2
+  
+    - if can? :create, Comment
+      %h3 Escribí un comentario
+      = render 'comments/form', :post => @post, :comment => @post.comments.build
+    - else
+      .row
+        .offset1
+          Tenés que #{link_to "iniciar sesión", new_user_session_path} para comentar.
