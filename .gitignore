@@ -1,6 +1,7 @@
 .DS_Store
 .bundle
 .pt
+.tm_properties
 config/*.yml
 config/*.conf
 db/*.sqlite3
