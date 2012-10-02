@@ -1,0 +1,23 @@
+@import "bootstrap/_forms";
+
+label {
+  text-align: left;
+  font-weight: bold;
+}
+
+.form-horizontal fieldset {
+  label {
+    margin-right: 20px;
+    text-align: right;
+  }
+}
+
+legend {
+  small {
+    font-size: $baseFontSize * 0.75;
+  }
+}
+
+select, input[type=file] {
+  height: 36px;
+}
