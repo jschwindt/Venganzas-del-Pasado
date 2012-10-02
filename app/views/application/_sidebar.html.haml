@@ -1,7 +1,7 @@
 #sidebar
   
-  .widget
-    -if user_signed_in?
+  -if user_signed_in?
+    .widget
       %h3.fancy= current_user.alias
       %ul
         = render 'layouts/menus/user_items'

@@ -2,8 +2,8 @@
 - page_title the_title
 - meta_description the_title
 
-%h1.fancy!= link_to @post.title, @post
-%h2.title!= "Comentario ##{@comment.id}"
+.fancy!= link_to @post.title, @post
+%h1.title!= "Comentario ##{@comment.id}"
 
 .post-show
   =render @comment
