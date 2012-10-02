@@ -1,11 +1,13 @@
-.article
+%article.article
 
   %h3.title
     = link_to article.title, article
 
-  %p.meta
-    - if can? :update, article
-      %span.edit= link_to "Editar", edit_admin_article_path(article)
-
   .content
     = markdown_format article.content, :filter_html => false
+  
+  - if can? :update, article
+    .actions
+      %span.edit
+        %i.icon-edit
+        = link_to "Editar", edit_admin_article_path(article)
