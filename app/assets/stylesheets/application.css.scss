@@ -128,6 +128,14 @@ a:hover {
   @include border-radius(5px);
   @include box-shadow($headerShadow);
   
+  a {
+    color: $white;
+  }
+  
+  a:hover {
+    color: $claro;
+  }
+  
   small {
     color: $white;
   }
