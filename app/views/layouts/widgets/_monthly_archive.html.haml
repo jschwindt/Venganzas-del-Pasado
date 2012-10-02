@@ -1,5 +1,5 @@
 .archive.monthly
-  %h3.ribbon Archivo de Programas
+  %h3.fancy Archivo de Programas
   %ul.years
     - Post.post_count_by_month.group_by(&:year).each do |year, months|
       %li.year

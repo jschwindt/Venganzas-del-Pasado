@@ -1,15 +1,13 @@
 #sidebar
   
   .widget
-    
-  .widget
     -if user_signed_in?
-      %h3.ribbon= current_user.alias
+      %h3.fancy= current_user.alias
       %ul
         = render 'layouts/menus/user_items'
       
   .widget
-    %h3.ribbon Buscador
+    %h3.fancy Buscador
     = form_tag search_path(what: 'posts'), method: 'get' do
       .input-append
         = text_field_tag :q, params[:q], placeholder: 'Buscar en el sitio', class: 'input-medium'
@@ -24,7 +22,7 @@
     .widget
       = render 'layouts/widgets/monthly_archive'
       
-  %h3.ribbon Seguí a Venganzas del Pasado
+  %h3.fancy Seguí a Venganzas del Pasado
   
   .widget
     - if Rails.env.production?

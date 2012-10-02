@@ -113,73 +113,69 @@ a:hover {
 // Títulos
 //******************************************************************************
 
-#content {
 
-  .fancy {
-    background: $redBackground;
+
+.fancy {
+  background: $redBackground;
+  color: $white;
+  text-shadow: $gris 1px 1px;
+  padding: $baseLineHeight*0.25 $gridGutterWidth*0.5;
+  margin-bottom: $baseLineHeight;
+  font-family: $garamondFont;
+  font-size: $baseFontSize*1.25;
+  font-weight: normal;
+  line-height: $baseLineHeight*1.25;
+  @include border-radius(5px);
+  @include box-shadow($headerShadow);
+  
+  small {
     color: $white;
-    text-shadow: $gris 1px 1px;
-    padding: $baseLineHeight*0.25 $gridGutterWidth*0.5;
-    margin-bottom: $baseLineHeight;
-    font-family: $garamondFont;
-    font-size: $baseFontSize*1.25;
-    line-height: $baseLineHeight*1.25;
-    @include border-radius(5px);
-    @include box-shadow($headerShadow);
-    
-    small {
-      color: $white;
-    }
   }
-  
-  article {
-  
-    
-      .lead {
-        font-size: $baseFontSize;
-        color: lighten($gris, 20);
-        font-style: italic;
-        margin-bottom: 0px;
-      }
-      
-      .title {
-        font-size: $baseFontSize*2;
-        font-family: $trajanFont;
-        color: $rose;
-        text-shadow: $gris 1px 1px;
-        margin-top: 0px;
-      }
-    
-    
-    .actions {
-      margin-bottom: $baseLineHeight*0.5;
-      font-size: 0.75 * $baseFontSize;
-      
-      & > * {
-        margin-right: 20px;
-      }
-    }
-    
-    footer {
-      @include clearfix();
-      font-size: 0.75 * $baseFontSize;
-      border-top: 1px solid $claro;
-      //background: lighten($claro, 15);
-      //@include border-bottom-radius(10px);
-      padding: 10px 0px;
-      color: lighten($gris, 10);
-      
-      /*.actions > span {
-        margin-left: 20px;
-      }*/
-       
-      .pull-right {
-        margin-left: 20px;
-      }
-    }
-  }
-  
 }
+
+.lead {
+  font-size: $baseFontSize;
+  color: lighten($gris, 20);
+  font-style: italic;
+  margin-bottom: 0px;
+}
+
+.title {
+  font-size: $baseFontSize*2;
+  font-family: $trajanFont;
+  color: $rose;
+  text-shadow: $gris 1px 1px;
+  margin-top: 0px;
+}
+
+
+.actions {
+  margin-bottom: $baseLineHeight*0.5;
+  font-size: 0.75 * $baseFontSize;
+  
+  & > * {
+    margin-right: 20px;
+  }
+}
+
+footer {
+  @include clearfix();
+  font-size: 0.75 * $baseFontSize;
+  border-top: 1px solid $claro;
+  //background: lighten($claro, 15);
+  //@include border-bottom-radius(10px);
+  padding: 10px 0px;
+  color: lighten($gris, 10);
+  
+  /*.actions > span {
+    margin-left: 20px;
+  }*/
+   
+  .pull-right {
+    margin-left: 20px;
+  }
+}
+
 
 @import 'application/*';
 
