@@ -1,8 +1,12 @@
 %article.article
 
-  %h3.title
-    = link_to article.title, article
-
+  -if current_page?(article)
+    %h1.title
+      = link_to article.title, article
+  -else
+    %h3.title
+      = link_to article.title, article
+      
   .content
     = markdown_format article.content, :filter_html => false
   
