@@ -58,7 +58,7 @@ a:hover {
 
 .btn {
   font-family: $defaultFontFamily;
-  @include buttonBackground($claro, darken($claro, 10));
+  //@include buttonBackground($claro, darken($claro, 10));
 
   &.primary,
   &.btn-primary {
@@ -192,4 +192,5 @@ footer {
 @import 'audios';
 @import 'comments';
 @import 'users';
+@import 'torrents';
 @import 'smilies';
