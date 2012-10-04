@@ -19,7 +19,7 @@
 %a{ :name => "comments" }
 
 %section
-  %h4.title Comentarios (#{@post.comments.visible_by(current_user).count})
+  %h4.fancy Comentarios (#{@post.comments.visible_by(current_user).count})
   
   .comments
     - if @comments.count > 0
