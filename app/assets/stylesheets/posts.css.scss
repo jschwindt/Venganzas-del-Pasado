@@ -101,3 +101,22 @@
   }
 
 }
+
+.posts-edit,
+.posts-index {
+  .label {
+    &.post-status-published {
+      background-color: $successText;
+    }
+    &.post-status-draft,
+    &.post-status-pending {
+      background-color: $warningText;
+    }
+    &.post-status-waiting {
+      background-color: $infoText;
+    }
+    &.post-status-deleted {
+      background-color: $errorText;
+    }
+  }
+}

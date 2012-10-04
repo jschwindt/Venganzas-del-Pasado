@@ -1,9 +1,16 @@
 - page_title("Editando Usuario")
 
-.ribbon Administración de Usuarios
+.fancy Administración de Usuarios
 
 %h2.title
   Editando Usuario ##{@user.id}
-  %small= link_to "Ver perfil", @user, :target => '_blank'
+
+.actions
+  -if @user.role?
+    %span.label{ :class => "user-role-#{@user.role}"}= @user.role.capitalize
+    
+  = link_to @user, :target => '_blank' do
+    %i.icon-user
+    Ver Perfil
 
 = render 'form', :user => @user

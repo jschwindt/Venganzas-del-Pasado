@@ -1,26 +1,42 @@
 #sidebar
   .widget
-    %h3 Administración
-    %ul
+    %h3.fancy Administración
+    %ul.nav.nav-list
       %li
-        = link_to "Dashboard", admin_dashboard_path
+        = link_to admin_dashboard_path do
+          %i.icon-home
+          Dashboard
 
       - if can? :manage, User
         %li
-          = link_to "Usuarios", admin_users_path
+          = link_to admin_users_path do
+            %i.icon-user
+            Usuarios
 
       - if can? :approve, Comment
         %li
-          = link_to "Comentarios", admin_comments_path
+          = link_to admin_comments_path do
+            %i.icon-comment
+            Comentarios
 
       - if can? :update, Post
         %li
-          = link_to "Posts", admin_posts_path
+          = link_to admin_posts_path do
+            %i.icon-file
+            Posts
           - if can? :create, Post
-            %ul
-              %li= link_to "Crear Post", new_admin_post_path
+            %ul.nav.nav-list
+              %li
+                = link_to new_admin_post_path do
+                  %i.icon-pencil
+                  Crear Post
       - if can? :manage, Article
         %li
-          = link_to "Artículos", admin_articles_path
-          %ul
-            %li= link_to "Crear Artículo", new_admin_article_path
+          = link_to admin_articles_path do
+            %i.icon-book
+            Artículos
+          %ul.nav.nav-list
+            %li
+              = link_to new_admin_article_path do
+                %i.icon-pencil
+                Crear Artìculo

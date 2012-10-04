@@ -43,11 +43,29 @@
 }
 
 .admin {
-  .comment.pending {
-    background-color: lightYellow;
-  }
-  .comment.deleted {
-    background-color: lighten($rose, 40%);
+  .comment {
+    &.neutral .author,
+    &.approved .author {
+      background-color: $successText;
+      
+      a {
+        color: white;
+      }
+    }
+    
+    &.pending .author,
+    &.flagged .author {
+      background-color: $warningText;
+    }
+    
+    &.deleted .author {
+      background-color: $errorText;
+      
+      a {
+        color: white;
+      }
+    }
+  
   }
 }
 

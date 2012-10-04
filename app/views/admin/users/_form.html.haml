@@ -1,25 +1,25 @@
 = alert_message_for(user)
 
-= form_for [:admin, user] do |f|
-  %fieldset
+= form_for [:admin, user], :html => { :class => 'form-horizontal' } do |f|
+  %legend
 
-    .clearfix
-      = f.label :alias
-      .input
-        = f.text_field :alias
-    .clearfix
-      = f.label :email
-      .input
-        = f.text_field :email, :disabled => true
-    .clearfix
-      = f.label :karma
-      .input
-        = f.text_field :karma
-    .clearfix
-      = f.label :role
-      .input
-        = f.select :role, User.roles
+  .control-group
+    = f.label :alias, :class => 'control-label'
+    .controls
+      = f.text_field :alias
+  .control-group
+    = f.label :email, :class => 'control-label'
+    .controls
+      = f.text_field :email, :disabled => true
+  .control-group
+    = f.label :karma, :class => 'control-label'
+    .controls
+      = f.text_field :karma
+  .control-group
+    = f.label :role, :class => 'control-label'
+    .controls
+      = f.select :role, User.roles
 
-    .actions
-      = f.submit ( user.new_record? ? 'Crear' : 'Guardar' ), :class => 'btn primary'
-      = link_to 'Cancelar', admin_users_path, :class => 'btn'
+  .form-actions
+    = f.submit ( user.new_record? ? 'Crear' : 'Guardar' ), :class => 'btn primary'
+    = link_to 'Cancelar', admin_users_path, :class => 'btn'

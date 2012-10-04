@@ -10,3 +10,16 @@
 .user {
 
 }
+
+
+.users-edit {
+  .label {
+    &.user-role-admin {
+      background-color: $successText;
+    }
+    &.user-role-editor,
+    &.user-role-moderator {
+      background-color: $warningText;
+    }
+  }
+}
