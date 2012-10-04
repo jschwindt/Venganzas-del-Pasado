@@ -1,5 +1,7 @@
 #topbar {
-  font-size: $baseFontSize*0.75;
+  ul.nav > li > a {
+    font-size: $baseFontSize*0.75;
+  }
 
   .brand {
     display: none;

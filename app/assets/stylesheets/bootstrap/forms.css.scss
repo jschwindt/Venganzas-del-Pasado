@@ -1,8 +1,11 @@
 @import "bootstrap/_forms";
 
-label {
-  text-align: left;
-  font-weight: bold;
+.form-horizontal,
+.form-stacked { 
+  label {
+    text-align: left;
+    font-weight: bold;
+  }
 }
 
 .form-horizontal fieldset {

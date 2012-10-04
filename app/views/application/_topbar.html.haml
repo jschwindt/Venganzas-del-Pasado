@@ -33,7 +33,7 @@
                       %label.checkbox
                         = f.check_box :remember_me
                         %span Mantener tu sesión abierta
-                    = f.submit "Ingresar", :class => 'btn primary btn-block'
+                    = f.submit "Ingresar", :class => 'btn primary'
                 .account-tools
                   - if Devise.mappings[:user].recoverable? && controller_name != 'passwords'
                     = link_to "Olvidé mi contraseña.", new_password_path(:user)
