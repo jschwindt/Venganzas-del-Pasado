@@ -1,5 +1,14 @@
 - if user_signed_in?
-  %li= link_to "Mi Perfil", current_user
-  %li= link_to "Preferencias", edit_user_registration_path
+  %li
+    = link_to current_user do
+      %i.icon-user
+      Mi Perfil
+  %li
+    = link_to edit_user_registration_path do
+      %i.icon-wrench
+      Preferencias
   %li.divider
-  %li= link_to "Cerrar Sesión", destroy_user_session_path
+  %li
+    = link_to destroy_user_session_path do
+      %i.icon-off
+      Cerrar Sesión

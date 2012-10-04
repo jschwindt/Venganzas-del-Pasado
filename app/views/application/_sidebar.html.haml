@@ -3,7 +3,7 @@
   -if user_signed_in?
     .widget
       %h3.fancy= current_user.alias
-      %ul
+      %ul.nav.nav-list
         = render 'layouts/menus/user_items'
       
   .widget
