@@ -25,11 +25,10 @@
     - if Rails.env.production?
       = render 'analytics'
       
-  %body{ :class => body_class }
+  %body{ :class => body_class('is-admin') }
 
     = render 'topbar'
     = render 'header'
-    = render 'subheader'
     .container.main
       .row
         #content.span9
@@ -37,4 +36,3 @@
           = yield
         .span4.offset1
           = render 'sidebar'
-    = render 'footer'

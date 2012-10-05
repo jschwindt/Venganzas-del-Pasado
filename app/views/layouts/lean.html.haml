@@ -29,12 +29,9 @@
 
     = render 'topbar'
     = render 'header'
-    = render 'subheader'
     .container.main
       .row
-        #content.span9
+        #content.span14
           = render 'messages'
           = yield
-        .span4.offset1
-          = render 'sidebar'
     = render 'footer'
