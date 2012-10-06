@@ -1,9 +1,0 @@
-%ul.tabs
-  %li{ :class => params[:has_status].nil? ? 'active' : nil }
-    = link_to "Todos", admin_posts_path
-  %li{ :class => active_if_current(:has_status => 'draft' ) }
-    = link_to "Borrador", admin_posts_path(:has_status => 'draft')
-  %li{ :class => active_if_current(:has_status => 'pending' ) }
-    = link_to "Pendientes", admin_posts_path(:has_status => 'pending')
-  %li{ :class => active_if_current(:has_status => 'waiting' ) }
-    = link_to "Esperando conversión", admin_posts_path(:has_status => 'waiting')

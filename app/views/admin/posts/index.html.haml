@@ -1,15 +1,24 @@
 - page_title("Listado de Posts")
 
-.ribbon Administración de Posts
+.fancy Administración de Posts
 
 %h2.title= html_page_title
 
-= render 'pills'
+%ul.nav.nav-tabs
+  %li{ :class => params[:has_status].nil? ? 'active' : nil }
+    = link_to "Todos", admin_posts_path
+  %li{ :class => active_if_current(:has_status => 'draft' ) }
+    = link_to "Borrador", admin_posts_path(:has_status => 'draft')
+  %li{ :class => active_if_current(:has_status => 'pending' ) }
+    = link_to "Pendientes", admin_posts_path(:has_status => 'pending')
+  %li{ :class => active_if_current(:has_status => 'waiting' ) }
+    = link_to "Esperando conversión", admin_posts_path(:has_status => 'waiting')
+
 
 - if @posts.empty?
   %p No se han encontrado posts
 -else
-  %table
+  %table.table.table-striped
     %thead
       %tr
         %th #
@@ -18,12 +27,19 @@
     %tbody
       - @posts.each do |post|
         %tr
-          %td= post.id
-          %td= post.title
           %td
-            =link_to "Permalink", post, :target => '_blank'
-            =link_to "Editar", edit_admin_post_path(post)
+            %span.label{ :class => "post-status-#{post.status}", :title => post.status.capitalize}= post.id
+          %td= post.title
+          %td.actions
+            =link_to post, :target => '_blank' do
+              %i.icon-bookmark
+              Permalink
+            =link_to edit_admin_post_path(post) do
+              %i.icon-edit
+              Editar
             - if can? :destroy, Post
-              =link_to "Eliminar", admin_post_path(post), :method => :delete, :data => { :confirm => "¿Estás seguro?" }
+              =link_to admin_post_path(post), :method => :delete, :data => { :confirm => "¿Estás seguro?" } do
+                %i.icon-fire
+                Eliminar
 
   = paginate @posts

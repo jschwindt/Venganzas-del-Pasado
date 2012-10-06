@@ -1,4 +1,4 @@
-%header{:class => (current_page?(:root) ? 'home' : 'internal')}
+%header#header{:class => (current_page?(:root) ? 'home' : 'internal')}
   .container
     - if current_page?(:root)
       .row
@@ -12,15 +12,8 @@
     - else
       .row
         .span4.title-container
-          %h1
+          %span
             =link_to "Venganzas del Pasado", :root
         .span10.slogan
           %p
             Encontrá todos los archivos de audio en MP3 del programa de radio <em>La Venganza Será Terrible</em> de <strong>Alejandro Dolina</strong>
-
-
-.subheader
-  .container
-    .row
-      .span14
-        = render 'layouts/banners/b728x90'

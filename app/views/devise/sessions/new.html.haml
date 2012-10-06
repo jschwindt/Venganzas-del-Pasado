@@ -1,35 +1,37 @@
 - page_title('Iniciar Sesión')
 
-%h2.title= html_page_title
+.row
+  .span8.offset3
 
-%p
-  Si tenés una cuenta en #{link_to "Facebook", 'http://facebook.com'} podés iniciar sesión haciendo click en el siguiente botón:
-
-%p.facebook-login-container
-  = link_to 'Login con Facebook', user_omniauth_path(:facebook), :class => 'facebook-login-button'
-
-%p
-  Si ya tenés una cuenta en este sitio, podés ingresar mediante el siguiente formulario.
-
-%div
-  = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-    %fieldset
-      .inputs
-        .clearfix
-          = f.label :email
-          .input= f.text_field :email
-        .clearfix
-          = f.label :password
-          .input= f.password_field :password
-        - if devise_mapping.rememberable?
-          .clearfix
-            .input
-              %ul.inputs-list
-                %li
-                  %label
-                    = f.check_box :remember_me
-                    %span Mantener mi sesión abierta
-      .actions
+    %h2.title= html_page_title
+    
+    
+      
+    %p
+      Si tenés una cuenta en #{link_to "Facebook", 'http://facebook.com'} podés iniciar sesión haciendo click en el siguiente botón:
+    
+    %p.facebook-login-container
+      = link_to 'Login con Facebook', user_omniauth_path(:facebook), :class => 'facebook-login-button'
+    
+    %p
+      Si ya tenés una cuenta en este sitio, podés ingresar mediante el siguiente formulario.
+    
+    
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :method => :post, :class => 'form-horizontal' }) do |f|
+      %legend
+      .control-group
+        = f.label :email, :class => 'control-label'
+        .controls= f.text_field :email
+      .control-group
+        = f.label :password, :class => 'control-label'
+        .controls= f.password_field :password
+      - if devise_mapping.rememberable?
+        .control-group
+          .controls
+            %label.checkbox
+              = f.check_box :remember_me
+              %span Mantener mi sesión abierta
+      .form-actions
         = f.submit "Ingresar", :class => 'btn primary'
-
-  = render "devise/shared/links"
+    
+    = render "devise/shared/links"

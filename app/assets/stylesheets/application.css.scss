@@ -5,37 +5,8 @@
 //******************************************************************************
 // Paleta de Colores
 //******************************************************************************
-$rose: #D65045;
-$gris: #404040;
-$claro: #CCCCCC;
 
-
-//******************************************************************************
-// Sobreescribiendo Bootstrap
-//******************************************************************************
-@import "bootstrap/reset";
-@import "bootstrap/variables";
-
-$linkColor: $rose;
-$linkColorHover: darken($rose, 15);
-
-/* grilla de 14 en lugar de 16 */
-$gridColumns: 14;
-$siteWidth: ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumns - 1));
-
-/* aumentando un poco*/
-$basefont: 16px;
-$baseline: 24px;
-
-@import "bootstrap/mixins";
-
-@import "bootstrap/scaffolding";
-
-@import "bootstrap/type";
-@import "bootstrap/forms";
-@import "bootstrap/tables";
-@import "bootstrap/patterns";
-
+@import "bootstrap";
 @import "jplayer-skin/jplayer.vdp";
 
 
@@ -57,7 +28,7 @@ a:hover {
 }
 
 .main {
-  padding-top: $baseline;
+  padding-top: $baseLineHeight;
 }
 
 .pagination {
@@ -87,10 +58,11 @@ a:hover {
 
 .btn {
   font-family: $defaultFontFamily;
-  @include gradientBar($claro, darken($claro, 10));
+  //@include buttonBackground($claro, darken($claro, 10));
 
-  &.primary {
-    @include gradientBar($rose, darken($rose, 10));
+  &.primary,
+  &.btn-primary {
+    @include buttonBackground($rose, darken($rose, 10));
   }
 }
 
@@ -99,25 +71,12 @@ a:hover {
   color: #B94A48;
 }
 
-
-label {
-  text-align: left;
-}
-
-fieldset {
-  label {
-    margin-right: 20px;
-    text-align: right;
-  }
-}
-
-.alert-message.block-message.error {
-  background-color: lighten($rose, 40%);
-  border-color: $rose;
+.hidden {
+  display: none;
 }
 
 .facebook-login-container {
-  margin-bottom: $baseline;
+  margin-bottom: $baseLineHeight;
   text-align: center;
 }
 
@@ -137,18 +96,9 @@ fieldset {
   }
 }
 
-legend {
-  small {
-    font-size: $basefont * 0.75;
-  }
-}
 
 .widget .menu-dropdown {
   display: block;
-}
-
-select, input[type=file] {
-  height: 36px;
 }
 
 #post_created_at_3i {
@@ -161,85 +111,76 @@ select, input[type=file] {
   width: 6em;
 }
 
-.span9 {
-
-  .adjusted {
-    width: 470px;
-  }
-
-}
-
-
 //******************************************************************************
 // Títulos
 //******************************************************************************
 
-h4 {
-  margin-bottom: $baseline;
+
+
+.fancy {
+  background: $redBackground;
+  color: $white;
+  text-shadow: $gris 1px 1px;
+  padding: $baseLineHeight*0.25 $gridGutterWidth*0.5;
+  margin-bottom: $baseLineHeight;
+  font-family: $garamondFont;
+  font-size: $baseFontSize*1.25;
+  font-weight: normal;
+  line-height: $baseLineHeight*1.25;
+  @include border-radius(5px);
+  @include box-shadow($headerShadow);
+  
+  a {
+    color: $white;
+  }
+  
+  a:hover {
+    color: $claro;
+  }
+  
+  small {
+    color: $white;
+  }
+}
+
+.lead {
+  font-size: $baseFontSize;
+  color: lighten($gris, 20);
+  font-style: italic;
+  margin-bottom: 0px;
 }
 
 .title {
-  font-size: $basefont * 2;
-  line-height: $baseline * 1.75;
-  font-family: 'TrajanProRegular', serif;
-  text-shadow: $claro 1px 2px;
-  border-bottom: 1px $claro solid;
-  margin-bottom: $baseline * 0.25;
-  padding-bottom: $baseline * 0.25;
-}
-
-.ribbon {
-  position: relative;
-  color: #fff;
-  margin: 0 $gridGutterWidth*-1 $gridGutterWidth $gridGutterWidth*-1;
-  background: asset-url('redtexture.jpg', image);
-  padding: $baseline*0.5 $gridGutterWidth;
-  $shadow: 0 1px 3px rgba(0,0,0,1), inset 0 -1px 0 rgba(0,0,0,.1);
-  @include box-shadow($shadow);
+  font-size: $baseFontSize*2;
+  font-family: $trajanFont;
+  color: $rose;
   text-shadow: $gris 1px 1px;
-  font-family: 'EBGaramondRegular', serif;
-  font-size: $basefont * 1.25;
-  line-height: $baseline;
-
-   &:before, &:after
-    {
-        content: '';
-        position: absolute;
-        border-style: solid;
-        border-color: transparent;
-        bottom: -10px;
-    }
-
-    &:before
-    {
-        border-width: 0 10px 10px 0;
-        border-right-color: #222;
-        left: 0;
-    }
-
-    &:after
-    {
-        border-width: 0 0 10px 10px;
-        border-left-color: #222;
-        right: 0;
-    }
+  margin-top: 0px;
 }
 
-.fancy-title {
-  font-family: 'EBGaramondRegular', serif;
-  font-weight: regular;
-  font-size: $basefont * 3;
-  margin-bottom: $baseline;
-  text-shadow: $claro 1px 2px;
 
-  a {
-    color: $rose;
+.actions {
+  margin-bottom: $baseLineHeight*0.5;
+  font-size: 0.75 * $baseFontSize;
+  
+  & > * {
+    margin-right: 20px;
   }
+}
 
-  small {
-    font-size: $basefont * 2;
-    color: $claro;
-    text-shadow: none;
+footer {
+  @include clearfix();
+  font-size: 0.75 * $baseFontSize;
+  border-top: 1px solid $claro;
+  padding: 10px 0px;
+  color: lighten($gris, 10);
+  
+  /*.actions > span {
+    margin-left: 20px;
+  }*/
+   
+  .pull-right {
+    margin-left: 20px;
   }
 }
 
@@ -251,4 +192,6 @@ h4 {
 @import 'audios';
 @import 'comments';
 @import 'users';
+@import 'torrents';
+@import 'glyphicons';
 @import 'smilies';

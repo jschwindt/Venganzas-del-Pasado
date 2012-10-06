@@ -7,20 +7,22 @@
         Para eso es importante que le pongas un título acorde, siguiendo el formato del resto de los programas y,
         <strong>muy importante:</strong> la fecha en la que debe publicarse el post de acuerdo con el programa que estás subiendo.
       %p
-        Se pueden subir hasta 4 segmentos del mismo programa y los archivos tiene que ser en formato MP3 y de una calidad razonable. 
+        Se pueden subir hasta 4 segmentos del mismo programa y los archivos tienen que ser formato MP3 y de una calidad razonable. 
         El peso total no puede superar los 30 megabytes.
       %p
         Idealmente cargá también una descipción del programa en la caja de contenido. Podés darle estilo y formato al texto utilizando #{link_to "Markdown", article_path('markdown'), :target => '_blank' }.
       %p
-        Los posts subidos acá no se publicarán inmediatamente sino que previamente serán revisados y aprobados.
+        Los posts subidos a través de este formulario no se publicarán inmediatamente sino que previamente serán revisados y aprobados.
 
     .clearfix
+      %legend Nuevo Post
+    
       = f.label :title
       .input
-        = f.text_field :title, :class => 'adjusted'
+        = f.text_field :title, :class => 'span9'
       = f.label :content
       .input
-        = f.text_area :content, :class => 'adjusted', :rows => 6
+        = f.text_area :content, :class => 'span9', :rows => 6
       .input
         = f.label :created_at, "Fecha de publicación"
         = f.date_select :created_at, :start_year => 1985, :end_year => Time.zone.now.year
@@ -30,5 +32,5 @@
         .input
           = media_form.file_field :asset
 
-    .actions
+    .form-actions
       = f.submit ( 'Enviar' ), :class => 'btn primary'

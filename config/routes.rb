@@ -27,6 +27,7 @@ VenganzasDelPasado::Application.routes.draw do
       post 'dislike'
       get 'liked_users'
       get 'disliked_users'
+      get 'opinions'
     end
   end
 

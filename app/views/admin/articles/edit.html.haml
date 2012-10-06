@@ -1,9 +1,13 @@
 - page_title("Editando Artículo")
 
-.ribbon Administración de Artículos
+.fancy Administración de Artículos
 
 %h2.title
   Editando Artículo ##{@article.id}
-  %small= link_to "Ver original", @article, :target => '_blank'
+  
+.actions
+  = link_to @article, :target => '_blank' do
+    %i.icon-book
+    Artículo
 
 = render 'form', :article => @article

@@ -1,10 +1,10 @@
 - page_title("Listado de Comentarios")
 
-.ribbon Administración de Comentarios
+.fancy Administración de Comentarios
 
 %h2.title= html_page_title
 
-%ul.tabs
+%ul.nav.nav-tabs
   %li{:class => (params[:has_status].blank? ? 'active' : nil)}
     = link_to "Todos", admin_comments_path
   %li{:class => active_if_current( :has_status => 'approved' )}

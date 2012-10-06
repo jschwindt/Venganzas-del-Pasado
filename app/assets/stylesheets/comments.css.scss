@@ -1,37 +1,38 @@
 .comment {
-  margin-bottom: $baseline * 0.5;
-  padding-top: $baseline * 0.25;
   overflow: hidden;
+  margin-bottom: $baseLineHeight*2;
 
   .author {
+    @include clearfix();
+    background: lighten($claro, 15);
+    @include border-radius(5px);
+    padding: 5px 10px;
+    margin-bottom: $baseLineHeight * 0.5;
+    font-size: 0.75 * $baseFontSize;
+  
     small {
-      font-size: 0.75 * $basefont;
       color: $claro;
       font-style: italic;
     }
   }
-
-  .meta {
-    border-top: 1px $claro solid;
-    font-size: 0.75 * $basefont;
-    margin-bottom: 0px;
-
-    .thumb {
-      float:left;
-      height: 28px;
-      .counter {
-        vertical-align: top;
+  
+  .actions {
+  
+    .label {
+      &.status-approved {
+        background-color: $successText;
+      }
+      &.status-pending,
+      &.status-flagged {
+        background-color: $warningText;
+      }
+      &.status-deleted {
+        background-color: $errorText;
       }
     }
-
-    .action {
-      float: right;
-
-      span {
-        margin-left: 20px;
-      }
-    }
+  
   }
+
 }
 
 .comment-form{
@@ -41,17 +42,59 @@
 }
 
 .admin {
-  .comment.pending {
-    background-color: lightYellow;
-  }
-  .comment.deleted {
-    background-color: lighten($rose, 40%);
+  .comment {
+    &.neutral .author,
+    &.approved .author {
+      background-color: $successText;
+      
+      a {
+        color: white;
+      }
+    }
+    
+    &.pending .author,
+    &.flagged .author {
+      background-color: $warningText;
+    }
+    
+    &.deleted .author {
+      background-color: $errorText;
+      
+      a {
+        color: white;
+      }
+    }
+  
   }
 }
 
+  
+  .opinions-popover {
+    
+    .popover-content{
+      height: 150px;
+      overflow: auto;
+    }
+ 
+    .opinion {
+      font-size: $baseFontSize*0.75;
+      margin-bottom: $baseLineHeight*0.25;
+      
+      & > * {
+        margin-right: 10px;
+      }
+      
+      img {
+        width: 20px;
+        height: 20px;
+        @include border-radius(2px);
+      }
+    }
+  
+  }
+  
 .comment-help{
   border-top: 1px $claro solid;
   margin-top: 20px;
-  font-size: 0.90 * $basefont;
-
+  font-size: 0.90 * $baseFontSize;
 }

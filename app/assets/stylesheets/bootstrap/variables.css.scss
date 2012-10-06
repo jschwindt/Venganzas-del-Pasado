@@ -1,0 +1,30 @@
+@import "bootstrap/_variables";
+
+// GRID: 14 cols en lugar de 12
+$gridColumns:             14;
+$gridColumnWidth:         40px;
+$gridGutterWidth:         20px;
+
+$rose: #D65045;
+$gris: #404040;
+$claro: #CCCCCC;
+
+$linkColor: $rose;
+$linkColorHover: darken($rose, 15);
+
+$baseFontSize: 16px;
+$baseLineHeight: 22px;
+
+/*
+$baseFontSizeSize:          14px !default;
+$baseFontSizeFamily:        $sansFontFamily !default;
+$baseLineHeight:        20px !default;
+$altFontFamily:         $serifFontFamily !default;
+*/
+
+$redBackground: asset-url('redtexture.jpg', image);
+
+$headerShadow: 0 1px 3px rgba(0,0,0,1), inset 0 -1px 0 rgba(0,0,0,.1);
+
+$garamondFont: 'EBGaramondRegular', Georgia, serif;
+$trajanFont: 'TrajanProBold', Georgia, serif;

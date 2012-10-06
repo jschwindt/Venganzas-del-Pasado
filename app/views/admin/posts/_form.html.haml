@@ -1,26 +1,25 @@
 = alert_message_for(post)
 
 = form_for [:admin, post], :html => { :class => 'form-stacked' } do |f|
-  %fieldset
+  %legend
 
-    .clearfix
-      %p Podés darle estilo y formato al texto utilizando #{link_to "Markdown", article_path('markdown'), :target => '_blank' }.
+  .control-group
+    .control
+      = f.text_field :title, :class => 'adjusted', :placeholder => 'Título'
+  .control-group
+    = f.label :content, :class => 'control-label'
+    .control
+      = f.text_area :content, :class => 'adjusted'
+      %span.help-block Podés darle estilo y formato al texto utilizando #{link_to "Markdown", article_path('markdown'), :target => '_blank' }.
+  .control-group
+    .control
+      = f.label :created_at, "Fecha de publicación", :class => 'control-label'
+      = f.date_select :created_at, :start_year => 1985, :end_year => Time.zone.now.year
+  .control-group
+    = f.label :status, :class => 'control-label'
+    .control
+      = f.select :status, Post.statuses
 
-    .clearfix
-      = f.label :title
-      .input
-        = f.text_field :title, :class => 'adjusted'
-      = f.label :content
-      .input
-        = f.text_area :content, :class => 'adjusted'
-      .input
-        = f.label :created_at, "Fecha de publicación"
-        = f.date_select :created_at, :start_year => 1985, :end_year => Time.zone.now.year
-    .clearfix
-      = f.label :status
-      .input
-        = f.select :status, Post.statuses
-
-    .actions
-      = f.submit ( post.new_record? ? 'Publicar' : 'Guardar' ), :class => 'btn primary'
-      = link_to 'Cancelar', admin_posts_path, :class => 'btn'
+  .form-actions
+    = f.submit ( post.new_record? ? 'Publicar' : 'Guardar' ), :class => 'btn primary'
+    = link_to 'Cancelar', admin_posts_path, :class => 'btn'

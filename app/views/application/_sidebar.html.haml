@@ -1,14 +1,19 @@
 #sidebar
-  .widget
-    %h3.ribbon Buscador
-    = form_tag search_path(what: 'posts'), method: 'get' do
-      = text_field_tag :q, params[:q], placeholder: 'Ingresá el texto que buscás'
-      = submit_tag "Buscar", class: 'btn default'
+  
   -if user_signed_in?
     .widget
-      %h3.ribbon= current_user.alias
-      %ul
+      %h3.fancy= current_user.alias
+      %ul.nav.nav-list
         = render 'layouts/menus/user_items'
+      
+  .widget
+    %h3.fancy Buscador
+    = form_tag search_path(what: 'posts'), method: 'get' do
+      .input-append
+        = text_field_tag :q, params[:q], placeholder: 'Buscar en el sitio', class: 'input-medium'
+        = button_tag class: 'btn', type: 'button' do
+          %i.icon-search
+          
   .widget
     = render 'layouts/banners/b160x600'
   - cache [:archive, Post.last_updated], :expires_in => 2.days do
@@ -16,12 +21,15 @@
       = render 'layouts/widgets/daily_archive'
     .widget
       = render 'layouts/widgets/monthly_archive'
-  %h3.ribbon Seguí a Venganzas del Pasado
+      
+  %h3.fancy Seguí a Venganzas del Pasado
+  
   .widget
     - if Rails.env.production?
       = render 'layouts/widgets/facebook'
     - else
       = image_tag('http://placehold.it/220x440/')
+      
   .widget
     - if Rails.env.production?
       = render 'layouts/widgets/twitter'

@@ -5,13 +5,13 @@
 - page_title the_title
 - meta_description strip_tags(the_title)
 
-%h2.ribbon
-  Programas y segmentos enviados por los usuarios
+%section
+  %h2.fancy
+    Programas y segmentos enviados por los usuarios
 
-.posts
-  = render @posts
+  =render 'layouts/banners/b468x60'
 
-= paginate @posts, :window => 2
-
-=render 'layouts/banners/b468x60'
-
+  .posts
+    = render @posts
+  
+  = paginate @posts, :window => 2

@@ -1,7 +1,11 @@
-- page_title("Nuevo Programa")
+- page_title("Publicá un nuevo programa")
 
-%h2.title= html_page_title
+%article
 
-= alert_message_for(@post)
-
-= render 'form', :post => @post
+  .fancy Aportá tus propios programas grabados
+  
+  %h2.title= html_page_title
+  
+  = alert_message_for(@post)
+  
+  = render 'form', :post => @post

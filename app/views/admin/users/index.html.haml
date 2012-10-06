@@ -1,13 +1,13 @@
 - page_title("Listado de Usuarios")
 
-.ribbon Administración de Usuarios
+.fancy Administración de Usuarios
 
 %h2.title= html_page_title
 
 - if @users.empty?
   %p No se han encontrado usuarios
 -else
-  %table
+  %table.table.table-striped
     %thead
       %tr
         %th #
@@ -18,8 +18,12 @@
         %tr
           %td= user.id
           %td= user.alias
-          %td
-            =link_to "Permalink", user, :target => '_blank'
-            =link_to "Editar", edit_admin_user_path(user)
+          %td.actions
+            =link_to user, :target => '_blank' do
+              %i.icon-user
+              Perfil
+            =link_to edit_admin_user_path(user) do
+              %i.icon-edit
+              Editar
 
   = paginate @users

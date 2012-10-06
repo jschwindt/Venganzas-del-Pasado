@@ -1,9 +1,9 @@
 - page_title('Reenviá las Instrucciones de Confirmación')
 
-.ribbon
+.fancy
   ¿Problemas para iniciar sesión?
 
-%h2.title= html_page_title
+%h1.title= html_page_title
 
 %p
   Si no recibiste tu email de confirmación de cuenta, podés reenviarlo
@@ -13,15 +13,13 @@
 
 = devise_error_messages!
 
-%div
-  = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
-    %fieldset
-      .inputs
-        .clearfix
-          = f.label :email
-          .input
-            = f.text_field :email
-            %span.help-block La dirección con la que creaste tu cuenta.
-      .actions
-        = f.submit "Reenviar Confirmación", :class => 'btn primary'
-  = render "devise/shared/links"
+= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, :class => 'form-horizontal' }) do |f|
+  %legend
+  .control-group
+    = f.label :email, :class => 'control-label'
+    .controls
+      = f.text_field :email
+      %span.help-block La dirección con la que creaste tu cuenta.
+  .form-actions
+    = f.submit "Reenviar", :class => 'btn primary'
+= render "devise/shared/links"

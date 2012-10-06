@@ -86,5 +86,13 @@ class Comment < ActiveRecord::Base
     has created_at
     where "status IN ('neutral', 'approved', 'flagged')"
   end
+  
+  def opinion_count
+    self.like_count + self.dislike_count
+  end
+  
+  def opinions
+    (self.likes + self.dislikes).sort {|x,y| x.created_at <=> y.created_at }
+  end
 
 end

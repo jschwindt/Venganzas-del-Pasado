@@ -1,7 +1,7 @@
 - if params[:day].present?
   - title_part = "Archivo de programas del #{params[:day]}/#{params[:month]}/#{params[:year]}"
 - elsif params[:month].present?
-  - title_part = "Archivo de programas de #{I18n.t('date.month_names')[params[:month].to_i]} del #{params[:year]}"
+  - title_part = "Archivo de programas de #{I18n.t('date.month_names')[params[:month].to_i].capitalize} del #{params[:year]}"
 - else
   - title_part = "Archivo de programas del año #{params[:year]}"
 
@@ -12,11 +12,12 @@
 - page_title the_title
 - meta_description strip_tags("#{the_title} de La Venganza será Terrible")
 
-%h2.ribbon!= html_page_title
+%section
+  %h2.fancy!= html_page_title
 
-=render 'layouts/banners/b468x60'
+  =render 'layouts/banners/b468x60'
 
-.posts
-  = render @posts
-
-= paginate @posts, :window => 2
+  .posts
+    = render @posts
+  
+  = paginate @posts, :window => 2

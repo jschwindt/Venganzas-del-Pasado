@@ -1,0 +1,51 @@
+@import "bootstrap/_forms";
+
+.form-horizontal,
+.form-stacked { 
+  label {
+    text-align: left;
+    font-weight: bold;
+  }
+}
+
+.form-horizontal fieldset {
+  label {
+    margin-right: 20px;
+    text-align: right;
+  }
+}
+
+legend {
+  small {
+    font-size: $baseFontSize * 0.75;
+  }
+}
+
+select, input[type=file] {
+  height: 36px;
+}
+
+form {
+  .help-block {
+    font-style: italic;
+  }
+  
+  input[id*=title] {
+    line-height: $baseLineHeight*1.5;
+    height: $baseLineHeight*1.5;
+    font-size: $baseFontSize*1.5;
+  }
+}
+
+@for $i from 1 through $gridColumns {
+  .span#{$i} { 
+    .form-stacked {
+      
+      input[type="text"],
+      textarea {
+        width: ($gridColumnWidth * $i) + ($gridGutterWidth * ($i - 2))
+      }
+      
+    }
+  }
+} 

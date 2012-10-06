@@ -1,11 +1,27 @@
 .post {
-  margin-bottom: $baseline*2;
-  padding-bottom: $baseline;
-  border-bottom: 1px solid $gris;
-
+  margin-bottom: $baseLineHeight*2;
+  
+  .actions {
+  
+    .label {
+      &.status-published {
+        background-color: $successText;
+      }
+      &.status-draft,
+      &.status-pending,
+      &.status-waiting {
+        background-color: $warningText;
+      }
+      &.status-deleted {
+        background-color: $errorText;
+      }
+    }
+  
+  }
+  
   .audios {
     .audio {
-      margin-bottom: $baseline;
+      margin-bottom: $baseLineHeight;
 
       .jp-current-time {
         font-family: Verdana,Arial,sans-serif;
@@ -15,11 +31,10 @@
   }
 
   .content {
-    margin-bottom: $baseline;
 
     * {
-      line-height: $baseline;
-      font-size: $basefont;
+      line-height: $baseLineHeight;
+      font-size: $baseFontSize;
     }
 
     li {
@@ -27,30 +42,34 @@
     }
 
     h1, h2, h3, h4, h5, h6 {
-      margin-bottom: $baseline / 2;
+      margin-bottom: $baseLineHeight / 2;
     }
 
   }
 
-  .meta {
-    color: $gris;
-    font-size: 0.75 * $basefont;
-
-    > span {
+  .share {
+    @include clearfix();
+    margin-bottom: $baseLineHeight*0.5;
+    background: lighten($claro, 15);
+    padding: 10px;
+    font-size: $baseFontSize*0.75;
+  
+    & > * {
+      float: left;
+      margin-right: 10px;
+      height: 20px;
+      vertical-align: middle;
+    }
+    
+    em {
       margin-right: 20px;
     }
-
-    .date {
-      font-style: italic;
+    
+    .twitter {
     }
-
-    .share {
-      float: right;
-      margin-right: 0;
-
-      .facebook-share {
-        iframe { width: 76px; }
-      }
+    
+    .facebook {
+      iframe { width: 135px; }
     }
   }
 
@@ -59,10 +78,10 @@
 .posts-show {
 
   .post-nav {
-    margin-bottom: $baseline;
+    margin-bottom: $baseLineHeight;
 
     .prev-post, .next-post {
-      font-size: 0.70 * $basefont;
+      font-size: 0.70 * $baseFontSize;
     }
 
     .next-post {
@@ -81,4 +100,23 @@
     display: none;
   }
 
+}
+
+.posts-edit,
+.posts-index {
+  .label {
+    &.post-status-published {
+      background-color: $successText;
+    }
+    &.post-status-draft,
+    &.post-status-pending {
+      background-color: $warningText;
+    }
+    &.post-status-waiting {
+      background-color: $infoText;
+    }
+    &.post-status-deleted {
+      background-color: $errorText;
+    }
+  }
 }

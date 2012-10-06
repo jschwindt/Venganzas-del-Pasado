@@ -1,0 +1,10 @@
+-if notice.present?
+  .alert.alert-success.fade.in
+    %button.close{ 'data-dismiss' => 'alert' }
+      &times;
+    = notice
+-if alert.present?
+  .alert.alert-error.fade.in
+    %button.close{ 'data-dismiss' => 'alert' }
+      &times;
+    = alert

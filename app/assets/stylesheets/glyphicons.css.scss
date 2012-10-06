@@ -1,0 +1,26 @@
+[class^="glyphicon-"],
+[class*=" glyphicon-"] {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  @include ie7-restore-right-whitespace();
+  line-height: 14px;
+  vertical-align: text-top;
+  //background-image: $glyphiconSpritePath;
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+  margin-top: 1px;
+}
+
+/* White glyphicons with optional class, or on hover/active states of certain elements */
+.glyphicon-white,
+.nav > .active > a > [class^="glyphicon-"],
+.nav > .active > a > [class*=" glyphicon-"],
+.dropdown-menu > li > a:hover > [class^="glyphicon-"],
+.dropdown-menu > li > a:hover > [class*=" glyphicon-"],
+.dropdown-menu > .active > a > [class^="glyphicon-"],
+.dropdown-menu > .active > a > [class*=" glyphicon-"] {
+  //background-image: $glyphiconWhiteSpritePath;
+}
+
+.glyphicon-facebook { background: asset-url('glyphicons/png-14/glyphicons_390_facebook.png', image); }

@@ -23,10 +23,10 @@ module ApplicationHelper
   def alert_message_for(object)
     if object.respond_to? :errors and object.errors.any?
       messages = object.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
-
+      
       html = <<-HTML
-      <div class="alert-message block-message error">
-        #{ link_to "x", "#", :class => 'close' }
+      <div class="alert alert-error">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
         <p>
           <strong>Se ha#{object.errors.count > 1 ? 'n' : ''} encontrado #{object.errors.count} error#{object.errors.count > 1 ? 'es' : ''}</strong>
         </p>
@@ -74,7 +74,7 @@ module ApplicationHelper
 
   def timeago(time, options = {})
     options[:class] ||= "timeago"
-    content_tag(:abbr, 'el' + l(time, :format => :long), options.merge(:title => time.getutc.iso8601)) if time
+    content_tag(:abbr, 'el ' + l(time, :format => :long), options.merge(:title => time.getutc.iso8601)) if time
   end
 
 end

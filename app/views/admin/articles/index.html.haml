@@ -1,13 +1,13 @@
 - page_title("Listado de Artículos")
 
-.ribbon Administración de Artículos
+.fancy Administración de Artículos
 
 %h2.title= html_page_title
 
 - if @articles.empty?
   %p No se han encontrado artículos
 -else
-  %table
+  %table.table.table-striped
     %thead
       %tr
         %th #
@@ -18,9 +18,15 @@
         %tr
           %td= article.id
           %td= article.title
-          %td
-            =link_to "Permalink", article, :target => '_blank'
-            =link_to "Editar", edit_admin_article_path(article)
-            =link_to "Eliminar", admin_article_path(article), :method => :delete, :data => { :confirm => "¿Estás seguro?" }
+          %td.actions
+            =link_to article, :target => '_blank' do
+              %i.icon-book
+              Permalink
+            =link_to edit_admin_article_path(article) do
+              %i.icon-edit
+              Editar
+            =link_to admin_article_path(article), :method => :delete, :data => { :confirm => "¿Estás seguro?" } do
+              %i.icon-fire
+              Eliminar
 
   = paginate @articles

@@ -6,6 +6,7 @@ module Admin
     before_filter :verify_admin
     has_scope :page, :default => 1
     with_role :admin
+    layout 'admin'
 
     def update
       update!(:notice => "Se han guardado los cambios.") do

@@ -1,35 +1,45 @@
 - if params[:page].nil?
   - the_title = "Torrents de MP3 de La Venganza será Terrible de Alejandro Dolina"
 - else
-  - the_title = "Torrents de MP3 de La Venganza será Terrible de Alejandro Dolina, <small>Página #{params[:page]}</small>"
+  - the_title = "Torrents de MP3 de La Venganza será Terrible de Alejandro Dolina<small>, Página #{params[:page]}</small>"
 - page_title the_title
 - meta_description strip_tags(the_title)
 
 
-.ribbon
+.fancy
   Descargas P2P
 
 %h2.title!= html_page_title
 
 =render 'layouts/banners/b468x60'
 
-.alert-message.block-message.warning
+.alert.alert-block.alert-error
   %a{ class: "close", href: "#"}
     ×
   %p
     ¿Estás buscando el RSS de los torrents para agregarlo a tu cliente
     BitTorrent favorito y automatizar las descargas?
-    .alert-actions
-      =link_to "Ir al RSS", torrents_url(:format => :rss), class: "btn success small"
-      =link_to "¿Qué es un Torrent?", article_path('torrent'), class: "btn small"
+  %p
+    =link_to torrents_url(:format => :rss), :class => "btn btn-link" do
+      %i.icon-list-alt
+      Ir al RSS
+    =link_to article_path('torrent'), :class => "btn btn-link" do
+      %i.icon-question-sign
+      ¿Qué es un Torrent?
 
 .torrents
-  %table
+  %table.table.table-striped
     %tbody
       - @torrents.each do |torrent|
         %tr
           %td= torrent.post.title
-          %td= link_to "Ver Post", torrent.post, :target => '_blank'
-          %td= link_to "Descargar", torrent.torrent_url
+          %td{:nowrap => :nowrap}
+            = link_to torrent.post, :target => '_blank' do
+              %i.icon-bookmark
+              Post
+          %td{:nowrap => :nowrap}
+            = link_to torrent.torrent_url do
+              %i.icon-magnet
+              Descargar
 
 = paginate @torrents, :window => 2

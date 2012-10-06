@@ -43,8 +43,7 @@ GEM
     awesome_print (1.0.2)
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
-    bootstrap-sass (1.4.4)
-      sass-rails (~> 3.1)
+    bootstrap-sass (2.1.0.0)
     builder (3.0.0)
     cancan (1.6.8)
     capybara (1.1.2)
@@ -79,6 +78,7 @@ GEM
     faraday (0.8.2)
       multipart-post (~> 1.1)
     ffi (1.1.5)
+    ffi (1.1.5-x86-mingw32)
     friendly_id (4.0.8)
     haml (3.1.7)
     haml-rails (0.3.4)
@@ -258,7 +258,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
-  bootstrap-sass (~> 1.4.4)
+  bootstrap-sass (~> 2.1.0.0)
   cancan
   capybara
   carrierwave

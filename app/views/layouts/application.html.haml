@@ -1,13 +1,19 @@
 !!!
 %html{ :lang => "es" }
+ 
   %head
+    
     %title= yield :title
+    
     %meta{ :"http-equiv" => "Content-Type", :content => "text/html; charset=UTF-8" }
     %meta{ :name => "description", :content => @meta_description || "El sitio donde podés escuchar online y descargar los archivos de audio en MP3 del programa La Venganza será Terrible de Alejandro Dolina." }
+
     /[if lt IE 9]
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
+    
     = auto_discovery_link_tag :rss, posts_path(:format => :rss),
       { :title => "RSS feed de Venganzas del Pasado" }
     = auto_discovery_link_tag :rss, torrents_path(:format => :rss),
@@ -15,33 +21,20 @@
     = favicon_link_tag
     = tag "link", :rel => "image_src", :href => asset_path('vdp_logo.png')
     = csrf_meta_tag
+    
     - if Rails.env.production?
       = render 'analytics'
+      
   %body{ :class => body_class }
-    .topbar
-      .topbar-inner
-        .container
-          = link_to 'Venganzas del Pasado', '/', :class => 'brand'
-          = render 'layouts/menus/navigation'
 
+    = render 'topbar'
     = render 'header'
-
+    = render 'subheader'
     .container.main
       .row
         #content.span9
-          -if notice.present?
-            .alert-message.success.fade.in
-              %a{ :class => "close", :href => "#" }
-                &times;
-              = notice
-          -if alert.present?
-            .alert-message.error.fade.in
-              %a{ :class => "close", :href => "#" }
-                &times;
-              = alert
+          = render 'messages'
           = yield
-
         .span4.offset1
           = render 'sidebar'
-
     = render 'footer'

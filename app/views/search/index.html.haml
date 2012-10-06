@@ -1,12 +1,16 @@
 - page_title("Resultados de búsqueda")
 
-%h2.ribbon!= html_page_title
+%h2.fancy!= html_page_title
 
-%ul.tabs
+%ul.nav.nav-tabs
   %li{:class => @what == 'posts' ? 'active' : nil}
-    = link_to "Posts (#{@facets[:class]["Post"]})", search_path(params.merge(what: 'posts', page: nil))
+    = link_to search_path(params.merge(what: 'posts', page: nil)) do
+      Posts
+      %span.badge= @facets[:class]["Post"]
   %li{:class => @what == 'comments' ? 'active' : nil}
-    = link_to "Comentarios (#{@facets[:class]["Comment"]})", search_path(params.merge(what: 'comments', page: nil))
+    = link_to search_path(params.merge(what: 'comments', page: nil)) do
+      Comentarios
+      %span.badge= @facets[:class]["Comment"]
 
 .results
   = render @results

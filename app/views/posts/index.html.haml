@@ -5,12 +5,12 @@
 - page_title the_title
 - meta_description strip_tags(the_title)
 
-%h2.ribbon!= html_page_title
+%section
+  %h2.fancy!= html_page_title
+  
+  =render 'layouts/banners/b468x60'
 
-.posts
-  = render @posts
-
-= paginate @posts, :window => 2
-
-=render 'layouts/banners/b468x60'
-
+  .posts
+    = render @posts
+  
+  = paginate @posts, :window => 2

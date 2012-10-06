@@ -46,6 +46,10 @@ module VenganzasDelPasado
     config.assets.version = '1.0'
 
     config.assets.paths << Rails.root.join("vendor", "assets", "flowplayer")
+        
+    config.to_prepare do
+      Devise::SessionsController.layout "lean" 
+    end
 
   end
 end
