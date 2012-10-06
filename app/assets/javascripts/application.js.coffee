@@ -16,13 +16,13 @@ jQuery ->
 
   
   $('.opinions-popover').click (event) ->
-    $.get $(this).data('data-popover-url'), (data) =>
+    $.get $(this).data('popover-url'), (data) =>
       if data.length > 0
         $(this).popover
           trigger: 'manual'
           html: true
           animate: true
-          placement: 'above'
+          placement: 'top'
           offset: 18
           template: '<div class="arrow"></div><div class="inner"><div class="content"></div></div>'
           content: ->
