@@ -92,7 +92,7 @@ class Comment < ActiveRecord::Base
   end
   
   def opinions
-    self.likes + self.dislikes
+    (self.likes + self.dislikes).sort {|x,y| x.time <=> y.time }
   end
 
 end

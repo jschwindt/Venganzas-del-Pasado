@@ -43,8 +43,6 @@ class CommentsController < ApplicationController
   end
   
   def opinions
-    @opinions = @comment.likes + @comment.dislikes
-    @opinions.sort! {|x,y| x.time <=> y.time }
     render :layout => false
   end
 

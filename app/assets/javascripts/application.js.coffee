@@ -9,10 +9,27 @@
 //= require_self
 
 jQuery ->
-   $("abbr.timeago").timeago();
+  $("abbr.timeago").timeago();
   $('.open_player').click (event) ->
     open_player this.href
     return false
+
+  
+  $('.opinions-popover').click (event) ->
+    $.get $(this).data('data-popover-url'), (data) =>
+      if data.length > 0
+        $(this).popover
+          trigger: 'manual'
+          html: true
+          animate: true
+          placement: 'above'
+          offset: 18
+          template: '<div class="arrow"></div><div class="inner"><div class="content"></div></div>'
+          content: ->
+            data
+        $(this).popover('show')
+    
+    
 
 window.open_player = (url) ->
   nw = window.open url, 'player', 'height=235,width=580,status=0,menubar=0,location=0,toolbar=0,scrollbars=0'
