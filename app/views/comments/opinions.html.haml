@@ -1,0 +1,8 @@
+-if @opinions.present?
+  .opinions
+    - @opinions.each do |opinion|
+      -50.times do
+        .opinion
+          %img.img-rounded{ :src => opinion.user.profile_picture_url, :alt => opinion.user.alias }
+          = opinion.user.alias
+          

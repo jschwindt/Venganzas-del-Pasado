@@ -9,8 +9,7 @@
 //= require_self
 
 jQuery ->
-  $(".alert-message").alert()
-  $("abbr.timeago").timeago();
+   $("abbr.timeago").timeago();
   $('.open_player').click (event) ->
     open_player this.href
     return false

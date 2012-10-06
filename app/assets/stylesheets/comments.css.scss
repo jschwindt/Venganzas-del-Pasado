@@ -16,6 +16,20 @@
     }
   }
   
+  .opinions {
+    
+    border-top: 1px solid $claro;
+    padding: 10px 0px;
+    @include border-radius(1px);
+  
+    .opinion {
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  
+  }
   
   .actions {
   
