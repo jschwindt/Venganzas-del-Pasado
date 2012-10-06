@@ -1,9 +1,14 @@
 -if @comment.opinions.present?
   .opinions
     - @comment.opinions.each do |opinion|
-      - 50.times do
-        .opinion
-          %img.img-rounded{ :src => opinion.user.profile_picture_url, :alt => opinion.user.alias }
-          = opinion.user.alias
+      - opinion_type = opinion.class.name.split('::').last.downcase
+      .opinion{ :class => "opinion-#{opinion_type}" }
+        - if opinion_type == 'like'
+          %i.icon-thumbs-up
+        - else
+          %i.icon-thumbs-down
+        %img.avatar.img-rounded{ :src => opinion.user.profile_picture_url, :alt => opinion.user.alias }
+        %span.who
+          = link_to_unless opinion.user.nil?, opinion.user.alias, opinion.user
 -else
-  No hay opiniones aùn
+  No hay opiniones aún

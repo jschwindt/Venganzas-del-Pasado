@@ -64,7 +64,7 @@
               = link_to like_comment_path(comment), :method => :post, :remote => :true, :title => "¡Me gusta! :-)", :class => 'btn btn-mini' do
                 %i.icon-thumbs-up
                 %span.count{ :id => "like_#{comment.id}"} #{comment.like_count}
-            %button.opinions-popover.btn.btn-mini{ 'data-popover-url' => opinions_comment_path(comment), 'data-title' => 'Opiniones'}
+            %button.btn-opinions-popover.btn.btn-mini{ 'data-popover-url' => opinions_comment_path(comment), 'data-title' => 'Opiniones'}
               %i.icon-eye-open
               - if not user_signed_in?
                 #{comment.opinion_count} Opiniones

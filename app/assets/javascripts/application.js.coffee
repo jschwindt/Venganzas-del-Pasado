@@ -15,7 +15,7 @@ jQuery ->
     return false
 
   
-  $('.opinions-popover').click (event) ->
+  $('.btn-opinions-popover').click (event) ->
     $.get $(this).data('popover-url'), (data) =>
       if data.length > 0
         $(this).popover
@@ -23,10 +23,10 @@ jQuery ->
           html: true
           animate: true
           placement: 'top'
-          offset: 18
-          template: '<div class="arrow"></div><div class="inner"><div class="content"></div></div>'
+          template: '<div class="popover opinions-popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
           content: ->
             data
+        $("abbr.timeago").timeago();
         $(this).popover('show')
     
     

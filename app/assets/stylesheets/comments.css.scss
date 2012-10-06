@@ -68,6 +68,31 @@
   }
 }
 
+  
+  .opinions-popover {
+    
+    .popover-content{
+      height: 150px;
+      overflow: auto;
+    }
+ 
+    .opinion {
+      font-size: $baseFontSize*0.75;
+      margin-bottom: $baseLineHeight*0.25;
+      
+      & > * {
+        margin-right: 10px;
+      }
+      
+      img {
+        width: 20px;
+        height: 20px;
+        @include border-radius(2px);
+      }
+    }
+  
+  }
+  
 .comment-help{
   border-top: 1px $claro solid;
   margin-top: 20px;
