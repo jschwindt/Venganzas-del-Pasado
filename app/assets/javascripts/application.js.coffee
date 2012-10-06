@@ -16,18 +16,24 @@ jQuery ->
 
   
   $('.btn-opinions-popover').click (event) ->
-    $.get $(this).data('popover-url'), (data) =>
-      if data.length > 0
-        $(this).popover
-          trigger: 'manual'
-          html: true
-          animate: true
-          placement: 'top'
-          template: '<div class="popover opinions-popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
-          content: ->
-            data
-        $("abbr.timeago").timeago();
-        $(this).popover('show')
+    $this = $(this)
+    if 'opened' != $this.data 'popover-status'
+      $.get $this.data('popover-url'), (data) =>
+        if data.length > 0
+          $this.popover
+            trigger: 'manual'
+            html: true
+            animate: true
+            placement: 'top'
+            template: '<div class="popover opinions-popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
+            content: ->
+              data
+          $("abbr.timeago").timeago()
+          $this.popover('show')
+          $this.data 'popover-status', 'opened'
+    else
+      $this.popover('hide')
+      $this.data 'popover-status', 'closed'
     
     
 
