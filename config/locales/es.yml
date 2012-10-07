@@ -1,7 +1,10 @@
 es:
 
-  # Pagination
   views:
+    opinion:
+      one: "1 Opinión"
+      other: "%{count} Opiniones"
+
     pagination:
       first: "|&lt;"
       previous: "&lt;"
