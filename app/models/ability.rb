@@ -14,8 +14,7 @@ class Ability
     end
     can :read, Article
     can :read, Comment, :status => ['neutral', 'approved', 'flagged']
-    can :liked_users, Comment, :status => ['neutral', 'approved', 'flagged']
-    can :disliked_users, Comment, :status => ['neutral', 'approved', 'flagged']
+    can :opinions, Comment, :status => ['neutral', 'approved', 'flagged']
     can :read, User
 
     if user.persisted?
