@@ -2,7 +2,7 @@
 
 class CommentsController < ApplicationController
   load_and_authorize_resource :post, :only => [:create, :show]
-  load_and_authorize_resource :comment, :only => [:flag, :like, :dislike, :liked_users, :disliked_users, :opinions]
+  load_and_authorize_resource :comment, :only => [:flag, :like, :dislike, :opinions]
   load_and_authorize_resource :comment, :through => :post, :only => [:create, :show]
 
   def create
@@ -32,16 +32,6 @@ class CommentsController < ApplicationController
     current_user.dislike! @comment
   end
 
-  def liked_users
-    @users = @comment.liked_users
-    render 'liked_users', :layout => false
-  end
-
-  def disliked_users
-    @users = @comment.disliked_users
-    render 'liked_users', :layout => false
-  end
-  
   def opinions
     render :layout => false
   end
