@@ -1,4 +1,9 @@
 #topbar {
+
+  @media (max-width: 979px) {
+    margin-bottom: 0px;
+  }
+
   ul.nav > li > a {
     font-size: $baseFontSize*0.75;
   }

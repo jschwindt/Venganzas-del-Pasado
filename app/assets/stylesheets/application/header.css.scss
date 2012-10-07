@@ -3,6 +3,10 @@
   background: $redBackground;
   $shadow: 0 1px 3px rgba(0,0,0,1), inset 0 -1px 0 rgba(0,0,0,.1);
   @include box-shadow($shadow);
+  
+  @media (max-width: 979px) {
+    padding-top: 20px;
+  }
 
   .title-container {
 
