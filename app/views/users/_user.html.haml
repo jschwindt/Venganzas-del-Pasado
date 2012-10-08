@@ -1,6 +1,6 @@
 .row.user
   .span1.avatar
-    %img{ :src => user.profile_picture_url, :alt => user.alias }
+    %img.img-rounded{ :src => user.profile_picture_url, :alt => user.alias }
   .span7.info
     %h3.title
       = link_to user.alias, user
