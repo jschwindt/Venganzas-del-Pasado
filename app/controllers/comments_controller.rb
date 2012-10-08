@@ -35,5 +35,10 @@ class CommentsController < ApplicationController
   def opinions
     render :layout => false
   end
+  
+
+  def index
+    @comments = Comment.visible_by(current_user).lifo.limit(VenganzasDelPasado::Application.config.comments_per_page)
+  end
 
 end

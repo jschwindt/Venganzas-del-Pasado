@@ -30,8 +30,12 @@ VenganzasDelPasado::Application.routes.draw do
   end
 
   resources :users, :only => :show do
-    get 'page/:page', :action => :show, :on => :member        # SEO friendly pag. for user's comments
+    get 'comments(/page/:page)', :action => :comments, :on => :member, :as => :comments
+    get 'contributions(/page/:page)', :action => :contributions, :on => :member, :as => :contributions
+    get 'likes(/page/:page)', :action => :likes, :on => :member, :as => :likes
+    get 'dislikes(/page/:page)', :action => :dislikes, :on => :member, :as => :dislikes
   end
+  
   resources :articles, :only => :show
   resources :torrents, :only => :index
 

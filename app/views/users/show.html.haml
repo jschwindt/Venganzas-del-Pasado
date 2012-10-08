@@ -10,8 +10,22 @@
 
 = render @user
 
-%h3 Comentarios Recientes
-.comments
-  = render @comments
+%ul.nav.nav-tabs
+  %li{:class => (controller.action_name == 'comments') || (controller.action_name == 'show') ? 'active' : nil }
+    = link_to "Comentarios", comments_user_path(@user)
+  %li{:class => controller.action_name == 'contributions' ? 'active' : nil }
+    = link_to "Contribuciones", contributions_user_path(@user)
+  %li{:class => controller.action_name == 'likes' ? 'active' : nil }
+    = link_to "Me Gusta", likes_user_path(@user)
+  %li{:class => controller.action_name == 'dislikes' ? 'active' : nil }
+    = link_to "No me Gusta", dislikes_user_path(@user)
 
-%p= paginate @comments
+= render @objects
+
+%p
+  - if controller.action_name == 'show'
+    = paginate @objects, :params => {:controller => :users, :action => :comments}
+  - else
+    = paginate @objects
+
+
