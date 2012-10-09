@@ -6,6 +6,7 @@
 //= require flash_player
 //= require jquery.timeago
 //= require jquery.timeago-es
+//= require socialite
 //= require_self
 
 jQuery ->
@@ -14,6 +15,8 @@ jQuery ->
     open_player this.href
     return false
 
+  $('.post .share .socialite').hover (event) ->
+    Socialite.activate this
   
   $('.btn-opinions-popover').click (event) ->
     $this = $(this)
@@ -34,8 +37,6 @@ jQuery ->
     else
       $this.popover('hide')
       $this.data 'popover-status', 'closed'
-    
-    
 
 window.open_player = (url) ->
   nw = window.open url, 'player', 'height=235,width=580,status=0,menubar=0,location=0,toolbar=0,scrollbars=0'

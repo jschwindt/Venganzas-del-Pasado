@@ -53,19 +53,40 @@ module ApplicationHelper
   end
 
   def fb_like_button_for(object)
-    html = <<-HTML
-      <iframe src="//www.facebook.com/plugins/like.php?href=#{polymorphic_url(object)}&amp;send=false&amp;layout=button_count&amp;width=120&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=128505023893262" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:21px;" allowTransparency="true"></iframe>
-    HTML
-    html.html_safe
+    object_url = polymorphic_url(object)
+    
+    link_to "Facebook",
+            "https://www.facebook.com/sharer.php?u=#{url_encode(object_url)}",
+            'class'     => "socialite facebook-like",
+            'data-href'  => object_url,
+            'data-send'  => "false",
+            'data-layout' => "button_count",
+            'data-width' => "120",
+            'data-show-faces' => "false"
   end
 
   def tweet_button_for(object)
-    link_to "Compartir VdP en Twitter", "https://twitter.com/share",
-            'class'     => "twitter-share-button",
-            'data-url'  => polymorphic_url(object),
+    object_url = polymorphic_url(object)
+    
+    link_to "Twitter",
+            "https://twitter.com/intent/tweet?via=venganzaspasado&url=#{url_encode(object_url)}",
+            'class'     => "socialite twitter-share",
+            'data-url'  => object_url,
             'data-via'  => "venganzaspasado",
             'data-lang' => "es",
             'data-hashtags' => "vdp"
+  end
+  
+  def plusone_button_for(object)
+    object_url = polymorphic_url(object)
+    
+    link_to "Google+", "https://plus.google.com/share?url=" + url_encode(object_url),
+            'class' => 'socialite googleplus-one',
+            'data-size' => "tall",
+            'data-href' => object_url,
+            'data-annotation' => "inline",
+            'data-recommendations' => 'false',
+            'data-width' => '120'
   end
 
   def flash_player?
