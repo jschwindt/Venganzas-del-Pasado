@@ -15,8 +15,28 @@ jQuery ->
     open_player this.href
     return false
 
-  $('.post .share .socialite').hover (event) ->
-    Socialite.activate this
+  Socialite.widget 'facebook', 'likebox',
+    init: (instance) ->
+      el = document.createElement 'div'
+      el.className = 'fb-like-box'
+      Socialite.copyDataAttributes instance.el, el
+      instance.el.appendChild el
+      if window.FB && window.FB.XFBML
+        window.FB.XFBML.parse instance.el
+
+  Socialite.setup
+    facebook:
+      lang     : 'es_LA',
+      appId    : '305139166173322'
+      
+  Socialite.process()
+      
+  if window.innerWidth >= 768
+    Socialite.activate $('.facebook-likebox')[0]
+    Socialite.activate $('.twitter-timeline')[0]
+
+  $('.post .share').hover (event) ->
+    Socialite.load this
   
   $('.btn-opinions-popover').click (event) ->
     $this = $(this)

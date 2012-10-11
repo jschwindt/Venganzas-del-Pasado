@@ -1,6 +1,28 @@
 .post {
   margin-bottom: $baseLineHeight*2;
   
+  .share {
+    .twitter .socialite-instance {
+      background: image-url('btn-twittear.png') left top no-repeat;
+      width: 92px;
+      height: 20px;
+    }
+    .facebook .socialite-instance {
+      background: image-url('btn-like.png') left top no-repeat;
+      width: 97px;
+      height: 20px;
+    }
+    .gplus .socialite-instance {
+      background: image-url('btn-googleplus.png') left top no-repeat;
+      width: 97px;
+      height: 20px;
+    }
+    
+    .socialite-loaded {
+      background: none !important;
+    }
+  }
+  
   .actions {
   
     .label {
