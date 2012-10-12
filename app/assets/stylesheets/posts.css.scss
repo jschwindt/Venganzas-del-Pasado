@@ -2,17 +2,21 @@
   margin-bottom: $baseLineHeight*2;
   
   .share {
-    .twitter .socialite-instance {
+    .socialite {
+      display: block;
+      font-size: 0em;
+    }
+    .twitter .socialite {
       background: image-url('btn-twittear.png') left top no-repeat;
       width: 92px;
       height: 20px;
     }
-    .facebook .socialite-instance {
+    .facebook .socialite {
       background: image-url('btn-like.png') left top no-repeat;
       width: 97px;
       height: 20px;
     }
-    .gplus .socialite-instance {
+    .gplus .socialite {
       background: image-url('btn-googleplus.png') left top no-repeat;
       width: 97px;
       height: 20px;

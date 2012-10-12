@@ -29,9 +29,8 @@ jQuery ->
       lang     : 'es_LA',
       appId    : '305139166173322'
       
-  Socialite.process()
-      
   if window.innerWidth >= 768
+    Socialite.load $('.facebook-likebox')[0]
     Socialite.activate $('.facebook-likebox')[0]
     Socialite.activate $('.twitter-timeline')[0]
 
