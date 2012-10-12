@@ -7,6 +7,7 @@
 //= require jquery.timeago
 //= require jquery.timeago-es
 //= require socialite
+//= require socialite-extras
 //= require_self
 
 jQuery ->
@@ -15,24 +16,23 @@ jQuery ->
     open_player this.href
     return false
 
-  Socialite.widget 'facebook', 'likebox',
-    init: (instance) ->
-      el = document.createElement 'div'
-      el.className = 'fb-like-box'
-      Socialite.copyDataAttributes instance.el, el
-      instance.el.appendChild el
-      if window.FB && window.FB.XFBML
-        window.FB.XFBML.parse instance.el
-
   Socialite.setup
     facebook:
       lang     : 'es_LA',
       appId    : '305139166173322'
-      
-  if window.innerWidth >= 768
-    Socialite.load $('.facebook-likebox')[0]
-    Socialite.activate $('.facebook-likebox')[0]
-    Socialite.activate $('.twitter-timeline')[0]
+     
+  if window.innerWidth > 0
+    deviceWidth =  window.innerWidth
+  else 
+    deviceWidth =  screen.width
+  
+  if deviceWidth >= 768
+    $facebookLikebox = $('.facebook-likebox')[0]
+    $twitterTimeline = $('.twitter-timeline')[0]
+    Socialite.load $facebookLikebox
+    Socialite.activate $facebookLikebox
+    Socialite.load $twitterTimeline
+    Socialite.activate $twitterTimeline
 
   $('.post .share').hover (event) ->
     Socialite.load this
