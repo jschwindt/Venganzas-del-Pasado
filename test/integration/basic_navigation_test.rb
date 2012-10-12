@@ -13,7 +13,7 @@ class BasicNavigationTest < ActionDispatch::IntegrationTest
 
     click_on post.title
     assert_equal current_path, post_path(post)
-    assert page.has_css?('h3.title', :count => 1)
+    assert page.has_css?('h1.title', :count => 1)
     assert page.has_content?(post.title)
 
     click_on 'Programas Recientes'

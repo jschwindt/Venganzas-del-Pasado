@@ -17,7 +17,7 @@
           %li
             = link_to('Registrate', new_user_registration_path)
           %li.login-dropdown.dropdown
-            %a.dropdown-toggle{:href=>'#', 'data-toggle' => 'dropdown'}
+            = link_to new_user_session_path, :class => 'dropdown-toggle', :data => {:toggle => 'dropdown', :target => '#'} do
               Iniciar Sesión
               %b.caret
             %ul.dropdown-menu
