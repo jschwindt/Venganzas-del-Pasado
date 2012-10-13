@@ -58,3 +58,7 @@ window.open_player = (url) ->
   if window.focus
     nw.focus()
   return false
+
+window.softScrollTo = (element) ->
+  $('html, body').animate {scrollTop: $(element).offset().top}, 'slow'
+    
