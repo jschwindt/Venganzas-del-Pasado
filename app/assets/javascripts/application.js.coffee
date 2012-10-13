@@ -8,6 +8,7 @@
 //= require jquery.timeago-es
 //= require socialite
 //= require socialite-extras
+//= require detect-mobile
 //= require_self
 
 jQuery ->
@@ -20,13 +21,8 @@ jQuery ->
     facebook:
       lang     : 'es_LA',
       appId    : '305139166173322'
-     
-  if window.innerWidth > 0
-    deviceWidth =  window.innerWidth
-  else 
-    deviceWidth =  screen.width
   
-  if deviceWidth >= 768
+  if not isMobile()
     $facebookLikebox = $('.facebook-likebox')[0]
     $twitterTimeline = $('.twitter-timeline')[0]
     Socialite.load $facebookLikebox

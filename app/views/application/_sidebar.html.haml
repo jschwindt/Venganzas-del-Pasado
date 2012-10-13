@@ -19,13 +19,13 @@
   %h3.fancy Seguí a Venganzas del Pasado
 
   .widget
-    - if true or Rails.env.production?
+    - if Rails.env.production?
       = render 'layouts/widgets/facebook'
     - else
       = image_tag('http://placehold.it/220x440/&text=Facebook Like Box')
 
   .widget
-    - if true or Rails.env.production?
+    - if Rails.env.production?
       = render 'layouts/widgets/twitter'
     - else
       = image_tag('http://placehold.it/220x440/')

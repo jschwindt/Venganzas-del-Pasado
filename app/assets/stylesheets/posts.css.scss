@@ -4,7 +4,8 @@
   .share {
     .socialite {
       display: block;
-      font-size: 0em;
+      font-size: 0.0001em;
+      text-indent: -99999px;
     }
     .twitter .socialite {
       background: image-url('btn-twittear.png') left top no-repeat;
