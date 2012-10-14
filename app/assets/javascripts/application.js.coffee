@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require jquery.jplayer
 //= require bootstrap
+//= require bootstrap-notify
 //= require jplayer
 //= require flash_player
 //= require jquery.timeago
@@ -60,5 +61,14 @@ window.open_player = (url) ->
   return false
 
 window.softScrollTo = (element) ->
-  $('html, body').animate {scrollTop: $(element).offset().top}, 'slow'
+  $('html, body').animate
+    scrollTop: $(element).offset().top - $('#topbar').height() - 20
+    'slow'
     
+window.notify = (message, type = 'success') ->
+  $('.notifications')
+    .notify
+      message:
+        text: message
+      type: type
+    .show()

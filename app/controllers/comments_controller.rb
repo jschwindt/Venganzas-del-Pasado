@@ -15,8 +15,10 @@ class CommentsController < ApplicationController
     else
       flash[:notice] = "Tu comentario ha sido publicado."
     end
+    
+    flash[:created_comment_id] = @comment.id
 
-    redirect_to "#{post_path(@post)}#comment#{@comment.id}"
+    redirect_to "#{post_path(@post)}#comment-#{@comment.id}"
   end
 
   def flag

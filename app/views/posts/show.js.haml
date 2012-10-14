@@ -1,3 +1,9 @@
 $('#post-#{@post.id}-comments .comments-list').html('#{escape_javascript render(@comments)}');
 $('#post-#{@post.id}-comments .comments-paginator').html('#{escape_javascript(paginate(@comments, :window => 2, :remote => true).to_s)}');
-softScrollTo('#post-#{@post.id}-comments')
+- if @comment.nil?
+  softScrollTo('#post-#{@post.id}-comments')
+- else
+  softScrollTo('#comment-#{@comment.id}')
+  
+- if flash[:notice]
+  notify('#{escape_javascript flash[:notice]}')

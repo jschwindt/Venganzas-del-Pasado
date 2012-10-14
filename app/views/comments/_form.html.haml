@@ -2,7 +2,7 @@
   .span1.avatar
     %img.img-rounded{ :src => current_user.profile_picture_url, :alt => current_user.alias }
   .span8.description
-    = form_for [post, comment], :html => { :class => 'form-stacked' } do |f|
+    = form_for [post, comment], :html => { :class => 'form-stacked' }, :remote => true do |f|
       .clearfix
         .input
           = f.text_area :content, :rows => 5
