@@ -5,6 +5,6 @@ $('#post-#{@post.id}-comments .comments-paginator').html('#{escape_javascript(pa
   softScrollTo('#post-#{@post.id}-comments')
 - else
   softScrollTo('#comment-#{@comment.id}')
-  
+
 - if flash[:notice]
   notify('#{escape_javascript flash[:notice]}')
