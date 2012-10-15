@@ -13,7 +13,8 @@
 //= require_self
 
 jQuery ->
-  $("abbr.timeago").timeago();
+  $("abbr.timeago").timeago()
+  
   $('.open_player').click (event) ->
     open_player this.href
     return false
@@ -26,13 +27,20 @@ jQuery ->
   if not isMobile()
     $facebookLikebox = $('.facebook-likebox')[0]
     $twitterTimeline = $('.twitter-timeline')[0]
-    Socialite.load $facebookLikebox
-    Socialite.activate $facebookLikebox
-    Socialite.load $twitterTimeline
-    Socialite.activate $twitterTimeline
+    
+    if $facebookLikebox
+      Socialite.load $facebookLikebox
+      Socialite.activate $facebookLikebox
+      
+    if $twitterTimeline
+      Socialite.load $twitterTimeline
+      Socialite.activate $twitterTimeline
 
   $('.post .share').hover (event) ->
     Socialite.load this
+  
+  $('#new_comment').on 'ajax:success', (event) ->
+    this.reset()
   
   $('.btn-opinions-popover').click (event) ->
     $this = $(this)

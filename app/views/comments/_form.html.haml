@@ -7,7 +7,7 @@
         .input
           = f.text_area :content, :rows => 5, :placeholder => "Escribí un comentario"
       .actions
-        = f.submit 'Publicar', :class => 'btn primary'
+        = f.submit 'Publicar', :class => 'btn primary', :disable_with => 'Publicando...'
         %p.comment-help
           ¿No sabés cómo agregar una imagen a tu cuenta?
           ¿Tenés problemas con el player? Consultá la página de
