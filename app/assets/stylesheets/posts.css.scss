@@ -126,6 +126,22 @@
   .comment .where {
     display: none;
   }
+  
+  .login-advice {
+    background: image-url('disabled-comment-form.png') top left no-repeat;
+    height: 250px;
+    text-align: center;
+    padding-top: 100px;
+    
+    p {
+      display: block;
+      margin: 0 auto;
+      width: 60%;
+      background: lighten($claro, 15);
+      @include border-radius(5px);
+      padding: 10px;
+    }
+  }
 
 }
 

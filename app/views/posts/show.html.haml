@@ -38,6 +38,5 @@
     - if can? :create, Comment
       = render 'comments/form', :post => @post, :comment => @post.comments.build
     - else
-      .row
-        .offset1
-          Tenés que #{link_to "iniciar sesión", new_user_session_path} para comentar.
+      .login-advice
+        %p Tenés que #{link_to "iniciar sesión", new_user_session_path} para comentar.
