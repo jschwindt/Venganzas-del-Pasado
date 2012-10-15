@@ -37,15 +37,3 @@ form {
   }
 }
 
-@for $i from 1 through $gridColumns {
-  .span#{$i} { 
-    .form-stacked {
-      
-      input[type="text"],
-      textarea {
-        width: ($gridColumnWidth * $i) + ($gridGutterWidth * ($i - 2))
-      }
-      
-    }
-  }
-} 

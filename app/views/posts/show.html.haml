@@ -21,6 +21,7 @@
 %section{:id => "post-#{@post.id}-comments"}
   %h4.fancy Comentarios (#{@post.comments.visible_by(current_user).count})
   
+          
   .comments-list
     - if @comments.count > 0
       = render @comments
@@ -30,10 +31,11 @@
   
   .comments-paginator
     = paginate @comments, :window => 2, :remote => true
+    
+  
         
   .comments-form
     - if can? :create, Comment
-      %h3 Escribí un comentario
       = render 'comments/form', :post => @post, :comment => @post.comments.build
     - else
       .row

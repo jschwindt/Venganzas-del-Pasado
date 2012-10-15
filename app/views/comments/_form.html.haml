@@ -5,7 +5,7 @@
     = form_for [post, comment], :html => { :class => 'form-stacked' }, :remote => true do |f|
       .clearfix
         .input
-          = f.text_area :content, :rows => 5
+          = f.text_area :content, :rows => 5, :placeholder => "Escribí un comentario"
       .actions
         = f.submit 'Publicar', :class => 'btn primary'
         %p.comment-help
