@@ -19,28 +19,28 @@ class UsersController < ApplicationController
     comments_collection = @user.comments.visible_by(current_user).lifo
     @objects = comments_collection.page(params[:page]).per(VenganzasDelPasado::Application.config.comments_per_page)
     
-    render :action => :show
+    render :show
   end
 
   def contributions
     @objects = @user.contributions.published.
               page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
                 
-    render :action => :show
+    render :show
   end
   
   def likes
     comments_collection = (Comment.all_liked_by @user).visible_by(current_user).lifo
     @objects = comments_collection.page(params[:page]).per(VenganzasDelPasado::Application.config.comments_per_page)
         
-    render :action => :show
+    render :show
   end
   
   def dislikes
     comments_collection = (Comment.all_disliked_by @user).visible_by(current_user).lifo
     @objects = comments_collection.page(params[:page]).per(VenganzasDelPasado::Application.config.comments_per_page)
         
-    render :action => :show
+    render :show
   end
 
 end
