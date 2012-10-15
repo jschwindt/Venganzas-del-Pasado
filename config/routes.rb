@@ -41,14 +41,17 @@ VenganzasDelPasado::Application.routes.draw do
 
   namespace :admin do
     match '/' => 'base#dashboard', :as => :dashboard
+
+    resources :articles, :except => :show
+    resources :users, :only => [:index, :edit, :update]
+    
     resources :comments do
       member do
         get 'approve'
         get 'trash'
       end
     end
-    resources :articles
-    resources :users, :only => [:index, :edit, :update]
+    
     resources :posts do
       member do
         get 'approve_contribution'
