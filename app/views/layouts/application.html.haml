@@ -37,4 +37,4 @@
           = yield
         .span4.offset1
           = render 'sidebar'
-    = render 'footer'
+    = render :partial => 'footer', :locals => {:last_post => @last_post}

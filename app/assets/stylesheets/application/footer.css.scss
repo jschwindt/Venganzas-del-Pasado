@@ -7,6 +7,20 @@
   * {
     color: #CCC;
   }
+  
+  h3 {
+    color: $white;
+    text-shadow: $gris 1px 1px;
+    font-family: $garamondFont;
+    font-size: $baseFontSize*1.25;
+    font-weight: normal;
+    line-height: $baseLineHeight*1.25;
+    border-bottom: 1px solid $claro;
+  }
+  
+  h4 {
+    font-family: $trajanFont;    
+  }
 
   ul {
     list-style: none;
@@ -26,7 +40,7 @@
   }
 
   .container {
-    background: asset-url('retrato.png', 'image') no-repeat left bottom;
-    padding-top: $baseLineHeight*1.5;
+    background: asset-url('fondo-footer.png', 'image') no-repeat left bottom;
+    padding: $baseLineHeight 0px 100px 0px;
   }
 }

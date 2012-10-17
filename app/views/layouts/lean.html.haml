@@ -34,4 +34,4 @@
         #content.span14
           = render 'messages'
           = yield
-    = render 'footer'
+    = render 'footer', :locals => {:last_post => @last_post}
