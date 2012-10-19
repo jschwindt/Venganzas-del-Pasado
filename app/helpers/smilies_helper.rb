@@ -64,32 +64,34 @@ module SmiliesHelper
     output.html_safe
   end
 
-  private
-
-  def generate_regexp
-    regexp = '(?:\s|^)'
-
-    subchar = ''
-
-    TRANSLATIONS.sort.reverse_each do |smiley, img|
-      firstchar = smiley[0]
-      rest = smiley[1..smiley.length]
-
-      if (firstchar != subchar)
-        if (subchar != '')
-          regexp << ')|(?:\s|^)'
-        end
-        subchar = firstchar
-        regexp << Regexp.escape(firstchar) + '(?:'
-      else
-        regexp << '|'
-      end
-      regexp << Regexp.escape(rest)
-    end
-
-    regexp << ')(?:\s|$)'
-
-    Regexp.new(regexp, Regexp::MULTILINE)
-  end
+## Lets leave this here just in case...
+#
+#  private
+#
+#  def generate_regexp
+#    regexp = '(?:\s|^)'
+#
+#    subchar = ''
+#
+#    TRANSLATIONS.sort.reverse_each do |smiley, img|
+#      firstchar = smiley[0]
+#      rest = smiley[1..smiley.length]
+#
+#      if (firstchar != subchar)
+#        if (subchar != '')
+#          regexp << ')|(?:\s|^)'
+#        end
+#        subchar = firstchar
+#        regexp << Regexp.escape(firstchar) + '(?:'
+#      else
+#        regexp << '|'
+#      end
+#      regexp << Regexp.escape(rest)
+#    end
+#
+#    regexp << ')(?:\s|$)'
+#
+#    Regexp.new(regexp, Regexp::MULTILINE)
+#  end
 
 end
