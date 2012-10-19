@@ -90,9 +90,9 @@ class User < ActiveRecord::Base
     ['moderator','editor','admin'].include? role
   end
 
-  def active?
-    last_sign_in_at.present? || confirmed_at.present?
-  end
+#  def active?
+#    last_sign_in_at.present? || confirmed_at.present?
+#  end
 
   def has_facebook_profile?
     self.fb_userid.present?
