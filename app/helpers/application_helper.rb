@@ -102,8 +102,6 @@ module ApplicationHelper
     return if flash.empty?
     
     [:notice, :error, :warning].collect do |key|
-      p key
-      p flash[key]
       if flash[key].present?
         key_class = "alert-#{key == :notice ? :success : key}"
         content_tag( :div, { :class => "alert #{key_class} fade in" } ) do
