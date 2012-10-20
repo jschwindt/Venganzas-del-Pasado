@@ -8,8 +8,6 @@
 = paginator.render do
   %div.pagination
     %ul
-      %li.disabled
-        %a Páginas:
       = first_page_tag unless current_page.first?
       = prev_page_tag unless current_page.first?
       - each_page do |page|

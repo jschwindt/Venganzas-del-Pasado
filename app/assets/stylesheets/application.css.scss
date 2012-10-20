@@ -32,29 +32,7 @@ a:hover {
   padding-top: $baseLineHeight;
 }
 
-.pagination {
-  text-align: center;
 
-  ul {
-    border: none;
-    @include box-shadow(none);
-
-    li {
-      a {
-        border: none;
-      }
-
-      a:hover {
-        background: $claro;
-      }
-    }
-
-    li.active a {
-      background: none;
-      color: $gris;
-    }
-  }
-}
 
 
 .btn {

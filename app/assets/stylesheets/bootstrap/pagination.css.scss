@@ -1,0 +1,27 @@
+@import "bootstrap/_pagination";
+
+.pagination {
+  text-align: center;
+
+  ul {
+    border: none;
+
+    li {
+      a {
+        border: none;
+        border-top: 3px solid $claro;
+      }
+
+      a:hover {
+        background: lighten($claro, 15);
+        border-top-color: $gris;
+      }
+    }
+
+    li.active a {
+      background: none;
+      color: $gris;
+      border-top-color: $rose;
+    }
+  }
+}
