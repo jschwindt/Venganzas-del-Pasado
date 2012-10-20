@@ -97,5 +97,21 @@ module ApplicationHelper
     options[:class] ||= "timeago"
     content_tag(:abbr, 'el ' + l(time, :format => :long), options.merge(:title => time.getutc.iso8601)) if time
   end
+  
+  def show_alerts
+    return if flash.empty?
+    
+    [:notice, :error, :warning].collect do |key|
+      p key
+      p flash[key]
+      if flash[key].present?
+        key_class = "alert-#{key == :notice ? :success : key}"
+        content_tag( :div, { :class => "alert #{key_class} fade in" } ) do
+          link_to( '&times;'.html_safe, '#', { 'class' => 'close' } ) +
+          raw( flash[key] )
+        end
+      end
+    end.join("\n").html_safe
+  end
 
 end

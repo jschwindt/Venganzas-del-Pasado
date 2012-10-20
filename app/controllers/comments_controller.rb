@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
     @comment.save
 
     if @comment.pending?
-      flash[:notice] = "Tu comentario se ha guardado, y está pendiente de aprobación."
+      flash[:warning] = "Tu comentario se ha guardado, y está pendiente de aprobación."
       CommentMailer.moderation_needed(@comment, "Comentario para moderar").deliver
     else
       flash[:notice] = "Tu comentario ha sido publicado."

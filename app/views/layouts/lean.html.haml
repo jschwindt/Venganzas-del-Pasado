@@ -32,6 +32,6 @@
     .container.main
       .row
         #content.span14
-          = render 'messages'
+          = show_alerts
           = yield
     = render 'footer', :last_post => @last_post

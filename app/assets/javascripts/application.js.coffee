@@ -74,8 +74,14 @@ window.softScrollTo = (element) ->
     'slow'
     
 window.notify = (message, type = 'success') ->
-  $('.notifications')
-    .notify
+  $notifications = $('.notifications')
+  
+  if $notifications.length is 0
+    $notifications = $(document.createElement 'div')
+    $notifications.addClass('notifications bottom-right')
+    $('body').append($notifications)
+    
+  $notifications.notify
       message:
         text: message
       type: type
