@@ -16,6 +16,7 @@ class Ability
     can :read, Comment, :status => ['neutral', 'approved', 'flagged']
     can :opinions, Comment, :status => ['neutral', 'approved', 'flagged']
     can :read, User
+    can :comments, User
     can :contributions, User
     can :likes, User
     can :dislikes, User
