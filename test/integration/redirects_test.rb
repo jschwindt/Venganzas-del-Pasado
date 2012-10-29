@@ -24,7 +24,7 @@ class RedirectsTest < ActionDispatch::IntegrationTest
     '/arreglar'                                         => '/',
     '/donaciones/'                                      => '/',
     '/donaciones'                                       => '/',
-#    '/users/marcela/page/9'                             => '/users/marcela/comments/page/9'
+    '/users/marcela/page/9'                             => '/users/marcela/comments/page/9'
   }
 
   test "redirects" do
