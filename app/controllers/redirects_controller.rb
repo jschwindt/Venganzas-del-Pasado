@@ -41,6 +41,10 @@ class RedirectsController < ApplicationController
     when  %r{^(page|foro|tag|actualizar|arreglar|donaciones)}
       redirect_to "/",                                                      :status => :moved_permanently
 
+    when %r{/users/([^/]+)/page/(\d+)}
+      # /users/marcela/page/1 => /users/marcela/comments/page/1
+      redirect_to "/users/#{$1}/comments/page/#{$2}",                       :status => :moved_permanently
+
     else
       render '404', :status => 404
     end
