@@ -105,7 +105,7 @@ module ApplicationHelper
       if flash[key].present?
         key_class = "alert-#{key == :notice ? :success : key}"
         content_tag( :div, { :class => "alert #{key_class} fade in" } ) do
-          link_to( '&times;'.html_safe, '#', { 'class' => 'close' } ) +
+          link_to( '&times;'.html_safe, '#', { 'class' => 'close', :data => { :dismiss => "alert"}} ) +
           raw( flash[key] )
         end
       end

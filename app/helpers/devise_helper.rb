@@ -10,8 +10,8 @@ module DeviseHelper
                       :resource => resource.class.model_name.human.downcase)
 
     html = <<-HTML
-    <div class="alert.alert-error.alert-block">
-      <a class="close" href="#">×</a>
+    <div class="alert alert-error alert-block">
+      <a class="close" data-dismiss="alert" href="#">×</a>
       <p>#{sentence}</p>
       <ul>#{messages}</ul>
     </div>
