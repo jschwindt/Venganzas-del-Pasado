@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'simplecov', :require => false, :group => :test
 
-gem 'rails', '3.2.9'
+gem 'rails', '3.2.10'
 
 gem 'mysql2'
 
