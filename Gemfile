@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'simplecov', :require => false, :group => :test
 
-gem 'rails', '3.2.13'
+gem 'rails', '3.2.14'
 
 gem 'mysql2'
 
@@ -30,7 +30,7 @@ gem 'has_scope'
 gem 'cancan'
 gem 'aasm'
 
-gem 'likeable', :git => 'https://github.com/amrnt/Likeable.git'
+gem 'likeable', :git => 'https://github.com/jschwindt/Likeable.git'
 gem 'redis-rails'
 
 gem 'sitemap_generator'
