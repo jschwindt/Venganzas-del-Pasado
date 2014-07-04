@@ -1,7 +1,10 @@
 .banner-468
   - if Rails.env.production?
-    / BEGIN JS TAG - venganzasdelpasado_468x60 < - DO NOT MODIFY
-    %script{ :type => "text/javascript", :src => "http://ib.adnxs.com/ttj?id=2776917&referrer=venganzasdelpasado.com.ar" }
-    / END TAG
+    :javascript
+      google_ad_client = "ca-pub-9541275144173875";
+      google_ad_slot = "3060024708";
+      google_ad_width = 468;
+      google_ad_height = 60;
+    %script{ :type => "text/javascript", :src => "http://pagead2.googlesyndication.com/pagead/show_ads.js" }
   - else
     =image_tag('http://placehold.it/468x60/')
