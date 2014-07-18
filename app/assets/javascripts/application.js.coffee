@@ -10,6 +10,7 @@
 //= require socialite
 //= require socialite-extras
 //= require detect-mobile
+//= require jquery-browser
 //= require_self
 
 jQuery ->
