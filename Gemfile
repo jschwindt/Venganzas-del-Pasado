@@ -36,7 +36,7 @@ gem 'redis-rails'
 gem 'sitemap_generator'
 gem "watu_table_builder", :require => "table_builder"
 
-gem 'memcache-client'
+# gem 'memcache-client'
 
 gem 'thinking-sphinx', '~> 2.0.11'
 
