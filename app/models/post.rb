@@ -161,13 +161,6 @@ class Post < ActiveRecord::Base
     end
   end
 
-  define_index do
-    indexes title
-    indexes content
-    has created_at
-    where "status = 'published'"
-  end
-
   protected
 
     def validate_status

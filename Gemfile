@@ -38,7 +38,7 @@ gem "watu_table_builder", :require => "table_builder"
 
 # gem 'memcache-client'
 
-gem 'thinking-sphinx', '~> 2.0.11'
+gem 'thinking-sphinx', '~> 3.0.6'
 
 group :development do
   gem 'hirb'
