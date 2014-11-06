@@ -5,7 +5,7 @@
     = form_tag search_path(what: 'posts'), method: 'get' do
       .input-append
         = text_field_tag :q, params[:q], placeholder: 'Buscar en el sitio', class: 'input-medium'
-        = button_tag class: 'btn', type: 'button' do
+        = button_tag class: 'btn', type: 'submit' do
           %i.icon-search
 
   .widget
