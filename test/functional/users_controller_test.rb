@@ -8,7 +8,7 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
     assert_template 'show'
     assert_not_nil assigns(:user)
-    assert_not_nil assigns(:comments)
+    assert_not_nil assigns(:objects)
   end
 
 end

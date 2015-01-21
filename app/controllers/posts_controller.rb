@@ -44,7 +44,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new_contribution(params[:post], current_user)
     if @post.save
-      PostMailer.new_contribution(@post).deliver
+      PostMailer.new_contribution(@post).deliver_now
       redirect_to new_post_url, :notice => "El post '#{@post.title}' se subió con éxito y pronto será revisado y, si corresponde, aprobado. Abajo tenés nuevamente el formulario por si querés cargar más programas."
     else
       @post.media.size.upto(4) do

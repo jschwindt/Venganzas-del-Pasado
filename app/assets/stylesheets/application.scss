@@ -6,8 +6,9 @@
 // Paleta de Colores
 //******************************************************************************
 
-@import "bootstrap";
-//@import "bootstrap/responsive";
+@import 'bootstrap/variables';
+@import "bootstrap-sprockets";
+@import 'bootstrap';
 @import "jplayer-skin/jplayer.vdp";
 
 
@@ -41,7 +42,7 @@ a:hover {
 
   &.primary,
   &.btn-primary {
-    @include buttonBackground($rose, darken($rose, 10));
+//    @include buttonBackground($rose, darken($rose, 10));
   }
 }
 
@@ -60,7 +61,7 @@ a:hover {
 }
 
 .facebook-login-button {
-  background: asset-url('signin_facebook.png', image) no-repeat;
+  background: asset-url('signin_facebook.png') no-repeat;
   width: 150px;
   height: 22px;
   font-size: 0em;
@@ -106,8 +107,8 @@ a:hover {
   font-size: $baseFontSize*1.25;
   font-weight: normal;
   line-height: $baseLineHeight*1.25;
-  @include border-radius(5px);
-  @include box-shadow($headerShadow);
+//  @include border-radius(5px);
+//  @include box-shadow($headerShadow);
   
   a {
     color: $white;

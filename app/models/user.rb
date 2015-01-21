@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :alias
   attr_accessible :karma, :role, :alias, :as => :admin
 
-  scope :lifo, order('created_at DESC')
+  scope :lifo, -> { order('created_at DESC') }
 
   class << self
     def roles

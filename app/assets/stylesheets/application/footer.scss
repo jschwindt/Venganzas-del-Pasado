@@ -40,7 +40,7 @@
   }
 
   .container {
-    background: asset-url('fondo-footer.png', 'image') no-repeat left bottom;
+    background: asset-url('fondo-footer.png') no-repeat left bottom;
     padding: $baseLineHeight 0px 100px 0px;
   }
 }

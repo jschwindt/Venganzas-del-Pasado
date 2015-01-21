@@ -11,12 +11,12 @@ class BasicNavigationTest < ActionDispatch::IntegrationTest
     assert page.has_css?('h3.title', :count => VenganzasDelPasado::Application.config.home_posts_count)
     assert page.has_content?(post.title)
 
-    click_on post.title
+    first('h3 a').click
     assert_equal current_path, post_path(post)
     assert page.has_css?('h1.title', :count => 1)
     assert page.has_content?(post.title)
 
-    click_on 'Programas Recientes'
+    first(:link, 'Programas Recientes').click
     assert_equal current_path, posts_path
   end
 
@@ -25,9 +25,9 @@ class BasicNavigationTest < ActionDispatch::IntegrationTest
     visit root_path
     click_on 'Iniciar Sesión'
 
-    fill_in 'Email', :with => @user.email
-    fill_in 'Contraseña', :with => 'secret'
-    click_on 'Ingresar'
+    first('#user_email').set @user.email
+    first('#user_password').set 'secret'
+    first(:button, 'Ingresar').click
     assert_equal current_path, root_path
     assert page.has_content?('username')
   end

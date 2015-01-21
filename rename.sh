@@ -1,0 +1,22 @@
+mv ./app/assets/stylesheets/application/footer.css.scss ./app/assets/stylesheets/application/footer.scss
+mv ./app/assets/stylesheets/application/header.css.scss ./app/assets/stylesheets/application/header.scss
+mv ./app/assets/stylesheets/application/sidebar.css.scss ./app/assets/stylesheets/application/sidebar.scss
+mv ./app/assets/stylesheets/application/topbar.css.scss ./app/assets/stylesheets/application/topbar.scss
+mv ./app/assets/stylesheets/application/typography.css.scss ./app/assets/stylesheets/application/typography.scss
+mv ./app/assets/stylesheets/application.css.scss ./app/assets/stylesheets/application.scss
+mv ./app/assets/stylesheets/articles.css.scss ./app/assets/stylesheets/articles.scss
+mv ./app/assets/stylesheets/audios.css.scss ./app/assets/stylesheets/audios.scss
+mv ./app/assets/stylesheets/bootstrap/forms.css.scss ./app/assets/stylesheets/bootstrap/forms.scss
+mv ./app/assets/stylesheets/bootstrap/mixins.css.scss ./app/assets/stylesheets/bootstrap/mixins.scss
+mv ./app/assets/stylesheets/bootstrap/notify.css.scss ./app/assets/stylesheets/bootstrap/notify.scss
+mv ./app/assets/stylesheets/bootstrap/pagination.css.scss ./app/assets/stylesheets/bootstrap/pagination.scss
+mv ./app/assets/stylesheets/bootstrap/responsive.css.scss ./app/assets/stylesheets/bootstrap/responsive.scss
+mv ./app/assets/stylesheets/bootstrap/variables.css.scss ./app/assets/stylesheets/bootstrap/variables.scss
+mv ./app/assets/stylesheets/comments.css.scss ./app/assets/stylesheets/comments.scss
+mv ./app/assets/stylesheets/glyphicons.css.scss ./app/assets/stylesheets/glyphicons.scss
+mv ./app/assets/stylesheets/jplayer-skin/jplayer.vdp.css.scss ./app/assets/stylesheets/jplayer-skin/jplayer.vdp.scss
+mv ./app/assets/stylesheets/posts.css.scss ./app/assets/stylesheets/posts.scss
+mv ./app/assets/stylesheets/smilies.css.scss ./app/assets/stylesheets/smilies.scss
+mv ./app/assets/stylesheets/torrents.css.scss ./app/assets/stylesheets/torrents.scss
+mv ./app/assets/stylesheets/users.css.scss ./app/assets/stylesheets/users.scss
+

@@ -41,4 +41,4 @@ class ActionDispatch::IntegrationTest
 end
 
 # Must be at the very bottom, see: http://stackoverflow.com/questions/3118866/mocha-mock-carries-to-another-test
-require 'mocha'
+require 'mocha/mini_test'

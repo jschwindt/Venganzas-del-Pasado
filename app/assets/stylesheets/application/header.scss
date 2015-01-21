@@ -35,7 +35,7 @@
 
     .title-container {
   
-      background: asset-url('splash.png', image) no-repeat;
+      background: asset-url('splash.png') no-repeat;
       height: 228px;
   
     }
@@ -54,7 +54,7 @@
   
     .title-container {
   
-      background: asset-url('splash-small.png', image) no-repeat;
+      background: asset-url('splash-small.png') no-repeat;
       height: 61px;
   
     }

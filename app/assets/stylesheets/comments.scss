@@ -5,7 +5,7 @@
   .author {
     @include clearfix();
     background: lighten($claro, 15);
-    @include border-radius(5px);
+//    @include border-radius(5px);
     padding: 5px 10px;
     margin-bottom: $baseLineHeight * 0.5;
     font-size: 0.75 * $baseFontSize;
@@ -87,7 +87,7 @@
       img {
         width: 20px;
         height: 20px;
-        @include border-radius(2px);
+//        @include border-radius(2px);
       }
     }
   
