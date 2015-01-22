@@ -1,12 +1,6 @@
 #header {
-  padding-top: 60px;
+  padding-top: 20px;
   background: $redBackground;
-  $shadow: 0 1px 3px rgba(0,0,0,1), inset 0 -1px 0 rgba(0,0,0,.1);
-  @include box-shadow($shadow);
-  
-  @media (max-width: 979px) {
-    padding-top: 20px;
-  }
 
   .title-container {
 
@@ -30,46 +24,43 @@
     color: $black;
     text-align: center;
   }
-  
+
   &.home {
 
     .title-container {
-  
-      background: asset-url('splash.png') no-repeat;
-      height: 228px;
-  
+      img {
+        margin: auto;
+      }
     }
-  
+
     .slogan p {
-      font-size: 30px;
-      line-height: 36px;
+      font-size: 1.8em;
       margin-bottom: 20px;
     }
-  
+
   }
-  
+
   &.internal {
 
     padding-bottom: 10px;
-  
+
     .title-container {
-  
+
       background: asset-url('splash-small.png') no-repeat;
       height: 61px;
-  
+
     }
-  
+
     .slogan p {
       font-size: 22px;
       line-height: 28px;
     }
-  
+
   }
 }
-  
+
 #subheader {
-  padding-top: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   background: $gris;
-  $shadow: 0 1px 3px rgba(0,0,0,.50), inset 0 -1px 0 rgba(0,0,0,.1);
-  @include box-shadow($shadow);
 }

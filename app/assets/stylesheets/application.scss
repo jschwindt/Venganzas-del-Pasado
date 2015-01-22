@@ -1,10 +1,10 @@
-$navbar-height: 40px;
-
+@import "variables";
 @import "bootstrap-sprockets";
-@import 'bootstrap';
+@import "bootstrap";
+@import "application/header";
 
 body {
-  padding-top: 60px;
+  padding-top: 40px;
   padding-bottom: 30px;
 }
 
@@ -16,10 +16,6 @@ body {
   float: left;
   margin-left: 0.5em;
 }
-
-$rose: #D65045;
-$gris: #404040;
-$claro: #CCCCCC;
 
 @import "jplayer-skin/jplayer.vdp";
 
