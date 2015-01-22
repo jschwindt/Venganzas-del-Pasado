@@ -35,15 +35,15 @@
   
     .label {
       &.status-published {
-        background-color: $successText;
+        background-color: $state-success-text;
       }
       &.status-draft,
       &.status-pending,
       &.status-waiting {
-        background-color: $warningText;
+        background-color: $state-warning-text;
       }
       &.status-deleted {
-        background-color: $errorText;
+        background-color: $state-danger-text;
       }
     }
   
@@ -141,7 +141,7 @@
       margin: 0 auto;
       width: 60%;
       background: lighten($claro, 15);
-//      @include border-radius(5px);
+      border-radius: 5px;
       padding: 10px;
     }
   }
@@ -152,17 +152,17 @@
 .posts-index {
   .label {
     &.post-status-published {
-      background-color: $successText;
+      background-color: $state-success-text;
     }
     &.post-status-draft,
     &.post-status-pending {
-      background-color: $warningText;
+      background-color: $state-warning-text;
     }
     &.post-status-waiting {
-      background-color: $infoText;
+      background-color: $state-info-text;
     }
     &.post-status-deleted {
-      background-color: $errorText;
+      background-color: $state-danger-text;
     }
   }
 }

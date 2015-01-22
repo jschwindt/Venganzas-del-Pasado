@@ -5,7 +5,7 @@
   .author {
     @include clearfix();
     background: lighten($claro, 15);
-//    @include border-radius(5px);
+    border-radius: 5px;
     padding: 5px 10px;
     margin-bottom: $baseLineHeight * 0.5;
     font-size: 0.75 * $baseFontSize;
@@ -20,14 +20,14 @@
   
     .label {
       &.status-approved {
-        background-color: $successText;
+        background-color: $state-success-text;
       }
       &.status-pending,
       &.status-flagged {
-        background-color: $warningText;
+        background-color: $state-warning-text;
       }
       &.status-deleted {
-        background-color: $errorText;
+        background-color: $state-danger-text;
       }
     }
   
@@ -45,7 +45,7 @@
   .comment {
     &.neutral .author,
     &.approved .author {
-      background-color: $successText;
+      background-color: $state-success-text;
       
       a {
         color: white;
@@ -54,11 +54,11 @@
     
     &.pending .author,
     &.flagged .author {
-      background-color: $warningText;
+      background-color: $state-warning-text;
     }
     
     &.deleted .author {
-      background-color: $errorText;
+      background-color: $state-danger-text;
       
       a {
         color: white;
@@ -87,7 +87,7 @@
       img {
         width: 20px;
         height: 20px;
-//        @include border-radius(2px);
+        border-radius: 5px;
       }
     }
   

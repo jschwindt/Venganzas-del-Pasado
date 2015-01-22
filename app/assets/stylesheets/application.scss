@@ -1,12 +1,11 @@
 @import "variables";
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "application/header";
-@import "application/typography";
 
 body {
-  padding-top: 40px;
+  padding-top: $navbar-height;
   padding-bottom: 30px;
+  font-family: $defaultFontFamily;
 }
 
 .avatar img {
@@ -20,3 +19,92 @@ body {
 
 @import "jplayer-skin/jplayer.vdp";
 
+small {
+  text-shadow: none;
+}
+
+a:hover {
+  color: darken($rose, 15);
+}
+
+.main {
+  padding-top: $baseLineHeight;
+}
+
+.fancy {
+  background: $redBackground;
+  color: $white;
+  text-shadow: $gris 1px 1px;
+  padding: $baseLineHeight*0.25 $grid-gutter-width*0.5;
+  margin-bottom: $baseLineHeight;
+  font-family: $garamondFont;
+  font-size: $baseFontSize*1.25;
+  font-weight: normal;
+  line-height: $baseLineHeight*1.25;
+  border-radius: 5px;
+  @include box-shadow($headerShadow);
+
+  a {
+    color: $white;
+  }
+
+  a:hover {
+    color: $claro;
+  }
+
+  small {
+    color: $white;
+  }
+}
+
+.lead {
+  font-size: $baseFontSize;
+  color: lighten($gris, 20);
+  font-style: italic;
+  margin-bottom: 0px;
+}
+
+.title {
+  font-size: $baseFontSize*2;
+  font-family: $trajanFont;
+  color: $rose;
+  text-shadow: $gris 1px 1px;
+  margin-top: 0px;
+}
+
+
+.actions {
+  margin-bottom: $baseLineHeight*0.5;
+  font-size: 0.75 * $baseFontSize;
+
+  & > * {
+    margin-right: 20px;
+  }
+}
+
+footer {
+  @include clearfix();
+  font-size: 0.75 * $baseFontSize;
+  border-top: 1px solid $claro;
+  padding: 10px 0px;
+  color: lighten($gris, 10);
+
+  /*.actions > span {
+    margin-left: 20px;
+  }*/
+
+  .pull-right {
+    margin-left: 20px;
+  }
+}
+
+@import 'application/*';
+
+@import 'articles';
+@import 'posts';
+@import 'audios';
+@import 'comments';
+@import 'users';
+@import 'torrents';
+@import 'glyphicons';
+@import 'smilies';

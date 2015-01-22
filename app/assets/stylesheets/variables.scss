@@ -4,6 +4,7 @@ $rose: #D65045;
 $gris: #404040;
 $claro: #CCCCCC;
 $black: #000000;
+$white: #FFFFFF;
 
 $linkColor: $rose;
 $linkColorHover: darken($rose, 15);
@@ -17,3 +18,4 @@ $headerShadow: 0 1px 3px rgba(0,0,0,1), inset 0 -1px 0 rgba(0,0,0,.1);
 
 $garamondFont: 'EBGaramondRegular', Georgia, serif;
 $trajanFont: 'TrajanProBold', Georgia, serif;
+$defaultFontFamily: Georgia, Georgia, serif;
