@@ -31,8 +31,8 @@
     = render 'header'
     .container.main
       .row
-        #content.span9
+        #content.col-md-9
           = show_alerts
           = yield
-        .span4.offset1
+        .col-md-3
           = render 'sidebar'

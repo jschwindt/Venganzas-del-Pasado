@@ -1,6 +1,6 @@
 class Article < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :title, :use => [:slugged, :finders]
+  friendly_id :title, use: [:slugged, :finders]
 
   validates :title, :content, :presence => true
   attr_accessible :title, :content, :as => :admin

@@ -1,51 +1,11 @@
-%nav#topbar.navbar.navbar-fixed-top.navbar-inverse
-  .navbar-inner
-    .container
-    
-      %ul.nav.pull-right
-        - if user_signed_in?
-          %li.user-dropdown.dropdown
-            %a.dropdown-toggle{:href=>'#', 'data-toggle' => 'dropdown'}
-              %span.user
-                %span.avatar= image_tag current_user.profile_picture_url
-                %span.alias
-                  = current_user.alias
-                  %b.caret
-            %ul.dropdown-menu
-              =render 'layouts/menus/user_items'
-        -else
-          %li
-            = link_to('Registrate', new_user_registration_path)
-          %li.login-dropdown.dropdown
-            = link_to new_user_session_path, :class => 'dropdown-toggle', :data => {:toggle => 'dropdown', :target => '#'} do
-              Iniciar Sesión
-              %b.caret
-            %ul.dropdown-menu
-              %li
-                = link_to 'Iniciar sesión con Facebook', user_omniauth_path(:facebook), :class => 'btn btn-facebook-login'
-                %hr
-                %p Iniciá sesión con tu cuenta de Venganzas del Pasado
-                = form_for(User.new, :as => :user, :url => session_path(:user)) do |f|
-                  %fieldset
-                    = f.text_field :email, {:placeholder => 'E-Mail'}
-                    = f.password_field :password, {:placeholder => 'Contraseña'}
-                    - if Devise.mappings[:user].rememberable?
-                      %label.checkbox
-                        = f.check_box :remember_me
-                        %span Mantener tu sesión abierta
-                    = f.submit "Ingresar", :class => 'btn primary'
-                .account-tools
-                  - if Devise.mappings[:user].recoverable? && controller_name != 'passwords'
-                    = link_to "Olvidé mi contraseña.", new_password_path(:user)
-                  = link_to('Crear una nueva cuenta.', new_user_registration_path)
+%nav.navbar.navbar-inverse.navbar-fixed-top
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{ type: 'button', 'data-toggle' => 'collapse', 'data-target' => '#navbar', 'aria-expanded' => 'false', 'aria-controls' => 'navbar' }
+        %span.sr-only
+          Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
 
-      = link_to 'Venganzas del Pasado', '/', :class => 'brand'
-      %button.pull-left.btn.btn-navbar{'data-toggle' => :collapse, 'data-target' => '.nav-collapse'}
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-              
-      
-      .nav-collapse.collapse
-        %ul.nav
-          =render 'layouts/menus/main_items'
+    = render 'layouts/menus/navigation'

@@ -3,10 +3,11 @@
   .widget
     %h3.fancy Buscador
     = form_tag search_path(what: 'posts'), method: 'get' do
-      .input-append
-        = text_field_tag :q, params[:q], placeholder: 'Buscar en el sitio', class: 'input-medium'
-        = button_tag class: 'btn', type: 'submit' do
-          %i.icon-search
+      .input-group
+        = text_field_tag :q, params[:q], placeholder: 'Buscar en el sitio', class: 'form-control'
+        .input-group-btn
+          %button{class: "btn btn-default", type: "submit"}
+            %span.glyphicon.glyphicon-search
 
   .widget
     = render 'layouts/banners/b160x600'

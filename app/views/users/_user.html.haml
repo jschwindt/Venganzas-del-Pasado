@@ -1,7 +1,7 @@
 .row.user
-  .span1.avatar
+  .col-md-1.avatar
     %img.img-rounded{ :src => user.profile_picture_url, :alt => user.alias }
-  .span7.info
+  .col-md-8.info
     %h3.title
       = link_to user.alias, user
       %small= user.role

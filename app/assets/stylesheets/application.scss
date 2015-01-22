@@ -1,177 +1,25 @@
-/*
-*= require_self
-*/
+$navbar-height: 40px;
 
-//******************************************************************************
-// Paleta de Colores
-//******************************************************************************
-
-@import 'bootstrap/variables';
 @import "bootstrap-sprockets";
 @import 'bootstrap';
-@import "jplayer-skin/jplayer.vdp";
-
-
-//******************************************************************************
-// General
-//******************************************************************************
-$defaultFontFamily: Georgia, Georgia, serif;
 
 body {
-  font-family: $defaultFontFamily;
+  padding-top: 60px;
+  padding-bottom: 30px;
 }
 
-small {
-  text-shadow: none;
+.avatar img {
+  height: $navbar-height;
 }
 
-a:hover {
-  color: darken($rose, 15);
+.navbar-toggle {
+  float: left;
+  margin-left: 0.5em;
 }
 
-.main {
-  padding-top: $baseLineHeight;
-}
+$rose: #D65045;
+$gris: #404040;
+$claro: #CCCCCC;
 
+@import "jplayer-skin/jplayer.vdp";
 
-
-
-.btn {
-  font-family: $defaultFontFamily;
-  //@include buttonBackground($claro, darken($claro, 10));
-
-  &.primary,
-  &.btn-primary {
-//    @include buttonBackground($rose, darken($rose, 10));
-  }
-}
-
-.field_with_errors input{
-  border-color: #EE5F5B;
-  color: #B94A48;
-}
-
-.hidden {
-  display: none;
-}
-
-.facebook-login-container {
-  margin-bottom: $baseLineHeight;
-  text-align: center;
-}
-
-.facebook-login-button {
-  background: asset-url('signin_facebook.png') no-repeat;
-  width: 150px;
-  height: 22px;
-  font-size: 0em;
-  display: block;
-
-  &:hover {
-    background-position: 0 -24px;
-  }
-
-  &:active {
-    background-position: 0 -48px;
-  }
-}
-
-
-.widget .menu-dropdown {
-  display: block;
-}
-
-#post_created_at_3i {
-  width: 4em;
-}
-#post_created_at_2i {
-  width: 12em;
-}
-#post_created_at_1i {
-  width: 6em;
-}
-
-//******************************************************************************
-// Títulos
-//******************************************************************************
-
-
-
-.fancy {
-  background: $redBackground;
-  color: $white;
-  text-shadow: $gris 1px 1px;
-  padding: $baseLineHeight*0.25 $gridGutterWidth*0.5;
-  margin-bottom: $baseLineHeight;
-  font-family: $garamondFont;
-  font-size: $baseFontSize*1.25;
-  font-weight: normal;
-  line-height: $baseLineHeight*1.25;
-//  @include border-radius(5px);
-//  @include box-shadow($headerShadow);
-  
-  a {
-    color: $white;
-  }
-  
-  a:hover {
-    color: $claro;
-  }
-  
-  small {
-    color: $white;
-  }
-}
-
-.lead {
-  font-size: $baseFontSize;
-  color: lighten($gris, 20);
-  font-style: italic;
-  margin-bottom: 0px;
-}
-
-.title {
-  font-size: $baseFontSize*2;
-  font-family: $trajanFont;
-  color: $rose;
-  text-shadow: $gris 1px 1px;
-  margin-top: 0px;
-}
-
-
-.actions {
-  margin-bottom: $baseLineHeight*0.5;
-  font-size: 0.75 * $baseFontSize;
-  
-  & > * {
-    margin-right: 20px;
-  }
-}
-
-footer {
-  @include clearfix();
-  font-size: 0.75 * $baseFontSize;
-  border-top: 1px solid $claro;
-  padding: 10px 0px;
-  color: lighten($gris, 10);
-  
-  /*.actions > span {
-    margin-left: 20px;
-  }*/
-   
-  .pull-right {
-    margin-left: 20px;
-  }
-}
-
-
-@import 'application/*';
-
-@import 'articles';
-@import 'posts';
-@import 'audios';
-@import 'comments';
-@import 'users';
-@import 'torrents';
-@import 'glyphicons';
-@import 'smilies';

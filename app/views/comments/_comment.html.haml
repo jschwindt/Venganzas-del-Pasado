@@ -1,11 +1,11 @@
 %a{ :name => "comment-#{comment.id}" }
 %article.row.comment{ :id => "comment-#{comment.id}", :class => "#{comment.status}"}
 
-  .span1.avatar
+  .col-md-1.avatar
 
     %img.img-rounded{ :src => comment.profile_picture_url, :alt => comment.author }
 
-  .span8.description
+  .col-md-8.description
     - cache comment, :expires_in => 7.days do
       .author
         %span.who= link_to_unless comment.user.nil?, comment.author, comment.user

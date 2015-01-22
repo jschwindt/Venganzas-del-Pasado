@@ -2,7 +2,7 @@
 
 class Post < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :title, :use => [:slugged, :finders]
+  friendly_id :title, use: [:slugged, :finders]
 
   has_many :comments, :dependent => :destroy
   has_many :audios,   :dependent => :destroy

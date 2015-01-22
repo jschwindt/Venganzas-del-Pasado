@@ -1,14 +1,14 @@
 - if user_signed_in?
   %li
     = link_to current_user do
-      %i.icon-user
+      %span.glyphicon.glyphicon-user{'aria-hidden' => "true"}
       Mi Perfil
   %li
     = link_to edit_user_registration_path do
-      %i.icon-wrench
+      %span.glyphicon.glyphicon-wrench{'aria-hidden' => "true"}
       Preferencias
   %li.divider
   %li
     = link_to destroy_user_session_path do
-      %i.icon-off
+      %span.glyphicon.glyphicon-off{'aria-hidden' => "true"}
       Cerrar Sesión
