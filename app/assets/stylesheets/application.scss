@@ -23,6 +23,11 @@ small {
   text-shadow: none;
 }
 
+a,
+a:visited {
+  color: $rose;
+}
+
 a:hover {
   color: darken($rose, 15);
 }
@@ -106,5 +111,4 @@ footer {
 @import 'comments';
 @import 'users';
 @import 'torrents';
-@import 'glyphicons';
 @import 'smilies';

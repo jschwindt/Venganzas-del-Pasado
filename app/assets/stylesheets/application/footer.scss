@@ -1,0 +1,46 @@
+#footer {
+  padding: 0px;
+  background: $gris;
+  $shadow: 0 1px 3px rgba(0,0,0,.50), inset 0 -1px 0 rgba(0,0,0,.1);
+  @include box-shadow($shadow);
+
+  * {
+    color: #CCC;
+  }
+  
+  h3 {
+    color: $white;
+    text-shadow: $gris 1px 1px;
+    font-family: $garamondFont;
+    font-size: $baseFontSize*1.25;
+    font-weight: normal;
+    line-height: $baseLineHeight*1.25;
+    border-bottom: 1px solid $claro;
+  }
+  
+  h4 {
+    font-family: $trajanFont;    
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0px;
+    font-size: $baseFontSize * 0.75;
+  }
+
+  .title {
+    font-family: 'EBGaramondRegular', serif;
+    color: lighten($gris, 10);
+    text-transform: uppercase;
+    font-size: $baseFontSize * 4;
+    line-height: $baseLineHeight * 2;
+    text-align: right;
+    text-shadow: none;
+    border: none;
+  }
+
+  .container {
+    background: asset-url('fondo-footer.png') no-repeat left bottom;
+    padding: $baseLineHeight 0px 100px 0px;
+  }
+}

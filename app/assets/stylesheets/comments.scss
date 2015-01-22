@@ -20,14 +20,14 @@
   
     .label {
       &.status-approved {
-        background-color: $state-success-text;
+        background-color: $state-success-bg;
       }
       &.status-pending,
       &.status-flagged {
-        background-color: $state-warning-text;
+        background-color: $state-warning-bg;
       }
       &.status-deleted {
-        background-color: $state-danger-text;
+        background-color: $state-danger-bg;
       }
     }
   
@@ -45,7 +45,7 @@
   .comment {
     &.neutral .author,
     &.approved .author {
-      background-color: $state-success-text;
+      background-color: $state-success-bg;
       
       a {
         color: white;
@@ -54,11 +54,11 @@
     
     &.pending .author,
     &.flagged .author {
-      background-color: $state-warning-text;
+      background-color: $state-warning-bg;
     }
     
     &.deleted .author {
-      background-color: $state-danger-text;
+      background-color: $state-danger-bg;
       
       a {
         color: white;

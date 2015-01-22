@@ -1,0 +1,61 @@
+.banner-728 {
+  text-align: center;
+  background-color: $gris;
+  padding: 5px;
+}
+
+.banner-468 {
+  text-align: center;
+  padding: $baseLineHeight 0px;
+}
+
+#sidebar {
+  font-size: $baseFontSize * 0.8;
+
+  li.divider {
+    display: none;
+  }
+
+  .fancy {
+    font-size: $baseFontSize;
+    background: $gris;
+  }
+}
+
+.widget {
+  margin-bottom: $baseLineHeight;
+
+  .twtr-tweet-text p {
+    font-family: serif;
+    font-size: $baseFontSize * 0.75;
+    color: lighten($gris, 20)
+  }
+
+  .archive.monthly {
+    .months {
+      display: none;
+    }
+    
+    i {
+      color: $claro;
+      display: 1em;
+    }
+  }
+
+  .archive.daily {
+
+    td {
+      font-size: $baseFontSize;
+      padding: 0;
+    }
+
+    th {
+      padding: 0;
+    }
+
+    .notmonth { color: $claro }
+    .future { color: $claro }
+    .today { font-weight: bold; }
+
+  }
+}

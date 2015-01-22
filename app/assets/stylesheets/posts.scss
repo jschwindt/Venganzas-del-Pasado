@@ -35,15 +35,15 @@
   
     .label {
       &.status-published {
-        background-color: $state-success-text;
+        background-color: $state-success-bg;
       }
       &.status-draft,
       &.status-pending,
       &.status-waiting {
-        background-color: $state-warning-text;
+        background-color: $state-warning-bg;
       }
       &.status-deleted {
-        background-color: $state-danger-text;
+        background-color: $state-danger-bg;
       }
     }
   
@@ -72,7 +72,9 @@
     }
 
     h1, h2, h3, h4, h5, h6 {
-      margin-bottom: $baseLineHeight / 2;
+      margin-top: $baseLineHeight / 4;
+      margin-bottom: 0;
+      font-weight: bold;
     }
 
   }
@@ -152,17 +154,17 @@
 .posts-index {
   .label {
     &.post-status-published {
-      background-color: $state-success-text;
+      background-color: $state-success-bg;
     }
     &.post-status-draft,
     &.post-status-pending {
-      background-color: $state-warning-text;
+      background-color: $state-warning-bg;
     }
     &.post-status-waiting {
-      background-color: $state-info-text;
+      background-color: $state-info-bg;
     }
     &.post-status-deleted {
-      background-color: $state-danger-text;
+      background-color: $state-danger-bg;
     }
   }
 }
