@@ -1,5 +1,5 @@
 .comment {
-  overflow: hidden;
+//  overflow: hidden;
   margin-bottom: $baseLineHeight*2;
 
   .author {
@@ -9,15 +9,15 @@
     padding: 5px 10px;
     margin-bottom: $baseLineHeight * 0.5;
     font-size: 0.75 * $baseFontSize;
-  
+
     small {
       color: $claro;
       font-style: italic;
     }
   }
-  
+
   .actions {
-  
+
     .label {
       &.status-neutral {
         background-color: $label-default-bg;
@@ -33,7 +33,7 @@
         background-color: $label-danger-bg;
       }
     }
-  
+
   }
 
 }
@@ -49,53 +49,53 @@
     &.neutral .author,
     &.approved .author {
       background-color: $label-success-bg;
-      
+
       a {
         color: white;
       }
     }
-    
+
     &.pending .author,
     &.flagged .author {
       background-color: $label-warning-bg;
     }
-    
+
     &.deleted .author {
       background-color: $label-danger-bg;
-      
+
       a {
         color: white;
       }
     }
-  
+
   }
 }
 
-  
   .opinions-popover {
-    
+
     .popover-content{
       height: 150px;
+      width: 180px;
       overflow: auto;
     }
- 
+
     .opinion {
       font-size: $baseFontSize*0.75;
       margin-bottom: $baseLineHeight*0.25;
-      
+
       & > * {
-        margin-right: 10px;
+        margin-right: 5px;
       }
-      
+
       img {
         width: 20px;
         height: 20px;
         border-radius: 5px;
       }
     }
-  
+
   }
-  
+
 .comment-help{
   border-top: 1px $claro solid;
   margin-top: 20px;

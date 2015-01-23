@@ -1,24 +1,24 @@
 %a{ :name => "comment-#{comment.id}" }
 %article.row.comment{ :id => "comment-#{comment.id}", :class => "#{comment.status}"}
 
-  .col-md-1.avatar
-
-    %img.img-rounded{ :src => comment.profile_picture_url, :alt => comment.author }
-
-  .col-md-8.description
+  .col-md-12.description
     - cache comment, :expires_in => 7.days do
-      .author
-        %span.who= link_to_unless comment.user.nil?, comment.author, comment.user
-        %span.when
-          = timeago(comment.created_at)
-        %span.where
-          en
-          = link_to comment.post_title, comment.post
-        %span.what
-          dijo:
+      .media
+        .media-left.media-top
+          %img.img-rounded{ :src => comment.profile_picture_url, :alt => comment.author }
+        .media-body
+          .author
+            %span.who= link_to_unless comment.user.nil?, comment.author, comment.user
+            %span.when
+              = timeago(comment.created_at)
+            %span.where
+              en
+              = link_to comment.post_title, comment.post
+            %span.what
+              dijo:
           
-      .content
-        = replace_smileys(markdown_format(comment.content))
+          .content
+            = replace_smileys(markdown_format(comment.content))
         
     .actions
     
@@ -61,15 +61,15 @@
         %span.opinions.pull-right
           .btn-group
             - if user_signed_in?
-              = link_to like_comment_path(comment), :method => :post, :remote => :true, :title => "¡Me gusta! :-)", :class => 'btn btn-mini' do
+              = link_to like_comment_path(comment), :method => :post, :remote => :true, :title => "¡Me gusta! :-)", :class => 'btn btn-default btn-sm' do
                 %span.glyphicon.glyphicon-thumbs-up
                 %span.count{ :id => "like_#{comment.id}"} #{comment.like_count}
-            %button.btn-opinions-popover.btn.btn-mini{ 'data-popover-url' => opinions_comment_path(comment), 'data-title' => 'Opiniones'}
+            %button.btn-opinions-popover.btn.btn-default.btn-sm{ 'data-popover-url' => opinions_comment_path(comment), 'data-title' => 'Opiniones'}
               %span.glyphicon.glyphicon-eye-open
               - if not user_signed_in?
                 = t('views.opinion', :count =>  comment.opinion_count)
             - if user_signed_in?
-              = link_to dislike_comment_path(comment), :method => :post, :remote => :true, :title => "¡No me gusta! :-(", :class => 'btn btn-mini' do
+              = link_to dislike_comment_path(comment), :method => :post, :remote => :true, :title => "¡No me gusta! :-(", :class => 'btn btn-default btn-sm' do
                 %span.glyphicon.glyphicon-thumbs-down
                 %span.count{ :id => "dislike_#{comment.id}"} #{comment.dislike_count}
         
