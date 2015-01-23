@@ -1,18 +1,13 @@
 = alert_message_for(article)
 
-= form_for [:admin, article], :html => { :class => 'form-stacked' } do |f|
-  %legend
-
+= form_for [:admin, article] do |f|
+  .form-group
+    = f.text_field :title, :placeholder => 'Título', class: 'form-control'
+  .form-group
+    = f.label :content
+    = f.text_area :content, class: 'form-control', rows: 20
+    %span.help-block Podés darle estilo y formato al texto utilizando #{link_to "Markdown", article_path('markdown'), :target => '_blank' }.
 
   .form-group
-    .controls
-      = f.text_field :title, :placeholder => 'Título'
-  .form-group
-    = f.label :content, :class => 'control-label'
-    .controls
-      = f.text_area :content
-      %span.help-block Podés darle estilo y formato al texto utilizando #{link_to "Markdown", article_path('markdown'), :target => '_blank' }.
-
-  .form-actions
-    = f.submit ( article.new_record? ? 'Publicar' : 'Guardar' ), :class => 'btn primary'
-    = link_to 'Cancelar', admin_articles_path, :class => 'btn'
+    = f.submit ( article.new_record? ? 'Publicar' : 'Guardar' ), :class => 'btn btn-primary'
+    = link_to 'Cancelar', admin_articles_path, :class => 'btn btn-default'

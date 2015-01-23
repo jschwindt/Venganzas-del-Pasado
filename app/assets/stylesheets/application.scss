@@ -116,6 +116,11 @@ footer {
   }
 }
 
+.small-inline {
+  width: 15%;
+  display: inline;
+}
+
 @import 'application/*';
 
 @import 'articles';
