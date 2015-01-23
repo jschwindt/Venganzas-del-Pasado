@@ -3,19 +3,19 @@
 = form_for [:admin, user], :html => { :class => 'form-horizontal' } do |f|
   %legend
 
-  .control-group
+  .form-group
     = f.label :alias, :class => 'control-label'
     .controls
       = f.text_field :alias
-  .control-group
+  .form-group
     = f.label :email, :class => 'control-label'
     .controls
       = f.text_field :email, :disabled => true
-  .control-group
+  .form-group
     = f.label :karma, :class => 'control-label'
     .controls
       = f.text_field :karma
-  .control-group
+  .form-group
     = f.label :role, :class => 'control-label'
     .controls
       = f.select :role, User.roles

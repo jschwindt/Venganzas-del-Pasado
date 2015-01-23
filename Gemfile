@@ -52,7 +52,7 @@ gem 'mysql2'
 gem 'kaminari'
 
 gem 'haml-rails'
-gem 'devise', github: 'plataformatec/devise'
+gem 'devise'
 gem 'cancan'
 gem 'carrierwave'
 gem 'mini_magick'

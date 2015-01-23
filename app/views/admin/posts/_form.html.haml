@@ -3,19 +3,19 @@
 = form_for [:admin, post], :html => { :class => 'form-stacked' } do |f|
   %legend
 
-  .control-group
+  .form-group
     .control
       = f.text_field :title, :class => 'adjusted', :placeholder => 'Título'
-  .control-group
+  .form-group
     = f.label :content, :class => 'control-label'
     .control
       = f.text_area :content, :class => 'adjusted'
       %span.help-block Podés darle estilo y formato al texto utilizando #{link_to "Markdown", article_path('markdown'), :target => '_blank' }.
-  .control-group
+  .form-group
     .control
       = f.label :created_at, "Fecha de publicación", :class => 'control-label'
       = f.date_select :created_at, :start_year => 1985, :end_year => Time.zone.now.year
-  .control-group
+  .form-group
     = f.label :status, :class => 'control-label'
     .control
       = f.select :status, Post.statuses

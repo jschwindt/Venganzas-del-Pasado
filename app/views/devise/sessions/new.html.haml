@@ -14,22 +14,24 @@
     %p
       Si ya tenés una cuenta en este sitio, podés ingresar mediante el siguiente formulario.
 
-
     = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :method => :post, :class => 'form-horizontal' }) do |f|
-      %legend
-      .control-group
-        = f.label :email, :class => 'control-label'
-        .controls= f.text_field :email
-      .control-group
-        = f.label :password, :class => 'control-label'
-        .controls= f.password_field :password
+      .form-group
+        = f.label :email, class: 'col-sm-2 control-label'
+        .col-sm-4
+          = f.email_field :email, class: 'form-control'
+      .form-group
+        = f.label :password, class: 'col-sm-2 control-label'
+        .col-sm-4
+          = f.password_field :password, class: 'form-control'
       - if devise_mapping.rememberable?
-        .control-group
-          .controls
-            %label.checkbox
-              = f.check_box :remember_me
-              %span Mantener mi sesión abierta
-      .form-actions
-        = f.submit "Ingresar", :class => 'btn primary'
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            .checkbox
+              %label
+                = f.check_box :remember_me
+                %span Mantener mi sesión abierta
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          = f.submit "Ingresar", :class => 'btn btn-primary'
 
     = render "devise/shared/links"
