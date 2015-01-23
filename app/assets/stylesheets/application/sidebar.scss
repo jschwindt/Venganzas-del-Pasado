@@ -15,7 +15,9 @@
   li.divider {
     display: none;
   }
-
+  h3 {
+    margin-top: 0;
+  }
   .fancy {
     font-size: $baseFontSize;
     background: $gris;

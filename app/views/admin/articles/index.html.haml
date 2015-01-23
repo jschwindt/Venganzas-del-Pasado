@@ -20,13 +20,13 @@
           %td= article.title
           %td.actions
             =link_to article, :target => '_blank' do
-              %i.icon-book
+              %span.glyphicon.glyphicon-book
               Permalink
             =link_to edit_admin_article_path(article) do
-              %i.icon-edit
+              %span.glyphicon.glyphicon-edit
               Editar
             =link_to admin_article_path(article), :method => :delete, :data => { :confirm => "¿Estás seguro?" } do
-              %i.icon-fire
+              %span.glyphicon.glyphicon-fire
               Eliminar
 
   = paginate @articles

@@ -1,16 +1,16 @@
 %article.post
 
-  %header  
+  %header
     .date.lead
       #{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i].capitalize} de #{post.created_at.year}
-      
+
     -if current_page?(post)
       %h1.title
         = link_to post.title, post
     -else
       %h3.title
         = link_to post.title, post
-        
+
   .share
     %em
       Compartilo:
@@ -21,8 +21,6 @@
     .gplus
       = plusone_button_for post
 
-
-      
   .audios
     = render post.audios
     = render post.media
@@ -30,36 +28,35 @@
   .content
     - if post.content?
       = markdown_format post.content, :filter_html => false
-  
-  
+
   - if can? :update, post
     .actions
       %span.label{ :class => "status-#{post.status}" }
         #{post.status.capitalize}
       %span.edit
-        %i.icon-edit
+        %span.glyphicon.glyphicon-edit
         = link_to "Editar", edit_admin_post_path(post)
       - if post.pending?
         %span.approve
-          %i.icon-ok
+          %span.glyphicon.glyphicon-ok
           = link_to "Aprobar contribución", approve_contribution_admin_post_path(post)
-  
+
   %footer
 
     %span.permalink
-      %i.icon-bookmark
+      %span.glyphicon.glyphicon-bookmark
       = link_to "Enlace permanente", post
-  
+
     %span.date.pull-right
-      %i.icon-calendar
+      %span.glyphicon.glyphicon-calendar
       %span{ title: "Publicado el #{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i].capitalize} de #{post.created_at.year}" }
         #{post.created_at.strftime('%d/%m/%y')}
-  
+
     %span.comments.pull-right
-      %i.icon-comment
+      %span.glyphicon.glyphicon-comment
       = link_to pluralize(post.comments.visible_by(current_user).count, 'Comentario'), post_path(post, :anchor => "comments"), title: "Ver los comentarios"
-    
+
     - if post.contributor
       %span.contribution.pull-right
-        %i.icon-user
+        %span.glyphicon.glyphicon-user
         =link_to post.contributor_alias, user_url(post.contributor), title: "Ver el perfil de #{post.contributor_alias}"

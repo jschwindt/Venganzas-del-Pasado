@@ -35,15 +35,15 @@
   
     .label {
       &.status-published {
-        background-color: $state-success-bg;
+        background-color: $label-success-bg;
       }
       &.status-draft,
       &.status-pending,
       &.status-waiting {
-        background-color: $state-warning-bg;
+        background-color: $label-warning-bg;
       }
       &.status-deleted {
-        background-color: $state-danger-bg;
+        background-color: $label-danger-bg;
       }
     }
   
@@ -81,6 +81,7 @@
 
   .share {
     @include clearfix();
+    border-radius: 4px;
     margin-bottom: $baseLineHeight*0.5;
     background: lighten($claro, 15);
     padding: 10px;
@@ -154,17 +155,17 @@
 .posts-index {
   .label {
     &.post-status-published {
-      background-color: $state-success-bg;
+      background-color: $label-success-bg;
     }
     &.post-status-draft,
     &.post-status-pending {
-      background-color: $state-warning-bg;
+      background-color: $label-warning-bg;
     }
     &.post-status-waiting {
-      background-color: $state-info-bg;
+      background-color: $label-info-bg;
     }
     &.post-status-deleted {
-      background-color: $state-danger-bg;
+      background-color: $label-danger-bg;
     }
   }
 }

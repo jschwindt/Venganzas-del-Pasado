@@ -10,7 +10,7 @@
     %span.label{ :class => "user-role-#{@user.role}"}= @user.role.capitalize
     
   = link_to @user, :target => '_blank' do
-    %i.icon-user
+    %span.glyphicon.glyphicon-user
     Ver Perfil
 
 = render 'form', :user => @user

@@ -1,6 +1,7 @@
 @import "variables";
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "jplayer-skin/jplayer.vdp";
 
 body {
   padding-top: $navbar-height;
@@ -17,10 +18,14 @@ body {
   margin-left: 0.5em;
 }
 
-@import "jplayer-skin/jplayer.vdp";
-
 small {
   text-shadow: none;
+}
+
+#content {
+  h2:first-child {
+    margin-top: 0;
+  }
 }
 
 a,
@@ -82,9 +87,21 @@ a:hover {
   margin-bottom: $baseLineHeight*0.5;
   font-size: 0.75 * $baseFontSize;
 
-  & > * {
+  .label {
     margin-right: 20px;
   }
+}
+
+.nav-tabs {
+  margin-bottom: 15px;
+}
+
+.glyphicon {
+  color: $rose;
+}
+
+td.actions a {
+  margin-right: 20px;
 }
 
 footer {
@@ -93,10 +110,6 @@ footer {
   border-top: 1px solid $claro;
   padding: 10px 0px;
   color: lighten($gris, 10);
-
-  /*.actions > span {
-    margin-left: 20px;
-  }*/
 
   .pull-right {
     margin-left: 20px;

@@ -5,7 +5,7 @@
 
     %img.img-rounded{ :src => comment.profile_picture_url, :alt => comment.author }
 
-  .col-md-8.description
+  .col-md-10.description
     - cache comment, :expires_in => 7.days do
       .author
         %span.who= link_to_unless comment.user.nil?, comment.author, comment.user
@@ -28,11 +28,11 @@
         
         - if can? :approve, comment
           %span.btn.btn-mini.btn-link.approve
-            %i.icon-ok
+            %span.glyphicon.glyphicon-ok
             =link_to "Aprobar", approve_admin_comment_path(comment)
         - if can? :destroy, comment
           %span.btn.btn-mini.btn-link.delete
-            %i.icon-fire
+            %span.glyphicon.glyphicon-fire
             =link_to "Eliminar definitivamente", admin_comment_path(comment), :method => :delete, :data => { :confirm => '¿Estás seguro?' }
       
       - else
@@ -43,18 +43,18 @@
 
         - if (comment.pending? or comment.flagged?) and can?(:approve, comment)
           %span.btn.btn-mini.btn-link.approve
-            %i.icon-ok
+            %span.glyphicon.glyphicon-ok
             =link_to "Aprobar", approve_admin_comment_path(comment)
         
         - if can? :trash, comment
           %span.btn.btn-mini.btn-link.delete
-            %i.icon-trash
+            %span.glyphicon.glyphicon-trash
             =link_to "Eliminar", trash_admin_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }
      
     %footer
       - if can? :read, comment
         %span.btn.btn-mini.btn-link.permalink
-          %i.icon-bookmark
+          %span.glyphicon.glyphicon-bookmark
           = link_to "Enlace al Comentario", post_comment_path(comment.post, comment)
   
       
@@ -62,18 +62,18 @@
           .btn-group
             - if user_signed_in?
               = link_to like_comment_path(comment), :method => :post, :remote => :true, :title => "¡Me gusta! :-)", :class => 'btn btn-mini' do
-                %i.icon-thumbs-up
+                %span.glyphicon.glyphicon-thumbs-up
                 %span.count{ :id => "like_#{comment.id}"} #{comment.like_count}
             %button.btn-opinions-popover.btn.btn-mini{ 'data-popover-url' => opinions_comment_path(comment), 'data-title' => 'Opiniones'}
-              %i.icon-eye-open
+              %span.glyphicon.glyphicon-eye-open
               - if not user_signed_in?
                 = t('views.opinion', :count =>  comment.opinion_count)
             - if user_signed_in?
               = link_to dislike_comment_path(comment), :method => :post, :remote => :true, :title => "¡No me gusta! :-(", :class => 'btn btn-mini' do
-                %i.icon-thumbs-down
+                %span.glyphicon.glyphicon-thumbs-down
                 %span.count{ :id => "dislike_#{comment.id}"} #{comment.dislike_count}
         
       - if comment.neutral? && can?(:flag, comment)
         %span.btn.btn-mini.btn-link.flag.pull-right{:id => "flag_#{comment.id}"}
-          %i.icon-flag
+          %span.glyphicon.glyphicon-flag
           = link_to "Denunciar", flag_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }, :method => :post, :remote => :true
