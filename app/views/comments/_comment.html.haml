@@ -5,7 +5,7 @@
 
     %img.img-rounded{ :src => comment.profile_picture_url, :alt => comment.author }
 
-  .col-md-10.description
+  .col-md-8.description
     - cache comment, :expires_in => 7.days do
       .author
         %span.who= link_to_unless comment.user.nil?, comment.author, comment.user
