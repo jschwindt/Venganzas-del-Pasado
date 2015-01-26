@@ -43,7 +43,7 @@ jQuery ->
   $('#new_comment').on 'ajax:success', (event) ->
     this.reset()
   
-  $('.btn-opinions-popover').on 'click', (event) ->
+  $(document).on 'click', '.btn-opinions-popover', (event) ->
     $this = $(this)
     if 'opened' != $this.data 'popover-status'
       $.get $this.data('popover-url'), (data) =>
