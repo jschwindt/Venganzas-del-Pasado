@@ -1,6 +1,5 @@
 .banner-728
-  - if Rails.env.production? || Rails.env.development?
-    %script{ async: true, :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" }
+  - if Rails.env.production?
     %ins{ "class" => "adsbygoogle",
           "style" => "display:block",
           "data-ad-client" => "ca-pub-9541275144173875",
@@ -9,5 +8,3 @@
     }
     %script
       (adsbygoogle = window.adsbygoogle || []).push({});
-  - else
-    =image_tag('http://placehold.it/728x90/')

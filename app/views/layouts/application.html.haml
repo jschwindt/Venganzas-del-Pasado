@@ -24,6 +24,7 @@
     = csrf_meta_tag
 
     - if Rails.env.production?
+      %script{ async: true, :src => "//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" }
       = render 'analytics'
 
   %body{ :class => body_class }
