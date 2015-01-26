@@ -45,15 +45,14 @@
     padding-bottom: 10px;
 
     .title-container {
-
-      background: asset-url('splash-small.png') no-repeat;
-      height: 61px;
-
+      img {
+        margin: auto;
+      }
     }
 
     .slogan p {
-      font-size: 22px;
-      line-height: 28px;
+      font-size: 1.8em;
+      line-height: 1.2em;
     }
 
   }
