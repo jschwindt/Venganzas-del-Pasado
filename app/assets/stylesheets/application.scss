@@ -1,7 +1,6 @@
 @import "variables";
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "jplayer-skin/jplayer.vdp";
 
 body {
   padding-top: $navbar-height;
@@ -119,6 +118,12 @@ footer {
 .small-inline {
   width: 15%;
   display: inline;
+}
+
+.player-audio {
+  audio {
+    width: 100%;
+  }
 }
 
 @import 'application/*';

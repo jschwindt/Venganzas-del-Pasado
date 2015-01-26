@@ -1,9 +1,7 @@
 //= require jquery
 //= require jquery_ujs
-//= require jquery.jplayer
 //= require bootstrap
 //= require bootstrap-notify
-//= require jplayer
 //= require flash_player
 //= require jquery.timeago
 //= require jquery.timeago-es
