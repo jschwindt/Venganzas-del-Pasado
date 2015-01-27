@@ -8,11 +8,12 @@
 //= require socialite
 //= require socialite-extras
 //= require detect-mobile
+//= require jquery.appear
 //= require_self
 
 jQuery ->
   $("abbr.timeago").timeago()
-  
+
   $('.open_player').click (event) ->
     open_player this.href
     return false
@@ -21,25 +22,28 @@ jQuery ->
     facebook:
       lang     : 'es_LA',
       appId    : '305139166173322'
-  
+
   if not isMobile()
     $facebookLikebox = $('.facebook-likebox')[0]
     $twitterTimeline = $('.twitter-timeline')[0]
-    
+
     if $facebookLikebox
       Socialite.load $facebookLikebox
       Socialite.activate $facebookLikebox
-      
+
     if $twitterTimeline
       Socialite.load $twitterTimeline
       Socialite.activate $twitterTimeline
 
-  $('.post .share').hover (event) ->
+  $('.post .share').appear
+    interval: 2000
+
+  $(document.body).on 'appear', '.post .share', (event) ->
     Socialite.load this
-  
+
   $('#new_comment').on 'ajax:success', (event) ->
     this.reset()
-  
+
   $(document).on 'click', '.btn-opinions-popover', (event) ->
     $this = $(this)
     if 'opened' != $this.data 'popover-status'
@@ -70,15 +74,15 @@ window.softScrollTo = (element) ->
   $('html, body').animate
     scrollTop: $(element).offset().top - $('#topbar').height() - 20
     'slow'
-    
+
 window.notify = (message, type = 'success') ->
   $notifications = $('.notifications')
-  
+
   if $notifications.length is 0
     $notifications = $(document.createElement 'div')
     $notifications.addClass('notifications bottom-right')
     $('body').append($notifications)
-    
+
   $notifications.notify
       message:
         text: message
