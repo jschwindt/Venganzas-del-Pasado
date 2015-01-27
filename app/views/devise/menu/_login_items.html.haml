@@ -2,4 +2,6 @@
   %li
     = link_to('Iniciar Sesión', new_user_session_path)
   %li
-    = link_to 'Login con Facebook', user_omniauth_path(:facebook), :class => 'facebook-login-button'
+    = link_to user_omniauth_path(:facebook) do
+      %span.glyphicon.glyphicon-facebook
+      Login con Facebook

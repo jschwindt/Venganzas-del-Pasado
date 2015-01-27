@@ -83,7 +83,6 @@ a:hover {
 
 .actions {
   margin-bottom: $baseLineHeight*0.5;
-  font-size: 0.75 * $baseFontSize;
 
   .label {
     margin-right: 20px;
@@ -117,8 +116,25 @@ footer .date {
   margin-left: 1em;
 }
 
-@import 'application/*';
+span.glyphicon-facebook {
+  background: image-url('FB-f-Logo__blue_50.png') left top no-repeat;
+  background-size: 15px 15px;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  vertical-align: text-top;
+}
 
+span.glyphicon-twitter {
+  background: image-url('twitter_logo_blue.png') left top no-repeat;
+  background-size: 15px 15px;
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  vertical-align: text-top;
+}
+
+@import 'application/*';
 @import 'articles';
 @import 'posts';
 @import 'audios';
