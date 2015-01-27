@@ -4,14 +4,12 @@
     - Post.post_count_by_month.group_by(&:year).each do |year, months|
       %li.year
         - posts_in_year = months.inject(0) {|sum, hash| sum + hash.count}
-        =link_to "##{year}-year-accordion", 'data-toggle' => 'collapse' do
-          Año #{year}
-          %i #{posts_in_year}
+        =link_to "Año #{year}", "##{year}-year-accordion", 'data-toggle' => 'collapse'
+        %i #{posts_in_year}
         .collapse{:id => "#{year}-year-accordion"}
           %ul
             - months.each do |month|
               - date = Date.new month.year, month.month
               %li.month
-                = link_to posts_archive_path(year, month.month) do
-                  #{I18n.t('date.month_names')[date.month].capitalize} de #{date.year}
-                  %i #{month.count}
+                = link_to "#{I18n.t('date.month_names')[date.month].capitalize} de #{date.year}", posts_archive_path(year, month.month)
+                %i #{month.count}
