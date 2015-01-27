@@ -1,24 +1,4 @@
-.jp-audio{ 'data-url' => "#{url}", 'id' => "jp_container_#{id}" }
-  .jp-jplayer{ 'id' => "jplayer_#{id}" }
-  .jp-type-single
-    .jp-gui.jp-interface
-      %ul.jp-controls
-        %li
-          %a.jp-play{ :href => "#" }
-        %li
-          %a.jp-pause{ :href => "#" }
-        %li
-          %a.jp-mute{ :href => "#" }
-        %li
-          %a.jp-unmute{ :href => "#" }
-      .jp-progress
-        .jp-seek-bar
-          .jp-play-bar
-      .jp-volume-bar
-        .jp-volume-bar-value
-      .jp-time-holder
-        .jp-current-time
-    -# .jp-no-solution
-    -#   %span
-    -#     Se necesita actualización
-    -#   Para reproducir este audio necesita un navegador más reciente o actualizar la versión de Flash.
+.player-audio
+  %audio{ preload: "none", controls: "controls", id: "player_#{id}"}
+    %source{ src: "#{url}", type: "audio/mpeg" }
+    %embed{ src: "#{url}", type: "audio/mp3", height: "40", width: "400", autostart: "false", loop: "false", controller: "true" }

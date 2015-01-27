@@ -5,11 +5,11 @@
 .users-edit {
   .label {
     &.user-role-admin {
-      background-color: $successText;
+      background-color: $label-success-bg;
     }
     &.user-role-editor,
     &.user-role-moderator {
-      background-color: $warningText;
+      background-color: $label-warning-bg;
     }
   }
 }

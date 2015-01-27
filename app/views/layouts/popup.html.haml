@@ -1,17 +1,27 @@
 !!!
-%html
+%html{ :lang => "es" }
+
   %head
-    /[if lt IE 9]
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    = stylesheet_link_tag "application"
-    = javascript_include_tag "application"
-    = favicon_link_tag
+    %meta{ :charset => 'utf-8'}
+    %meta{ 'http-equiv' => 'X-UA-Compatible', 'content' => 'IE=edge' }
+    %meta{ 'name' => 'viewport', 'content' => 'width=device-width, initial-scale=1' }
+
     %title= yield :title
+
+    %meta{ :name => "description", :content => @meta_description || "El sitio donde podés escuchar online y descargar los archivos de audio en MP3 del programa La Venganza será Terrible de Alejandro Dolina." }
+
+    /[if lt IE 9]
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+    = stylesheet_link_tag "application"
+
+    = favicon_link_tag '/favicon.ico'
     = csrf_meta_tag
-    %meta{ :name => "description", :content => @meta_description || 'MP3 de La Venganza Será Terrible de Alejandro Dolina para descargar.'}
-    %meta{ :charset => "utf-8"}
+
     - if Rails.env.production?
       = render 'analytics'
-  %body{ :class => body_class('popup') }
 
+  %body{ :class => body_class('popup') }
     = yield
+    = javascript_include_tag "application"

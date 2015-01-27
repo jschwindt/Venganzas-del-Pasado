@@ -25,7 +25,7 @@ module ApplicationHelper
       messages = object.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
       
       html = <<-HTML
-      <div class="alert alert-error">
+      <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <p>
           <strong>Se ha#{object.errors.count > 1 ? 'n' : ''} encontrado #{object.errors.count} error#{object.errors.count > 1 ? 'es' : ''}</strong>

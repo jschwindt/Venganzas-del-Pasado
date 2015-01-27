@@ -10,19 +10,19 @@
 
 = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }) do |f|
   = f.hidden_field :reset_password_token
-  %legend
-  .control-group
-    = f.label :password, :class => 'control-label'
-    .controls
-      = f.password_field :password
+  .form-group
+    = f.label :password, class: 'col-sm-2 control-label'
+    .col-sm-4
+      = f.password_field :password, class: 'form-control'
       %span.help-block Nueva contraseña.
-  .control-group
-    = f.label :password_confirmation, :class => 'control-label'
-    .input
-      = f.password_field :password_confirmation
+  .form-group
+    = f.label :password_confirmation, class: 'col-sm-2 control-label'
+    .col-sm-4
+      = f.password_field :password_confirmation, class: 'form-control'
       %span.help-block Repetí la nueva contraseña
   
-  .form-actions
-    = f.submit "Cambiar", :class => 'btn primary'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit "Cambiar", :class => 'btn btn-primary'
 
 = render "devise/shared/links"

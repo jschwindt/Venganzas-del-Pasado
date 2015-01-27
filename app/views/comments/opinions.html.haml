@@ -5,9 +5,9 @@
         - opinion_type = opinion.class.name.split('::').last.downcase
         .opinion{ :class => "opinion-#{opinion_type}" }
           - if opinion_type == 'like'
-            %i.icon-thumbs-up
+            %span.glyphicon.glyphicon-thumbs-up
           - else
-            %i.icon-thumbs-down
+            %span.glyphicon.glyphicon-thumbs-down
           %img.avatar.img-rounded{ :src => opinion.user.profile_picture_url, :alt => opinion.user.alias }
           %span.who
             = link_to_unless opinion.user.nil?, opinion.user.alias, opinion.user

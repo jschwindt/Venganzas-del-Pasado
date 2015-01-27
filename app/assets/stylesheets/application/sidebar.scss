@@ -10,12 +10,14 @@
 }
 
 #sidebar {
-  font-size: $baseFontSize * 0.75;
+  font-size: $baseFontSize * 0.8;
 
   li.divider {
     display: none;
   }
-
+  h3 {
+    margin-top: 0;
+  }
   .fancy {
     font-size: $baseFontSize;
     background: $gris;
@@ -37,6 +39,7 @@
     }
     
     i {
+      margin-left: 0.5em;
       color: $claro;
       display: 1em;
     }
@@ -45,7 +48,7 @@
   .archive.daily {
 
     td {
-      font-size: 0.75 * $baseFontSize;
+      font-size: $baseFontSize;
       padding: 0;
     }
 

@@ -38,8 +38,8 @@ class Comment < ActiveRecord::Base
 
   end
 
-  scope :fifo, order('created_at ASC')
-  scope :lifo, order('created_at DESC')
+  scope :fifo, -> { order('created_at ASC') }
+  scope :lifo, -> { order('created_at DESC') }
 
   class << self
     def visible_by( user )

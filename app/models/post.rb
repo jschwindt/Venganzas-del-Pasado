@@ -2,7 +2,7 @@
 
 class Post < ActiveRecord::Base
   extend FriendlyId
-  friendly_id :title, :use => :slugged
+  friendly_id :title, use: [:slugged, :finders]
 
   has_many :comments, :dependent => :destroy
   has_many :audios,   :dependent => :destroy
@@ -18,10 +18,10 @@ class Post < ActiveRecord::Base
 
   delegate :alias, :to => :contributor, :prefix => true, :allow_nil => true
 
-  scope :published, where(:status => 'published')
-  scope :waiting, where(:status => 'waiting')
-  scope :lifo, order('created_at DESC')
-  scope :this_month, where(:created_at => Date.today.beginning_of_month..Date.today.end_of_month)
+  scope :published, -> { where(:status => 'published') }
+  scope :waiting, -> { where(:status => 'waiting') }
+  scope :lifo, -> { order('created_at DESC') }
+  scope :this_month, -> { where(:created_at => Date.today.beginning_of_month..Date.today.end_of_month) }
 
   # Class methods
   class << self

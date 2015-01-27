@@ -1,25 +1,24 @@
 = alert_message_for(user)
 
 = form_for [:admin, user], :html => { :class => 'form-horizontal' } do |f|
-  %legend
+  .form-group
+    = f.label :alias, class: 'col-sm-2 control-label'
+    .col-sm-4
+      = f.text_field :alias, class: 'form-control'
+  .form-group
+    = f.label :email, class: 'col-sm-2 control-label'
+    .col-sm-4
+      = f.text_field :email, :disabled => true, class: 'form-control'
+  .form-group
+    = f.label :karma, class: 'col-sm-2 control-label'
+    .col-sm-4
+      = f.text_field :karma, class: 'form-control'
+  .form-group
+    = f.label :role, class: 'col-sm-2 control-label'
+    .col-sm-4
+      = f.select :role, User.roles, {}, class: 'form-control'
 
-  .control-group
-    = f.label :alias, :class => 'control-label'
-    .controls
-      = f.text_field :alias
-  .control-group
-    = f.label :email, :class => 'control-label'
-    .controls
-      = f.text_field :email, :disabled => true
-  .control-group
-    = f.label :karma, :class => 'control-label'
-    .controls
-      = f.text_field :karma
-  .control-group
-    = f.label :role, :class => 'control-label'
-    .controls
-      = f.select :role, User.roles
-
-  .form-actions
-    = f.submit ( user.new_record? ? 'Crear' : 'Guardar' ), :class => 'btn primary'
-    = link_to 'Cancelar', admin_users_path, :class => 'btn'
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit ( user.new_record? ? 'Crear' : 'Guardar' ), :class => 'btn btn-primary'
+      = link_to 'Cancelar', admin_users_path, :class => 'btn btn-default'

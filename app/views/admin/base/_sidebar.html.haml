@@ -1,42 +1,40 @@
 #sidebar
   .widget
     %h3.fancy Administración
-    %ul.nav.nav-list
-      %li
+    %ul.list-group
+      %li.list-group-item
         = link_to admin_dashboard_path do
-          %i.icon-home
+          %span.glyphicon.glyphicon-home
           Dashboard
 
       - if can? :manage, User
-        %li
+        %li.list-group-item
           = link_to admin_users_path do
-            %i.icon-user
+            %span.glyphicon.glyphicon-user
             Usuarios
 
       - if can? :approve, Comment
-        %li
+        %li.list-group-item
           = link_to admin_comments_path do
-            %i.icon-comment
+            %span.glyphicon.glyphicon-comment
             Comentarios
 
       - if can? :update, Post
-        %li
+        %li.list-group-item
           = link_to admin_posts_path do
-            %i.icon-file
+            %span.glyphicon.glyphicon-file
             Posts
           - if can? :create, Post
-            %ul.nav.nav-list
-              %li
-                = link_to new_admin_post_path do
-                  %i.icon-pencil
-                  Crear Post
+            %li.list-group-item
+              = link_to new_admin_post_path do
+                %span.glyphicon.glyphicon-pencil
+                Crear Post
       - if can? :manage, Article
-        %li
+        %li.list-group-item
           = link_to admin_articles_path do
-            %i.icon-book
+            %span.glyphicon.glyphicon-book
             Artículos
-          %ul.nav.nav-list
-            %li
-              = link_to new_admin_article_path do
-                %i.icon-pencil
-                Crear Artìculo
+          %li.list-group-item
+            = link_to new_admin_article_path do
+              %span.glyphicon.glyphicon-pencil
+              Crear Artìculo

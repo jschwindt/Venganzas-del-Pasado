@@ -1,11 +1,13 @@
 - if user_signed_in?
-  %li.menu
-    %a.menu{:href=>'#'}
-      %span.user
-        %span.avatar= image_tag current_user.profile_picture_url
-        %span.alias= current_user.alias
-    %ul.menu-dropdown
+  %li.dropdown
+    %a.dropdown-toggle{'data-toggle' => 'dropdown', :href => '#'}
+      = current_user.alias
+      %span.caret
+    %ul{:class => 'dropdown-menu'}
       =render 'layouts/menus/user_items'
+  %li
+    %span.user
+      %span.avatar= image_tag current_user.profile_picture_url
 -else
   %li
     = link_to('Registrate', new_user_registration_path)

@@ -1,12 +1,14 @@
-%footer#footer
+#footer
   .container
     .row
-      .span5
+      .col-md-5
         - cache :footer_last_post, :expires_in => 15.minutes do
           %h3 Último Programa
           - last_post = Post.published.lifo.first
           %h4=link_to last_post.title, last_post
-      .span3.offset1
+      .col-md-1
+
+      .col-md-3
         %h3 Más Venganzas
         %ul
           %li
@@ -19,7 +21,7 @@
             = link_to "Subir programas viejos", new_post_path
           %li
             = link_to "Últimas contribuciones", contributions_path
-      .span4.offset1
+      .col-md-3
         %h3 Ayuda
         %ul
           %li=link_to 'Acerca de este sitio', article_path('acerca-de-este-sitio')

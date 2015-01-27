@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include Likeable::UserMethods
   extend FriendlyId
-  friendly_id :alias, :use => :history
+  friendly_id :alias, use: [:history, :finders]
   has_many :comments, :dependent => :nullify
   has_many :contributions, :class_name => 'Post', :foreign_key => :contributor_id, :dependent => :nullify
   validates :alias, :presence => true, :uniqueness => { :case_sensitive => false }
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :alias
   attr_accessible :karma, :role, :alias, :as => :admin
 
-  scope :lifo, order('created_at DESC')
+  scope :lifo, -> { order('created_at DESC') }
 
   class << self
     def roles

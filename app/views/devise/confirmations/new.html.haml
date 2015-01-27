@@ -14,12 +14,13 @@
 = devise_error_messages!
 
 = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, :class => 'form-horizontal' }) do |f|
-  %legend
-  .control-group
-    = f.label :email, :class => 'control-label'
-    .controls
-      = f.text_field :email
+  .form-group
+    = f.label :email, class: 'col-sm-2 control-label'
+    .col-sm-4
+      = f.email_field :email, class: 'form-control'
       %span.help-block La dirección con la que creaste tu cuenta.
-  .form-actions
-    = f.submit "Reenviar", :class => 'btn primary'
+  
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit "Reenviar", :class => 'btn btn-primary'
 = render "devise/shared/links"

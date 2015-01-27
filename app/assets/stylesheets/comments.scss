@@ -1,98 +1,95 @@
 .comment {
-  overflow: hidden;
+//  overflow: hidden;
   margin-bottom: $baseLineHeight*2;
 
   .author {
     @include clearfix();
     background: lighten($claro, 15);
-    @include border-radius(5px);
+    border-radius: 5px;
     padding: 5px 10px;
     margin-bottom: $baseLineHeight * 0.5;
     font-size: 0.75 * $baseFontSize;
-  
+
     small {
       color: $claro;
       font-style: italic;
     }
   }
-  
+
   .actions {
-  
+
     .label {
+      &.status-neutral {
+        background-color: $label-default-bg;
+      }
       &.status-approved {
-        background-color: $successText;
+        background-color: $label-success-bg;
       }
       &.status-pending,
       &.status-flagged {
-        background-color: $warningText;
+        background-color: $label-warning-bg;
       }
       &.status-deleted {
-        background-color: $errorText;
+        background-color: $label-danger-bg;
       }
     }
-  
+
   }
 
-}
-
-.comment-form{
-  textarea{
-    width: 410px;
-  }
 }
 
 .admin {
   .comment {
     &.neutral .author,
     &.approved .author {
-      background-color: $successText;
-      
+      background-color: $label-success-bg;
+
       a {
         color: white;
       }
     }
-    
+
     &.pending .author,
     &.flagged .author {
-      background-color: $warningText;
+      background-color: $label-warning-bg;
     }
-    
+
     &.deleted .author {
-      background-color: $errorText;
-      
+      background-color: $label-danger-bg;
+
       a {
         color: white;
       }
     }
-  
+
   }
 }
 
-  
   .opinions-popover {
-    
+
     .popover-content{
       height: 150px;
+      width: 180px;
       overflow: auto;
     }
- 
+
     .opinion {
       font-size: $baseFontSize*0.75;
       margin-bottom: $baseLineHeight*0.25;
-      
+
       & > * {
-        margin-right: 10px;
+        margin-right: 5px;
       }
-      
+
       img {
         width: 20px;
         height: 20px;
-        @include border-radius(2px);
+        border-radius: 5px;
       }
     }
-  
+
   }
-  
+
 .comment-help{
   border-top: 1px $claro solid;
   margin-top: 20px;

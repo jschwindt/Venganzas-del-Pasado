@@ -1,7 +1,7 @@
 %article.article
 
   -if current_page?(article)
-    %h1.title
+    %h2.fancy
       = link_to article.title, article
   -else
     %h3.title
@@ -13,5 +13,5 @@
   - if can? :update, article
     .actions
       %span.edit
-        %i.icon-edit
+        %span.glyphicon.glyphicon-edit
         = link_to "Editar", edit_admin_article_path(article)

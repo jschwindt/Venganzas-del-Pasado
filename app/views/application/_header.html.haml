@@ -2,18 +2,16 @@
   .container
     - if current_page?(:root)
       .row
-        .span14.title-container
-          %h1
-            =link_to "Venganzas del Pasado", :root
+        .col-md-12.title-container
+          = link_to image_tag('splash.png', class: "img-responsive"), :root, title: "Vengazas del Pasado"
       .row
-        .span14.slogan
+        .col-md-12.slogan
           %p
             Encontrá todos los archivos de audio en MP3 del programa de radio <em>La Venganza Será Terrible</em> de <strong>Alejandro Dolina</strong>
     - else
       .row
-        .span4.title-container
-          %span
-            =link_to "Venganzas del Pasado", :root
-        .span10.slogan
+        .col-md-3.title-container
+          = link_to image_tag('splash-small.png', class: "img-responsive"), :root, title: "Vengazas del Pasado"
+        .col-md-9.slogan
           %p
             Encontrá todos los archivos de audio en MP3 del programa de radio <em>La Venganza Será Terrible</em> de <strong>Alejandro Dolina</strong>

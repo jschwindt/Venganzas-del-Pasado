@@ -9,7 +9,7 @@ class CommentsControllerTest < ActionController::TestCase
     post :create, :post_id => posts(:one), :comment => { :content => 'testing' }
     assert assigns(:post)
     assert assigns(:comment)
-    assert_redirected_to "#{post_path(assigns(:post))}#comment#{assigns(:comment).id}"
+    assert_redirected_to "#{post_path(assigns(:post))}#comment-#{assigns(:comment).id}"
   end
 
   test "show comment" do

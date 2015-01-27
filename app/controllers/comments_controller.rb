@@ -11,7 +11,7 @@ class CommentsController < ApplicationController
 
     if @comment.pending?
       flash[:warning] = "Tu comentario se ha guardado, y está pendiente de aprobación."
-      CommentMailer.moderation_needed(@comment, "Comentario para moderar").deliver
+      CommentMailer.moderation_needed(@comment, "Comentario para moderar").deliver_now
     else
       flash[:notice] = "Tu comentario ha sido publicado."
     end
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 
   def flag
     @comment.flag!
-    CommentMailer.moderation_needed(@comment, "Comentario denunciado").deliver
+    CommentMailer.moderation_needed(@comment, "Comentario denunciado").deliver_now
   end
 
   def like

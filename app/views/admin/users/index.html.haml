@@ -20,10 +20,10 @@
           %td= user.alias
           %td.actions
             =link_to user, :target => '_blank' do
-              %i.icon-user
+              %span.glyphicon.glyphicon-user
               Perfil
             =link_to edit_admin_user_path(user) do
-              %i.icon-edit
+              %span.glyphicon.glyphicon-edit
               Editar
 
   = paginate @users
