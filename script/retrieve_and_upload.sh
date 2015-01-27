@@ -34,4 +34,4 @@ fi
 cd /var/www/venganzasdelpasado.com.ar/app
 export RAILS_ENV=production
 ./script/rails runner "Post.create_from_audio_file('$DEST/$FILE')"
-rake sitemap:refresh
+bundle exec rake sitemap:refresh

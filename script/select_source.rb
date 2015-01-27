@@ -9,12 +9,8 @@ year   = yesterday.strftime('%Y')
 
 SOURCES = [
   "http://venganzasdelpasado.com.ar/st/lavenganza_#{daystr}.mp3",
-  "http://sistema.carm.com.ar/podcast/lavenganza_#{daystr}.mp3",
-  "http://www.schwindt.org/podcast/st/lavenganza_#{daystr}.mp3",
   "http://venganzasdelpasado.com.ar/st3/lavenganza_#{daystr}.mp3",
   "http://venganzasdelpasado.com.ar/st2/lavenganza_#{daystr}.mp3",
-  "http://sistema.carm.com.ar/podcast/otro/lavenganza_#{daystr}.mp3",
-#  "http://www.schwindt.org/podcast/am/lavenganza_#{daystr}.mp3",
 ]
 
 def get_file_length(url)
@@ -33,7 +29,7 @@ exit 0 if dest_length > 20_000_000
 SOURCES.each do |url|
   source_length = get_file_length url
   puts "#{url} => #{source_length}"
-  if source_length > 20_000_000
+  if source_length > 25_000_000
     exec "/home/jschwindt/podcast/retrieve_and_upload.sh #{url}"
   end
 end
