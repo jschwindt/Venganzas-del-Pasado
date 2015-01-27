@@ -84,5 +84,6 @@ window.notify = (message, type = 'success') ->
         text: message
       type: type
       fadeOut:
-        enabled: false
+        enabled: true
+        delay: 5000
     .show()
