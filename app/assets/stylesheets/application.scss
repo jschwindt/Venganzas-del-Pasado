@@ -102,18 +102,6 @@ td.actions a {
   margin-right: 20px;
 }
 
-footer {
-  @include clearfix();
-  font-size: 0.75 * $baseFontSize;
-  border-top: 1px solid $claro;
-  padding: 10px 0px;
-  color: lighten($gris, 10);
-
-  .pull-right {
-    margin-left: 20px;
-  }
-}
-
 .small-inline {
   width: 15%;
   display: inline;

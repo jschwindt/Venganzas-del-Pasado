@@ -1,5 +1,4 @@
 #footer {
-  padding: 0px;
   background: $gris;
   $shadow: 0 1px 3px rgba(0,0,0,.50), inset 0 -1px 0 rgba(0,0,0,.1);
   @include box-shadow($shadow);
@@ -25,7 +24,6 @@
   ul {
     list-style: none;
     padding-left: 0px;
-    font-size: $baseFontSize * 0.75;
   }
 
   .title {
@@ -41,6 +39,6 @@
 
   .container {
     background: asset-url('fondo-footer.png') no-repeat left bottom;
-    padding: $baseLineHeight 0px 100px 0px;
+    min-height: 240px;
   }
 }
