@@ -8,7 +8,6 @@
 //= require socialite
 //= require socialite-extras
 //= require detect-mobile
-//= require jquery-browser
 //= require_self
 
 jQuery ->
@@ -38,9 +37,6 @@ jQuery ->
   $('.post .share').hover (event) ->
     Socialite.load this
   
-  $('#new_comment').on 'ajax:success', (event) ->
-    this.reset()
-  
   $(document).on 'click', '.btn-opinions-popover', (event) ->
     $this = $(this)
     if 'opened' != $this.data 'popover-status'
@@ -62,7 +58,7 @@ jQuery ->
       $this.data 'popover-status', 'closed'
 
 window.open_player = (url) ->
-  nw = window.open url, 'player', 'height=235,width=580,status=0,menubar=0,location=0,toolbar=0,scrollbars=0'
+  nw = window.open url, 'player', 'height=200,width=600,status=0,menubar=0,location=0,toolbar=0,scrollbars=0'
   if window.focus
     nw.focus()
   return false
