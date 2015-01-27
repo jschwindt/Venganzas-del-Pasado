@@ -37,6 +37,9 @@ jQuery ->
   $('.post .share').hover (event) ->
     Socialite.load this
   
+  $('#new_comment').on 'ajax:success', (event) ->
+    this.reset()
+  
   $(document).on 'click', '.btn-opinions-popover', (event) ->
     $this = $(this)
     if 'opened' != $this.data 'popover-status'
