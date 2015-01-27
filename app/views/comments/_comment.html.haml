@@ -53,7 +53,7 @@
      
     %footer
       - if can? :read, comment
-        %span.btn.btn-mini.btn-link.permalink
+        %span.hidden-xs.permalink
           %span.glyphicon.glyphicon-bookmark
           = link_to "Enlace al Comentario", post_comment_path(comment.post, comment)
   
