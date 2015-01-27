@@ -4,7 +4,6 @@
 
 body {
   padding-top: $navbar-height;
-  padding-bottom: 30px;
   font-family: $defaultFontFamily;
 }
 
@@ -135,3 +134,4 @@ footer {
 @import 'users';
 @import 'torrents';
 @import 'smilies';
+@import 'notify';
