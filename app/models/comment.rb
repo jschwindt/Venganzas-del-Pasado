@@ -21,7 +21,7 @@ class Comment < ActiveRecord::Base
     state :flagged
 
     event :approve do
-      transitions :to => :approved, :from => [:pending, :flagged, :deleted]
+      transitions :to => :approved, :from => [:pending, :flagged, :deleted, :approved]
     end
 
     event :moderate do
