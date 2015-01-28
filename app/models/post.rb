@@ -59,15 +59,13 @@ class Post < ActiveRecord::Base
       if File.exists?(filename) && filename =~ /lavenganza_(\d{4})-(\d{2})-(\d{2}).mp3/
         day, mon, year = $3, $2, $1
         title = "La venganza será terrible del #{day}/#{mon}/#{year}"
-        post = find_or_create_by_title(title)
-        unless post.persisted?
+        Post.find_or_create_by(title: title) do |post|
           post.created_at = Time.zone.parse('#{year}-#{mon}-#{day} 03:00:00')
           post.status     = 'published'
           post.content    = ''
-          audio           = Audio.find_or_initialize_by_url("http://venganzasdelpasado.com.ar/#{year}/lavenganza_#{year}-#{mon}-#{day}.mp3")
+          audio           = Audio.find_or_initialize_by(url: "http://venganzasdelpasado.com.ar/#{year}/lavenganza_#{year}-#{mon}-#{day}.mp3")
           audio.bytes     = File.size(filename)
           post.audios << audio
-          post.save!
         end
       end
     end
