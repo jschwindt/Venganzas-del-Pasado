@@ -1,7 +1,7 @@
 class Audio < ActiveRecord::Base
   belongs_to :post
 
-  attr_accessible :url
+  attr_accessible :url, :bytes
 
   delegate :title, :to => :post, :prefix => true
 
