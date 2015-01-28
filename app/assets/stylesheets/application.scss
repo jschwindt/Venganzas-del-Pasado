@@ -112,8 +112,13 @@ td.actions a {
   }
 }
 
-footer .date {
-  margin-left: 1em;
+footer {
+  .date {
+    margin-left: 1em;
+  }
+  .comments {
+    margin-left: 1em;
+  }
 }
 
 span.glyphicon-facebook {
