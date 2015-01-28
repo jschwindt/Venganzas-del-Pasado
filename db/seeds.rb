@@ -15,9 +15,9 @@ base_pathname = Pathname.new(articles_path)
 Dir[File.join(articles_path, '*')].each do |file|
   name = Pathname.new(file).relative_path_from(base_pathname).to_s
 
-  article = Article.find_or_create_by_title(name)
-  article.content = IO.read(file)
-  article.save
+  Article.find_or_create_by(title: name) do |article|
+    article.content = IO.read(file)
+  end
   puts "Art. '#{name}' cargado."
 end
 
