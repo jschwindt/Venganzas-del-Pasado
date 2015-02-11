@@ -30,7 +30,7 @@ SOURCES.each do |url|
   source_length = get_file_length url
   puts "#{url} => #{source_length}"
   if source_length > 25_000_000
-    exec "/home/jschwindt/podcast/retrieve_and_upload.sh #{url}"
+    exec "/var/www/venganzasdelpasado.com.ar/app/script/retrieve_and_upload.sh #{url}"
   end
 end
 
