@@ -9,8 +9,8 @@ year   = yesterday.strftime('%Y')
 
 SOURCES = [
   "http://venganzasdelpasado.com.ar/st/lavenganza_#{daystr}.mp3",
-  "http://venganzasdelpasado.com.ar/st3/lavenganza_#{daystr}.mp3",
   "http://venganzasdelpasado.com.ar/st2/lavenganza_#{daystr}.mp3",
+  "http://venganzasdelpasado.com.ar/st3/lavenganza_#{daystr}.mp3",
 ]
 
 def get_file_length(url)
@@ -24,7 +24,7 @@ end
 
 dest_length = get_file_length "http://venganzasdelpasado.com.ar/#{year}/lavenganza_#{daystr}.mp3"
 
-exit 0 if dest_length > 20_000_000
+exit 0 if dest_length > 25_000_000
 
 SOURCES.each do |url|
   source_length = get_file_length url
