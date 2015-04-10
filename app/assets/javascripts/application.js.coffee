@@ -9,10 +9,13 @@
 //= require socialite-extras
 //= require detect-mobile
 //= require jquery.appear
+//= require jquery.markdownify
 //= require_self
 
 jQuery ->
   $("abbr.timeago").timeago()
+
+  $('#markdownify').markdownify()
 
   $('.open_player').click (event) ->
     open_player this.href
