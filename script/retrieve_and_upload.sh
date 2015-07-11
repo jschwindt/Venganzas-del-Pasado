@@ -20,7 +20,7 @@ else
   SIZE=0
 fi
 
-if [ $SIZE -lt 20000000 ]; then
+if [ $SIZE -lt 13000000 ]; then
   echo "Error: el archivo $FILE tiene largo $SIZE o no existe!"
   exit 1
 fi
