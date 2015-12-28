@@ -9,8 +9,8 @@ year   = yesterday.strftime('%Y')
 
 SOURCES = [
   { url: "http://venganzasdelpasado.com.ar/st1/lavenganza_#{daystr}.mp3", min_size: 13_000_000 },
-  { url: "http://venganzasdelpasado.com.ar/st/lavenganza_#{daystr}.mp3",  min_size: 25_000_000 },
   { url: "http://venganzasdelpasado.com.ar/st3/lavenganza_#{daystr}.mp3", min_size: 25_000_000 },
+  { url: "http://venganzasdelpasado.com.ar/st/lavenganza_#{daystr}.mp3",  min_size: 25_000_000 },
   { url: "http://venganzasdelpasado.com.ar/st2/lavenganza_#{daystr}.mp3", min_size: 25_000_000 },
 ]
 
