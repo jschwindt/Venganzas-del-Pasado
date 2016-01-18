@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'date'
-require 'net/http'
+require 'net/https'
 
 yesterday = Date.today - 1
 daystr = yesterday.strftime('%Y-%m-%d')
@@ -15,15 +15,14 @@ SOURCES = [
 ]
 
 def get_file_length(url)
-  uri = URI.parse url
-  response = nil
-  Net::HTTP.start(uri.host, uri.port) do |http|
-    response = http.head(uri.path)
-  end
+  uri = URI(url)
+  http = Net::HTTP.new(uri.host, uri.port)
+  http.use_ssl = true
+  response = http.request(Net::HTTP::Head.new(uri.request_uri))
   response ? response['content-length'].to_i : 0
 end
 
-dest_length = get_file_length "http://venganzasdelpasado.com.ar/#{year}/lavenganza_#{daystr}.mp3"
+dest_length = get_file_length "https://venganzasdelpasado.com.ar/#{year}/lavenganza_#{daystr}.mp3"
 
 exit 0 if dest_length > 13_000_000
 
