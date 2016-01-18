@@ -75,7 +75,7 @@ class Comment < ActiveRecord::Base
       self.profile_picture_url = user.profile_picture_url
     else
       gravatar_hash = Digest::MD5.hexdigest(author_email.strip.downcase)
-      self.profile_picture_url = "https://www.gravatar.com/avatar/#{gravatar_hash}?d=mm&s=50"
+      self.profile_picture_url = "//www.gravatar.com/avatar/#{gravatar_hash}?d=mm&s=50"
     end
     save
   end
