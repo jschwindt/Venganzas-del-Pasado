@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://venganzasdelpasado.com.ar"
+SitemapGenerator::Sitemap.default_host = "https://venganzasdelpasado.com.ar"
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
 
 SitemapGenerator::Sitemap.create do

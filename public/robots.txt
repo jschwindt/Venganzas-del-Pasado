@@ -1,3 +1,3 @@
 User-agent: *
 
-Sitemap: http:/venganzasdelpasado.com.ar/sitemaps/sitemap_index.xml.gz
+Sitemap: https:/venganzasdelpasado.com.ar/sitemaps/sitemap_index.xml.gz

@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
 
   def facebook_profile_url
     unless self.fb_userid.blank?
-      'http://www.facebook.com/profile.php?id=' + self.fb_userid
+      '//www.facebook.com/profile.php?id=' + self.fb_userid
     end
   end
 
@@ -108,10 +108,10 @@ class User < ActiveRecord::Base
 
   def update_profile_picture_url
     if has_facebook_profile?
-      self.profile_picture_url = "http://graph.facebook.com/#{fb_userid}/picture"
+      self.profile_picture_url = "//graph.facebook.com/#{fb_userid}/picture"
     else
       gravatar_hash = Digest::MD5.hexdigest(email.strip.downcase)
-      self.profile_picture_url = "http://www.gravatar.com/avatar/#{gravatar_hash}?d=mm&s=50"
+      self.profile_picture_url = "//www.gravatar.com/avatar/#{gravatar_hash}?d=mm&s=50"
     end
   end
 
