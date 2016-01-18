@@ -29,6 +29,7 @@ class RedirectsTest < ActionDispatch::IntegrationTest
   test "redirects" do
     REDIRECT_CASES.each do |path, result|
       get path
+      puts "PATH: #{path}"
       assert_response 301
       assert_redirected_to result
     end
@@ -40,4 +41,3 @@ class RedirectsTest < ActionDispatch::IntegrationTest
   end
 
 end
-

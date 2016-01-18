@@ -63,7 +63,7 @@ class Post < ActiveRecord::Base
           post.created_at = Time.zone.parse('#{year}-#{mon}-#{day} 03:00:00')
           post.status     = 'published'
           post.content    = ''
-          audio           = Audio.find_or_initialize_by(url: "https://venganzasdelpasado.com.ar/#{year}/lavenganza_#{year}-#{mon}-#{day}.mp3")
+          audio           = Audio.find_or_initialize_by(url: "//venganzasdelpasado.com.ar/#{year}/lavenganza_#{year}-#{mon}-#{day}.mp3")
           audio.bytes     = File.size(filename)
           post.audios << audio
         end
