@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/andriytyurnikov/inherited_resources.git
+  remote: https://github.com/andriytyurnikov/inherited_resources.git
   revision: 4abedd69aec9295da99f9000e80162c3b78ef213
   branch: rails_4_2
   specs:

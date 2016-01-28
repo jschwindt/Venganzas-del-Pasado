@@ -57,7 +57,7 @@ gem 'cancan'
 gem 'carrierwave'
 gem 'mini_magick'
 
-gem 'inherited_resources', github: 'andriytyurnikov/inherited_resources', branch: 'rails_4_2'
+gem 'inherited_resources', git: 'https://github.com/andriytyurnikov/inherited_resources.git', branch: 'rails_4_2'
 gem 'spreadsheet'
 gem 'has_scope'
 
@@ -66,11 +66,11 @@ gem 'redcarpet'
 gem "omniauth-facebook"
 gem 'aasm', '~> 3.0.14'
 
-gem 'likeable', :git => 'https://github.com/jschwindt/Likeable.git'
+gem 'likeable', git: 'https://github.com/jschwindt/Likeable.git'
 gem 'redis-rails'
 
 gem 'sitemap_generator'
-gem "watu_table_builder", :require => "table_builder"
+gem "watu_table_builder", require: "table_builder"
 
 gem 'thinking-sphinx'
 
@@ -78,11 +78,10 @@ gem 'protected_attributes'
 
 group :test do
   # Pretty printed test output
-  # gem 'turn', :require => false
-  gem 'mocha', :require => false
+  # gem 'turn', require: false
+  gem 'mocha', require: false
   gem 'shoulda'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'simplecov', :require => false
+  gem 'simplecov', require: false
 end
-
