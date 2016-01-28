@@ -51,8 +51,4 @@ Rails.application.config.assets.precompile += %w(
   smilies/icon_surprised.gif
   smilies/icon_twisted.gif
   smilies/icon_wink.gif
-  
-  flowplayer-3.2.18.swf
 )
-
-

@@ -15,8 +15,6 @@ class RedirectsTest < ActionDispatch::IntegrationTest
     '/page/12'                                          => '/',
     '/tags/pepe'                                        => '/',
     '/foro/off-topic-total-1/abc'                       => '/',
-    '/sitemap.xml.gz'                                   => '/sitemaps/sitemap_index.xml.gz',
-    '/torrent-feed.xml'                                 => '/torrents.rss',
     '/actualizar/'                                      => '/',
     '/actualizar'                                       => '/',
     '/arreglar/'                                        => '/',
@@ -29,7 +27,6 @@ class RedirectsTest < ActionDispatch::IntegrationTest
   test "redirects" do
     REDIRECT_CASES.each do |path, result|
       get path
-      puts "PATH: #{path}"
       assert_response 301
       assert_redirected_to result
     end

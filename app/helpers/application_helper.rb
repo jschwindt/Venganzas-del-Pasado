@@ -23,7 +23,7 @@ module ApplicationHelper
   def alert_message_for(object)
     if object.respond_to? :errors and object.errors.any?
       messages = object.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
-      
+
       html = <<-HTML
       <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -54,7 +54,7 @@ module ApplicationHelper
 
   def fb_like_button_for(object)
     object_url = polymorphic_url(object)
-    
+
     link_to "Facebook",
             "https://www.facebook.com/sharer.php?u=#{url_encode(object_url)}",
             'class'     => "socialite facebook-like",
@@ -67,7 +67,7 @@ module ApplicationHelper
 
   def tweet_button_for(object)
     object_url = polymorphic_url(object)
-    
+
     link_to "Twitter",
             "https://twitter.com/intent/tweet?via=venganzaspasado&url=#{url_encode(object_url)}",
             'class'     => "socialite twitter-share",
@@ -76,10 +76,10 @@ module ApplicationHelper
             'data-lang' => "es",
             'data-hashtags' => "vdp"
   end
-  
+
   def plusone_button_for(object)
     object_url = polymorphic_url(object)
-    
+
     link_to "Google+", "https://plus.google.com/share?url=" + url_encode(object_url),
             'class' => 'socialite googleplus-one',
             'data-size' => "tall",
@@ -89,18 +89,14 @@ module ApplicationHelper
             'data-width' => '120'
   end
 
-  def flash_player?
-    cookies[:player] == 'flash'
-  end
-
   def timeago(time, options = {})
     options[:class] ||= "timeago"
     content_tag(:abbr, 'el ' + l(time, :format => :long), options.merge(:title => time.getutc.iso8601)) if time
   end
-  
+
   def show_alerts
     return if flash.empty?
-    
+
     [:notice, :error, :warning].collect do |key|
       if flash[key].present?
         key_class = "alert-#{key == :notice ? :success : key}"

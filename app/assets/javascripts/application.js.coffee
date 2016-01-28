@@ -2,7 +2,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-notify
-//= require flash_player
 //= require jquery.timeago
 //= require jquery.timeago-es
 //= require socialite

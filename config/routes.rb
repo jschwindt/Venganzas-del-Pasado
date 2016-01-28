@@ -35,7 +35,7 @@ Rails.application.routes.draw do
     get 'likes(/page/:page)', :action => :likes, :on => :member, :as => :likes
     get 'dislikes(/page/:page)', :action => :dislikes, :on => :member, :as => :dislikes
   end
-  
+
   resources :articles, :only => :show
   resources :torrents, :only => :index
 
@@ -44,22 +44,20 @@ Rails.application.routes.draw do
 
     resources :articles, :except => :show
     resources :users, :only => [:index, :edit, :update]
-    
+
     resources :comments do
       member do
         get 'approve'
         get 'trash'
       end
     end
-    
+
     resources :posts do
       member do
         get 'approve_contribution'
       end
     end
   end
-
-  get '/switch_player', :controller => :home, :action => :switch_player
 
   root :to => 'home#index'
 

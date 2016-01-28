@@ -9,10 +9,4 @@ class HomeControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should switch player" do
-    get :switch_player
-    assert cookies.has_key?(:player)
-    assert_redirected_to root_url
-  end
-
 end
