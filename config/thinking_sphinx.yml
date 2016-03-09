@@ -99,3 +99,7 @@ test:
 production:
   <<: *common
 #  searchd_file_path: /var/www/keding2/shared/db/sphinx/production
+  pid_file: /var/www/venganzasdelpasado.com.ar/shared/tmp/searchd.pid
+  indices_location: /var/www/venganzasdelpasado.com.ar/shared/db/sphinx
+  configuration_file: /var/www/venganzasdelpasado.com.ar/shared/production.sphinx.conf
+  binlog_path: /var/www/venganzasdelpasado.com.ar/shared/binlog
