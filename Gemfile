@@ -46,6 +46,9 @@ group :development, :test do
   gem 'wirble'
   gem 'rails_best_practices'
 
+  gem 'capistrano-rails'
+  gem 'capistrano-passenger'
+
 end
 
 gem 'bootstrap-sass'
