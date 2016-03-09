@@ -31,7 +31,7 @@ fi
   $FILE \
   s3://s3.schwindt.org/dolina/$YEAR/$FILE
 
-cd /var/www/venganzasdelpasado.com.ar/app
+cd /var/www/venganzasdelpasado.com.ar/current
 export RAILS_ENV=production
 ./script/rails runner "Post.create_from_audio_file('$DEST/$FILE')"
 bundle exec rake sitemap:refresh

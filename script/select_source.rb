@@ -31,7 +31,7 @@ SOURCES.each do |source|
   source_length = get_file_length url
   puts "#{url} => #{source_length}"
   if source_length > source[:min_size]
-    exec "/var/www/venganzasdelpasado.com.ar/app/script/retrieve_and_upload.sh #{url}"
+    exec "/var/www/venganzasdelpasado.com.ar/current/script/retrieve_and_upload.sh #{url}"
   end
 end
 
