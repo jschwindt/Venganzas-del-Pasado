@@ -8,7 +8,7 @@ cd $HOME
 /bin/rm -rf lvst?.*
 
 # El Espectador
-/usr/bin/cvlc http://75.126.178.195:80/Espectador_Audio/Espectador_aac.stream/playlist.m3u8 --sout file/asf:lvst0.asf &
+/usr/bin/cvlc http://streaming.espectador.com/envivo --sout file/asf:lvst0.asf &
 /bin/sleep $DURATION
 kill $!
 
