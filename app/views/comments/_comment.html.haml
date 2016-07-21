@@ -16,16 +16,16 @@
               = link_to comment.post_title, comment.post
             %span.what
               dijo:
-          
+
           .content
             = replace_smileys(markdown_format(comment.content))
-        
+
     .actions
-    
+
       - if comment.deleted?
         %span.label{ :class => "status-#{comment.status}" }
           #{comment.status.capitalize}
-        
+
         - if can? :approve, comment
           %span.btn.btn-mini.btn-link.approve
             %span.glyphicon.glyphicon-ok
@@ -34,7 +34,7 @@
           %span.btn.btn-mini.btn-link.delete
             %span.glyphicon.glyphicon-fire
             =link_to "Eliminar definitivamente", admin_comment_path(comment), :method => :delete, :data => { :confirm => '¿Estás seguro?' }
-      
+
       - else
 
         - if can?(:approve, comment) or  can? :trash, comment
@@ -45,19 +45,19 @@
           %span.btn.btn-mini.btn-link.approve
             %span.glyphicon.glyphicon-ok
             =link_to "Aprobar", approve_admin_comment_path(comment)
-        
+
         - if can? :trash, comment
           %span.btn.btn-mini.btn-link.delete
             %span.glyphicon.glyphicon-trash
             =link_to "Eliminar", trash_admin_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }
-     
+
     %footer
       - if can? :read, comment
         %span.hidden-xs.permalink
           %span.glyphicon.glyphicon-bookmark
           = link_to "Enlace al Comentario", post_comment_path(comment.post, comment)
-  
-      
+
+
         %span.opinions.pull-right
           .btn-group
             - if user_signed_in?
@@ -72,7 +72,7 @@
               = link_to dislike_comment_path(comment), :method => :post, :remote => :true, :title => "¡No me gusta! :-(", :class => 'btn btn-default btn-sm' do
                 %span.glyphicon.glyphicon-thumbs-down
                 %span.count{ :id => "dislike_#{comment.id}"} #{comment.dislike_count}
-        
+
       - if comment.neutral? && can?(:flag, comment)
         %span.btn.btn-mini.btn-link.flag.pull-right{:id => "flag_#{comment.id}"}
           %span.glyphicon.glyphicon-flag

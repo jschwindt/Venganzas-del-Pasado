@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     else
       flash[:notice] = "Tu comentario ha sido publicado."
     end
-    
+
     flash[:created_comment_id] = @comment.id
 
     redirect_to "#{post_path(@post)}#comment-#{@comment.id}"
@@ -37,7 +37,7 @@ class CommentsController < ApplicationController
   def opinions
     render :layout => false
   end
-  
+
 
   def index
     @comments = Comment.visible_by(current_user).lifo.limit(VenganzasDelPasado::Application.config.comments_per_page)

@@ -8,7 +8,7 @@
 .actions
   -if @user.role?
     %span.label{ :class => "user-role-#{@user.role}"}= @user.role.capitalize
-    
+
   = link_to @user, :target => '_blank' do
     %span.glyphicon.glyphicon-user
     Ver Perfil

@@ -15,7 +15,7 @@ class PostsController < ApplicationController
              params[:page] :
              comments_collection.page.per(VenganzasDelPasado::Application.config.comments_per_page).num_pages
     @comments = comments_collection.page(page).per(VenganzasDelPasado::Application.config.comments_per_page)
-    
+
     if flash[:created_comment_id]
       @comment = Comment.find(flash[:created_comment_id])
     end

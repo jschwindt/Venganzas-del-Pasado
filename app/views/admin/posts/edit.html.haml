@@ -7,9 +7,9 @@
 
 .actions
   %span.label{ :class => "post-status-#{@post.status}"}= @post.status.capitalize
-    
+
   = link_to @post, :target => '_blank' do
     %span.glyphicon.glyphicon-file
     Ver Post
-    
+
 = render 'form', :post => @post

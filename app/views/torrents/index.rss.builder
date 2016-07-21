@@ -16,4 +16,3 @@ xml.rss :version => "2.0", 'xmlns:atom' => "http://www.w3.org/2005/Atom" do
     end
   end
 end
-
