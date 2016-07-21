@@ -95,13 +95,11 @@ class User < ActiveRecord::Base
 #  end
 
   def has_facebook_profile?
-    self.fb_userid.present?
+    fb_userid.present?
   end
 
   def facebook_profile_url
-    unless self.fb_userid.blank?
-      '//www.facebook.com/profile.php?id=' + self.fb_userid
-    end
+    "https://www.facebook.com/app_scoped_user_id/#{fb_userid}"
   end
 
   private
