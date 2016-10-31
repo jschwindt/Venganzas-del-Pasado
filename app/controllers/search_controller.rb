@@ -3,7 +3,7 @@ class SearchController < ApplicationController
   def index
     @what = params[:what] == 'comments' ? 'comments' : 'posts'
     search_opts = { order: :created_at, sort_mode: :desc, match_mode: :boolean }
-    q = Riddle.escape(params[:q] || '')   # see: https://github.com/freelancing-god/thinking-sphinx/issues/235
+    q = Riddle::Query.escape(params[:q] || '')
     @facets = ThinkingSphinx.facets(q, search_opts)
     @facets[:class].reverse_merge!('Post' => 0, 'Comment' => 0 )
 
