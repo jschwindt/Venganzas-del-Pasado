@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     comments_collection = @post.comments.visible_by(current_user).fifo
     page = params[:page].present? ?
              params[:page] :
-             comments_collection.page.per(VenganzasDelPasado::Application.config.comments_per_page).num_pages
+             comments_collection.page.per(VenganzasDelPasado::Application.config.comments_per_page).total_pages
     @comments = comments_collection.page(page).per(VenganzasDelPasado::Application.config.comments_per_page)
 
     if flash[:created_comment_id]

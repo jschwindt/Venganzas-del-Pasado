@@ -1,8 +1,6 @@
 # encoding: utf-8
 
 class MediaUploader < CarrierWave::Uploader::Base
-  include CarrierWave::MimeTypes
-
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
@@ -21,8 +19,6 @@ class MediaUploader < CarrierWave::Uploader::Base
   def default_url
     "/assets/no-image.jpg"
   end
-
-  process :set_content_type
 
   # Process files as they are uploaded:
   process :resize_to_fit => [2048, 1536], :if => :image?
