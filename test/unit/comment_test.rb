@@ -17,16 +17,16 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test "should transition to approved" do
-    [:pending, :flagged, :deleted].each do |status|
+    [:pending, :flagged, :deleted, :approved].each do |status|
       assert comments(status).approve
     end
-    [:approved, :neutral].each do |status|
+    [:neutral].each do |status|
       assert_raise AASM::InvalidTransition do
         comments(status).approve
       end
     end
   end
-  
+
   test "should transition to pending if moderation is needed" do
     comment = Comment.new
     comment.moderate
