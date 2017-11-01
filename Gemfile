@@ -32,7 +32,7 @@ group :development do
 
   # Use Capistrano for deployment
   # gem 'capistrano-rails', group: :development
-
+  gem 'letter_opener'
 end
 
 group :development, :test do

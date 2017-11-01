@@ -168,6 +168,10 @@ GEM
     kaminari-core (1.1.0)
     keytar (1.5.3)
       activesupport
+    launchy (2.4.3)
+      addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     libv8 (5.9.211.38.1)
     loofah (2.1.1)
       crass (~> 1.0.2)
@@ -368,6 +372,7 @@ DEPENDENCIES
   inherited_resources!
   jquery-rails
   kaminari
+  letter_opener
   likeable!
   mini_magick
   mini_racer
