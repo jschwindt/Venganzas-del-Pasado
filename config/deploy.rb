@@ -1,5 +1,5 @@
 # config valid only for current version of Capistrano
-lock '3.9.1'
+lock '3.10.1'
 
 set :application, 'vdp'
 set :repo_url, 'git@github.com:jschwindt/Venganzas-del-Pasado.git'
