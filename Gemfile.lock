@@ -143,7 +143,7 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
-    i18n (0.9.4)
+    i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     innertube (1.1.0)
     joiner (0.3.4)
@@ -173,7 +173,7 @@ GEM
     letter_opener (1.6.0)
       launchy (~> 2.2)
     libv8 (6.3.292.48.1)
-    loofah (2.1.1)
+    loofah (2.2.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -218,7 +218,7 @@ GEM
     protected_attributes (1.1.4)
       activemodel (>= 4.0.1, < 5.0)
     public_suffix (3.0.1)
-    rack (1.6.8)
+    rack (1.6.9)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.2.10)
@@ -397,4 +397,4 @@ DEPENDENCIES
   wirble
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
