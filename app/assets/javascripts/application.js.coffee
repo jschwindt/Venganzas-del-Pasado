@@ -46,6 +46,19 @@ jQuery ->
   $('#new_comment').on 'ajax:success', (event) ->
     this.reset()
 
+  $('a[href^="#play-"]').on 'click', (event) ->
+    event.preventDefault()
+    link = $(this).attr('href')
+    time = link.replace('#play-', '')
+    min_sec = time.split(':')
+    if min_sec.length == 2
+      mins = parseInt(min_sec[0], 10)
+      secs = parseInt(min_sec[1], 10)
+      player = $(this).parents('article.post').first().find('audio')[0]
+      if player && mins >= 0 && mins < 120 && secs >=0 && secs < 60
+        player.currentTime = mins * 60 + secs
+        player.play()
+
   $(document).on 'click', '.btn-opinions-popover', (event) ->
     $this = $(this)
     if 'opened' != $this.data 'popover-status'
