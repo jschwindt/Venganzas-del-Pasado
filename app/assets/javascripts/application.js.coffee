@@ -48,16 +48,18 @@ jQuery ->
 
   $('a[href^="#play-"]').on 'click', (event) ->
     event.preventDefault()
-    link = $(this).attr('href')
-    time = link.replace('#play-', '')
-    min_sec = time.split(':')
-    if min_sec.length == 2
-      mins = parseInt(min_sec[0], 10)
-      secs = parseInt(min_sec[1], 10)
-      player = $(this).parents('article.post').first().find('audio')[0]
-      if player && mins >= 0 && mins < 120 && secs >=0 && secs < 60
-        player.currentTime = mins * 60 + secs
-        player.play()
+    h_m_s = $(this).attr('href').replace('#play-', '').split(':')
+    current_time = 0
+    if h_m_s.length == 2
+      current_time = parseInt(h_m_s[0]) * 60 + parseInt(h_m_s[1])
+    else if h_m_s.length == 3
+      current_time = parseInt(h_m_s[0]) * 3600 + parseInt(h_m_s[1]) * 60 + parseInt(h_m_s[2])
+    else
+      return
+    player = $(this).parents('article.post').first().find('audio')[0]
+    if player && current_time > 0 && current_time < 7200
+      player.currentTime = current_time
+      player.play()
 
   $(document).on 'click', '.btn-opinions-popover', (event) ->
     $this = $(this)
