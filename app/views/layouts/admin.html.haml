@@ -15,9 +15,11 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
     = stylesheet_link_tag "application"
-    = stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.1.0/codemirror.css'
     = favicon_link_tag '/favicon.ico'
     = csrf_meta_tag
+
+    %link{rel: "stylesheet", href:"https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css"}
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
     - if Rails.env.production?
       = render 'analytics'
@@ -35,9 +37,3 @@
           = render 'sidebar'
 
     = javascript_include_tag "application"
-
-    %script{ src: 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.1.0/codemirror.min.js' }
-    %script{ src: 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.1.0/addon/edit/continuelist.min.js' }
-    %script{ src: 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.1.0/mode/xml/xml.min.js' }
-    %script{ src: 'https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.1.0/mode/markdown/markdown.min.js' }
-    %script{ src: 'https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.2/marked.min.js' }

@@ -47,6 +47,7 @@ module ApplicationHelper
     markdown = Redcarpet::Markdown.new(
         rndr,
         :autolink            => true,
+        :strikethrough       => true,
         :no_intra_emphasis   => true,
         :space_after_headers => true)
     markdown.render(text).html_safe
