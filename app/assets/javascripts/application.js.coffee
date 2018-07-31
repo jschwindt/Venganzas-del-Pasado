@@ -13,30 +13,31 @@
 jQuery ->
   $("abbr.timeago").timeago()
 
-  mde = new SimpleMDE(
-    element: $("#markdownify")[0],
-    spellChecker: false
-    autofocus: true
-    forceSync: true
-    indentWithTabs: false
-    lineWrapping: false
-    blockStyles:
-      bold: "**"
-      italic: "_"
-    insertTexts:
-      link: ["[", "](#play-)"]
-    toolbar: ["bold", "italic", "strikethrough", "|",
-              "heading-1", "heading-2", "heading-3", "|",
-              "unordered-list", "ordered-list", "code", "quote", "link", "|",
-              "preview", "side-by-side", "fullscreen", "guide", "|"
-    ],
-  )
+  if (typeof SimpleMDE != "undefined")
+    mde = new SimpleMDE(
+      element: $("#markdownify")[0],
+      spellChecker: false
+      autofocus: true
+      forceSync: true
+      indentWithTabs: false
+      lineWrapping: false
+      blockStyles:
+        bold: "**"
+        italic: "_"
+      insertTexts:
+        link: ["[", "](#play-)"]
+      toolbar: ["bold", "italic", "strikethrough", "|",
+                "heading-1", "heading-2", "heading-3", "|",
+                "unordered-list", "ordered-list", "code", "quote", "link", "|",
+                "preview", "side-by-side", "fullscreen", "guide", "|"
+      ],
+    )
 
-  mde.codemirror.on 'refresh', ->
-    if (mde.isFullscreenActive())
-      $('.navbar').hide()
-    else
-      $('.navbar').show()
+    mde.codemirror.on 'refresh', ->
+      if (mde.isFullscreenActive())
+        $('.navbar').hide()
+      else
+        $('.navbar').show()
 
   $('.open_player').click (event) ->
     open_player this.href
