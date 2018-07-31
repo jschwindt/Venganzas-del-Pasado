@@ -26,11 +26,26 @@ jQuery ->
         italic: "_"
       insertTexts:
         link: ["[", "](#play-)"]
-      toolbar: ["bold", "italic", "strikethrough", "|",
-                "heading-1", "heading-2", "heading-3", "|",
+      toolbar: ["heading", "bold", "italic", "strikethrough", "|",
                 "unordered-list", "ordered-list", "code", "quote", "link", "|",
-                "preview", "side-by-side", "fullscreen"
-      ],
+                "preview", "side-by-side", "fullscreen", "|",
+                {
+                    name: 'guide'
+                    action: 'https://venganzasdelpasado.com.ar/articles/como-editar-posts'
+                    className: 'fa fa-info-circle',
+                    noDisable: true,
+                    title: 'Editor\'s Guide',
+                    default: true
+                },
+                {
+                    name: 'guide'
+                    action: 'https://venganzasdelpasado.com.ar/articles/markdown'
+                    className: 'fa fa-question-circle',
+                    noDisable: true,
+                    title: 'Markdown Guide',
+                    default: true
+                }
+              ]
     )
 
     mde.codemirror.on 'refresh', ->
