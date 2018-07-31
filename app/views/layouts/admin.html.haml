@@ -15,11 +15,9 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
     = stylesheet_link_tag "application"
+    = stylesheet_link_tag "inscrybmde.min"
     = favicon_link_tag '/favicon.ico'
     = csrf_meta_tag
-
-    %link{rel: "stylesheet", href:"https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css"}
-    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 
     - if Rails.env.production?
       = render 'analytics'
@@ -36,4 +34,6 @@
         .col-md-3
           = render 'sidebar'
 
+
+    = javascript_include_tag "inscrybmde.min"
     = javascript_include_tag "application"

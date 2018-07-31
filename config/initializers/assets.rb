@@ -11,6 +11,8 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 
 Rails.application.config.assets.precompile += %w(
+  inscrybmde.min.js
+  inscrybmde.min.css
   eb-garamond-fontfacekit/EBGaramond-webfont.eot
   eb-garamond-fontfacekit/EBGaramond-webfont.svg
   eb-garamond-fontfacekit/EBGaramond-webfont.ttf

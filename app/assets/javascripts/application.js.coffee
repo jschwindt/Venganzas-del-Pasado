@@ -13,8 +13,8 @@
 jQuery ->
   $("abbr.timeago").timeago()
 
-  if (typeof SimpleMDE != "undefined")
-    mde = new SimpleMDE(
+  if (typeof InscrybMDE != "undefined")
+    mde = new InscrybMDE(
       element: $("#markdownify")[0],
       spellChecker: false
       autofocus: true
@@ -29,7 +29,7 @@ jQuery ->
       toolbar: ["bold", "italic", "strikethrough", "|",
                 "heading-1", "heading-2", "heading-3", "|",
                 "unordered-list", "ordered-list", "code", "quote", "link", "|",
-                "preview", "side-by-side", "fullscreen", "guide", "|"
+                "preview", "side-by-side", "fullscreen"
       ],
     )
 
