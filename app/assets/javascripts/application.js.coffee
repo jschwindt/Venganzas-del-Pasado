@@ -96,6 +96,8 @@ jQuery ->
       return
     player = $(this).parents('article.post').first().find('audio')[0]
     if player && current_time > 0 && current_time < 7200
+      for audio in $('audio')
+        audio.pause()
       player.currentTime = current_time
       player.play()
 
