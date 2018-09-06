@@ -1,24 +1,23 @@
 #!/bin/sh
 
-HOME=/var/www/venganzasdelpasado.com.ar/st2
-DURATION=7512
-DATE=`/bin/date +%F -d yesterday`
+DEST=/var/www/venganzasdelpasado.com.ar/st2
+DATE=$(date +%F -d yesterday)
+YEAR=$(date +%Y -d yesterday)
+URL=https://radio3.dl.uy:9952/?type=http
+DURATION=2:00:00
+#DURATION=0:02:00
 
-cd $HOME
-/bin/rm -rf lvst?.*
+ffmpeg -y -loglevel info \
+       -i ${URL} -t ${DURATION} \
+       -codec:a libmp3lame -b:a 32k \
+       -filter:a volume="replaygain=track:volume=0.4",compand="attacks=1:decays=4:soft-knee=6:points=-80/-80|-75/-25|0/0:gain=-6:volume=-30:delay=1" \
+       \
+       -metadata title="La venganza ${DATE}" \
+       -metadata artist="Alejandro Dolina" \
+       -metadata album="La venganza será terrible" \
+       -metadata year="${YEAR}" \
+       -metadata genre="Other" \
+       -metadata comment="Programa de Dolina en Radio AM750 del ${DATE} http://venganzasdelpasado.com.ar/" \
+       \
+       ${DEST}/lavenganza_${DATE}.mp3
 
-# Radio Del Plata
-/usr/bin/cvlc http://cdn-zc-lsd-3.planisys.net:1935/AM2/live/playlist.m3u8 --sout file/asf:lvst0.asf &
-/bin/sleep $DURATION
-kill $!
-
-/usr/bin/nice -n 15 /usr/bin/mplayer -ao pcm:file=lvst0.wav lvst0.asf
-/usr/bin/nice -n 15 /usr/bin/sox lvst0.wav -c 1 --replay-gain track lvst1.wav vol 0.4 compand 1,4 6:-80,-80,-75,-25,0,0 -6 -30 1
-
-/usr/bin/lame --quiet -v -h -B24 \
- --tl "La venganza sera terrible" \
- --tt "La venganza $DATE" \
- --tg "Other" \
- --ta "Alejandro Dolina" \
- --tc "Programa de Dolina en Radio del Plata del $DATE http://venganzasdelpasado.com.ar/" \
- lvst1.wav lavenganza_$DATE.mp3
