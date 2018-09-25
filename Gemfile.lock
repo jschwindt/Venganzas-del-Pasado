@@ -119,7 +119,7 @@ GEM
     execjs (2.7.0)
     faraday (0.12.2)
       multipart-post (>= 1.2, < 3)
-    ffi (1.9.21)
+    ffi (1.9.25)
     friendly_id (5.2.3)
       activerecord (>= 4.0.0)
     globalid (0.4.1)
@@ -397,4 +397,4 @@ DEPENDENCIES
   wirble
 
 BUNDLED WITH
-   1.16.1
+   1.16.4
