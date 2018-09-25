@@ -53,7 +53,7 @@ end
 
 gem 'bootstrap-sass'
 
-gem 'mysql2'
+gem 'mysql2', '~> 0.4.0'
 
 gem 'kaminari'
 
