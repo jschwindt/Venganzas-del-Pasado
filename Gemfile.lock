@@ -172,7 +172,7 @@ GEM
     letter_opener (1.6.0)
       launchy (~> 2.2)
     libv8 (6.7.288.46.1)
-    loofah (2.2.2)
+    loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.0)
@@ -396,4 +396,4 @@ DEPENDENCIES
   wirble
 
 BUNDLED WITH
-   1.16.5
+   1.16.6
