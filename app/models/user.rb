@@ -27,11 +27,10 @@ class User < ActiveRecord::Base
     def find_for_facebook_oauth(access_token, signed_in_resource=nil)
       data = access_token.extra.raw_info
       if user = User.where('email = ? OR fb_userid = ?', data.email, data.id).first
-        if user.email != data.email || user.fb_userid != data.id
-          user.email     = data.email
-          user.fb_userid = data.id
-          user.save!
-        end
+        user.email     = data.email
+        user.fb_userid = data.id
+        user.confirmed_at = Time.zone.now
+        user.save!
         user
       else
         create_from_facebook data
