@@ -53,43 +53,6 @@ module ApplicationHelper
     markdown.render(text).html_safe
   end
 
-  def fb_like_button_for(object)
-    object_url = polymorphic_url(object)
-
-    link_to "Facebook",
-            "https://www.facebook.com/sharer.php?u=#{url_encode(object_url)}",
-            'class'     => "socialite facebook-like",
-            'data-href'  => object_url,
-            'data-send'  => "false",
-            'data-layout' => "button_count",
-            'data-width' => "120",
-            'data-show-faces' => "false"
-  end
-
-  def tweet_button_for(object)
-    object_url = polymorphic_url(object)
-
-    link_to "Twitter",
-            "https://twitter.com/intent/tweet?via=venganzaspasado&url=#{url_encode(object_url)}",
-            'class'     => "socialite twitter-share",
-            'data-url'  => object_url,
-            'data-via'  => "venganzaspasado",
-            'data-lang' => "es",
-            'data-hashtags' => "vdp"
-  end
-
-  def plusone_button_for(object)
-    object_url = polymorphic_url(object)
-
-    link_to "Google+", "https://plus.google.com/share?url=" + url_encode(object_url),
-            'class' => 'socialite googleplus-one',
-            'data-size' => "tall",
-            'data-href' => object_url,
-            'data-annotation' => "inline",
-            'data-recommendations' => 'false',
-            'data-width' => '120'
-  end
-
   def timeago(time, options = {})
     options[:class] ||= "timeago"
     content_tag(:abbr, 'el ' + l(time, :format => :long), options.merge(:title => time.getutc.iso8601)) if time

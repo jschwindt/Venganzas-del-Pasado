@@ -14,12 +14,12 @@
   .share
     %em
       Compartilo:
-    .twitter
-      = tweet_button_for post
-    .facebook
-      = fb_like_button_for post
-    .gplus
-      = plusone_button_for post
+      %div{ 'class' => "social-likes social-likes_light", 'data-counters' => "no",
+            'data-url' => post_url(post), 'data-title' => post.title }
+        .facebook{ 'title' => "Compartir en Facebook" }
+          Facebook
+        .twitter{ 'data-via' => "venganzaspasado", 'title' => "Compartir en Twitter" }
+          Twitter
 
   .audios
     = render post.audios

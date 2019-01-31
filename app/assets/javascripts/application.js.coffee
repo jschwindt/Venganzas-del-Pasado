@@ -4,8 +4,7 @@
 //= require bootstrap-notify
 //= require jquery.timeago
 //= require jquery.timeago-es
-//= require socialite
-//= require socialite-extras
+//= require social-likes
 //= require detect-mobile
 //= require jquery.appear
 //= require_self
@@ -58,28 +57,10 @@ jQuery ->
     open_player this.href
     return false
 
-  Socialite.setup
-    facebook:
-      lang     : 'es_LA',
-      appId    : '305139166173322'
-
-  if not isMobile()
-    $facebookLikebox = $('.facebook-likebox')[0]
-    $twitterTimeline = $('.twitter-timeline')[0]
-
-    if $facebookLikebox
-      Socialite.load $facebookLikebox
-      Socialite.activate $facebookLikebox
-
-    if $twitterTimeline
-      Socialite.load $twitterTimeline
-      Socialite.activate $twitterTimeline
-
-  $('.post .share').appear
-    interval: 2000
-
-  $(document.body).on 'appear', '.post .share', (event) ->
-    Socialite.load this
+  # Socialite.setup
+  #   facebook:
+  #     lang     : 'es_LA',
+  #     appId    : '305139166173322'
 
   $('#new_comment').on 'ajax:success', (event) ->
     this.reset()

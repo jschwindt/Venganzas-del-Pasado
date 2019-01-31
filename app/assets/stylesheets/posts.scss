@@ -1,38 +1,8 @@
 .post {
   margin-bottom: $baseLineHeight*2;
-  
-  .share {
-    .socialite {
-      display: block;
-      font-size: 0.0001em;
-      text-indent: -99999px;
-    }
-    .socialite-loaded {
-      text-indent: 0px !important;
-    }
-    .twitter .socialite {
-      background: image-url('btn-twittear.png') left top no-repeat;
-      width: 92px;
-      height: 20px;
-    }
-    .facebook .socialite {
-      background: image-url('btn-like.png') left top no-repeat;
-      width: 97px;
-      height: 20px;
-    }
-    .gplus .socialite {
-      background: image-url('btn-googleplus.png') left top no-repeat;
-      width: 97px;
-      height: 20px;
-    }
-    
-    .socialite-loaded {
-      background: none !important;
-    }
-  }
-  
+
   .actions {
-  
+
     .label {
       &.status-published {
         background-color: $label-success-bg;
@@ -46,9 +16,9 @@
         background-color: $label-danger-bg;
       }
     }
-  
+
   }
-  
+
   .audios {
     .audio {
       margin-bottom: $baseLineHeight;
@@ -86,21 +56,21 @@
     background: lighten($claro, 15);
     padding: 10px;
     font-size: $baseFontSize*0.75;
-  
+
     & > * {
       float: left;
       margin-right: 10px;
       height: 20px;
       vertical-align: middle;
     }
-    
+
     em {
       margin-right: 20px;
     }
-    
+
     .twitter {
     }
-    
+
     .facebook {
       iframe { width: 135px; }
     }
@@ -132,13 +102,13 @@
   .comment .where {
     display: none;
   }
-  
+
   .login-advice {
     background: image-url('disabled-comment-form.png') top left no-repeat;
     height: 250px;
     text-align: center;
     padding-top: 100px;
-    
+
     p {
       display: block;
       margin: 0 auto;
