@@ -57,11 +57,6 @@ jQuery ->
     open_player this.href
     return false
 
-  # Socialite.setup
-  #   facebook:
-  #     lang     : 'es_LA',
-  #     appId    : '305139166173322'
-
   $('#new_comment').on 'ajax:success', (event) ->
     this.reset()
 

@@ -9,9 +9,7 @@
       Si tenés una cuenta en #{link_to "Facebook", 'https://www.facebook.com/'} podés iniciar sesión haciendo click en el siguiente botón:
 
     %p.facebook-login-container
-      = link_to user_omniauth_path(:facebook) do
-        %span.glyphicon.glyphicon-facebook
-        Login con Facebook
+      = link_to image_tag('fb-login.png', style: "height: 24px", title: "Iniciar sesión con Facebook"), user_omniauth_path(:facebook)
 
     %p
       Si ya tenés una cuenta en este sitio, podés ingresar mediante el siguiente formulario.

@@ -1,7 +1,5 @@
 -unless user_signed_in?
   %li
-    = link_to('Iniciar Sesión', new_user_session_path)
+    = link_to('Iniciar sesión con email', new_user_session_path)
   %li
-    = link_to user_omniauth_path(:facebook) do
-      %span.glyphicon.glyphicon-facebook
-      Login con Facebook
+    = link_to image_tag('fb-login.png', style: "height: 22px", title: "Iniciar sesión con Facebook"), user_omniauth_path(:facebook)
