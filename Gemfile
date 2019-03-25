@@ -51,7 +51,7 @@ group :development, :test do
 
 end
 
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.4.1'
 
 gem 'mysql2', '~> 0.4.0'
 
