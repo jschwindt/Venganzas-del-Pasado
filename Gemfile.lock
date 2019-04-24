@@ -197,7 +197,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (4.2.0)
-    nokogiri (1.10.1)
+    nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     oauth2 (1.4.0)
       faraday (>= 0.8, < 0.13)
@@ -399,4 +399,4 @@ DEPENDENCIES
   wirble
 
 BUNDLED WITH
-   1.16.6
+   1.17.2
