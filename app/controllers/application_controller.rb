@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   helper :smilies
 
   rescue_from ActiveRecord::RecordNotFound do |exception|
-    render '404', :status => 404
+    render '404.html', :status => 404
   end
 
   rescue_from CanCan::AccessDenied do |exception|

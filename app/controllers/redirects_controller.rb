@@ -43,7 +43,7 @@ class RedirectsController < ApplicationController
       redirect_to "/users/#{$1}/comments/page/#{$2}",                       :status => :moved_permanently
 
     else
-      render '404', :status => 404
+      render '404.html', :status => 404
     end
   end
 

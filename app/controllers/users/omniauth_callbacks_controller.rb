@@ -15,7 +15,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def passthru
-    render '404', :status => 404
+    render '404.html', :status => 404
   end
 
 end
