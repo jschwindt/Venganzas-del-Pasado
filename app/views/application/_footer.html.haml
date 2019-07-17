@@ -6,8 +6,6 @@
           %h3 Último Programa
           - last_post = Post.published.lifo.first
           %h4=link_to last_post.title, last_post
-      .col-md-1
-
       .col-md-3
         %h3 Más Venganzas
         %ul
@@ -21,10 +19,14 @@
             = link_to "Subir programas viejos", new_post_path
           %li
             = link_to "Últimas contribuciones", contributions_path
-      .col-md-3
+      .col-md-2
         %h3 Ayuda
         %ul
           %li=link_to 'Acerca de este sitio', article_path('acerca-de-este-sitio')
           %li=link_to 'Preguntas Frecuentes', article_path('ayuda')
           %li=link_to 'Cómo funciona VdP', article_path('como-se-graba-el-programa')
-          %li=link_to 'Estilos de Comentarios', article_path('markdown')
+          %li=link_to 'Estilos en Comentarios', article_path('markdown')
+      .col-md-2
+        %h3 Sitios amigos
+        %ul
+          %li=link_to 'Papel Mineral Argentina', 'https://papelmineral.com.ar/'
