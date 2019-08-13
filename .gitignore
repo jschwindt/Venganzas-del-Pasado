@@ -14,3 +14,4 @@ public/assets
 public/system
 tmp/
 coverage
+.vscode/
