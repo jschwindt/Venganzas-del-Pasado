@@ -69,6 +69,8 @@ gem 'has_scope'
 
 gem 'friendly_id'
 gem 'redcarpet'
+gem 'omniauth', '~> 1.9.0'
+gem 'omniauth-rails_csrf_protection', '~> 0.1'
 gem "omniauth-facebook"
 gem 'aasm', '~> 3.0.14'
 

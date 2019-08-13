@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   devise_scope :users do
-    get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru', :as => :user_omniauth
+    post '/users/auth/:provider' => 'users/omniauth_callbacks#passthru', :as => :user_omniauth
   end
 
   get 'posts/:year(/:month(/:day))' => 'posts#archive', :as => :posts_archive, :constraints => {
