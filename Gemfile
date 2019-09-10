@@ -58,7 +58,7 @@ gem 'mysql2', '~> 0.4.0'
 gem 'kaminari'
 
 gem 'haml-rails'
-gem 'devise', '~> 4.6.0'
+gem 'devise', '~> 4.7.0'
 gem 'cancan'
 gem 'carrierwave'
 gem 'mini_magick'
