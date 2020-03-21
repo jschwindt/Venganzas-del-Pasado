@@ -1,3 +1,1 @@
-User-agent: *
-
-Sitemap: https://venganzasdelpasado.com.ar/sitemaps/sitemap.xml.gz
+# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
