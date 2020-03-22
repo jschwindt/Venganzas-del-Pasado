@@ -1,0 +1,34 @@
+version: '3.3'
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    container_name: vdp_mysql
+    environment:
+      MYSQL_DATABASE: 'vpd'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'user'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 'password'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+      # Where our data will be persisted
+    volumes:
+      - vdp-mysql-db:/var/lib/mysql
+
+  redis:
+    image: "redis:5-alpine"
+    restart: always
+    container_name: vdp_redis
+    ports:
+      - 6379:6379
+    volumes:
+      - vdp-redis-db:/data
+
+# Names our volume
+volumes:
+  vdp-mysql-db:
+  vdp-redis-db:
