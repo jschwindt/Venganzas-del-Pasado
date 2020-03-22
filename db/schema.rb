@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_03_22_010850) do
 
-  create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "articles", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "title"
     t.string "slug"
     t.text "content"
@@ -21,14 +21,14 @@ ActiveRecord::Schema.define(version: 2020_03_22_010850) do
     t.index ["slug"], name: "index_articles_on_slug", unique: true
   end
 
-  create_table "audios", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "audios", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "post_id"
     t.string "url"
     t.integer "bytes"
     t.index ["post_id"], name: "index_audios_on_post_id"
   end
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "comments", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "post_id"
     t.integer "user_id"
     t.string "author"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_010850) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "friendly_id_slugs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "friendly_id_slugs", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
     t.string "sluggable_type", limit: 40
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_010850) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
-  create_table "media", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "media", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.string "asset"
@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_010850) do
     t.index ["post_id"], name: "index_media_on_post_id"
   end
 
-  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "posts", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.integer "comments_count", default: 0
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2020_03_22_010850) do
     t.index ["updated_at"], name: "index_posts_on_updated_at"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", limit: 128, default: "", null: false
     t.string "alias", null: false
