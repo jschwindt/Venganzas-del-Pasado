@@ -74,6 +74,8 @@ GEM
     bootsnap (1.4.6)
       msgpack (~> 1.0)
     builder (3.2.4)
+    bulma-rails (0.8.0)
+      sassc (~> 2.0)
     byebug (11.1.1)
     cancancan (3.1.0)
     capybara (3.31.0)
@@ -288,6 +290,7 @@ PLATFORMS
 DEPENDENCIES
   aasm
   bootsnap (>= 1.4.2)
+  bulma-rails (~> 0.8.0)
   byebug
   cancancan
   capybara (>= 2.15)

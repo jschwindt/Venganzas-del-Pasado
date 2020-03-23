@@ -1,15 +1,51 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>VenganzasDelPasado</title>
+
+<head>
+    <title>Venganzas del Pasado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
-  </head>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+    <%= render 'navbar' %>
+    <section class="hero header">
+        <div class="hero-body header-container">
+            <div class="container has-text-centered">
+                <%= link_to image_tag("splash.png"), :root, title: "Vengazas del Pasado" %>
+                <p class="claim">Encontrá todos los archivos de audio en MP3 del programa de radio <em>La Venganza Será
+                        Terrible</em> de <strong>Alejandro Dolina</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="subheader">
+        <p>/</p>
+        <p>Publicidad 1</p>
+        <p>\</p>
+    </section>
+
+    <section class="section main">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-three-quarters">
+                    <h1 class="title">Main Body</h1>
+                    <p>lorem ipsum</p>
+                </div>
+                <div class="column">
+                    <h1 class="title">Right column</h1>
+                    <p>lorem ipsum</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%= render 'footer' %>
+
+</body>
+
 </html>

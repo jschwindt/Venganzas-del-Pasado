@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+// Update some of Bulma's component variables
+$body-background-color: white;
+
+@import "sass/utilities/_all";
+@import "sass/base/_all";
+@import "sass/elements/_all";
+@import "sass/form/_all";
+@import "sass/components/_all";
+@import "sass/grid/_all";
+@import "sass/layout/_all";
+
+.header {
+  background-image: image-url("redtexture.jpg");
+}
+
+.claim {
+  color: black;
+  font-size: 1.3em;
+  strong {
+    color: black;
+  }
+}
+
+.header-container {
+  padding: 1.2rem;
+}
+
+.subheader {
+  background-color: #404040;
+}
+
+.navbar-link img {
+  margin-right: 0.2rem;
+  width: 28px;
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+.footer {
+  background: image-url('fondo-footer.png') no-repeat left bottom;
+  background-color: #404040;
+  color: white;
+  min-height: 5rem;
+  a {
+    color: white;
+  }
+  h3 {
+    color: whitesmoke;
+    border-bottom: 1px solid whitesmoke;
+  }
+}
