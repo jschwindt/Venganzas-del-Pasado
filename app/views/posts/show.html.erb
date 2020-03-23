@@ -1,0 +1,48 @@
+<% if params[:page].nil? %>
+    <% page_title @post.title %>
+<% else %>
+    <% page_title @post.title + " - Página #{params[:page]} de comentarios" %>
+<% end %>
+<% meta_description @post.description %>
+
+<ul class="pager">
+    <% if prev_post = @post.previous %>
+    <li class="previous">
+        <%= link_to "Anterior", prev_post, :title => prev_post.title %>
+    </li>
+    <% end %>
+    <% if next_post = @post.next %>
+    <li class="next">
+        <%= link_to "Siguiente", next_post, :title => next_post.title %>
+    </li>
+    <% end %>
+</ul>
+
+<%= render @post %>
+<%= render 'layouts/banners/b468x60' %>
+
+<a name="comments"></a>
+<section id="post-<%= @post.id %>-comments">
+    <h4 class="fancy">Comentarios (<%= @post.comments.visible_by(current_user).count %>)</h4>
+    <div class="comments-list">
+        <% if @comments.count > 0 %>
+        <%= render @comments %>
+        <% else %>
+        <p>
+            No hay comentarios. ¡Podés ser el primero en comentar!
+        </p>
+        <% end %>
+    </div>
+    <div class="comments-paginator">
+        <%= paginate @comments, :window => 2, :remote => true %>
+    </div>
+    <div class="comments-form">
+        <% if can? :create, Comment %>
+        <%= render 'comments/form', :post => @post, :comment => @post.comments.build %>
+        <% else %>
+        <div class="login-advice">
+            <p>Tenés que <%= link_to "Iniciar sesión", new_user_session_path %> para comentar.</p>
+        </div>
+        <% end %>
+    </div>
+</section>

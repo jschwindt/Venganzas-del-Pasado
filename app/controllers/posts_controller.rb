@@ -1,7 +1,6 @@
-# encoding: utf-8
-
 class PostsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create]
+  before_action :find_page_by_slug, only: [:show]
   load_and_authorize_resource
   skip_authorize_resource :only => [:archive, :contributions]
 
@@ -52,5 +51,11 @@ class PostsController < ApplicationController
       end
       render 'new'
     end
+  end
+
+  protected
+
+  def find_page_by_slug
+    @post = Post.friendly.find(params[:id])
   end
 end

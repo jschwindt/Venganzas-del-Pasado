@@ -1,0 +1,4 @@
+es:
+    num_comments:
+        one: "1 Comentario"
+        other: "%{count} Comentarios"

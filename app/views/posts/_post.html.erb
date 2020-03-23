@@ -1,0 +1,68 @@
+<article class="post">
+    <header>
+        <%= "#{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i].capitalize} de #{post.created_at.year}" %>
+        <% if current_page?(post) %>
+        <h1 class="title"><%= link_to post.title, post %></h1>
+        <% else %>
+        <h3 class="title"><%= link_to post.title, post %></h3>
+        <% end %>
+    </header>
+    <div class="share">
+        <em>
+            Compartilo:
+            <div class="social-likes social-likes_light" data-counters="no" data-title="<%= post.title %>" data-url="<%= post_url(post) %>">
+                <div class="facebook" title="Compartir en Facebook">
+                    Facebook
+                </div>
+                <div class="twitter" data-via="venganzaspasado" title="Compartir en Twitter">
+                    Twitter
+                </div>
+            </div>
+        </em>
+    </div>
+    <div class="audios">
+        <%= render post.audios %>
+    </div>
+    <div class="content">
+        <% if post.content? %>
+        <%= markdown_format post.content, :filter_html => false %>
+        <% end %>
+    </div>
+    <% if can? :update, post %>
+    <div class="actions">
+        <span class="status-<%= post.status %> label"><%= post.status.capitalize %></span>
+        <span class="edit">
+            <span class="glyphicon glyphicon-edit"></span>
+            <%= link_to "Editar", edit_admin_post_path(post) %>
+        </span>
+        <% if post.pending? %>
+        <span class="approve">
+            <span class="glyphicon glyphicon-ok"></span>
+            <%= link_to "Aprobar contribución", approve_contribution_admin_post_path(post) %>
+        </span>
+        <% end %>
+    </div>
+    <% end %>
+    <footer>
+        <span class="permalink">
+            <span class="glyphicon glyphicon-bookmark"></span>
+            <%= link_to "Enlace permanente", post %>
+        </span>
+        <span class="date pull-right">
+            <span class="glyphicon glyphicon-calendar"></span>
+            <span title="Publicado el <%= post.created_at.day %> de <%= I18n.t('date.month_names')[post.created_at.month.to_i].capitalize %> de <%= post.created_at.year %>">
+                <%= post.created_at.strftime('%d/%m/%y') %>
+            </span>
+        </span>
+        <span class="comments pull-right">
+            <span class="glyphicon glyphicon-comment"></span>
+            <%= link_to t('num_comments', count: post.comments.visible_by(current_user).count), post_path(post, :anchor => "comments"), title: "Ver los comentarios" %>
+        </span>
+        <% if post.contributor %>
+        <span class="contribution pull-right">
+            <span class="glyphicon glyphicon-user"></span>
+            <%= link_to post.contributor_alias, user_url(post.contributor), title: "Ver el perfil de #{post.contributor_alias}" %>
+        </span>
+        <% end %>
+    </footer>
+</article>

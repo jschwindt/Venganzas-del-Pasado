@@ -1,0 +1,15 @@
+<% if params[:page].present? %>
+    <% the_title = "Programas de La Venganza será Terrible de Alejandro Dolina, <small>Página #{params[:page]}</small>" %>
+<% else %>
+    <% the_title = "Programas de La Venganza será Terrible de Alejandro Dolina" %>
+<% end %>
+<% page_title the_title %>
+<% meta_description strip_tags(the_title) %>
+
+<h2 class="title fancy is-4"><%= raw the_title %></h2>
+
+<%= render 'layouts/banners/b468x60' %>
+
+<%= render @posts %>
+
+<%= paginate @posts, :window => 2 %>
