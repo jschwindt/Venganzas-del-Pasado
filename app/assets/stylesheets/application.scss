@@ -25,9 +25,6 @@ $body-background-color: white;
 
 .header-container {
   padding: 1.2rem;
-  .interior img {
-    width: 220px;
-  }
 }
 
 .subheader {
@@ -54,5 +51,19 @@ $body-background-color: white;
   h3 {
     color: whitesmoke;
     border-bottom: 1px solid whitesmoke;
+  }
+}
+
+.fancy {
+  background-image: image-url("redtexture.jpg");
+  color: whitesmoke;
+  padding: 0.2em 0.2em 0.2em 0.5em;
+  border-radius: 0.2em;
+}
+
+.facebook-login {
+  img {
+    height: 2em;
+    margin: 10px;
   }
 }

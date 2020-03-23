@@ -1,0 +1,5 @@
+<p>¡Bienvenido <%= @resource.alias %> &lt;<%= @email %>&gt; a Venganzas del Pasado!</p>
+
+<p>Podés confirmar tu cuenta haciendo click en el siguiente link:</p>
+
+<p><%= link_to 'Confirmar mi cuenta', confirmation_url(@resource, confirmation_token: @token) %></p>

@@ -1,0 +1,21 @@
+<h2 class="title fancy is-4">¿Problemas para iniciar sesión?</h2>
+<h3 class="title is-4">Reenviá las Instrucciones de Confirmación</h3>
+
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+<%= render "devise/shared/error_messages", resource: resource %>
+
+<div class="field">
+    <%= f.label :email, class: "label" %>
+    <div class="control">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+    </div>
+</div>
+
+<div class="field is-grouped">
+    <div class="control">
+        <button class="button is-link">Reenviar</button>
+    </div>
+</div>
+<% end %>
+
+<%= render "devise/shared/links" %>
