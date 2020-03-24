@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  include Likeable::UserMethods
   extend FriendlyId
   friendly_id :alias, use: [:history, :finders]
   has_many :comments, :dependent => :nullify
