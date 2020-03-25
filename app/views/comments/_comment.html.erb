@@ -1,12 +1,12 @@
 <a name="comment-<%= comment.id %>"></a>
-<article class="<%= comment.status %> row comment" id="comment-<%= comment.id %>">
+<article class="<%= comment.status %> media comment" id="comment-<%= comment.id %>">
     <div class="col-md-12 description">
         <% cache comment, :expires_in => 7.days do %>
         <div class="media">
-            <div class="media-left media-top">
+            <div class="media-left">
                 <img alt="<%= comment.author %>" class="img-rounded" src="<%= comment.profile_picture_url %>" />
             </div>
-            <div class="media-body">
+            <div class="media-content">
                 <div class="author">
                     <span class="who">
                         <%= link_to_unless comment.user.nil?, comment.author, comment.user %>

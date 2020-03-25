@@ -11,6 +11,8 @@ $body-background-color: white;
 @import "sass/grid/_all";
 @import "sass/layout/_all";
 
+@import "social-likes/dist/social-likes_classic";
+
 .header {
   background-image: image-url("redtexture.jpg");
 }
@@ -66,4 +68,38 @@ $body-background-color: white;
     height: 2em;
     margin: 10px;
   }
+}
+
+.post {
+  padding: 1rem;
+}
+
+.post-top-header .level-right {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+audio {
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-top-header {
+  margin-bottom: 0.1rem !important;
+}
+
+.your-help {
+  margin-top: 2rem;
+}
+
+.recent-comments {
+  margin-top: 2rem;
+}
+
+article.comment {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  word-break: break-word;
 }

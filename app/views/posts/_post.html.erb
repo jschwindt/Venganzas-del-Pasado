@@ -1,26 +1,28 @@
-<article class="post">
-    <header>
-        <%= "#{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i].capitalize} de #{post.created_at.year}" %>
+<article class="box post">
+    <div class="post-top-header level">
+        <div class="level-left">
+            <em>
+                <%= "#{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i].capitalize} de #{post.created_at.year}" %>
+            </em>
+        </div>
+        <div class="level-right">
+            <div class="post-share">
+                <div class="social-likes social-likes_light" data-counters="no" data-title="<%= post.title %>" data-url="<%= post_url(post) %>">
+                    <div class="facebook" title="Compartir en Facebook">Facebook</div>
+                    <div class="twitter" data-via="venganzaspasado" title="Compartir en Twitter">Twitter</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-header">
         <% if current_page?(post) %>
         <h1 class="title"><%= link_to post.title, post %></h1>
         <% else %>
         <h3 class="title"><%= link_to post.title, post %></h3>
         <% end %>
-    </header>
-    <div class="share">
-        <em>
-            Compartilo:
-            <div class="social-likes social-likes_light" data-counters="no" data-title="<%= post.title %>" data-url="<%= post_url(post) %>">
-                <div class="facebook" title="Compartir en Facebook">
-                    Facebook
-                </div>
-                <div class="twitter" data-via="venganzaspasado" title="Compartir en Twitter">
-                    Twitter
-                </div>
-            </div>
-        </em>
     </div>
-    <div class="audios">
+    <div class="post-audios">
         <%= render post.audios %>
     </div>
     <div class="content">
@@ -28,6 +30,7 @@
         <%= markdown_format post.content, :filter_html => false %>
         <% end %>
     </div>
+    <hr/>
     <% if can? :update, post %>
     <div class="actions">
         <span class="status-<%= post.status %> label"><%= post.status.capitalize %></span>
