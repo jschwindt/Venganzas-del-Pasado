@@ -3,7 +3,6 @@ module Admin
     before_action :authenticate_user!
     before_action :verify_admin
     has_scope :page, default: 1
-    with_role :admin
     layout 'admin'
 
     def update

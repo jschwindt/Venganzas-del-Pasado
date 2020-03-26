@@ -3,7 +3,6 @@ module Admin
     before_action :load_collection, only: :index
     before_action :load_resource, except: :index
     authorize_resource
-    has_scope :page, default: 1
     has_scope :lifo, type: :boolean, default: true
 
     protected
@@ -18,6 +17,10 @@ module Admin
 
     def load_resource
       @user = User.friendly.find(params[:id])
+    end
+
+    def user_params
+      params.require(:user).permit(%i[alias karma role])
     end
   end
 end

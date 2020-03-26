@@ -12,11 +12,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
-  # Setup accessible (or protected) attributes for your model
-  # TODO: Rails6
-  # attr_accessible :email, :password, :password_confirmation, :remember_me, :alias
-  # attr_accessible :karma, :role, :alias, :as => :admin
-
   scope :lifo, -> { order('created_at DESC') }
 
   class << self

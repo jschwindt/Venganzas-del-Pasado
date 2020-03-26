@@ -1,6 +1,6 @@
 <% page_title("Listado de Usuarios") %>
 <h2 class="title fancy is-4">Administración de Usuarios</h2>
-<h3 class="title"><%= html_page_title %></h3>
+<h3 class="title is-4"><%= html_page_title %></h3>
 <% if @users.empty? %>
 <p>No se han encontrado usuarios</p>
 <% else %>
@@ -22,14 +22,8 @@
                 <%= user.alias %>
             </td>
             <td class="actions">
-                <%= link_to user, :target => '_blank' do %>
-                <span class="glyphicon glyphicon-user"></span>
-                Perfil
-                <% end %>
-                <%= link_to edit_admin_user_path(user) do %>
-                <span class="glyphicon glyphicon-edit"></span>
-                Editar
-                <% end %>
+                <%= link_to "Perfil", user, target: '_blank', class: "tag is-small" %>
+                <%= link_to "Editar", edit_admin_user_path(user), class: "tag is-small is-success" %>
             </td>
         </tr>
         <% end %>
