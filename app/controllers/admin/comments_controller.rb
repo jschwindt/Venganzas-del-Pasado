@@ -1,39 +1,44 @@
-# encoding: utf-8
-
 module Admin
   class CommentsController < BaseController
-    load_and_authorize_resource
+    before_action :load_collection, only: :index
+    before_action :load_resource, except: :index
+    authorize_resource
     has_scope :has_status
-    has_scope :lifo, :type => :boolean, :default => true
+    has_scope :lifo, type: :boolean, default: true
 
     def approve
       @comment = Comment.find params[:id]
       @comment.approve!
-      flash[:notice] = "Se ha aprobado el comentario."
-      redirect_to collection_url(:has_status => 'pending')
+      flash[:notice] = 'Se ha aprobado el comentario.'
+      redirect_to collection_url(has_status: 'pending')
     end
 
     def trash
       @comment = Comment.find params[:id]
       @comment.trash!
-      flash[:notice] = "Se ha eliminado el comentario."
+      flash[:notice] = 'Se ha eliminado el comentario.'
       redirect_to collection_url
     end
 
     def destroy
       destroy! do
-        flash[:notice] = "Se ha eliminado definitivamente el comentario."
-        collection_url(:has_status => 'deleted')
+        flash[:notice] = 'Se ha eliminado definitivamente el comentario.'
+        collection_url(has_status: 'deleted')
       end
     end
 
-    private
+    protected
 
     def verify_admin
-      unless current_user.can?(:approve, Comment)
-        render '403', :status => 403
-      end
+      render '403', status: 403 unless current_user.can?(:approve, Comment)
     end
 
+    def load_collection
+      @comments = apply_scopes Comment
+    end
+
+    def load_resource
+      @comment = Comment.find(params[:id])
+    end
   end
 end

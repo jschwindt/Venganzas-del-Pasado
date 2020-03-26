@@ -38,7 +38,7 @@ module ApplicationHelper
   end
 
   def active_if_current(action)
-    current_page?(action) ? 'active' : 'inactive'
+    current_page?(action) ? 'is-active' : ''
   end
 
   def markdown_format(text, options = {})
