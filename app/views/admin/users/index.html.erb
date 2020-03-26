@@ -1,0 +1,39 @@
+<% page_title("Listado de Usuarios") %>
+<h2 class="title fancy is-4">Administración de Usuarios</h2>
+<h3 class="title"><%= html_page_title %></h3>
+<% if @users.empty? %>
+<p>No se han encontrado usuarios</p>
+<% else %>
+<table class="table is-striped is-hoverable is-fullwidth">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @users.each do |user| %>
+        <tr>
+            <td>
+                <%= user.id %>
+            </td>
+            <td>
+                <%= user.alias %>
+            </td>
+            <td class="actions">
+                <%= link_to user, :target => '_blank' do %>
+                <span class="glyphicon glyphicon-user"></span>
+                Perfil
+                <% end %>
+                <%= link_to edit_admin_user_path(user) do %>
+                <span class="glyphicon glyphicon-edit"></span>
+                Editar
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= paginate @users %>
+<% end %>

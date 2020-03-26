@@ -103,3 +103,30 @@ article.comment {
   word-break: break-all;
   word-break: break-word;
 }
+
+.post-content {
+  h1:not(:first-child),
+  h2:not(:first-child),
+  h3:not(:first-child),
+  h4:not(:first-child),
+  h6:not(:first-child) {
+    margin-top: 0.1em;
+    margin-bottom: 0.2em;
+  }
+}
+
+.post footer {
+  background-color: #CCC;
+  padding: 0.3em;
+  border-radius: 0.2em;
+  .column {
+    padding: 0.5rem;
+  }
+}
+
+.title-right {
+  background-color: #404040;
+  color: whitesmoke;
+  padding: 0.2em;
+  border-radius: 0.2em;
+}

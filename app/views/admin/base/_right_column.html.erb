@@ -1,0 +1,34 @@
+<h3 class="title title-right is-4">Menú</h3>
+
+<aside class="menu box">
+    <ul class="menu-list">
+        <li><%= link_to "Dashboard", admin_dashboard_path %></li>
+
+        <% if can? :manage, User %>
+        <li><%= link_to "Usuarios", admin_users_path %></li>
+        <% end %>
+
+        <% if can? :approve, Comment %>
+        <li><%= link_to "Comentarios", admin_comments_path %></li>
+        <% end %>
+
+        <% if can? :update, Post %>
+        <li><%= link_to "Posts", admin_posts_path %>
+            <% if can? :create, Post %>
+            <ul>
+                <li><%= link_to "Crear Post", new_admin_post_path %></li>
+            </ul>
+            <% end %>
+        </li>
+        <% end %>
+
+        <% if can? :manage, Article %>
+        <li><%= link_to "Artículos", admin_articles_path %>
+            <ul>
+                <li><%= link_to "Crear Artículo", new_admin_article_path %></li>
+            </ul>
+        </li>
+        <% end %>
+
+    </ul>
+</aside>

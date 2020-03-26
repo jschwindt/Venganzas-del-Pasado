@@ -16,23 +16,25 @@
                 <%= link_to 'Programas Recientes', posts_path, class: "navbar-item" %>
                 <%= link_to 'Ayuda', article_path('ayuda'), class: "navbar-item" %>
                 <% if user_signed_in? %>
-                  <%= link_to 'Administración', admin_dashboard_path, class: "navbar-item" %>
-                  <div class="navbar-item has-dropdown is-hoverable">
-                      <a class="navbar-link">
-                          <%= image_tag current_user.profile_picture_url %>
-                          <%= current_user.alias %>
-                      </a>
-                      <div class="navbar-dropdown">
-                          <%= link_to "Mi Perfil", 'current_user', class: "navbar-item" %>
-                          <%= link_to "Preferencias", 'edit_user_registration_path', class: "navbar-item" %>
-                          <hr class="navbar-divider">
-                          <%= link_to "Cerrar Sesión", destroy_user_session_path, class: "navbar-item" %>
-                      </div>
-                  </div>
+                <% if current_user.try(:can_admin?) %>
+                    <%= link_to 'Administración', admin_dashboard_path, class: "navbar-item" %>
+                <% end %>
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        <%= image_tag current_user.profile_picture_url %>
+                        <%= current_user.alias %>
+                    </a>
+                    <div class="navbar-dropdown">
+                        <%= link_to "Mi Perfil", 'current_user', class: "navbar-item" %>
+                        <%= link_to "Preferencias", 'edit_user_registration_path', class: "navbar-item" %>
+                        <hr class="navbar-divider">
+                        <%= link_to "Cerrar Sesión", destroy_user_session_path, class: "navbar-item" %>
+                    </div>
+                </div>
                 <% else %>
-                  <%= link_to 'Registrate', new_user_registration_path, class: "navbar-item" %>
-                  <%= link_to 'Iniciá sesión con email', new_user_session_path, class: "navbar-item" %>
-                  <%= link_to image_tag('fb-login.png', title: "Iniciar sesión con Facebook"), user_omniauth_path(:facebook), method: :post, class: "navbar-item" %>
+                <%= link_to 'Registrate', new_user_registration_path, class: "navbar-item" %>
+                <%= link_to 'Iniciá sesión con email', new_user_session_path, class: "navbar-item" %>
+                <%= link_to image_tag('fb-login.png', title: "Iniciar sesión con Facebook"), user_omniauth_path(:facebook), method: :post, class: "navbar-item" %>
                 <% end %>
             </div>
         </div>

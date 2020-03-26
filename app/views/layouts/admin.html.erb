@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Venganzas del Pasado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+</head>
+
+<body>
+    <%= render 'navbar' %>
+
+    <%= render 'header' %>
+
+    <section class="section main">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-three-quarters">
+                    <% flash %>
+                    <%= yield %>
+                </div>
+                <div class="column">
+                    <%= render 'right_column' %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

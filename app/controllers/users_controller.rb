@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :load_resource, except: :index
   load_and_authorize_resource
 
   # TODO: Cambiar a UsersController
@@ -41,6 +42,12 @@ class UsersController < ApplicationController
     @objects = comments_collection.page(params[:page]).per(VenganzasDelPasado::Application.config.comments_per_page)
 
     render :show
+  end
+
+  protected
+
+  def load_resource
+    @user = User.friendly.find(params[:id])
   end
 
 end
