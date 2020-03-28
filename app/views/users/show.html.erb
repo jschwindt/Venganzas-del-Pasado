@@ -1,0 +1,34 @@
+<% if params[:page].nil? %>
+<% the_title = "Perfil de #{@user.alias}" %>
+<% else %>
+<% the_title = "Perfil de #{@user.alias} - Página #{params[:page]} de comentarios" %>
+<% end %>
+<% page_title the_title %>
+<% meta_description the_title + " en Venganzas del Pasado" %>
+<h2 class="title fancy is-4">
+    Perfil del Usuario
+</h2>
+
+<%= render @user %>
+
+<br />
+
+<div class="tabs is-boxed">
+    <ul>
+        <%= content_tag(:li, class: (controller.action_name == 'comments') ||
+            (controller.action_name == 'show') ? 'is-active' : nil ) do %>
+        <%= link_to "Comentarios", comments_user_path(@user) %>
+        <% end %>
+        <%= content_tag(:li, class: controller.action_name == 'contributions' ? 'is-active' : nil ) do %>
+        <%= link_to "Contribuciones", contributions_user_path(@user) %>
+        <% end %>
+    </ul>
+</div>
+    <%= render @objects %>
+    <p>
+        <% if controller.action_name == 'show' %>
+        <%= paginate @objects, :params => {:controller => :users, :action => :comments} %>
+        <% else %>
+        <%= paginate @objects %>
+        <% end %>
+    </p>

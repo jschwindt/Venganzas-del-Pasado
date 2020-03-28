@@ -113,6 +113,20 @@ article.comment {
     margin-top: 0.1em;
     margin-bottom: 0.2em;
   }
+
+  a[href^="#play"]::before {
+    content: "[";
+  }
+
+  a[href^="#play"]::after {
+    content: "]";
+  }
+
+  a[href^="#play"] {
+    font-size: 1rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+  }
 }
 
 .post footer {

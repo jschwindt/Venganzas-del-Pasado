@@ -1,6 +1,8 @@
 module Admin
   class PostsController < BaseController
-    load_and_authorize_resource
+    before_action :load_collection, only: :index
+    before_action :load_resource, except: :index
+    authorize_resource
     has_scope :has_status
     has_scope :lifo, type: :boolean, default: true
 
@@ -9,12 +11,18 @@ module Admin
       redirect_to @post
     end
 
-    private
+    protected
 
     def verify_admin
-      return if current_user.can? :update, Post
+      render '403', status: 403 unless current_user.can? :update, Post
+    end
 
-      render '403', status: 403
+    def load_collection
+      @posts = apply_scopes Post
+    end
+
+    def load_resource
+      @post = Post.find(params[:id])
     end
   end
 end

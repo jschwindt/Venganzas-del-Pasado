@@ -1,0 +1,54 @@
+<% page_title("Listado de Posts") %>
+<h2 class="title fancy is-4">Administración de Usuarios</h2>
+<h3 class="title is-3"><%= html_page_title %></h3>
+<div class="tabs is-boxed">
+    <ul class="nav nav-tabs">
+        <%= content_tag(:li, class: params[:has_status].nil? ? 'is-active' : nil ) do %>
+        <%= link_to "Todos", admin_posts_path %>
+        <% end %>
+        <%= content_tag(:li, class: active_if_current(:has_status => 'draft' ) ) do %>
+        <%= link_to "Borrador", admin_posts_path(:has_status => 'draft') %>
+        <% end %>
+        <%= content_tag(:li, class: active_if_current(:has_status => 'pending' ) ) do %>
+        <%= link_to "Pendientes", admin_posts_path(:has_status => 'pending') %>
+        <% end %>
+        <%= content_tag(:li, class: active_if_current(:has_status => 'waiting' ) ) do %>
+        <%= link_to "Esperando conversión", admin_posts_path(:has_status => 'waiting') %>
+        <% end %>
+    </ul>
+</div>
+<% if @posts.empty? %>
+<p>No se han encontrado posts</p>
+<% else %>
+<table class="table is-striped is-hoverable is-fullwidth">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Título</th>
+            <th>Acción</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @posts.each do |post| %>
+        <tr>
+            <td>
+                <span class="post-status-<%= post.status %> label" title="<%= post.status.capitalize %>">
+                    <%= post.id %>
+                </span>
+            </td>
+            <td>
+                <%= post.title %>
+            </td>
+            <td class="actions">
+                <%= link_to "Permalink", post, :target => '_blank', class: "tag is-small" %>
+                <%= link_to "Editar", edit_admin_post_path(post), class: "tag is-small is-success" %>
+                <% if can? :destroy, Post %>
+                <%= link_to "Eliminar", admin_post_path(post), :method => :delete, :data => { :confirm => "¿Estás seguro?" }, class: "tag is-small is-danger" %>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= paginate @posts %>
+<% end %>
