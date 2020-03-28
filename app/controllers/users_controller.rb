@@ -4,12 +4,12 @@ class UsersController < ApplicationController
 
   # TODO: Cambiar a UsersController
   def sign_in
-    render :layout => 'lean'
+    render layout: 'lean'
   end
 
   def show
     if params[:id] != @user.to_param
-      return redirect_to url_for(params.merge(:id => @user.to_param)), :status => :moved_permanently
+      return redirect_to url_for(params.merge(id: @user.to_param)), status: :moved_permanently
     end
 
     comments_collection = @user.comments.visible_by(current_user).lifo
@@ -24,8 +24,8 @@ class UsersController < ApplicationController
   end
 
   def contributions
-    @objects = @user.contributions.published.
-              page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
+    @objects = @user.contributions.published
+                    .page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
 
     render :show
   end
@@ -49,5 +49,4 @@ class UsersController < ApplicationController
   def load_resource
     @user = User.friendly.find(params[:id])
   end
-
 end

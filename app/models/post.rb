@@ -162,8 +162,8 @@ class Post < ApplicationRecord
   protected
 
   def validate_status
-    unless Post.statuses.include?(status)
-      errors.add(:status, I18n.t('activerecord.errors.models.post.attributes.status.inclusion'))
-    end
+    return if Post.statuses.include?(status)
+
+    errors.add(:status, I18n.t('activerecord.errors.models.post.attributes.status.inclusion'))
   end
 end

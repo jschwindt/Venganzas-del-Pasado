@@ -1,11 +1,11 @@
 class User < ApplicationRecord
   extend FriendlyId
-  friendly_id :alias, use: [:history, :finders]
-  has_many :comments, :dependent => :nullify
-  has_many :contributions, :class_name => 'Post', :foreign_key => :contributor_id, :dependent => :nullify
-  validates :alias, :presence => true, :uniqueness => { :case_sensitive => false }
+  friendly_id :alias, use: %i[history finders]
+  has_many :comments, dependent: :nullify
+  has_many :contributions, class_name: 'Post', foreign_key: :contributor_id, dependent: :nullify
+  validates :alias, presence: true, uniqueness: { case_sensitive: false }
   before_save :update_profile_picture_url, :clean_role
-  delegate :can?, :cannot?, :to => :ability
+  delegate :can?, :cannot?, to: :ability
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -19,9 +19,9 @@ class User < ApplicationRecord
       ['', 'admin', 'editor', 'moderator']
     end
 
-    def find_for_facebook_oauth(access_token, signed_in_resource=nil)
+    def find_for_facebook_oauth(access_token, _signed_in_resource = nil)
       data = access_token.extra.raw_info
-      if user = User.where('email = ? OR fb_userid = ?', data.email, data.id).first
+      if (user = User.where('email = ? OR fb_userid = ?', data.email, data.id).first)
         user.email     = data.email
         user.fb_userid = data.id
         user.confirmed_at = Time.zone.now
@@ -34,11 +34,10 @@ class User < ApplicationRecord
 
     def create_from_facebook(fb_data)
       generated_password = Devise.friendly_token.first(10)
-      user = User.new( :email => fb_data.email,
-                  :alias      => fb_data.username || fb_data.name,
-                  :password   => generated_password,
-                  :password_confirmation => generated_password,
-              )
+      user = User.new(email: fb_data.email,
+                      alias: fb_data.username || fb_data.name,
+                      password: generated_password,
+                      password_confirmation: generated_password)
       user.fb_userid = fb_data.id
       user.skip_confirmation!
       user.save
@@ -47,10 +46,10 @@ class User < ApplicationRecord
 
     def new_with_session(params, session)
       super.tap do |user|
-        if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        if (data = session['devise.facebook_data']) && session['devise.facebook_data']['extra']['raw_info']
           user.email         = params[:email]
           user.alias         = params[:alias]
-          user.fb_userid     = data["id"]
+          user.fb_userid     = data['id']
           generated_password = Devise.friendly_token.first(10)
           user.password      = generated_password
           user.password_confirmation = generated_password
@@ -67,10 +66,10 @@ class User < ApplicationRecord
   end # End class methods
 
   # Overrides Devise method to allow non-password updates for Facebook users
-  def update_with_password(params={})
+  def update_with_password(params = {})
     if has_facebook_profile?
       params.delete(:current_password)
-      self.update_without_password(params)
+      update_without_password(params)
     else
       super
     end
@@ -81,12 +80,12 @@ class User < ApplicationRecord
   end
 
   def can_admin?
-    ['moderator','editor','admin'].include? role
+    %w[moderator editor admin].include? role
   end
 
-#  def active?
-#    last_sign_in_at.present? || confirmed_at.present?
-#  end
+  #  def active?
+  #    last_sign_in_at.present? || confirmed_at.present?
+  #  end
 
   def has_facebook_profile?
     fb_userid.present?
@@ -108,6 +107,6 @@ class User < ApplicationRecord
   end
 
   def clean_role
-    self.role = '' unless User.roles.include? self.role
+    self.role = '' unless User.roles.include? role
   end
 end

@@ -1,5 +1,3 @@
-# encoding: utf-8
-
 class MediaUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
@@ -17,25 +15,25 @@ class MediaUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    "/assets/no-image.jpg"
+    '/assets/no-image.jpg'
   end
 
   # Process files as they are uploaded:
-  process :resize_to_fit => [2048, 1536], :if => :image?
+  process resize_to_fit: [2048, 1536], if: :image?
 
   # Create different versions of your uploaded files:
-  version :thumb, :if => :image? do
-    process :resize_to_fit => [200, ""]
+  version :thumb, if: :image? do
+    process resize_to_fit: [200, '']
   end
 
-  version :large, :if => :image? do
-    process :resize_to_fit => [520, ""]
+  version :large, if: :image? do
+    process resize_to_fit: [520, '']
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_white_list
-    %w(jpg jpeg gif png mp3)
+    %w[jpg jpeg gif png mp3]
   end
 
   # Override the filename of the uploaded files:

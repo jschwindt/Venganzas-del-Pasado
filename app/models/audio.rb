@@ -4,9 +4,9 @@ class Audio < ApplicationRecord
   # TODO: Rails6
   # attr_accessible :url, :bytes
 
-  delegate :title, :to => :post, :prefix => true
+  delegate :title, to: :post, prefix: true
 
-  validates :url, :presence => true, :uniqueness => true
+  validates :url, presence: true, uniqueness: true
 
   def torrent_url
     # Pasa de //venganzasdelpasado.com.ar/2011/lavenganza_2011-11-22[_90].mp3
