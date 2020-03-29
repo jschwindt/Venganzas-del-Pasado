@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :audios,   dependent: :destroy
   has_many :media,    dependent: :destroy
-  belongs_to :contributor, class_name: 'User'
+  belongs_to :contributor, class_name: 'User', optional: true
   accepts_nested_attributes_for :media
 
   # TODO: Rails6

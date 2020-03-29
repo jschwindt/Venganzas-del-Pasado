@@ -1,6 +1,6 @@
 <%= alert_message_for(user) %>
 <%= render 'flash' %>
-<%= form_for [:admin, user], :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for [:admin, user] do |f| %>
 <div class="field">
     <%= f.label :alias, class: 'label' %>
     <div class="control">

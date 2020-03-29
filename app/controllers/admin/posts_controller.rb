@@ -1,7 +1,7 @@
 module Admin
   class PostsController < BaseController
     before_action :load_collection, only: :index
-    before_action :load_resource, except: :index
+    before_action :load_resource, except: %i[index new create]
     authorize_resource
     has_scope :has_status
     has_scope :lifo, type: :boolean, default: true
@@ -22,7 +22,11 @@ module Admin
     end
 
     def load_resource
-      @post = Post.find(params[:id])
+      @post = Post.friendly.find(params[:id])
+    end
+
+    def post_params
+      params.require(:post).permit(%i[title content status created_at])
     end
   end
 end
