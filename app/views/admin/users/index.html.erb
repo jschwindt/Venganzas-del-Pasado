@@ -19,10 +19,9 @@
                 <%= user.id %>
             </td>
             <td>
-                <%= user.alias %>
+                <%= link_to user.alias, user %>
             </td>
             <td class="actions">
-                <%= link_to "Perfil", user, target: '_blank', class: "tag is-small" %>
                 <%= link_to "Editar", edit_admin_user_path(user), class: "tag is-small is-success" %>
             </td>
         </tr>
