@@ -32,18 +32,20 @@
         <% @posts.each do |post| %>
         <tr>
             <td>
-                <span class="post-status-<%= post.status %> label" title="<%= post.status.capitalize %>">
-                    <%= post.id %>
-                </span>
+                <%= post.id %>
             </td>
             <td>
-                <%= post.title %>
+                <%= link_to post.title, post %>
+                <% if params[:has_status].nil? && post.status != 'published' %>
+                <%= content_tag :span, class: 'tag ' + { 'deleted' => 'is-danger' }.fetch(post.status, 'is-warning') do %>
+                <%= post.status.capitalize %>
+                <% end %>
+                <% end %>
             </td>
             <td class="actions">
-                <%= link_to "Permalink", post, :target => '_blank', class: "tag is-small" %>
-                <%= link_to "Editar", edit_admin_post_path(post), class: "tag is-small is-success" %>
+                <%= link_to "Editar", edit_admin_post_path(post), class: "tag is-success" %>
                 <% if can? :destroy, Post %>
-                <%= link_to "Eliminar", admin_post_path(post), :method => :delete, :data => { :confirm => "¿Estás seguro?" }, class: "tag is-small is-danger" %>
+                <%= link_to "Eliminar", admin_post_path(post), :method => :delete, :data => { :confirm => "¿Estás seguro?" }, class: "tag is-danger" %>
                 <% end %>
             </td>
         </tr>
