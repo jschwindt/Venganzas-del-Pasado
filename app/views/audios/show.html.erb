@@ -1,0 +1,10 @@
+<% page_title "Escuchando #{@audio.post_title}" %>
+<% meta_description "Audio de #{@audio.post_title}" %>
+<div class="row">
+  <div class="col-md-6" id="content">
+    <h3 class="title">
+      <%= link_to @audio.post_title, @audio.post, :target => '_opener' %>
+    </h3>
+    <%= render @audio %>
+  </div>
+</div>
