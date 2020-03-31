@@ -2,10 +2,10 @@
 <h2 class="title fancy is-4">Administración de Usuarios</h2>
 <h3 class="title">Editando Usuario #<%= @user.id %></h3>
 <div class="actions">
-    <% if @user.role? %>
+  <% if @user.role? %>
     <span class="tag is-warning"><%= @user.role.capitalize %></span>
-    <% end %>
-    <%= link_to "Ver Perfil", @user, target: '_blank', class: "button is-light" %>
+  <% end %>
+  <%= link_to "Ver Perfil", @user, target: '_blank', class: "button is-light" %>
 </div>
 <br />
 <%= render 'form', :user => @user %>

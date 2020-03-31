@@ -1,22 +1,22 @@
 <article class="article">
-    <% if current_page?(article) %>
+  <% if current_page?(article) %>
     <h2 class="title fancy is-4">
-        <%= article.title %>
+      <%= article.title %>
     </h2>
-    <% else %>
+  <% else %>
     <h3 class="title">
-        <%= link_to article.title, article %>
+      <%= link_to article.title, article %>
     </h3>
-    <% end %>
-    <div class="content">
-        <%= markdown_format article.content, :filter_html => false %>
-    </div>
-    <% if can? :update, article %>
+  <% end %>
+  <div class="content">
+    <%= markdown_format article.content, :filter_html => false %>
+  </div>
+  <% if can? :update, article %>
     <div class="actions">
-        <span class="edit">
-            <span class="glyphicon glyphicon-edit"></span>
-            <%= link_to "Editar", edit_admin_article_path(article) %>
-        </span>
+      <span class="edit">
+        <span class="glyphicon glyphicon-edit"></span>
+        <%= link_to "Editar", edit_admin_article_path(article) %>
+      </span>
     </div>
-    <% end %>
+  <% end %>
 </article>

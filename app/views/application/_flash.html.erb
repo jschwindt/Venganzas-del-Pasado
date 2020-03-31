@@ -1,6 +1,6 @@
 <% if flash.present? %>
-<% flash.each do |name, msg| -%>
-<%= content_tag :div, msg,
+  <% flash.each do |name, msg| -%>
+    <%= content_tag :div, msg,
         class: 'notification ' + { 'alert' => 'is-danger', 'notice' => 'is-success' }.fetch(name, 'is-warning') %>
-<% end -%>
+  <% end -%>
 <% end %>

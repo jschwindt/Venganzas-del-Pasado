@@ -1,26 +1,27 @@
 <% page_title("Listado de Comentarios") %>
 <h2 class="title fancy is-4">Administración de Comentarios</h2>
 <h3 class="title"><%= html_page_title %></h3>
+
 <div class="tabs is-boxed">
-    <ul>
-        <li class="<%= (params[:has_status].blank? ? 'is-active' : nil) %>">
-            <%= link_to "Todos", admin_comments_path %>
-        </li>
-        <li class="<%= active_if_current( :has_status => 'approved' ) %>">
-            <%= link_to "Aprobados", admin_comments_path(:has_status => 'approved') %>
-        </li>
-        <li class="<%= active_if_current( :has_status => 'pending' ) %>">
-            <%= link_to "Pendientes", admin_comments_path(:has_status => 'pending') %>
-        </li>
-        <li class="<%= active_if_current( :has_status => 'flagged' ) %>">
-            <%= link_to "Denuncias", admin_comments_path(:has_status => 'flagged') %>
-        </li>
-        <li class="<%= active_if_current( :has_status => 'deleted' ) %>">
-            <%= link_to "Papelera", admin_comments_path(:has_status => 'deleted') %>
-        </li>
-    </ul>
+  <ul>
+    <li class="<%= (params[:has_status].blank? ? 'is-active' : nil) %>">
+      <%= link_to "Todos", admin_comments_path %>
+    </li>
+    <li class="<%= active_if_current( :has_status => 'approved' ) %>">
+      <%= link_to "Aprobados", admin_comments_path(:has_status => 'approved') %>
+    </li>
+    <li class="<%= active_if_current( :has_status => 'pending' ) %>">
+      <%= link_to "Pendientes", admin_comments_path(:has_status => 'pending') %>
+    </li>
+    <li class="<%= active_if_current( :has_status => 'flagged' ) %>">
+      <%= link_to "Denuncias", admin_comments_path(:has_status => 'flagged') %>
+    </li>
+    <li class="<%= active_if_current( :has_status => 'deleted' ) %>">
+      <%= link_to "Papelera", admin_comments_path(:has_status => 'deleted') %>
+    </li>
+  </ul>
 </div>
 <div class="admin">
-    <%= render :partial => 'comments/comment', :collection => @comments %>
+  <%= render :partial => 'comments/comment', :collection => @comments %>
 </div>
 <%= paginate @comments %>

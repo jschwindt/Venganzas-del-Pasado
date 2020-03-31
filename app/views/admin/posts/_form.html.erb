@@ -1,40 +1,40 @@
 <%= alert_message_for(post) %>
 <%= render 'flash' %>
 <%= form_for [:admin, post] do |f| %>
-<div class="field">
+  <div class="field">
     <%= f.label :title, class: 'label' %>
     <div class="control">
-        <%= f.text_field :title, placeholder: 'Título', class: 'input' %>
+      <%= f.text_field :title, placeholder: 'Título', class: 'input' %>
     </div>
-</div>
-<div class="field">
+  </div>
+  <div class="field">
     <div class="control">
-        <%= f.label :content, class: 'label' %>
-        <%= f.text_area :content, class: 'textarea', rows: 20, id: 'markdownify' %>
-        <em>Podés darle estilo y formato al texto utilizando #{link_to "Markdown", article_path('markdown'), target: '_blank' }.</em>
+      <%= f.label :content, class: 'label' %>
+      <%= f.text_area :content, class: 'textarea', rows: 20, id: 'markdownify' %>
+      <em>Podés darle estilo y formato al texto utilizando #{link_to "Markdown", article_path('markdown'), target: '_blank' }.</em>
     </div>
-</div>
-<div class="field">
+  </div>
+  <div class="field">
     <%= f.label :created_at, "Fecha de publicación", class: 'label' %>
     <div class="select">
-        <%= f.date_select :created_at, {
+      <%= f.date_select :created_at, {
             start_year: 1985,
             end_year: Time.zone.now.year,
             date_separator: '</div><div class="select">'} %>
     </div>
-</div>
-<div class="field">
+  </div>
+  <div class="field">
     <%= f.label :status, class: 'label' %>
     <div class="select">
-        <%= f.select :status, Post.statuses, {} %>
+      <%= f.select :status, Post.statuses, {} %>
     </div>
-</div>
-<div class="field is-grouped">
+  </div>
+  <div class="field is-grouped">
     <div class="control">
-        <%= f.submit ( post.new_record? ? 'Publicar' : 'Guardar' ), class: 'button is-link' %>
+      <%= f.submit ( post.new_record? ? 'Publicar' : 'Guardar' ), class: 'button is-link' %>
     </div>
     <div class="control">
-        <%= link_to 'Cancelar', admin_posts_path, class: "button is-link is-light" %>
+      <%= link_to 'Cancelar', admin_posts_path, class: "button is-link is-light" %>
     </div>
-</div>
+  </div>
 <% end %>

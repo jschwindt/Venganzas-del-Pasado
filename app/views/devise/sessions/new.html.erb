@@ -1,53 +1,43 @@
 <h2 class="title fancy is-4">Iniciar Sesión</h2>
 
 <p>
-    Si tenés una cuenta en Facebook podés iniciar sesión haciendo click en el siguiente botón:
+  Si tenés una cuenta en Facebook podés iniciar sesión haciendo click en el siguiente botón:
 </p>
-
 <p class="facebook-login">
-    <%= link_to image_tag('fb-login.png', title: "Iniciar sesión con Facebook"), user_omniauth_path(:facebook), method: :post %>
+  <%= link_to image_tag('fb-login.png', title: "Iniciar sesión con Facebook"), user_omniauth_path(:facebook), method: :post %>
 </p>
-
 <p>
-    Si ya tenés una cuenta en este sitio, podés ingresar mediante el siguiente formulario:
+  Si ya tenés una cuenta en este sitio, podés ingresar mediante el siguiente formulario:
 </p>
-
 <br />
-
 <%= render 'flash' %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-<div class="field">
+  <div class="field">
     <%= f.label :email, class: "label" %>
     <div class="control">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
     </div>
-</div>
-
-<div class="field">
+  </div>
+  <div class="field">
     <%= f.label :password, class: "label" %>
     <div class="control">
-        <%= f.password_field :password, autocomplete: "current-password", class: "input" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "input" %>
     </div>
-</div>
-
-<% if devise_mapping.rememberable? %>
-<div class="field">
-    <div class="control">
+  </div>
+  <% if devise_mapping.rememberable? %>
+    <div class="field">
+      <div class="control">
         <label class="checkbox">
-            <%= f.check_box :remember_me %>
-            Mantener mi sesión abierta
+          <%= f.check_box :remember_me %>
+          Mantener mi sesión abierta
         </label>
+      </div>
     </div>
-
-</div>
-<% end %>
-
-<div class="field is-grouped">
+  <% end %>
+  <div class="field is-grouped">
     <div class="control">
-        <button class="button is-link">Ingresar</button>
+      <button class="button is-link">Ingresar</button>
     </div>
-</div>
-
+  </div>
 <% end %>
-
 <%= render "devise/shared/links" %>

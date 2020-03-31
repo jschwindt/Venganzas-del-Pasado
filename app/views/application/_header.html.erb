@@ -1,25 +1,25 @@
 <section class="hero header">
   <% if  controller_name == 'home' %>
-  <div class="hero-body header-container">
-    <div class="container has-text-centered">
-      <%= link_to image_tag("splash.png"), :root, title: "Vengazas del Pasado" %>
-      <p class="claim">Encontrá todos los archivos de audio en MP3 del programa de radio <em>La Venganza Será
-          Terrible</em> de <strong>Alejandro Dolina</strong></p>
+    <div class="hero-body header-container">
+      <div class="container has-text-centered">
+        <%= link_to image_tag("splash.png"), :root, title: "Vengazas del Pasado" %>
+        <p class="claim">Encontrá todos los archivos de audio en MP3 del programa de radio <em>La Venganza Será
+            Terrible</em> de <strong>Alejandro Dolina</strong></p>
+      </div>
     </div>
-  </div>
   <% else %>
-  <div class="hero-body header-container">
-    <div class="container has-text-centered interior">
-      <div class="columns">
-        <div class="column is-one-quarter">
-          <%= link_to image_tag("splash.png"), :root, title: "Vengazas del Pasado" %>
-        </div>
-        <div class="column is-three-fifths">
-          <p class="claim">Encontrá todos los archivos de audio en MP3 del programa de radio <em>La Venganza Será
+    <div class="hero-body header-container">
+      <div class="container has-text-centered interior">
+        <div class="columns">
+          <div class="column is-one-quarter">
+            <%= link_to image_tag("splash.png"), :root, title: "Vengazas del Pasado" %>
+          </div>
+          <div class="column is-three-fifths">
+            <p class="claim">Encontrá todos los archivos de audio en MP3 del programa de radio <em>La Venganza Será
               Terrible</em> de <strong>Alejandro Dolina</strong></p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   <% end %>
 </section>

@@ -1,32 +1,33 @@
 <% page_title("Listado de Usuarios") %>
 <h2 class="title fancy is-4">Administración de Usuarios</h2>
 <h3 class="title"><%= html_page_title %></h3>
+
 <% if @users.empty? %>
-<p>No se han encontrado usuarios</p>
+  <p>No se han encontrado usuarios</p>
 <% else %>
-<table class="table is-striped is-hoverable is-fullwidth">
+  <table class="table is-striped is-hoverable is-fullwidth">
     <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nombre</th>
-            <th>Acción</th>
-        </tr>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Acción</th>
+      </tr>
     </thead>
     <tbody>
-        <% @users.each do |user| %>
+      <% @users.each do |user| %>
         <tr>
-            <td>
-                <%= user.id %>
-            </td>
-            <td>
-                <%= link_to user.alias, user %>
-            </td>
-            <td class="actions">
-                <%= link_to "Editar", edit_admin_user_path(user), class: "tag is-small is-success" %>
-            </td>
+          <td>
+            <%= user.id %>
+          </td>
+          <td>
+            <%= link_to user.alias, user %>
+          </td>
+          <td class="actions">
+            <%= link_to "Editar", edit_admin_user_path(user), class: "tag is-small is-success" %>
+          </td>
         </tr>
-        <% end %>
+      <% end %>
     </tbody>
-</table>
-<%= paginate @users %>
+  </table>
+  <%= paginate @users %>
 <% end %>

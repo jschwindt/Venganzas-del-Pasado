@@ -1,63 +1,62 @@
 <article class="box post">
-    <div class="post-top-header level">
-        <div class="level-left">
-            <em>
-                <%= "#{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i].capitalize} de #{post.created_at.year}" %>
-            </em>
+  <div class="post-top-header level">
+    <div class="level-left">
+      <em>
+        <%= "#{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i].capitalize} de #{post.created_at.year}" %>
+      </em>
+    </div>
+    <div class="level-right">
+      <div class="post-share">
+        <div class="social-likes social-likes_light" data-counters="no" data-title="<%= post.title %>" data-url="<%= post_url(post) %>">
+          <div class="facebook" title="Compartir en Facebook">Facebook</div>
+          <div class="twitter" data-via="venganzaspasado" title="Compartir en Twitter">Twitter</div>
         </div>
-        <div class="level-right">
-            <div class="post-share">
-                <div class="social-likes social-likes_light" data-counters="no" data-title="<%= post.title %>" data-url="<%= post_url(post) %>">
-                    <div class="facebook" title="Compartir en Facebook">Facebook</div>
-                    <div class="twitter" data-via="venganzaspasado" title="Compartir en Twitter">Twitter</div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-
-    <div class="post-header">
-        <% if current_page?(post) %>
-        <h1 class="title"><%= link_to post.title, post %></h1>
-        <% else %>
-        <h3 class="title"><%= link_to post.title, post %></h3>
-        <% end %>
-    </div>
-    <div class="post-audios">
-        <%= render post.audios %>
-    </div>
-    <hr />
-    <% if post.content? %>
-    <div class="post-content content">
-        <%= markdown_format post.content, :filter_html => false %>
-    </div>
+  </div>
+  <div class="post-header">
+    <% if current_page?(post) %>
+      <h1 class="title"><%= link_to post.title, post %></h1>
+    <% else %>
+      <h3 class="title"><%= link_to post.title, post %></h3>
     <% end %>
-    <footer>
-        <div class="columns">
-            <div class="column">
-                <%= link_to "Enlace permanente", post %>
-            </div>
-            <% if post.contributor %>
-            <div class="column has-text-centered-desktop">
-                <%= link_to post.contributor_alias, user_url(post.contributor), title: "Ver el perfil de #{post.contributor_alias}" %>
-            </div>
-            <% end %>
-            <% if can? :update, post %>
-            <div class="column has-text-centered-desktop">
-                <span class="status-<%= post.status %> label"><%= post.status.capitalize %></span>
-            </div>
-            <div class="column has-text-centered-desktop">
-                <%= link_to "Editar", edit_admin_post_path(post) %>
-            </div>
-            <% if post.pending? %>
-            <div class="column has-text-centered-desktop">
-                <%= link_to "Aprobar contribución", approve_contribution_admin_post_path(post) %>
-            </div>
-            <% end %>
-            <% end %>
-            <div class="column has-text-right-desktop">
-                <%= link_to t('num_comments', count: post.comments.visible_by(current_user).count),
-                    post_path(post, :anchor => "comments"), title: "Ver los comentarios" %>
-            </div>
+  </div>
+  <div class="post-audios">
+    <%= render post.audios %>
+  </div>
+  <hr />
+  <% if post.content? %>
+    <div class="post-content content">
+      <%= markdown_format post.content, :filter_html => false %>
+    </div>
+  <% end %>
+  <footer>
+    <div class="columns">
+      <div class="column">
+        <%= link_to "Enlace permanente", post %>
+      </div>
+      <% if post.contributor %>
+        <div class="column has-text-centered-desktop">
+          <%= link_to post.contributor_alias, user_url(post.contributor), title: "Ver el perfil de #{post.contributor_alias}" %>
         </div>
-    </footer>
+      <% end %>
+      <% if can? :update, post %>
+        <div class="column has-text-centered-desktop">
+          <span class="status-<%= post.status %> label"><%= post.status.capitalize %></span>
+        </div>
+        <div class="column has-text-centered-desktop">
+          <%= link_to "Editar", edit_admin_post_path(post) %>
+        </div>
+        <% if post.pending? %>
+          <div class="column has-text-centered-desktop">
+            <%= link_to "Aprobar contribución", approve_contribution_admin_post_path(post) %>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="column has-text-right-desktop">
+        <%= link_to t('num_comments', count: post.comments.visible_by(current_user).count),
+                    post_path(post, :anchor => "comments"), title: "Ver los comentarios" %>
+      </div>
+    </div>
+  </footer>
 </article>

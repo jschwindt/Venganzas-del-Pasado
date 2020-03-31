@@ -1,36 +1,36 @@
 <%= alert_message_for(user) %>
 <%= render 'flash' %>
 <%= form_for [:admin, user] do |f| %>
-<div class="field">
+  <div class="field">
     <%= f.label :alias, class: 'label' %>
     <div class="control">
-        <%= f.text_field :alias, class: 'input' %>
+      <%= f.text_field :alias, class: 'input' %>
     </div>
-</div>
-<div class="field">
+  </div>
+  <div class="field">
     <%= f.label :email, class: 'label' %>
     <div class="control">
-        <%= f.text_field :email, :disabled => true, class: 'input' %>
+      <%= f.text_field :email, :disabled => true, class: 'input' %>
     </div>
-</div>
-<div class="field">
+  </div>
+  <div class="field">
     <%= f.label :karma, class: 'label' %>
     <div class="control">
-        <%= f.text_field :karma, class: 'input' %>
+      <%= f.text_field :karma, class: 'input' %>
     </div>
-</div>
-<div class="field">
+  </div>
+  <div class="field">
     <%= f.label :role, class: 'label' %>
     <div class="select">
-        <%= f.select :role, User.roles, {}, class: 'input' %>
+      <%= f.select :role, User.roles, {}, class: 'input' %>
     </div>
-</div>
-<div class="field is-grouped">
+  </div>
+  <div class="field is-grouped">
     <div class="control">
-        <%= f.submit ( user.new_record? ? 'Crear' : 'Guardar' ), :class => 'button is-link' %>
+      <%= f.submit ( user.new_record? ? 'Crear' : 'Guardar' ), :class => 'button is-link' %>
     </div>
     <div class="control">
-        <%= link_to 'Cancelar', admin_users_path, class: "button is-link is-light" %>
+      <%= link_to 'Cancelar', admin_users_path, class: "button is-link is-light" %>
     </div>
-</div>
+  </div>
 <% end %>

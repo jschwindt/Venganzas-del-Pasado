@@ -1,27 +1,22 @@
 <section>
-    <h2 class="title fancy is-4">Programas Recientes</h2>
-
-    <div class="posts">
-        <%= render @posts %>
-    </div>
+  <h2 class="title fancy is-4">Programas Recientes</h2>
+  <div class="posts">
+    <%= render @posts %>
+  </div>
 </section>
-
 <section class="your-help">
-    <h2 class="title fancy is-4">¡Necesitamos tu ayuda!</h2>
-
-    <p>
-        Con tu colaboración podemos hacer que el contenido se enriquezca. Hay varias
-        formas de participar: enviando comentarios acerca del programa, editando los
-        posts para decir de qué se habló en el programa o
-        <%= link_to 'subiendo archivos mp3', 'new_post_path' %> de programas viejos.
-        Entre todos podemos hacer un sitio que nos permita disfrutar al máximo
-        <em>La Venganza será Terrible</em>.
-    </p>
-
-    <%= link_to "Más información", 'acerca-de-este-sitio' %>
+  <h2 class="title fancy is-4">¡Necesitamos tu ayuda!</h2>
+  <p>
+    Con tu colaboración podemos hacer que el contenido se enriquezca. Hay varias
+    formas de participar: enviando comentarios acerca del programa, editando los
+    posts para decir de qué se habló en el programa o
+    <%= link_to 'subiendo archivos mp3', 'new_post_path' %> de programas viejos.
+    Entre todos podemos hacer un sitio que nos permita disfrutar al máximo
+    <em>La Venganza será Terrible</em>.
+  </p>
+  <%= link_to "Más información", 'acerca-de-este-sitio' %>
 </section>
-
 <section class="recent-comments">
-    <h2 class="title fancy is-4">Comentarios recientes</h2>
-    <%= render @comments %>
+  <h2 class="title fancy is-4">Comentarios recientes</h2>
+  <%= render @comments %>
 </section>

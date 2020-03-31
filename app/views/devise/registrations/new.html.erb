@@ -2,59 +2,49 @@
 <h3 class="title is-4">Registrate en Venganzas del Pasado</h3>
 
 <p>
-    Si tenés una cuenta en Facebook podés iniciar sesión haciendo click en el siguiente botón:
+  Si tenés una cuenta en Facebook podés iniciar sesión haciendo click en el siguiente botón:
 </p>
-
 <p class="facebook-login">
-    <%= link_to image_tag('fb-login.png', title: "Iniciar sesión con Facebook"), user_omniauth_path(:facebook), method: :post %>
+  <%= link_to image_tag('fb-login.png', title: "Iniciar sesión con Facebook"), user_omniauth_path(:facebook), method: :post %>
 </p>
-
 <p>
-    Si no tenés una cuenta en Facebook o simplemente preferís no utilizarla para registrarte, te invitamos a crear una nueva cuenta mediante el siguiente formulario:
+  Si no tenés una cuenta en Facebook o simplemente preferís no utilizarla para registrarte, te invitamos a crear una nueva cuenta mediante el siguiente formulario:
 </p>
-
 <br />
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-<%= render "devise/shared/error_messages", resource: resource %>
-
-<div class="field">
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <div class="field">
     <%= f.label :email, class: "label" %>
     <div class="control">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
     </div>
     <em>Esta dirección de mail es privada, no será publicada.</em>
-</div>
-
-<div class="field">
+  </div>
+  <div class="field">
     <%= f.label :alias, class: "label" %>
     <div class="control">
-        <%= f.text_field :alias, class: "input" %>
+      <%= f.text_field :alias, class: "input" %>
     </div>
     <em>El nombre que los demás usuarios verán.</em>
-</div>
-
-<div class="field">
+  </div>
+  <div class="field">
     <%= f.label :password, class: "label" %>
     <div class="control">
-        <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "input" %>
     </div>
     <em>Mínimo <%= @minimum_password_length %> caracteres.</em>
-</div>
-
-<div class="field">
+  </div>
+  <div class="field">
     <%= f.label :password_confirmation, class: "label" %>
     <div class="control">
-        <%= f.password_field :password_confirmation, autocomplete: "password-confirmation", class: "input" %>
+      <%= f.password_field :password_confirmation, autocomplete: "password-confirmation", class: "input" %>
     </div>
     <em>Repetí la contraseña de arriba.</em>
-</div>
-
-<div class="field is-grouped">
+  </div>
+  <div class="field is-grouped">
     <div class="control">
-        <button class="button is-link">Crear Cuenta</button>
+      <button class="button is-link">Crear Cuenta</button>
     </div>
-</div>
+  </div>
 <% end %>
-
 <%= render "devise/shared/links" %>
