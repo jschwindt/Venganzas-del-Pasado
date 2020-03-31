@@ -1,21 +1,21 @@
 <div class="audio">
-    <% cache [:links, audio], expires_in: 7.days do %>
-    <%= render 'audios/player', url: audio.url, id: audio.id %>
-    <div class="downloads well">
-        Descargar MP3:
-        <span class="direct">
-            <%= link_to "Descarga Directa", audio.url, rel: 'nofollow' %>
-        </span>
-        <span class="torrent">
-            <%= link_to ".torrent", audio.torrent_url, rel: 'nofollow' %>
-            <small>
-                <%= link_to "¿Qué es esto?", article_path('torrent') %>
-            </small>
-        </span>
-        <span class="popup">
-            <%= link_to "Abrir Player", post_audio_path(audio.post, audio), class: 'open_player',
-                data: { post_id: audio.post.friendly_id, audio_id: audio.id } %>
-        </span>
-    </div>
-    <% end %>
+  <%= render 'audios/player', url: audio.url, id: audio.id %>
+  <div class="downloads">
+    <ul class="has-text-centered-desktop">
+      <li><strong>Descargar MP3:</strong></li>
+      <li>
+        <%= link_to "Descarga Directa", audio.url, rel: 'nofollow' %>
+      </li>
+      <li>
+        <%= link_to "Torrent", audio.torrent_url, rel: 'nofollow' %>
+        <small><em>
+          <%= link_to "¿Qué es esto?", article_path('torrent') %>
+        </em></small>
+      </li>
+      <li>
+        <%= link_to "Abrir Player", post_audio_path(audio.post, audio), class: 'open_player',
+              data: { post_id: audio.post.friendly_id, audio_id: audio.id } %>
+      </li>
+    </ul>
+  </div>
 </div>

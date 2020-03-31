@@ -24,12 +24,14 @@
   <div class="post-audios">
     <%= render post.audios %>
   </div>
+
   <hr />
   <% if post.content? %>
     <div class="post-content content">
       <%= markdown_format post.content, :filter_html => false %>
     </div>
   <% end %>
+
   <footer>
     <div class="columns">
       <div class="column">

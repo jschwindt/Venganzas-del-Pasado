@@ -146,3 +146,16 @@ article.comment {
   padding: 0.2em;
   border-radius: 0.2em;
 }
+
+.downloads {
+  background-color: #EEE;
+  padding: 0.3em;
+  border-radius: 0.2em;
+  ul li {
+    display: inline-block;
+    margin-right: 5rem;
+  }
+  small {
+    margin-left: 0.5em;
+  }
+}
