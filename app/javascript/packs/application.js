@@ -29,11 +29,11 @@ $(document).ready(() => {
     };
 
     $('.open_player').click((event) => {
-        open_player(this.href);
+        open_player(event.currentTarget.href);
         return false;
     });
 
-    $('a[href^="#play-"]').on('click', function (event) {
+    $('a[href^="#play-"]').on('click', (event) => {
         var audio, current_time, h_m_s, player, _i, _len, _ref;
         event.preventDefault();
         h_m_s = $(this).attr('href').replace('#play-', '').split(':');
