@@ -24,41 +24,32 @@
   <div class="post-audios">
     <%= render post.audios %>
   </div>
-
-  <hr />
   <% if post.content? %>
     <div class="post-content content">
       <%= markdown_format post.content, :filter_html => false %>
     </div>
   <% end %>
-
-  <footer>
-    <div class="columns">
-      <div class="column">
-        <%= link_to "Enlace permanente", post %>
-      </div>
-      <% if post.contributor %>
-        <div class="column has-text-centered-desktop">
-          <%= link_to post.contributor_alias, user_url(post.contributor), title: "Ver el perfil de #{post.contributor_alias}" %>
-        </div>
+  <nav class="level">
+    <% if post.contributor %>
+      <p class="level-item has-text-centered">
+        Contribución de&nbsp;<%= link_to " #{post.contributor_alias}", user_url(post.contributor), title: "Ver el perfil de #{post.contributor_alias}" %>
+      </p>
+    <% end %>
+    <% if can? :update, post %>
+      <%= content_tag :p, class: "tag is-small is-warning" do %>
+        <%= post.status.capitalize %>
       <% end %>
-      <% if can? :update, post %>
-        <div class="column has-text-centered-desktop">
-          <span class="status-<%= post.status %> label"><%= post.status.capitalize %></span>
-        </div>
-        <div class="column has-text-centered-desktop">
-          <%= link_to "Editar", edit_admin_post_path(post) %>
-        </div>
-        <% if post.pending? %>
-          <div class="column has-text-centered-desktop">
-            <%= link_to "Aprobar contribución", approve_contribution_admin_post_path(post) %>
-          </div>
-        <% end %>
+      <p class="level-item has-text-centered">
+        <%= link_to "Editar", edit_admin_post_path(post), class: "tag is-small is-success" %>
+      </p>
+      <% if post.pending? %>
+        <p class="level-item has-text-centered">
+          <%= link_to "Aprobar contribución", approve_contribution_admin_post_path(post) %>
+        </p>
       <% end %>
-      <div class="column has-text-right-desktop">
-        <%= link_to t('num_comments', count: post.comments.visible_by(current_user).count),
-                    post_path(post, :anchor => "comments"), title: "Ver los comentarios" %>
-      </div>
-    </div>
-  </footer>
+    <% end %>
+    <p class="level-item has-text-right">
+      <%= link_to t('num_comments', count: post.comments.visible_by(current_user).count),
+                  post_path(post, :anchor => "comments"), title: "Ver los comentarios" %>    </p>
+  </nav>
 </article>

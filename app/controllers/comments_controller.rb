@@ -1,7 +1,15 @@
 class CommentsController < ApplicationController
-  load_and_authorize_resource :post, only: %i[create show]
-  load_and_authorize_resource :comment, only: %i[flag like dislike opinions]
+  before_action :load_post, only: %i[create show]
+  load_and_authorize_resource :comment, only: %i[flag]
   load_and_authorize_resource :comment, through: :post, only: %i[create show]
+
+  def index
+    @comments = Comment.visible_by(current_user).lifo.limit(VenganzasDelPasado::Application.config.comments_per_page)
+  end
+
+  def show
+    p @comment
+  end
 
   def create
     @comment = @post.comments.new(params[:comment]).publish_as(current_user, request)
@@ -24,19 +32,10 @@ class CommentsController < ApplicationController
     CommentMailer.moderation_needed(@comment, 'Comentario denunciado').deliver_now
   end
 
-  def like
-    current_user.like! @comment
+  protected
+
+  def load_post
+    @post = Post.friendly.find(params[:post_id])
   end
 
-  def dislike
-    current_user.dislike! @comment
-  end
-
-  def opinions
-    render layout: false
-  end
-
-  def index
-    @comments = Comment.visible_by(current_user).lifo.limit(VenganzasDelPasado::Application.config.comments_per_page)
-  end
 end

@@ -4,18 +4,18 @@
   <% page_title @post.title + " - Página #{params[:page]} de comentarios" %>
 <% end %>
 <% meta_description @post.description %>
-<ul class="pager">
+<nav class="level">
   <% if prev_post = @post.previous %>
-    <li class="previous">
-      <%= link_to "Anterior", prev_post, :title => prev_post.title %>
-    </li>
+    <div class="level-left">
+      <%= link_to "← Anterior", prev_post, :title => prev_post.title, class: "button is-info is-rounded" %>
+    </div>
   <% end %>
   <% if next_post = @post.next %>
-    <li class="next">
-      <%= link_to "Siguiente", next_post, :title => next_post.title %>
+    <div class="level-right">
+      <%= link_to "Siguiente →", next_post, :title => next_post.title, class: "button is-info is-rounded" %>
     </li>
   <% end %>
-</ul>
+</nav>
 <%= render @post %>
 <%= render 'layouts/banners/b468x60' %>
 <a name="comments"></a>

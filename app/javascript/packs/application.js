@@ -21,7 +21,7 @@ $(document).ready(() => {
 
     window.open_player = (url) => {
         var nw;
-        nw = window.open(url, 'player', 'height=220,width=840,status=0,menubar=0,location=0,toolbar=0,scrollbars=0');
+        nw = window.open(url, 'player', 'width=640,height=210,status=0,menubar=0,location=0,toolbar=0,scrollbars=0');
         if (window.focus) {
             nw.focus();
         }

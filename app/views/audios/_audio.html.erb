@@ -1,20 +1,17 @@
 <div class="audio">
   <%= render 'audios/player', url: audio.url, id: audio.id %>
-  <div class="downloads">
-    <ul class="has-text-centered-desktop">
-      <li><strong>Descargar MP3:</strong></li>
-      <li>
-        <%= link_to "Descarga Directa", audio.url, rel: 'nofollow' %>
-      </li>
-      <li>
-        <%= link_to "Torrent", audio.torrent_url, rel: 'nofollow' %>
-        <small><em>
+  <nav class="level downloads">
+    <p class="level-item has-text-centered">
+      <%= link_to "Descargar MP3", audio.url, rel: 'nofollow' %>
+    </p>
+    <p class="level-item has-text-centered">
+      <%= link_to "Torrent", audio.torrent_url, rel: 'nofollow' %>
+      <small><em>
           <%= link_to "¿Qué es esto?", article_path('torrent') %>
         </em></small>
-      </li>
-      <li>
-        <%= link_to "Abrir Player", post_audio_url(audio.post, audio), class: 'open_player' %>
-      </li>
-    </ul>
-  </div>
+    </p>
+    <p class="level-item has-text-centered">
+      <%= link_to "Abrir Player", post_audio_url(audio.post, audio), class: 'open_player' %>
+    </p>
+  </nav>
 </div>
