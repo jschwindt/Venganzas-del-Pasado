@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     resources :comments do
       member do
         get 'approve'
-        get 'trash'
+        delete 'trash'
       end
     end
 

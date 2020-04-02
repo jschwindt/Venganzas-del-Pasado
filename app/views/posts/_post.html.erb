@@ -36,9 +36,6 @@
       </p>
     <% end %>
     <% if can? :update, post %>
-      <%= content_tag :p, class: "tag is-small is-warning" do %>
-        <%= post.status.capitalize %>
-      <% end %>
       <p class="level-item has-text-centered">
         <%= link_to "Editar", edit_admin_post_path(post), class: "tag is-small is-success" %>
       </p>

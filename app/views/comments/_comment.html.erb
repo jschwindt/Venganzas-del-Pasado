@@ -1,75 +1,49 @@
-<a name="comment-<%= comment.id %>"></a>
-
-<article class="<%= comment.status %> media comment" id="comment-<%= comment.id %>">
-  <div class="description">
-    <div class="media">
-      <div class="media-left">
-        <img alt="<%= comment.author %>" class="img-rounded" src="<%= comment.profile_picture_url %>" />
-      </div>
-      <div class="media-content">
-        <div class="author">
-          <span class="who">
-            <%= link_to_unless comment.user.nil?, comment.author, comment.user %>
-          </span>
-          <span class="when">
-            <%= timeago(comment.created_at) %>
-          </span>
-          <span class="where">
-            en <%= link_to comment.post_title, comment.post %>
-          </span>
-          <span class="what">
-            dijo:
-          </span>
-        </div>
-        <div class="content">
-          <%= markdown_format(comment.content) %>
-        </div>
-      </div>
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-48x48">
+      <%= image_tag comment.profile_picture_url, alt: comment.author %>
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong><%= comment.author %></strong> <small><%= timeago(comment.created_at) %></small>
+        en <%= link_to comment.post_title, comment.post %> dijo:
+        <%= markdown_format(comment.content) %>
+      </p>
     </div>
-    <div class="actions">
-      <% if comment.deleted? %>
-        <span class="label">
-          <%= comment.status.capitalize %>
-        </span>
-        <% if can? :approve, comment %>
-          <span class="btn btn-mini btn-link approve">
-            <%= link_to "Aprobar", approve_admin_comment_path(comment) %>
-          </span>
+    <nav class="level is-mobile">
+      <div class="level-left">
+        <% if can? :read, comment %>
+          <%= link_to "Enlace al Comentario", post_comment_path(comment.post, comment), class: "level-item" %>
         <% end %>
-        <% if can? :destroy, comment %>
-          <span class="btn btn-mini btn-link delete">
-            <%= link_to "Eliminar definitivamente", admin_comment_path(comment), :method => :delete, :data => { :confirm => '*Est*s seguro?' } %>
-          </span>
+        <% if comment.neutral? && can?(:flag, comment) %>
+          <%= link_to "Denunciar", flag_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }, :method => :post, :remote => :true, class: "level-item" %>
         <% end %>
-      <% else %>
-        <% if can?(:approve, comment) or  can? :trash, comment %>
-          <span class="label">
+        <% if comment.deleted? %>
+          <span class="level-item tag is-danger">
             <%= comment.status.capitalize %>
           </span>
+          <% if can? :approve, comment %>
+            <%= link_to "Aprobar", approve_admin_comment_path(comment), class: "level-item" %>
+          <% end %>
+          <% if can? :destroy, comment %>
+            <%= link_to "Eliminar definitivamente", admin_comment_path(comment), :method => :delete, :data => { :confirm => '¿Estás seguro?' }, class: "level-item" %>
+          <% end %>
+        <% else %>
+          <% if can?(:approve, comment) or  can? :trash, comment %>
+            <span class="level-item tag is-warning">
+              <%= comment.status.capitalize %>
+            </span>
+          <% end %>
+          <% if (comment.pending? or comment.flagged?) and can?(:approve, comment) %>
+            <%= link_to "Aprobar", approve_admin_comment_path(comment), class: "level-item" %>
+          <% end %>
+          <% if can? :trash, comment %>
+            <%= link_to "Eliminar", trash_admin_comment_path(comment), :method => :delete, :data => { :confirm => '¿Estás seguro?' }, class: "level-item" %>
+          <% end %>
         <% end %>
-        <% if (comment.pending? or comment.flagged?) and can?(:approve, comment) %>
-          <span class="btn btn-mini btn-link approve">
-            <%= link_to "Aprobar", approve_admin_comment_path(comment) %>
-          </span>
-        <% end %>
-        <% if can? :trash, comment %>
-          <span class="btn btn-mini btn-link delete">
-            <%= link_to "Eliminar", trash_admin_comment_path(comment), :data => { :confirm => '*Est*s seguro?' } %>
-          </span>
-        <% end %>
-      <% end %>
-    </div>
-    <footer>
-      <% if can? :read, comment %>
-        <span class="hidden-xs permalink">
-          <%= link_to "Enlace al Comentario", post_comment_path(comment.post, comment) %>
-        </span>
-      <% end %>
-      <% if comment.neutral? && can?(:flag, comment) %>
-        <span class="btn btn-mini btn-link flag pull-right" id="flag_<%= comment.id %>">
-          <%= link_to "Denunciar", flag_comment_path(comment), :data => { :confirm => '*Est*s seguro?' }, :method => :post, :remote => :true %>
-        </span>
-      <% end %>
-    </footer>
+      </div>
+    </nav>
   </div>
 </article>
