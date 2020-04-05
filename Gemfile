@@ -43,11 +43,11 @@ end
 
 group :development do
   gem 'capistrano', '~> 3.11', require: false
-  gem 'capistrano-passenger'
+  gem 'capistrano-passenger', require: false
   gem 'capistrano-rails', '~> 1.4', require: false
   gem 'letter_opener'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'rubocop', '~> 0.80.1'
+  gem 'rubocop', '~> 0.81.0', require: false
   gem 'solargraph'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
