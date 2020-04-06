@@ -1,0 +1,30 @@
+<% if can? :create, Comment %>
+  <article id="comment-form" class="media">
+    <figure class="media-left">
+      <p class="image is-48x48">
+        <%= image_tag current_user.profile_picture_url, alt: current_user.alias %>
+      </p>
+    </figure>
+    <div class="media-content">
+      <div class="content">
+        <%= form_for [post, comment], :remote => true do |f| %>
+          <div class="field">
+            <div class="control">
+              <%= f.label :content, class: 'label' %>
+              <%= f.text_area :content, :rows => 6, :placeholder => "Escribi un comentario", class: "textarea" %>
+            </div>
+            <em>Podés darle estilo y formato al texto utilizando <%= link_to "Markdown", article_path('markdown'), target: '_blank' %>.</em>
+          </div>
+          <div class="field">
+            <div class="control">
+              <%= f.submit 'Comentar', class: 'button is-link' %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </article>
+<% else %>
+  <hr />
+  <p>Tenés que <%= link_to "Iniciar sesión", new_user_session_path %> para comentar.</p>
+<% end %>

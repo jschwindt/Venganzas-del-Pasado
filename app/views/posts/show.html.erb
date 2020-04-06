@@ -25,21 +25,14 @@
     <% if @comments.count > 0 %>
       <%= render @comments %>
     <% else %>
-      <p>
+      <p id="no-comments">
         No hay comentarios. ¡Podés ser el primero en comentar!
       </p>
     <% end %>
+    <br id="new-comment" />
+    <%= render 'comments/form', :post => @post, :comment => @post.comments.build %>
   </div>
   <div class="comments-paginator">
     <%= paginate @comments, :window => 2, :remote => true %>
-  </div>
-  <div class="comments-form">
-    <% if can? :create, Comment %>
-      <%= render 'comments/form', :post => @post, :comment => @post.comments.build %>
-    <% else %>
-      <div class="login-advice">
-        <p>Tenés que <%= link_to "Iniciar sesión", new_user_session_path %> para comentar.</p>
-      </div>
-    <% end %>
   </div>
 </section>

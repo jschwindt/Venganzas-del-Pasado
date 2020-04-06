@@ -156,7 +156,6 @@ article.comment {
 }
 
 .downloads {
-  background-color: #EEE;
   padding: 0.3em;
   border-radius: 0.2em;
   small {
@@ -174,4 +173,12 @@ article.comment {
   padding: 0.2em;
   border-radius: 0.2em;
 
+}
+
+.post-footer {
+  margin-top: 1rem;
+}
+
+.comments-list {
+  margin-top: 1rem;
 }

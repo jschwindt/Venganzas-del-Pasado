@@ -9,7 +9,7 @@ es:
   # Attributes names common to most models
   attributes:
     title: Título
-    content: Contenido
+    content: "Tu Comentario:"
 
   activerecord:
     models:

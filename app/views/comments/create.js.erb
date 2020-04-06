@@ -1,0 +1,5 @@
+<% if @comment.valid? %>
+    $('#new-comment').before("<%= j render @comment %>");
+    $('#comment_content').val('');
+    $('#no-comments').hide();
+<% end %>

@@ -14,8 +14,6 @@ class PostsController < ApplicationController
              params[:page] :
              comments_collection.page.per(VenganzasDelPasado::Application.config.comments_per_page).total_pages
     @comments = comments_collection.page(page).per(VenganzasDelPasado::Application.config.comments_per_page)
-
-    @comment = Comment.find(flash[:created_comment_id]) if flash[:created_comment_id]
   end
 
   def archive

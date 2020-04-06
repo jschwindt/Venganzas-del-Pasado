@@ -7,19 +7,13 @@
   <div class="media-content">
     <div class="content">
       <p>
-        <strong><%= comment.author %></strong> <small><%= timeago(comment.created_at) %></small>
+        <strong><%= link_to_unless comment.user.nil?, comment.author, comment.user %></strong> <small><%= timeago(comment.created_at) %></small>
         en <%= link_to comment.post_title, comment.post %> dijo:
         <%= markdown_format(comment.content) %>
       </p>
     </div>
     <nav class="level is-mobile">
       <div class="level-left">
-        <% if can? :read, comment %>
-          <%= link_to "Enlace al Comentario", post_comment_path(comment.post, comment), class: "level-item" %>
-        <% end %>
-        <% if comment.neutral? && can?(:flag, comment) %>
-          <%= link_to "Denunciar", flag_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }, :method => :post, :remote => :true, class: "level-item" %>
-        <% end %>
         <% if comment.deleted? %>
           <span class="level-item tag is-danger">
             <%= comment.status.capitalize %>
@@ -42,6 +36,10 @@
           <% if can? :trash, comment %>
             <%= link_to "Eliminar", trash_admin_comment_path(comment), :method => :delete, :data => { :confirm => '¿Estás seguro?' }, class: "level-item" %>
           <% end %>
+        <% end %>
+        <%= link_to "Enlace al Comentario", post_comment_path(comment.post, comment), class: "level-item" %>
+        <% if comment.neutral? && can?(:flag, comment) %>
+          <%= link_to "Denunciar", flag_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }, :method => :post, :remote => :true, class: "level-item" %>
         <% end %>
       </div>
     </nav>
