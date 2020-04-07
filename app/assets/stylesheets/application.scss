@@ -182,3 +182,23 @@ article.comment {
 .comments-list {
   margin-top: 1rem;
 }
+
+.comment-container {
+  position: relative;;
+}
+
+.cannot-comment {
+  position: absolute;
+  margin: 2.5em;
+  top: 2.5em;
+  z-index: 100;
+  background-color: white;
+  color: black;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+.avatar {
+  border-radius: 0.3rem;
+  background-color: #EEE;
+}
