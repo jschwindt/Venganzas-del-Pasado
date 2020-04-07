@@ -34,9 +34,10 @@ $(document).ready(() => {
     });
 
     $('a[href^="#play-"]').on('click', (event) => {
-        var audio, current_time, h_m_s, player, _i, _len, _ref;
+        var target, audio, current_time, h_m_s, player, _i, _len, _ref;
         event.preventDefault();
-        h_m_s = $(this).attr('href').replace('#play-', '').split(':');
+        target = event.currentTarget;
+        h_m_s = $(target).attr('href').replace('#play-', '').split(':');
         current_time = 0;
         if (h_m_s.length === 2) {
             current_time = parseInt(h_m_s[0]) * 60 + parseInt(h_m_s[1]);
@@ -45,7 +46,7 @@ $(document).ready(() => {
         } else {
             return;
         }
-        player = $(this).parents('article.post').first().find('audio')[0];
+        player = $(target).parents('article.post').first().find('audio')[0];
         if (player && current_time > 0 && current_time < 7200) {
             _ref = $('audio');
             for (_i = 0, _len = _ref.length; _i < _len; _i++) {
