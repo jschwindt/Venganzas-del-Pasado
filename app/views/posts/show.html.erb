@@ -4,18 +4,18 @@
   <% page_title @post.title + " - Página #{params[:page]} de comentarios" %>
 <% end %>
 <% meta_description @post.description %>
-<nav class="level">
+<div class="level is-mobile">
   <% if prev_post = @post.previous %>
     <div class="level-left">
-      <%= link_to "← Anterior", prev_post, :title => prev_post.title, class: "button is-info is-rounded" %>
+      <%= link_to "← Anterior", prev_post, :title => prev_post.title, class: "button is-info is-rounded is-small" %>
     </div>
   <% end %>
   <% if next_post = @post.next %>
     <div class="level-right">
-      <%= link_to "Siguiente →", next_post, :title => next_post.title, class: "button is-info is-rounded" %>
-    </li>
+      <%= link_to "Siguiente →", next_post, :title => next_post.title, class: "button is-info is-rounded is-small" %>
+    </div>
   <% end %>
-</nav>
+</div>
 <%= render @post %>
 <%= render 'layouts/banners/b468x60' %>
 <a name="comments"></a>
@@ -30,9 +30,9 @@
       </p>
     <% end %>
     <br id="new-comment" />
-    <%= render 'comments/form', :post => @post, :comment => @post.comments.build %>
-  </div>
-  <div class="comments-paginator">
-    <%= paginate @comments, :window => 2, :remote => true %>
-  </div>
+<%= render 'comments/form', :post => @post, :comment => @post.comments.build %>
+</div>
+<div class="comments-paginator">
+  <%= paginate @comments, :window => 2, :remote => true %>
+</div>
 </section>

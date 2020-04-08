@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :confirmable,
+  devise :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   scope :lifo, -> { order('created_at DESC') }

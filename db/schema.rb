@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_22_010850) do
+ActiveRecord::Schema.define(version: 2020_04_08_031144) do
 
   create_table "articles", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "title"
@@ -102,12 +102,16 @@ ActiveRecord::Schema.define(version: 2020_03_22_010850) do
     t.datetime "updated_at"
     t.string "profile_picture_url"
     t.string "unconfirmed_email"
+    t.integer "failed_attempts", default: 0, null: false
+    t.datetime "locked_at"
+    t.string "unlock_token"
     t.index ["alias"], name: "index_users_on_alias", unique: true
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["fb_userid"], name: "index_users_on_fb_userid"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug"
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
 end

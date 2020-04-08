@@ -25,8 +25,8 @@
               <%= current_user.alias %>
             </a>
             <div class="navbar-dropdown">
-              <%= link_to "Mi Perfil", 'current_user', class: "navbar-item" %>
-              <%= link_to "Preferencias", 'edit_user_registration_path', class: "navbar-item" %>
+              <%= link_to "Mi Perfil", current_user, class: "navbar-item" %>
+              <%= link_to "Preferencias", edit_user_registration_path, class: "navbar-item" %>
               <hr class="navbar-divider">
               <%= link_to "Cerrar Sesión", destroy_user_session_path, class: "navbar-item" %>
             </div>
