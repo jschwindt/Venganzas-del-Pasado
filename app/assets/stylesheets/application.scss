@@ -201,3 +201,16 @@ article.comment {
   border-radius: 0.3rem;
   background-color: #EEE;
 }
+
+ul.archive-years {
+  a {
+    padding: 0.2em 0.75em;
+  }
+}
+
+ul.archive-months {
+  display: none;
+  li {
+    list-style: none;
+  }
+}

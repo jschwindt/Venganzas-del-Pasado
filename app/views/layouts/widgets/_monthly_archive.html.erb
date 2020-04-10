@@ -1,0 +1,26 @@
+<h3 class="title title-right is-4">
+  Archivo de Programas
+</h3>
+<div class="content">
+  <ul class="archive-years menu-list">
+    <% Post.post_count_by_month.group_by(&:year).each do |year, months| %>
+      <li>
+        <% posts_in_year = months.inject(0) {|sum, hash| sum + hash.count} %>
+        <%= link_to "##{year}-year-accordion", 'data-toggle' => 'collapse' do %>
+          Año <%= year %> <small>(<%= posts_in_year %>)</small>
+        <% end %>
+        <ul class="archive-months menu-list">
+          <% months.each do |month| %>
+            <% date = Date.new month.year, month.month %>
+            <li>
+              <%= link_to posts_archive_path(year, month.month) do %>
+                <%= "#{I18n.t('date.month_names')[date.month].capitalize} de #{date.year}" %>
+                <small>(<%= month.count %>)</small>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</div>

@@ -35,6 +35,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'redcarpet'
 gem 'redis-rails'
+gem 'watu_table_builder', require: 'table_builder'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

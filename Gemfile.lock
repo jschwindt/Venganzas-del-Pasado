@@ -322,6 +322,7 @@ GEM
     unicode-display_width (1.7.0)
     warden (1.2.8)
       rack (>= 2.0.6)
+    watu_table_builder (0.3.0)
     web-console (4.0.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -378,6 +379,7 @@ DEPENDENCIES
   selenium-webdriver
   solargraph
   tzinfo-data
+  watu_table_builder
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)

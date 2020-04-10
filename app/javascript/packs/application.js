@@ -58,4 +58,10 @@ $(document).ready(() => {
         }
     });
 
+    $('a[data-toggle="collapse"]').on('click', (event) => {
+        event.preventDefault();
+        target = event.currentTarget;
+        $(target).next('ul.archive-months').toggle();
+    });
+
 })
