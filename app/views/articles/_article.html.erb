@@ -9,7 +9,7 @@
     </h3>
   <% end %>
   <div class="content">
-    <%= markdown_format article.content, :filter_html => false %>
+    <%= markdown_format article.content, filter_html: false %>
   </div>
   <% if can? :update, article %>
     <div class="actions">

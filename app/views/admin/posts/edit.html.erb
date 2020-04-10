@@ -4,7 +4,7 @@
 
 <div class="actions">
   <span class="tag is-warning"><%= @post.status.capitalize %></span>
-  <%= link_to "Ver Post", @post, :target => '_blank', class: "button is-light" %>
+  <%= link_to "Ver Post", @post, target: '_blank', class: "button is-light" %>
 </div>
 <br />
-<%= render 'form', :post => @post %>
+<%= render 'form', post: @post %>

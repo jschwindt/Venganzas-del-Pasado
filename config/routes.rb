@@ -4,14 +4,14 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   devise_scope :users do
-    post '/users/auth/:provider' => 'users/omniauth_callbacks#passthru', :as => :user_omniauth
+    post '/users/auth/:provider' => 'users/omniauth_callbacks#passthru', as: :user_omniauth
   end
 
-  get 'posts/:year(/:month(/:day))' => 'posts#archive', :as => :posts_archive, :constraints => {
+  get 'posts/:year(/:month(/:day))' => 'posts#archive', as: :posts_archive, constraints: {
     year: /\d{4}/, month: /\d{1,2}/, day: /\d{1,2}/
   }
 
-  get 'contributions(/page/:page)' => 'posts#contributions', :as => :contributions
+  get 'contributions(/page/:page)' => 'posts#contributions', as: :contributions
 
   resources :posts, only: %i[index show new create] do
     get 'page/:page', action: :index, on: :collection   # SEO friendly pagination for posts
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   resources :torrents, only: :index
 
   namespace :admin do
-    get '/' => 'base#dashboard', :as => :dashboard
+    get '/' => 'base#dashboard', as: :dashboard
 
     resources :articles, except: :show
     resources :users, only: %i[index edit update]
@@ -61,5 +61,5 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  # get '*path(.:format)' => 'redirects#index'
+  get '*path(.:format)' => 'redirects#index'
 end

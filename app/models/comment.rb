@@ -6,11 +6,6 @@ class Comment < ApplicationRecord
 
   delegate :title, to: :post, prefix: true
 
-  # TODO: Rails6
-  # Warning: los siguientes son los únicos attributos accesibles con asignación masiva
-  # attr_accessible :content
-  # attr_accessible :status, :as => :admin
-
   validates :content, :post_id, presence: true
 
   aasm column: :status do

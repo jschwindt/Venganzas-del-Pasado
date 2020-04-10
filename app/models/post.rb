@@ -10,7 +10,7 @@ class Post < ApplicationRecord
 
   # TODO: Rails6
   # attr_accessible :title, :content, :created_at, :media_attributes
-  # attr_accessible :title, :content, :created_at, :media_attributes, :status, :as => :admin
+  # attr_accessible :title, :content, :created_at, :media_attributes, :status, as: :admin
 
   validates :title, presence: true
   validate :validate_status

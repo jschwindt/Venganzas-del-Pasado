@@ -12,11 +12,11 @@
           <ul>
             <li>
               <%= link_to 'Programas Recientes', posts_path %>
-              <%= link_to "(RSS)", posts_path(:format => :rss) %>
+              <%= link_to "(RSS)", posts_path(format: :rss) %>
             </li>
             <li>
               <%= link_to "Torrents", torrents_url %>
-              <%= link_to "(RSS)", torrents_url(:format => :rss) %>
+              <%= link_to "(RSS)", torrents_url(format: :rss) %>
             </li>
             <li>
               <%= link_to "Subir programas viejos", new_post_path %>

@@ -24,7 +24,7 @@
 <%= render @objects %>
 <p>
   <% if controller.action_name == 'show' %>
-    <%= paginate @objects, :params => {:controller => :users, :action => :comments} %>
+    <%= paginate @objects, params: {controller: :users, action: :comments} %>
   <% else %>
     <%= paginate @objects %>
   <% end %>

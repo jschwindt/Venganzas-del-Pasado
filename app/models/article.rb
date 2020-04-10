@@ -3,8 +3,6 @@ class Article < ApplicationRecord
   friendly_id :title, use: %i[slugged finders]
 
   validates :title, :content, presence: true
-  # TODO: Rails6
-  # attr_accessible :title, :content, :as => :admin
 
   def description
     desc = content.gsub(%r{</?[^>]+?>}, '') # remove html tags

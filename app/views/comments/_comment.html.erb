@@ -22,7 +22,7 @@
             <%= link_to "Aprobar", approve_admin_comment_path(comment), class: "level-item" %>
           <% end %>
           <% if can? :destroy, comment %>
-            <%= link_to "Eliminar definitivamente", admin_comment_path(comment), :method => :delete, :data => { :confirm => '¿Estás seguro?' }, class: "level-item" %>
+            <%= link_to "Eliminar definitivamente", admin_comment_path(comment), method: :delete, data: { confirm: '¿Estás seguro?' }, class: "level-item" %>
           <% end %>
         <% else %>
           <% if can?(:approve, comment) or  can? :trash, comment %>
@@ -34,12 +34,12 @@
             <%= link_to "Aprobar", approve_admin_comment_path(comment), class: "level-item" %>
           <% end %>
           <% if can? :trash, comment %>
-            <%= link_to "Eliminar", trash_admin_comment_path(comment), :method => :delete, :data => { :confirm => '¿Estás seguro?' }, class: "level-item" %>
+            <%= link_to "Eliminar", trash_admin_comment_path(comment), method: :delete, data: { confirm: '¿Estás seguro?' }, class: "level-item" %>
           <% end %>
         <% end %>
         <%= link_to "Enlace al Comentario", post_comment_path(comment.post, comment), class: "level-item" %>
         <% if comment.neutral? && can?(:flag, comment) %>
-          <%= link_to "Denunciar", flag_comment_path(comment), :data => { :confirm => '¿Estás seguro?' }, :method => :post, :remote => :true, class: "level-item" %>
+          <%= link_to "Denunciar", flag_comment_path(comment), data: { confirm: '¿Estás seguro?' }, method: :post, remote: :true, class: "level-item" %>
         <% end %>
       </div>
     </nav>

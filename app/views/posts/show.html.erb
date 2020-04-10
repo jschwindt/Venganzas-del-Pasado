@@ -7,12 +7,12 @@
 <div class="level is-mobile">
   <% if prev_post = @post.previous %>
     <div class="level-left">
-      <%= link_to "← Anterior", prev_post, :title => prev_post.title, class: "button is-info is-rounded is-small" %>
+      <%= link_to "← Anterior", prev_post, title: prev_post.title, class: "button is-info is-rounded is-small" %>
     </div>
   <% end %>
   <% if next_post = @post.next %>
     <div class="level-right">
-      <%= link_to "Siguiente →", next_post, :title => next_post.title, class: "button is-info is-rounded is-small" %>
+      <%= link_to "Siguiente →", next_post, title: next_post.title, class: "button is-info is-rounded is-small" %>
     </div>
   <% end %>
 </div>
@@ -30,9 +30,9 @@
       </p>
     <% end %>
     <br id="new-comment" />
-<%= render 'comments/form', :post => @post, :comment => @post.comments.build %>
+<%= render 'comments/form', post: @post, comment: @post.comments.build %>
 </div>
 <div class="comments-paginator">
-  <%= paginate @comments, :window => 2, :remote => true %>
+  <%= paginate @comments, window: 2, remote: true %>
 </div>
 </section>

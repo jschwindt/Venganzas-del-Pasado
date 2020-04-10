@@ -25,7 +25,7 @@
           <td class="actions">
             <%= link_to "Editar", edit_admin_article_path(article), class: "tag is-small is-success" %>
             <% if can? :destroy, Article %>
-              <%= link_to "Eliminar", admin_article_path(article), :method => :delete, :data => { :confirm => "¿Estás seguro?" }, class: "tag is-small is-danger" %>
+              <%= link_to "Eliminar", admin_article_path(article), method: :delete, data: { confirm: "¿Estás seguro?" }, class: "tag is-small is-danger" %>
             <% end %>
           </td>
         </tr>

@@ -26,7 +26,7 @@
   </div>
   <% if post.content? %>
     <div class="post-content content">
-      <%= markdown_format post.content, :filter_html => false %>
+      <%= markdown_format post.content, filter_html: false %>
     </div>
   <% end %>
   <nav class="level post-footer">
@@ -47,6 +47,7 @@
     <% end %>
     <p class="level-item has-text-right">
       <%= link_to t('num_comments', count: post.comments.visible_by(current_user).count),
-                  post_path(post, :anchor => "comments"), title: "Ver los comentarios" %>    </p>
+                  post_path(post, anchor: "comments"), title: "Ver los comentarios" %>
+    </p>
   </nav>
 </article>
