@@ -12,7 +12,8 @@ class CommentsController < ApplicationController
     if @comment.save
       if @comment.pending?
         flash[:warning] = 'Tu comentario se ha guardado, y está pendiente de aprobación.'
-        CommentMailer.moderation_needed(@comment, 'Comentario para moderar').deliver_now
+        CommentMailer.with(comment: @comment, subject: 'Comentario para moderar')
+                     .moderation_needed.deliver_now
       end
     end
 
@@ -23,7 +24,8 @@ class CommentsController < ApplicationController
 
   def flag
     @comment.flag!
-    CommentMailer.moderation_needed(@comment, 'Comentario denunciado').deliver_now
+    CommentMailer.with(comment: @comment, subject: 'Comentario denunciado')
+                 .moderation_needed.deliver_now
   end
 
   protected

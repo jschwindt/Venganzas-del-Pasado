@@ -1,6 +1,6 @@
-class CommentMailer < ActionMailer::Base
-  def moderation_needed(comment, subject)
-    @comment = comment
-    mail(to: 'juan@schwindt.org', subject: subject)
+class CommentMailer < ApplicationMailer
+  def moderation_needed
+    @comment = params[:comment]
+    mail(to: 'juan@schwindt.org', subject: params[:subject])
   end
 end
