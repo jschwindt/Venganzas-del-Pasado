@@ -222,3 +222,14 @@ ul.archive-months {
 .with100p {
   width: 100%;
 }
+
+.calendar {
+  table {
+    th:not([align]), td {
+      text-align: center;
+    }
+    td.future {
+      color: #aaa;
+    }
+  }
+}

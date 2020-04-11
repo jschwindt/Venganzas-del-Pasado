@@ -1,4 +1,5 @@
 <h3 class="title title-right is-4">Buscador</h3>
+<div class="content">
 <%= form_tag search_path(what: 'posts'), method: 'get' do %>
   <div class="field has-addons">
     <div class="control has-icons-right with100p">
@@ -9,6 +10,6 @@
     </div>
   </div>
 <% end %>
-<br/>
+</div>
 <%= render 'layouts/widgets/daily_archive' %>
 <%= render 'layouts/widgets/monthly_archive' %>
