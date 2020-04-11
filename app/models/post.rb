@@ -8,10 +8,6 @@ class Post < ApplicationRecord
   belongs_to :contributor, class_name: 'User', optional: true
   accepts_nested_attributes_for :media
 
-  # TODO: Rails6
-  # attr_accessible :title, :content, :created_at, :media_attributes
-  # attr_accessible :title, :content, :created_at, :media_attributes, :status, as: :admin
-
   validates :title, presence: true
   validate :validate_status
 
@@ -21,6 +17,13 @@ class Post < ApplicationRecord
   scope :waiting, -> { where(status: 'waiting') }
   scope :lifo, -> { order('created_at DESC') }
   scope :this_month, -> { where(created_at: Date.today.beginning_of_month..Date.today.end_of_month) }
+
+  searchkick searchable: %i[title content], filterable: [:created_at], language: 'spanish'
+  scope :search_import, -> { where(status: 'published') }
+
+  def should_index?
+    status == 'published'
+  end
 
   # Class methods
   class << self

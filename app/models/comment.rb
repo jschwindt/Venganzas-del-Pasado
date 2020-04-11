@@ -8,6 +8,13 @@ class Comment < ApplicationRecord
 
   validates :content, :post_id, presence: true
 
+  searchkick searchable: %i[author content], filterable: [:created_at], language: 'spanish'
+  scope :search_import, -> { where('status IN (?)', %w[neutral approved flagged]) }
+
+  def should_index?
+    %w[neutral approved flagged].include? status
+  end
+
   aasm column: :status do
     state :neutral, initial: true
     state :approved

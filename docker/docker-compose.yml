@@ -28,7 +28,21 @@ services:
     volumes:
       - vdp-redis-db:/data
 
+  elasticsearch:
+    build: ./elastic
+    image: elasticsearch:7.6.2
+    restart: always
+    container_name: vdp_elstic
+    environment: 
+      - "discovery.type=single-node"
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - 9200:9200
+    volumes:
+      - vdp-elastic:/usr/share/elasticsearch/data
+
 # Names our volume
 volumes:
   vdp-mysql-db:
   vdp-redis-db:
+  vdp-elastic:

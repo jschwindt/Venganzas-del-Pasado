@@ -1,0 +1,23 @@
+<% page_title("Resultados de búsqueda") %>
+<h2 class="title fancy is-4"><%= html_page_title%></h2>
+
+<div class="tabs is-boxed">
+  <ul>
+    <li class="<%= (@what == 'posts' ? 'is-active' : nil) %>">
+      <%= link_to search_path(q: params[:q], what: 'posts', page: nil) do %>
+        Posts&nbsp;
+        <span class="tag is-info is-light"><%= @posts_result.total_count %></span>
+      <% end %>
+    </li>
+    <li class="<%= (@what == 'comments' ? 'is-active' : nil) %>">
+      <%= link_to search_path(q: params[:q], what: 'comments', page: nil) do %>
+        Comentarios&nbsp;
+        <span class="tag is-info is-light"><%= @comments_result.total_count %></span>
+      <% end %>
+    </li>
+  </ul>
+</div>
+<div class="search-results">
+  <%= render @results %>
+</div>
+<%= paginate @results, :window => 2 %>

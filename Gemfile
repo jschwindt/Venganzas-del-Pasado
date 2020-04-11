@@ -35,6 +35,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'redcarpet'
 gem 'redis-rails'
+gem 'searchkick', '~> 4.3.0'
 gem 'watu_table_builder', require: 'table_builder'
 
 group :development, :test do
@@ -43,6 +44,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'awesome_print'
   gem 'capistrano', '~> 3.11', require: false
   gem 'capistrano-passenger', require: false
   gem 'capistrano-rails', '~> 1.4', require: false

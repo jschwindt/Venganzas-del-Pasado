@@ -63,6 +63,7 @@ GEM
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
     ast (2.4.0)
+    awesome_print (1.8.0)
     backport (1.1.2)
     bcrypt (3.1.13)
     benchmark (0.1.0)
@@ -111,6 +112,14 @@ GEM
       responders
       warden (~> 1.2.3)
     e2mmap (0.1.0)
+    elasticsearch (7.6.0)
+      elasticsearch-api (= 7.6.0)
+      elasticsearch-transport (= 7.6.0)
+    elasticsearch-api (7.6.0)
+      multi_json
+    elasticsearch-transport (7.6.0)
+      faraday (~> 1)
+      multi_json
     erubi (1.9.0)
     faraday (1.0.1)
       multipart-post (>= 1.2, < 3)
@@ -287,6 +296,10 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    searchkick (4.3.0)
+      activemodel (>= 5)
+      elasticsearch (>= 6)
+      hashie
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
@@ -349,6 +362,7 @@ PLATFORMS
 
 DEPENDENCIES
   aasm
+  awesome_print
   bootsnap (>= 1.4.2)
   bulma-rails (~> 0.8.0)
   byebug
@@ -376,6 +390,7 @@ DEPENDENCIES
   redis-rails
   rubocop (~> 0.81.0)
   sass-rails (>= 6)
+  searchkick (~> 4.3.0)
   selenium-webdriver
   solargraph
   tzinfo-data
