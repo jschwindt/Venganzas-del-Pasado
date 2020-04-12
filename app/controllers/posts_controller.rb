@@ -37,9 +37,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new_contribution(params[:post], current_user)
+    @post = Post.new_contribution(post_params, current_user)
     if @post.save
-      PostMailer.new_contribution(@post).deliver_now
+      PostMailer.with(post: @post).new_contribution.deliver_now
       redirect_to new_post_url, notice: "El post '#{@post.title}' se subió con éxito y pronto será revisado y, si corresponde, aprobado. Abajo tenés nuevamente el formulario por si querés cargar más programas."
     else
       @post.media.size.upto(4) do
@@ -53,5 +53,9 @@ class PostsController < ApplicationController
 
   def find_page_by_slug
     @post = Post.friendly.find(params[:id])
+  end
+
+  def post_params
+    params.require(:post).permit([:title, :content, :created_at, media_attributes: [:asset]])
   end
 end

@@ -3,6 +3,4 @@ class Medium < ApplicationRecord
 
   validates :asset, presence: true
 
-  # TODO: Rails6
-  # attr_accessible :asset
 end

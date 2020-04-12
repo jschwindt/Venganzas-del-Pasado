@@ -9,7 +9,7 @@ es:
   # Attributes names common to most models
   attributes:
     title: Título
-    content: "Tu Comentario:"
+    content: Contenido
 
   activerecord:
     models:
@@ -21,3 +21,6 @@ es:
         password: Contraseña
         password_confirmation: Confirmación de contraseña
         current_password: Contraseña actual
+
+      media:
+        asset: Archivo

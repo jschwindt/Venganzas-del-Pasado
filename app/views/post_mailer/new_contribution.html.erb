@@ -1,0 +1,9 @@
+<p>
+  Hay una nueva contribución de <%= link_to @post.contributor_alias, user_url(@post.contributor) %> para moderar:
+</p>
+<p>
+  <%= link_to @post.title, post_url(@post) %>
+</p>
+<p>
+  <%= link_to "Ver Pendientes", admin_posts_url(has_status: 'pending') %>
+</p>

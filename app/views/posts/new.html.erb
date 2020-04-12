@@ -1,0 +1,6 @@
+<% the_title = "Aporta tus propios programas grabados" %>
+<% page_title the_title %>
+<h2 class="title fancy is-4"><%= the_title %></h2>
+<h3 class="title">Publicá un nuevo programa</h3>
+<%= alert_message_for(@post) %>
+<%= render 'form', :post => @post %>

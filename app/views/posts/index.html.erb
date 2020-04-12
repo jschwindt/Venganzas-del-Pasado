@@ -8,4 +8,4 @@
 <h2 class="title fancy is-4"><%= raw the_title %></h2>
 <%= render 'layouts/banners/b468x60' %>
 <%= render @posts %>
-<%= paginate @posts, window: 2 %>
+<%= paginate @posts, :window => 2 %>

@@ -1,0 +1,56 @@
+<div class="content">
+  <p>
+    Mediante este formulario podés cargar programas viejos de LVST.
+    Para eso es importante que le pongas un título acorde, siguiendo el formato del resto de los programas y,
+    <strong>muy importante:</strong> la fecha en la que debe publicarse el post de acuerdo con el programa que estés subiendo.
+  </p>
+  <p>
+    Se pueden subir hasta 4 segmentos del mismo programa y los archivos tienen que ser formato MP3 y de una calidad razonable.
+    El peso total no puede superar los 30 megabytes.
+  </p>
+  <p>
+    Idealmente cargá también una descipción del programa en la caja de contenido. Podés darle estilo y formato al texto utilizando <%= link_to "Markdown", article_path('markdown'), target: '_blank' %>.
+  </p>
+  <p>
+    Los posts subidos a través de este formulario no se publicarón inmediatamente sino que previamente serán revisados y aprobados.
+  </p>
+</div>
+<div class="content">
+  <%= render 'flash' %>
+  <%= form_for post do |f| %>
+    <div class="field">
+      <%= f.label :title, class: 'label' %>
+      <div class="control">
+        <%= f.text_field :title, placeholder: 'Título', class: 'input' %>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control">
+        <%= f.label :content, class: 'label' %>
+        <%= f.text_area :content, class: 'textarea', rows: 20, id: 'markdownify' %>
+      </div>
+    </div>
+    <div class="field">
+      <%= f.label :created_at, "Fecha de publicación", class: 'label' %>
+      <div class="select">
+        <%= f.date_select :created_at, {
+            start_year: 1985,
+            end_year: Time.zone.now.year,
+            date_separator: '</div><div class="select">' } %>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Archivos de audio (sólo .mp3 y menos de 30MB en total)</label>
+      <%= f.fields_for :media do |media_form| %>
+        <div class="input">
+          <%= media_form.file_field :asset, accept: '.mp3' %>
+        </div>
+      <% end %>
+    </div>
+    <div class="field">
+      <div class="control">
+        <%= f.submit "Enviar", class: 'button is-link' %>
+      </div>
+    </div>
+  <% end %>
+</div>

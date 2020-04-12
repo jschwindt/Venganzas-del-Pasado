@@ -15,7 +15,7 @@
           <% end %>
           <div class="field">
             <div class="control">
-              <%= f.label :content, class: 'label' %>
+              <%= f.label "Tu comentario:", class: 'label' %>
               <%= f.text_area :content, rows: 6, placeholder: "Escribi un comentario", class: "textarea" %>
             </div>
             <em>Podés darle estilo y formato al texto utilizando <%= link_to "Markdown", article_path('markdown'), target: '_blank' %>.</em>
