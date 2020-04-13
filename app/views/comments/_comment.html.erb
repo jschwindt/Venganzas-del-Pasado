@@ -39,7 +39,7 @@
         <% end %>
         <%= link_to "Enlace al Comentario", post_comment_path(comment.post, comment), class: "level-item" %>
         <% if comment.neutral? && can?(:flag, comment) %>
-          <%= link_to "Denunciar", flag_comment_path(comment), data: { confirm: '¿Estás seguro?' }, method: :post, remote: :true, class: "level-item" %>
+          <%= link_to "Denunciar", flag_comment_path(comment), data: { confirm: '¿Estás seguro?' }, method: :post, remote: :true, class: "level-item", id: "flag_#{comment.id}" %>
         <% end %>
       </div>
     </nav>
