@@ -24,7 +24,8 @@ set :deploy_to, '/var/www/vdp6'
 append :linked_files, 'config/database.yml', 'config/master.key'
 
 # Default value for linked_dirs is []
-append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets',
+       'public/uploads', 'public/sitemaps', 'public/st', 'public/st1', 'public/st2', 'public/st3'
 
 # Default value for default_env is {}
 set :default_env, { path: '/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH' }
