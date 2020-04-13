@@ -30,9 +30,9 @@
       </p>
     <% end %>
     <br id="new-comment" />
-<%= render 'comments/form', post: @post, comment: @post.comments.build %>
-</div>
-<div class="comments-paginator">
-  <%= paginate @comments, window: 2, remote: true %>
-</div>
+    <%= render 'comments/form', post: @post, comment: @post.comments.build %>
+  </div>
 </section>
+<div class="comments-paginator">
+  <%= paginate @comments, window: 2, params: { anchor: 'comments' } %>
+</div>
