@@ -4,7 +4,7 @@
     <p class="level-item has-text-centered">
       <%= link_to "Descargar MP3", audio.url, rel: 'nofollow' %>
     </p>
-    <p class="level-item has-text-centered">
+    <p class="level-item has-text-centered is-hidden-mobile">
       <%= link_to "Torrent", audio.torrent_url, rel: 'nofollow' %>
       <small><em>
           <%= link_to "¿Qué es esto?", article_path('torrent') %>
