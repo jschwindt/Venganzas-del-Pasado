@@ -23,6 +23,7 @@
   </div>
   <div class="post-audios">
     <%= render post.audios %>
+    <%= render post.media %>
   </div>
   <% if post.content? %>
     <div class="post-content content">
@@ -41,7 +42,12 @@
       </p>
       <% if post.pending? %>
         <p class="level-item has-text-centered">
-          <%= link_to "Aprobar contribución", approve_contribution_admin_post_path(post) %>
+          <%= link_to "Aprobar contribución", approve_contribution_admin_post_path(post), class: "tag is-warning" %>
+        </p>
+      <% end %>
+      <% if can? :destroy, Post %>
+        <p class="level-item has-text-centered">
+          <%= link_to "Eliminar", admin_post_path(post), method: :delete, data: { confirm: "¿Estás seguro?" }, class: "tag is-danger" %>
         </p>
       <% end %>
     <% end %>
