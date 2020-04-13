@@ -11,5 +11,7 @@
   </div>
 <% end %>
 </div>
-<%= render 'layouts/widgets/daily_archive' %>
-<%= render 'layouts/widgets/monthly_archive' %>
+<% cache [:archive, Post.last_updated], expires_in: 2.days do %>
+  <%= render 'layouts/widgets/daily_archive' %>
+  <%= render 'layouts/widgets/monthly_archive' %>
+<% end %>
