@@ -31,3 +31,4 @@ yarn-debug.log*
 dump/
 .vscode/
 vendor/bundle
+.DS_Store
