@@ -26,14 +26,17 @@
             </a>
             <div class="navbar-dropdown">
               <%= link_to current_user, class: "navbar-item" do %>
-                <%= image_tag 'info-large.svg', class: "icon-svg" %> Mi Perfil
+                <span class="icon"><i class="fas icon-user"></i></span>
+                <span>Mi Perfil</span>
               <% end %>
               <%= link_to edit_user_registration_path, class: "navbar-item" do %>
-                <%= image_tag 'cog.svg', class: "icon-svg" %> Preferencias
+                <span class="icon"><i class="fas icon-cog"></i></span>
+                <span>Preferencias</span>
               <% end %>
               <hr class="navbar-divider">
               <%= link_to destroy_user_session_path, class: "navbar-item" do %>
-                <%= image_tag 'power.svg', class: "icon-svg" %> Cerrar Sesión
+                <span class="icon"><i class="fas icon-logout"></i></span>
+                <span>Cerrar Sesión</span>
               <% end %>
             </div>
           </div>
