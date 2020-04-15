@@ -302,7 +302,7 @@ GEM
       thor (~> 1.0)
       tilt (~> 2.0)
       yard (~> 0.9)
-    sprockets (4.0.0)
+    sprockets (3.7.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (3.2.1)
@@ -379,6 +379,7 @@ DEPENDENCIES
   searchkick (~> 4.3.0)
   selenium-webdriver
   solargraph
+  sprockets (~> 3.7.2)
   tzinfo-data
   watu_table_builder
   web-console (>= 3.3.0)
