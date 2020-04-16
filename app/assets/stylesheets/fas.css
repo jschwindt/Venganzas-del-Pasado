@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'fas';
-  src: font-url('fas.eot');
-  src: font-url('fas.eot#iefix') format('embedded-opentype'),
-       font-url('fas.woff2') format('woff2'),
-       font-url('fas.woff') format('woff'),
-       font-url('fas.ttf') format('truetype'),
-       font-url('fas.svg#fas') format('svg');
+  src: font-url('fas.eot?96988587');
+  src: font-url('fas.eot?96988587#iefix') format('embedded-opentype'),
+       font-url('fas.woff2?96988587') format('woff2'),
+       font-url('fas.woff?96988587') format('woff'),
+       font-url('fas.ttf?96988587') format('truetype'),
+       font-url('fas.svg?96988587#fas') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -15,7 +15,7 @@
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   @font-face {
     font-family: 'fas';
-    src: font-url('fas.svg#fas') format('svg');
+    src: font-url('fas.svg?96988587#fas') format('svg');
   }
 }
 */
@@ -70,8 +70,10 @@
 .icon-pencil:before { content: '\e80c'; } /* '' */
 .icon-book:before { content: '\e80d'; } /* '' */
 .icon-eye:before { content: '\e80e'; } /* '' */
+.icon-link-ext:before { content: '\f08e'; } /* '' */
 .icon-bookmark-empty:before { content: '\f097'; } /* '' */
 .icon-rss:before { content: '\f09e'; } /* '' */
+.icon-comment-empty:before { content: '\f0e5'; } /* '' */
 .icon-download-cloud:before { content: '\f0ed'; } /* '' */
 .icon-doc-text-inv:before { content: '\f15c'; } /* '' */
 .icon-commenting-o:before { content: '\f27b'; } /* '' */
