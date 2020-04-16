@@ -24,11 +24,9 @@
     <%= render 'navbar' %>
     <%= render 'header' %>
     <section class="subheader">
-      <% if Rails.env.production? %>
-        <div class=has-text-centered>
-          <%= render 'layouts/banners/top' %>
-        </div>
-      <% end %>
+      <div class=has-text-centered>
+        <%= render 'layouts/banners/top' %>
+      </div>
     </section>
     <section class="section main">
       <div class="container">

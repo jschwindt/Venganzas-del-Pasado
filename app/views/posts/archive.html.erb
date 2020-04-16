@@ -13,6 +13,6 @@
 <% page_title the_title %>
 <% meta_description strip_tags("#{the_title} de La Venganza será Terrible") %>
 <h2 class="title fancy is-4"><%= raw the_title %></h2>
-<%= render 'layouts/banners/b468x60' %>
+<%= render 'layouts/banners/top' %>
 <%= render @posts %>
 <%= paginate @posts, window: 2 %>
