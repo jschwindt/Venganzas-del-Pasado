@@ -1,20 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Venganzas del Pasado</title>
+    <title><%= yield :title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= tag "meta", name: "description", content: @meta_description || "El sitio donde podés escuchar online y descargar los archivos de audio en MP3 del programa La Venganza será Terrible de Alejandro Dolina." %>
+    <%= auto_discovery_link_tag :rss, posts_path(format: :rss), { title: "RSS feed de Venganzas del Pasado" } %>
+    <%= auto_discovery_link_tag :rss, torrents_path(format: :rss), { title: "Torrent RSS de Venganzas del Pasado" } %>
+    <%= favicon_link_tag '/favicon.ico' %>
+    <%= tag "link", rel: "image_src", href: asset_path('vdp_logo.jpg') %>
+    <%= tag "meta", name: "twitter:card",       content: "summary" %>
+    <%= tag "meta", name: "twitter:site",       content: "@venganzaspasado" %>
+    <%= tag "meta", name: "twitter:creator",    content: "@jschwindt" %>
+    <%= tag "meta", property: "og:url",         content: request.original_url %>
+    <%= tag "meta", property: "og:title",       content: yield(:title) %>
+    <%= tag "meta", property: "og:description", content: @meta_description || "El sitio donde podés escuchar online y descargar los archivos de audio en MP3 del programa La Venganza será Terrible de Alejandro Dolina." %>
+    <%= tag "meta", property: "og:image",       content: asset_url('vdp_logo.jpg') %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_pack_tag 'application' %>
+    <% if Rails.env.production? %><%= render 'google_headers' %><% end %>
   </head>
   <body>
     <%= render 'navbar' %>
     <%= render 'header' %>
     <section class="subheader">
-      <p>/</p>
-      <p class=has-text-centered>Publicidad</p>
-      <p>\</p>
+      <% if Rails.env.production? %>
+        <div class=has-text-centered>
+          <%= render 'layouts/banners/top' %>
+        </div>
+      <% end %>
     </section>
     <section class="section main">
       <div class="container">
@@ -30,5 +44,6 @@
       </div>
     </section>
     <%= render 'footer' %>
+    <%= javascript_pack_tag 'application' %>
   </body>
 </html>
