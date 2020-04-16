@@ -47,7 +47,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'awesome_print'
+  gem 'amazing_print'
   gem 'capistrano', '~> 3.11', require: false
   gem 'capistrano-passenger', require: false
   gem 'capistrano-rails', '~> 1.4', require: false
