@@ -1,27 +1,45 @@
 <h3 class="title title-right is-4">Menú</h3>
-
 <aside class="menu box">
   <ul class="menu-list">
-    <li><%= link_to "Dashboard", admin_dashboard_path %></li>
+    <li><%= link_to admin_dashboard_path do %>
+        <i class="fas icon-home"></i> Dashboard
+      <% end %>
+    </li>
     <% if can? :manage, User %>
-      <li><%= link_to "Usuarios", admin_users_path %></li>
+      <li><%= link_to admin_users_path do %>
+          <i class="fas icon-users"></i> Usuarios
+        <% end %>
+      </li>
     <% end %>
     <% if can? :approve, Comment %>
-      <li><%= link_to "Comentarios", admin_comments_path %></li>
+      <li><%= link_to admin_comments_path do %>
+          <i class="fas icon-comment"></i> Comentarios
+        <% end %>
+      </li>
     <% end %>
     <% if can? :update, Post %>
-      <li><%= link_to "Posts", admin_posts_path %>
+      <li><%= link_to admin_posts_path do %>
+          <i class="fas icon-doc-text-inv"></i> Posts
+        <% end %>
         <% if can? :create, Post %>
           <ul>
-            <li><%= link_to "Crear Post", new_admin_post_path %></li>
+            <li><%= link_to new_admin_post_path do %>
+                <i class="fas icon-pencil"></i> Crear Post
+              <% end %>
+            </li>
           </ul>
         <% end %>
       </li>
     <% end %>
     <% if can? :manage, Article %>
-      <li><%= link_to "Artículos", admin_articles_path %>
+      <li><%= link_to admin_articles_path do %>
+          <i class="fas icon-book"></i> Artículos
+        <% end %>
         <ul>
-          <li><%= link_to "Crear Artículo", new_admin_article_path %></li>
+          <li><%= link_to new_admin_article_path do %>
+              <i class="fas icon-pencil"></i> Crear Artículo
+            <% end %>
+          </li>
         </ul>
       </li>
     <% end %>
