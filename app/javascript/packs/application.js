@@ -15,7 +15,6 @@ require('@rails/ujs').start()
 require('social-likes')
 require('./bulma')
 require('./timeago')
-require('./mde')
 
 $(document).ready(() => {
 

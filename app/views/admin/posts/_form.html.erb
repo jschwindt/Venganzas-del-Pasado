@@ -38,3 +38,6 @@
     </div>
   </div>
 <% end %>
+<% content_for :extra_js do %>
+  <%= javascript_pack_tag 'mde' %>
+<% end %>
