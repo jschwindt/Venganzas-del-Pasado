@@ -28,8 +28,7 @@ $(document).ready(() => {
     };
 
     $('.open_player').click((event) => {
-        open_player(event.currentTarget.href);
-        return false;
+        return open_player(event.currentTarget.href);
     });
 
     $('a[href^="#play-"]').on('click', (event) => {
@@ -46,14 +45,19 @@ $(document).ready(() => {
             return;
         }
         player = $(target).parents('article.post').first().find('audio')[0];
-        if (player && current_time > 0 && current_time < 7200) {
+        if (player && current_time > 0 && current_time < 8000) {
             _ref = $('audio');
             for (_i = 0, _len = _ref.length; _i < _len; _i++) {
                 audio = _ref[_i];
                 audio.pause();
             }
             player.currentTime = current_time;
-            return player.play();
+            player.play();
+            player.oncanplay = (e) => {
+                if (player.currentTime == 0) {
+                    player.currentTime = current_time;
+                }
+            }
         }
     });
 
