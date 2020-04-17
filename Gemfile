@@ -24,7 +24,6 @@ gem 'sprockets', '~> 3.7.2'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'aasm'
-gem 'bulma-rails', '~> 0.8.0'
 gem 'cancancan'
 gem 'carrierwave'
 gem 'devise'
