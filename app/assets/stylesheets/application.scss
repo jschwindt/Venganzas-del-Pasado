@@ -123,20 +123,19 @@ article.comment {
     margin-top: 0.2em;
     margin-bottom: 0.2em;
   }
+}
 
-  a[href^="#play"]::before {
-    content: "[";
-  }
+a[href^="#play-"]::before {
+  font-family: "fas";
+  font-size: 0.75rem;
+  margin: 0 0.3rem 0 0.8rem;
+  content: '\e810';
+}
 
-  a[href^="#play"]::after {
-    content: "]";
-  }
-
-  a[href^="#play"] {
-    font-size: 1rem;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 800;
-  }
+a[href^="#play-"] {
+  font-size: 0.8rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 600;
 }
 
 .player-audio {
