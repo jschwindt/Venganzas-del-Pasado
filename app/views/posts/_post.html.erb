@@ -38,22 +38,30 @@
     <% end %>
     <% if can? :update, post %>
       <p class="level-item has-text-centered">
-        <%= link_to "Editar", edit_admin_post_path(post), class: "tag is-small is-success" %>
+        <%= link_to edit_admin_post_path(post) do %>
+            <i class="fas icon-edit"></i> Editar
+          <% end %>
       </p>
       <% if post.pending? %>
         <p class="level-item has-text-centered">
-          <%= link_to "Aprobar contribución", approve_contribution_admin_post_path(post), class: "tag is-warning" %>
+          <%= link_to approve_contribution_admin_post_path(post) do %>
+            <i class="fas icon-ok"></i> Aprobar contribución
+          <% end %>
         </p>
       <% end %>
       <% if can? :destroy, Post %>
         <p class="level-item has-text-centered">
-          <%= link_to "Eliminar", admin_post_path(post), method: :delete, data: { confirm: "¿Estás seguro?" }, class: "tag is-danger" %>
+          <%= link_to admin_post_path(post), method: :delete, data: { confirm: "¿Estás seguro?" } do %>
+            <i class="fas icon-trash-empty"></i> Eliminar
+          <% end %>
         </p>
       <% end %>
     <% end %>
     <p class="level-item has-text-right">
-      <%= link_to t('num_comments', count: post.comments.visible_by(current_user).count),
-                  post_path(post, anchor: "comments"), title: "Ver los comentarios" %>
+      <%= link_to post_path(post, anchor: "comments"), title: "Ver los comentarios" do %>
+        <i class="fas icon-comment-empty"></i>
+        <%= t('num_comments', count: post.comments.visible_by(current_user).count) %>
+      <% end %>
     </p>
   </nav>
 </article>

@@ -54,7 +54,7 @@
   /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
- 
+
 .icon-logout:before { content: '\e800'; } /* '' */
 .icon-user:before { content: '\e801'; } /* '' */
 .icon-cog:before { content: '\e802'; } /* '' */
@@ -70,10 +70,12 @@
 .icon-pencil:before { content: '\e80c'; } /* '' */
 .icon-book:before { content: '\e80d'; } /* '' */
 .icon-eye:before { content: '\e80e'; } /* '' */
+.icon-search:before { content: '\e80f'; } /* '' */
 .icon-link-ext:before { content: '\f08e'; } /* '' */
 .icon-bookmark-empty:before { content: '\f097'; } /* '' */
 .icon-rss:before { content: '\f09e'; } /* '' */
 .icon-comment-empty:before { content: '\f0e5'; } /* '' */
 .icon-download-cloud:before { content: '\f0ed'; } /* '' */
+.icon-flag-empty:before { content: '\f11d'; } /* '' */
 .icon-doc-text-inv:before { content: '\f15c'; } /* '' */
 .icon-commenting-o:before { content: '\f27b'; } /* '' */

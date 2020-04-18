@@ -90,6 +90,11 @@ audio {
 
 .post-audios {
   margin-top: 0.5rem;
+  .panel a {
+    margin: 0 1rem;
+    border: 0;
+    text-align: center;
+  }
 }
 
 .your-help {
