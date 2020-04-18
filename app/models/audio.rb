@@ -1,9 +1,6 @@
 class Audio < ApplicationRecord
   belongs_to :post
 
-  # TODO: Rails6
-  # attr_accessible :url, :bytes
-
   delegate :title, to: :post, prefix: true
 
   validates :url, presence: true, uniqueness: true

@@ -286,6 +286,8 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    sitemap_generator (6.1.0)
+      builder (~> 3.0)
     solargraph (0.38.6)
       backport (~> 1.1)
       benchmark
@@ -375,6 +377,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   searchkick (~> 4.3.0)
   selenium-webdriver
+  sitemap_generator
   solargraph
   sprockets (~> 3.7.2)
   tzinfo-data

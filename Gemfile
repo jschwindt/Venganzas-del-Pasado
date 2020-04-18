@@ -38,6 +38,7 @@ gem 'omniauth-facebook'
 gem 'redcarpet'
 gem 'redis'
 gem 'searchkick', '~> 4.3.0'
+gem 'sitemap_generator'
 gem 'watu_table_builder', require: 'table_builder'
 
 group :development, :test do
