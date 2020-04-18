@@ -24,8 +24,8 @@
             <% end %>
           <% end %>
           <% if can? :destroy, comment %>
-            <%= link_to admin_comment_path(comment), method: :delete, data: { confirm: '¿Estás seguro?' }, class: "level-item" do %>
-              <i class="fas icon-trash-empty"></i> Eliminar definitivamente
+            <%= link_to admin_comment_path(comment), method: :delete, data: { confirm: '¿Estás seguro?' }, class: "level-item has-text-danger" do %>
+              <i class="fas icon-trash-empty"></i> <strong>Eliminar def.</strong>
             <% end %>
           <% end %>
         <% else %>
@@ -46,7 +46,7 @@
           <% end %>
         <% end %>
         <%= link_to post_comment_path(comment.post, comment), class: "level-item" do %>
-          <i class="fas icon-bookmark-empty"></i> Enlace al Comentario
+          <i class="fas icon-bookmark-empty"></i> <small>Enlace al comentario</small>
         <% end %>
         <% if comment.neutral? && can?(:flag, comment) %>
           <%= link_to flag_comment_path(comment), data: { confirm: '¿Estás seguro?' }, method: :post, remote: :true, class: "level-item", id: "flag_#{comment.id}" do %>

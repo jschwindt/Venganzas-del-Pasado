@@ -2,7 +2,6 @@ class UsersController < ApplicationController
   before_action :load_resource, except: :index
   load_and_authorize_resource
 
-  # TODO: Cambiar a UsersController
   def sign_in
     render layout: 'lean'
   end
