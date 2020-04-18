@@ -29,20 +29,6 @@ class UsersController < ApplicationController
     render :show
   end
 
-  def likes
-    comments_collection = (Comment.all_liked_by @user).visible_by(current_user).lifo
-    @objects = comments_collection.page(params[:page]).per(VenganzasDelPasado::Application.config.comments_per_page)
-
-    render :show
-  end
-
-  def dislikes
-    comments_collection = (Comment.all_disliked_by @user).visible_by(current_user).lifo
-    @objects = comments_collection.page(params[:page]).per(VenganzasDelPasado::Application.config.comments_per_page)
-
-    render :show
-  end
-
   protected
 
   def load_resource

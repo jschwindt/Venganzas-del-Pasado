@@ -12,12 +12,9 @@ class Ability
     end
     can :read, Article
     can :read, Comment, status: %w[neutral approved flagged]
-    can :opinions, Comment, status: %w[neutral approved flagged]
     can :read, User
     can :comments, User
     can :contributions, User
-    can :likes, User
-    can :dislikes, User
 
     if user.persisted?
       can :read, Comment, user_id: user.id

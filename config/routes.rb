@@ -23,17 +23,12 @@ Rails.application.routes.draw do
   resources :comments, only: [] do
     member do
       post 'flag'
-      post 'like'
-      post 'dislike'
-      get 'opinions'
     end
   end
 
   resources :users, only: :show do
     get 'comments(/page/:page)', action: :comments, on: :member, as: :comments
     get 'contributions(/page/:page)', action: :contributions, on: :member, as: :contributions
-    get 'likes(/page/:page)', action: :likes, on: :member, as: :likes
-    get 'dislikes(/page/:page)', action: :dislikes, on: :member, as: :dislikes
   end
 
   resources :articles, only: :show

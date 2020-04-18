@@ -79,11 +79,4 @@ class Comment < ApplicationRecord
     save
   end
 
-  def opinion_count
-    like_count + dislike_count
-  end
-
-  def opinions
-    (likes + dislikes).sort { |x, y| x.created_at <=> y.created_at }
-  end
 end
