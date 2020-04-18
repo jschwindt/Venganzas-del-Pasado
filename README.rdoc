@@ -1,6 +1,13 @@
-== Venganzas del Pasado
+= Venganzas del Pasado
 
-Este es el sitio actual de Venganzas del Pasado (http://venganzasdelpasado.com.ar) que reemplaza al anterior hecho con WordPress.
+Este es el código fuente del sitio Venganzas del Pasado (https://venganzasdelpasado.com.ar).
+
+== Tecnología
+
+* Framework: Ruby on Rails v6.0
+* DB: Mysql 5.7
+* Buscador: Elasticsearch 7.6
+* Cache: Redis
 
 == Desarrollo
 
@@ -39,4 +46,4 @@ Federico Cingolani https://github.com/fcingolani
 
 == License
 
-MIT License. Copyright 2011 Juan Pablo Schwindt.
+MIT License. Copyright 2011-2020 Juan Schwindt.
