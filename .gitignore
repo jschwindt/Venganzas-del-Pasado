@@ -17,9 +17,6 @@
 /public/assets
 .byebug_history
 
-# Ignore master key for decrypting credentials and more.
-/config/master.key
-
 /public/uploads
 /public/system
 /public/packs
@@ -32,3 +29,7 @@ dump/
 .vscode/
 vendor/bundle
 .DS_Store
+
+# Ignore master key for decrypting credentials and more.
+/config/credentials/development.key
+/config/credentials/production.key
