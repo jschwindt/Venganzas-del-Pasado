@@ -4,10 +4,12 @@ Este es el código fuente del sitio Venganzas del Pasado (https://venganzasdelpa
 
 == Tecnología
 
-* Framework: Ruby on Rails v6.0
-* DB: Mysql 5.7
-* Buscador: Elasticsearch 7.6
+* Web Framework: Ruby on Rails v6.0
+* CSS Framework: [Bulma](https://bulma.io/)
+* DB: Mysql v5.7
+* Buscador: Elasticsearch v7.6
 * Cache: Redis
+* Webfonts: Font Awesome v4.7 (customized with [Fontello](http://fontello.com/))
 
 == Desarrollo
 
