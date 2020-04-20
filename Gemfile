@@ -42,12 +42,12 @@ gem 'sitemap_generator'
 gem 'watu_table_builder', require: 'table_builder'
 
 group :development, :test do
+  gem 'amazing_print'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :development do
-  gem 'amazing_print'
   gem 'capistrano', '~> 3.11', require: false
   gem 'capistrano-passenger', require: false
   gem 'capistrano-rails', '~> 1.4', require: false
@@ -63,6 +63,7 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 end
