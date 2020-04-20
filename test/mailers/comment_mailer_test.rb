@@ -2,7 +2,6 @@ require 'test_helper'
 
 class CommentMailerTest < ActionMailer::TestCase
   test 'moderation_needed' do
-    mail = CommentMailer.moderation_needed
     mail = CommentMailer.with(comment: comment(:one), subject: 'the subject').moderation_needed
     assert_equal 'the subject', mail.subject
     assert_equal ['juan@schwindt.org'], mail.to
