@@ -4,7 +4,7 @@
       <div class="column is-one-third">
         <h3 class="title is-4">Último Programa</h3>
         <% last_post = Post.published.lifo.first -%>
-        <h4 class="title is-5"><%= link_to last_post.title, last_post %></h4>
+        <h4 class="title is-5"><%= link_to last_post&.title, last_post %></h4>
       </div>
       <div class="column">
         <h3 class="title is-4">Más Venganzas</h3>

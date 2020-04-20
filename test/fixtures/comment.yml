@@ -1,0 +1,6 @@
+one:
+    post: one
+    user: one
+    author: 'one'
+    content: Hello
+    profile_picture_url: http://example.com/picture_one
