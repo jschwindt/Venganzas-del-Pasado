@@ -70,12 +70,7 @@ class Comment < ApplicationRecord
   end
 
   def update_profile_picture_url
-    if user.present?
-      self.profile_picture_url = user.profile_picture_url
-    else
-      gravatar_hash = Digest::MD5.hexdigest(author_email.strip.downcase)
-      self.profile_picture_url = "//www.gravatar.com/avatar/#{gravatar_hash}?d=mm&s=50"
-    end
+    self.profile_picture_url = user.present? ? user.profile_picture_url : User.gravatar_url(author_email)
     save
   end
 

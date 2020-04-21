@@ -9,4 +9,8 @@ one:
     alias: one
     slug: user-one
     
-    
+good_karma:
+    email: good_karma@example.com
+    alias: good_karma
+    slug: good-karma
+    karma: 501

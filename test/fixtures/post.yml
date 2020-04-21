@@ -10,5 +10,27 @@ contributed:
 one:
   title: MyString
   content: MyText
-  status: MyString
+  status: pending
   slug: MyString
+
+published:
+  title: Published post
+  content: Some text
+  status: published
+  slug: published-post
+
+on_2010_01_15:
+  title: Created on 2010_01_15
+  status: published
+  created_at: <%= DateTime.new(2010,1,15) %>
+
+on_2010_02_15:
+  title: Created on 2010_02_15
+  status: published
+  created_at: <%= DateTime.new(2010,2,15) %>
+
+on_2010_02_16:
+  title: Created on 2010_02_16
+  status: published
+  created_at: <%= DateTime.new(2010,2,16) %>
+  

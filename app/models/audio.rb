@@ -3,7 +3,7 @@ class Audio < ApplicationRecord
 
   delegate :title, to: :post, prefix: true
 
-  validates :url, presence: true, uniqueness: true
+  validates :url, presence: true, uniqueness: { case_sensitive: false }
 
   def torrent_url
     # Pasa de //venganzasdelpasado.com.ar/2011/lavenganza_2011-11-22[_90].mp3

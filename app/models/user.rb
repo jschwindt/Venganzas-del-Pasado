@@ -64,6 +64,10 @@ class User < ApplicationRecord
       # pero no necesariamente last_sign_in_at
       where('last_sign_in_at IS NOT NULL OR confirmed_at IS NOT NULL')
     end
+
+    def gravatar_url(email)
+      "//www.gravatar.com/avatar/#{Digest::MD5.hexdigest(email.strip.downcase)}?d=mm&s=50"
+    end
   end # End class methods
 
   # Overrides Devise method to allow non-password updates for Facebook users
@@ -102,8 +106,7 @@ class User < ApplicationRecord
     if has_facebook_profile?
       self.profile_picture_url = "//graph.facebook.com/#{fb_userid}/picture"
     else
-      gravatar_hash = Digest::MD5.hexdigest(email.strip.downcase)
-      self.profile_picture_url = "//www.gravatar.com/avatar/#{gravatar_hash}?d=mm&s=50"
+      self.profile_picture_url = User.gravatar_url(email)
     end
   end
 
