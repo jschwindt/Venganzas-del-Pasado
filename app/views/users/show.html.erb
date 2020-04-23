@@ -1,10 +1,10 @@
 <% if params[:page].nil? %>
-  <% the_title = "Perfil de #{@user.alias}" %>
+  <% the_title = "Perfil de #{@user.alias}" -%>
 <% else %>
-  <% the_title = "Perfil de #{@user.alias} - Página #{params[:page]} de comentarios" %>
+  <% the_title = "Perfil de #{@user.alias} - Página #{params[:page]} de comentarios" -%>
 <% end %>
-<% page_title the_title %>
-<% meta_description the_title + " en Venganzas del Pasado" %>
+<% page_title the_title -%>
+<% meta_description the_title + " en Venganzas del Pasado", 'profile' -%>
 <h2 class="title fancy is-4">
   Perfil del Usuario
 </h2>

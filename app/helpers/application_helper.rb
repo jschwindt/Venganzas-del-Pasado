@@ -11,8 +11,9 @@ module ApplicationHelper
     @page_title
   end
 
-  def meta_description(text)
+  def meta_description(text, og_type = 'website')
     @meta_description = text
+    @meta_og_type = og_type
   end
 
   def body_class(klass = nil)

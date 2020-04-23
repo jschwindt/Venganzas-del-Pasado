@@ -1,10 +1,10 @@
 <% if params[:page].nil? %>
-  <% the_title = "Contribuciones de Programas de La Venganza será Terrible" %>
+  <% the_title = "Contribuciones de Programas de La Venganza será Terrible" -%>
 <% else %>
-  <% the_title = "Contribuciones de Programas de La Venganza será Terrible, <small>Página #{params[:page]}</small>" %>
+  <% the_title = "Contribuciones de Programas de La Venganza será Terrible, <small>Página #{params[:page]}</small>" -%>
 <% end %>
-<% page_title the_title %>
-<% meta_description strip_tags(the_title) %>
+<% page_title the_title -%>
+<% meta_description strip_tags(the_title) -%>
 <h2 class="title fancy is-4"><%= raw the_title %></h2>
 <%= render 'layouts/banners/top' %>
 <%= render @posts %>

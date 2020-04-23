@@ -1,9 +1,9 @@
 <% if params[:page].nil? %>
-  <% page_title @post.title %>
+  <% page_title @post.title -%>
 <% else %>
-  <% page_title @post.title + " - Página #{params[:page]} de comentarios" %>
+  <% page_title @post.title + " - Página #{params[:page]} de comentarios" -%>
 <% end %>
-<% meta_description @post.description %>
+<% meta_description @post.description, 'article' -%>
 <div class="level is-mobile">
   <% if prev_post = @post.previous %>
     <div class="level-left">
