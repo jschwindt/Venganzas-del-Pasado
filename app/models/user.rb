@@ -96,10 +96,6 @@ class User < ApplicationRecord
     fb_userid.present?
   end
 
-  def facebook_profile_url
-    "https://www.facebook.com/app_scoped_user_id/#{fb_userid}"
-  end
-
   private
 
   def update_profile_picture_url

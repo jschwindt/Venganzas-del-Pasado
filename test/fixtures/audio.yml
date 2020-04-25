@@ -1,0 +1,7 @@
+one:
+    post: one
+    url:  http://example.com/test.mp3
+
+real_url:
+    post: published
+    url: https://venganzasdelpasado.com.ar/2011/lavenganza_2011-11-22.mp3

@@ -26,9 +26,15 @@ class PostTest < ActiveSupport::TestCase
     assert_equal posts.length, 1
   end
 
+  test 'post_count_by_year' do
+    posts = Post.post_count_by_year.entries
+    posts_counts = posts.select { |p| p.year == 2010 }.first
+    assert_equal posts_counts.count, 3
+  end
+
   test 'post_count_by_month' do
-    posts = Post.post_count_by_month.entries
-    posts_counts = posts.select { |p| p.year == 2010 && p.month == 2 }.first
+    posts = Post.post_count_by_month(2010).entries
+    posts_counts = posts.select { |p| p.month == 2 }.first
     assert_equal posts_counts.count, 2
   end
 
@@ -59,5 +65,15 @@ class PostTest < ActiveSupport::TestCase
     assert post.valid?
     assert_equal post.title, 'New Contribution'
     assert_equal post.status, 'pending'
+  end
+
+  test 'description' do
+    assert_equal post(:no_content).description, 'No content post de Alejandro Dolina'
+    assert_equal post(:with_html).description, 'Title in H1 and some markdown and lot of spaces.'
+  end
+
+  test 'previous and next' do
+    assert_equal post(:on_2010_02_15).next, post(:on_2010_02_16)
+    assert_equal post(:on_2010_02_16).previous, post(:on_2010_02_15)
   end
 end

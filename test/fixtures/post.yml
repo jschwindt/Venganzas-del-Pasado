@@ -34,3 +34,11 @@ on_2010_02_16:
   status: published
   created_at: <%= DateTime.new(2010,2,16) %>
   
+no_content:
+  title: No content post
+  content: ""
+
+with_html:
+  title: the title
+  content: "<h1>Title in H1</h1> and some ## markdown     and lot     of spaces.   "
+

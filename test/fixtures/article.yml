@@ -1,0 +1,4 @@
+with_html:
+    title: the title
+    content: "<h1>Title in H1</h1> and some ## markdown     and lot     of spaces.   "
+
