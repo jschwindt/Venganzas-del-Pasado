@@ -17,7 +17,7 @@ class ArticleTest < ActiveSupport::TestCase
   end
 
   test 'description' do
-    article = article(:with_html)
+    article = articles(:with_html)
     assert_equal article.description, 'Title in H1 and some markdown and lot of spaces.'
   end
 end

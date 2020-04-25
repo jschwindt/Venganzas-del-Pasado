@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
   test 'should accept valid status' do
-    post = post(:one)
+    post = posts(:one)
     Post.statuses.each do |status|
       post.status = status
       assert post.valid?
@@ -10,7 +10,7 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test 'should refuse invalid status' do
-    post = post(:one)
+    post = posts(:one)
     post.status = '--dummy_status--'
     assert post.invalid?
   end
@@ -60,7 +60,7 @@ class PostTest < ActiveSupport::TestCase
         }
       }
     )
-    user = user(:contributor)
+    user = users(:contributor)
     post = Post.new_contribution(params, user)
     assert post.valid?
     assert_equal post.title, 'New Contribution'
@@ -68,12 +68,12 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test 'description' do
-    assert_equal post(:no_content).description, 'No content post de Alejandro Dolina'
-    assert_equal post(:with_html).description, 'Title in H1 and some markdown and lot of spaces.'
+    assert_equal posts(:no_content).description, 'No content post de Alejandro Dolina'
+    assert_equal posts(:with_html).description, 'Title in H1 and some markdown and lot of spaces.'
   end
 
   test 'previous and next' do
-    assert_equal post(:on_2010_02_15).next, post(:on_2010_02_16)
-    assert_equal post(:on_2010_02_16).previous, post(:on_2010_02_15)
+    assert_equal posts(:on_2010_02_15).next, posts(:on_2010_02_16)
+    assert_equal posts(:on_2010_02_16).previous, posts(:on_2010_02_15)
   end
 end

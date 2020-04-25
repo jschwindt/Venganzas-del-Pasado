@@ -16,10 +16,6 @@ module ApplicationHelper
     @meta_og_type = og_type
   end
 
-  def body_class(klass = nil)
-    "#{controller.controller_name}-#{controller.action_name} #{klass}"
-  end
-
   def alert_message_for(object)
     if object.respond_to?(:errors) && object.errors.any?
       messages = object.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
