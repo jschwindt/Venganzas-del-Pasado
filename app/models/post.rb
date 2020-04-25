@@ -49,11 +49,19 @@ class Post < ApplicationRecord
       where(created_at: range_date)
     end
 
-    def post_count_by_month
+    def post_count_by_year
       published
-        .select('YEAR(created_at) AS year, MONTH(created_at) AS month, COUNT(*) AS count')
-        .group('year, month')
-        .order('year DESC, month DESC')
+        .select('YEAR(created_at) AS year, COUNT(*) AS count')
+        .group('year')
+        .order('year DESC')
+    end
+
+    def post_count_by_month(year)
+      published
+        .select('MONTH(created_at) AS month, COUNT(*) AS count')
+        .where('YEAR(created_at) = ?', year)
+        .group('month')
+        .order('month DESC')
     end
 
     def create_from_audio_file(filename)

@@ -1,0 +1,7 @@
+<% date = Date.new @year, monthly_posts.month -%>
+<li>
+  <%= link_to posts_archive_path(@year, monthly_posts.month) do %>
+    <%= "#{I18n.t('date.month_names')[monthly_posts.month].capitalize} de #{@year}" %>
+    <small>(<%= monthly_posts.count %>)</small>
+  <% end %>
+</li>

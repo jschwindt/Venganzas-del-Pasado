@@ -1,0 +1,2 @@
+$('#archive-<%= @year %>').html('<%= j render(partial: 'monthly_posts', collection: @monthly_posts) %>');
+$('#archive-<%= @year %>').slideToggle();

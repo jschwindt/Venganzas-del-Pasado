@@ -31,12 +31,6 @@ $(document).ready(() => {
         return open_player(event.currentTarget.href);
     });
 
-    $('a[data-toggle="collapse"]').on('click', (event) => {
-        event.preventDefault();
-        target = event.currentTarget;
-        $(target).next('ul.archive-months').toggle();
-    });
-
     function stop_all_players() {
         var ref = $('audio');
         for (var _i = 0, _len = ref.length; _i < _len; _i++) {

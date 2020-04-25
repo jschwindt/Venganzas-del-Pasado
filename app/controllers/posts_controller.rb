@@ -18,6 +18,12 @@ class PostsController < ApplicationController
 
   def archive
     authorize! :index, Post
+    if request.xhr?
+      @year = params[:year].to_i
+      @monthly_posts = Post.post_count_by_month(params[:year])
+      return
+    end
+
     @posts = Post.published.lifo
                  .created_on(params[:year], params[:month], params[:day])
                  .page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
