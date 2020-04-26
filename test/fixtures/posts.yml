@@ -8,10 +8,10 @@ contributed:
   contributor: contributor
 
 one:
-  title: MyString
+  title: One
   content: MyText
   status: pending
-  slug: MyString
+  slug: one
 
 published:
   title: Published post

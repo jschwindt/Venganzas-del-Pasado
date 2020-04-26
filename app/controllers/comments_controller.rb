@@ -3,10 +3,6 @@ class CommentsController < ApplicationController
   load_and_authorize_resource :comment, only: %i[flag]
   load_and_authorize_resource :comment, through: :post, only: %i[create show]
 
-  def index
-    @comments = Comment.visible_by(current_user).lifo.limit(VenganzasDelPasado::Application.config.comments_per_page)
-  end
-
   def create
     @comment = @post.comments.new(comment_params).publish_as(current_user, request)
     if @comment.save
