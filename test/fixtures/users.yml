@@ -8,6 +8,7 @@ one:
     email: one@example.com
     alias: one
     slug: user-one
+    confirmed_at: <%= Date.today %>
     
 good_karma:
     email: good_karma@example.com

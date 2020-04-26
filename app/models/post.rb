@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   belongs_to :contributor, class_name: 'User', optional: true
   accepts_nested_attributes_for :media
 
-  validates :title, presence: true
+  validates :title, :created_at, presence: true
   validate :validate_status
 
   delegate :alias, to: :contributor, prefix: true, allow_nil: true
@@ -84,11 +84,11 @@ class Post < ApplicationRecord
     def new_contribution(params, user)
       # Elimina de params los media vacíos
       if params[:media_attributes].present?
-        params[:media_attributes] = params['media_attributes'].select { |_k, v| v['asset'].present? }
+        params[:media_attributes] = params[:media_attributes].select { |_k, v| v['asset'].present? }
       end
       post = new(params)
       post.status = 'pending'
-      post.created_at += 4.hours # a las 4 de la mañana, para que no interfiera con los automáticos
+      post.created_at += 4.hours if post.created_at # a las 4 de la mañana, para que no interfiera con los automáticos
       post.contributor = user
       # Agrega un media vacío si no hay ninguno, para que falle la validación
       post.media << Medium.new if post.media.empty?
