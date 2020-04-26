@@ -69,9 +69,4 @@ class Comment < ApplicationRecord
     self
   end
 
-  def update_profile_picture_url
-    self.profile_picture_url = user.present? ? user.profile_picture_url : User.gravatar_url(author_email)
-    save
-  end
-
 end

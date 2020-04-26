@@ -2,13 +2,9 @@ class UsersController < ApplicationController
   before_action :load_resource, except: :index
   load_and_authorize_resource
 
-  def sign_in
-    render layout: 'lean'
-  end
-
   def show
     if params[:id] != @user.to_param
-      return redirect_to url_for(params.merge(id: @user.to_param)), status: :moved_permanently
+      return redirect_to user_url(@user), status: :moved_permanently
     end
 
     comments_collection = @user.comments.visible_by(current_user).lifo

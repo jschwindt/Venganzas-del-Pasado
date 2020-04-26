@@ -96,6 +96,10 @@ class User < ApplicationRecord
     fb_userid.present?
   end
 
+  def profile_picture_url
+    self[:profile_picture_url] || update_profile_picture_url
+  end
+
   private
 
   def update_profile_picture_url
