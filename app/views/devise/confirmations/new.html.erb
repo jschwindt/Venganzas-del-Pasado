@@ -1,6 +1,10 @@
 <h2 class="title fancy is-4">¿Problemas para iniciar sesión?</h2>
 <h3 class="title is-4">Reenviá las Instrucciones de Confirmación</h3>
-
+<p>
+  Si te registraste y no recibiste el mail para confirmar tu dirección, mediante este formulario
+  podés volver a pedir que se te reenvíen las instrucciones necesarias a tu mail.
+</p>
+<br />
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
   <div class="field">
