@@ -10,7 +10,7 @@ Este es el código fuente del sitio Venganzas del Pasado
 *   DB: Mysql v5.7
 *   Buscador: Elasticsearch v7.6
 *   Cache: Redis
-*   Webfonts: Font Awesome v4.7 (customized with [Fontello](https://bulma.io))
+*   Webfonts: Font Awesome v4.7 (customized with [Fontello](http://fontello.com/))
 
 
 ## Desarrollo
