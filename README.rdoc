@@ -1,4 +1,4 @@
-= Venganzas del Pasado
+= Venganzas del Pasado {<img src="https://travis-ci.com/jschwindt/Venganzas-del-Pasado.svg?branch=master" alt="Build Status" />}[https://travis-ci.com/jschwindt/Venganzas-del-Pasado]
 
 Este es el código fuente del sitio Venganzas del Pasado (https://venganzasdelpasado.com.ar).
 
