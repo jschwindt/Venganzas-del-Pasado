@@ -1,8 +1,13 @@
 dist: bionic
 
+rvm:
+  - 2.6.6
+
+env:
+  secure: cRqPDyNtHMB070c0QjAxXZhlUQpX3l/lrlEgf1jWKE3QOLTHA0IQG3dgxf6vWw641qhEyxv8EIS8ted9veLnKJ0Qx1Axo8BIctTf1aBHJFJ0Jre4rRY7eR+7bLkwX1rW+JARFOS8q+Jup9KLabIo93ekspgPIHjIAEK4AJuz8mWnzdRDO3KW0yJ5dhyr4RuYQ49DuUH2Fgr/WvCuXKQhQrsx3WiKJqn/Zqv5CoWhmIRwTOsBvIQumc99O2hzBD7fYZOgI4lCZFb0hiq8gl51ZbC53D8iy9SbkCyBShD1d4FgF5JfMc2GK+PsGsqMs0KNGXS7Oi0AWctnUBVhGaATODag/P8sheYNH16tWQYJ3GVutCjJ6R2C0WF2sWhp04QtDjg6bv9g1kNRvTQOrLVjgIM8aUYZgHUE0pnUxwfJ7TTSMw5WhrlDVv8YbgNSD8KCacszM6ShlPvWhZC3io5vGl/IiyIomgIqA52a2YgqbWiNGK9+1PPMfVOWMwVYvt32Lca2pAK+7xsWKNXT5T89qrBTY87St+vhVfoJE5R94AZvO3NmTKSTSU/PsRBpuXt/s3w5Quxmi9EkMIf244lYSuAPhguOUckTKwp83HUBlFnnyUTEK5Xv9co/kpodFtt6QliqgIPYP8kemV9ya+md4C4RYVXCndBZ/KrCYetAjgM=
+  
 services:
   - mysql
-  - elasticsearch
 
 before_install:
   - sudo apt install apt-transport-https
@@ -12,9 +17,19 @@ before_install:
   - sudo systemctl enable elasticsearch.service; sudo systemctl start elasticsearch.service
   - mysql -e 'CREATE DATABASE venganzas_del_pasado_test;'
   - sleep 20
-  
-script: bin/rails test
-rvm:
-- 2.6.6
-env:
-  secure: cRqPDyNtHMB070c0QjAxXZhlUQpX3l/lrlEgf1jWKE3QOLTHA0IQG3dgxf6vWw641qhEyxv8EIS8ted9veLnKJ0Qx1Axo8BIctTf1aBHJFJ0Jre4rRY7eR+7bLkwX1rW+JARFOS8q+Jup9KLabIo93ekspgPIHjIAEK4AJuz8mWnzdRDO3KW0yJ5dhyr4RuYQ49DuUH2Fgr/WvCuXKQhQrsx3WiKJqn/Zqv5CoWhmIRwTOsBvIQumc99O2hzBD7fYZOgI4lCZFb0hiq8gl51ZbC53D8iy9SbkCyBShD1d4FgF5JfMc2GK+PsGsqMs0KNGXS7Oi0AWctnUBVhGaATODag/P8sheYNH16tWQYJ3GVutCjJ6R2C0WF2sWhp04QtDjg6bv9g1kNRvTQOrLVjgIM8aUYZgHUE0pnUxwfJ7TTSMw5WhrlDVv8YbgNSD8KCacszM6ShlPvWhZC3io5vGl/IiyIomgIqA52a2YgqbWiNGK9+1PPMfVOWMwVYvt32Lca2pAK+7xsWKNXT5T89qrBTY87St+vhVfoJE5R94AZvO3NmTKSTSU/PsRBpuXt/s3w5Quxmi9EkMIf244lYSuAPhguOUckTKwp83HUBlFnnyUTEK5Xv9co/kpodFtt6QliqgIPYP8kemV9ya+md4C4RYVXCndBZ/KrCYetAjgM=
+
+cache:
+  bundler: true
+  directories:
+    - node_modules
+  yarn: true
+
+install:
+  - bundle install
+  - node -v
+  - npm i -g yarn
+  - yarn
+
+script:
+  - ./bin/rails webpacker:compile
+  - ./bin/rails test
