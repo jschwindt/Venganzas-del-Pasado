@@ -17,7 +17,7 @@ before_install:
   - sudo apt update; sudo apt install elasticsearch
   - sudo systemctl enable elasticsearch.service; sudo systemctl start elasticsearch.service
   - mysql -e 'CREATE DATABASE venganzas_del_pasado_test;'
-  - sleep 20
+  - until curl -s -f http://localhost:9200; do printf '.'; sleep 1; done
 
 cache:
   bundler: true
