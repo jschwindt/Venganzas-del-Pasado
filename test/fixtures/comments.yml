@@ -4,3 +4,11 @@ one:
     author: 'one'
     content: Hello
     profile_picture_url: http://example.com/picture_one
+
+pending:
+    post: one
+    user: one
+    author: 'one'
+    content: Pending comment
+    profile_picture_url: http://example.com/picture_one
+    status: pending

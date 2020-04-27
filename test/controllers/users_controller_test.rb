@@ -1,6 +1,23 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
+  test 'show user sign_in, sign_up, etc' do
+    get new_user_session_url
+    assert_response :success
+
+    get new_user_registration_url
+    assert_response :success
+
+    get new_user_password_url
+    assert_response :success
+
+    get new_user_confirmation_url
+    assert_response :success
+
+    get new_user_unlock_url
+    assert_response :success
+  end
+
   test 'should show user' do
     get user_url users(:one)
     assert_response :success

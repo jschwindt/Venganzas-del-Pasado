@@ -15,3 +15,24 @@ good_karma:
     alias: good_karma
     slug: good-karma
     karma: 501
+
+editor:
+    email: editor@example.com
+    alias: editor
+    slug: editor
+    confirmed_at: <%= Date.today %>
+    role: 'editor'
+
+moderator:
+    email: moderator@example.com
+    alias: moderator
+    slug: moderator
+    confirmed_at: <%= Date.today %>
+    role: 'moderator'
+
+admin:
+    email: admin@example.com
+    alias: admin
+    slug: admin
+    confirmed_at: <%= Date.today %>
+    role: 'admin'

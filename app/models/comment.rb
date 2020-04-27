@@ -5,6 +5,7 @@ class Comment < ApplicationRecord
   belongs_to :user
 
   delegate :title, to: :post, prefix: true
+  delegate :capitalize, to: :status, prefix: true, allow_nil: true
 
   validates :content, :post_id, presence: true
 

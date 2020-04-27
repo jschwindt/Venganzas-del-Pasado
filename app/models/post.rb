@@ -12,6 +12,7 @@ class Post < ApplicationRecord
   validate :validate_status
 
   delegate :alias, to: :contributor, prefix: true, allow_nil: true
+  delegate :capitalize, to: :status, prefix: true, allow_nil: true
 
   scope :published, -> { where(status: 'published') }
   scope :waiting, -> { where(status: 'waiting') }

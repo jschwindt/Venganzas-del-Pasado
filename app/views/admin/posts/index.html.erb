@@ -39,7 +39,7 @@
             <%= link_to post.title, post %>
             <% if params[:has_status].nil? && post.status != 'published' %>
               <%= content_tag :span, class: 'tag ' + { 'deleted' => 'is-danger' }.fetch(post.status, 'is-warning') do %>
-                <%= post.status.capitalize %>
+                <%= post.status_capitalize %>
               <% end %>
             <% end %>
           </td>

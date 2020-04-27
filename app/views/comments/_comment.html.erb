@@ -16,7 +16,7 @@
       <div class="level-left">
         <% if comment.deleted? %>
           <span class="level-item tag is-danger">
-            <%= comment.status.capitalize %>
+            <%= comment.status_capitalize %>
           </span>
           <% if can? :approve, comment %>
             <%= link_to approve_admin_comment_path(comment), class: "level-item" do %>
@@ -31,7 +31,7 @@
         <% else %>
           <% if can?(:approve, comment) or  can? :trash, comment %>
             <span class="level-item tag is-warning">
-              <%= comment.status.capitalize %>
+              <%= comment.status_capitalize %>
             </span>
           <% end %>
           <% if (comment.pending? or comment.flagged?) and can?(:approve, comment) %>
