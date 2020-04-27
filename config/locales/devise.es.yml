@@ -15,7 +15,7 @@ es:
       not_found_in_database: "%{authentication_keys} o clave inválidos."
       timeout: "Tu sesión ha expirado, por favor ingresá nuevamente para continuar."
       unauthenticated: 'Es necesario ingresar o registrarse para continuar.'
-      unconfirmed: 'Es necesario tu cuenta antes de continuar.'
+      unconfirmed: 'Es necesario confirmar tu cuenta antes de continuar.'
     mailer:
       confirmation_instructions:
         subject: "Instrucciones de Confirmación"
@@ -37,12 +37,12 @@ es:
       updated: "Tu contraseña ha sido cambiada exitosamente. Ahora podés ingresar."
       updated_not_active: 'Tu contraseña ha sido cambiada exitosamente.'
     registrations:
-      destroyed: '¡Adios! Tu cuenta ha sido eliminada exitosamente. Esperamos verte pronto.'
+      destroyed: '¡Adios! Tu cuenta ha sido eliminada exitosamente. Esperamos verte pronto de vuelta.'
       signed_up_but_inactive: 'Te has registrado exitosamente, sin embargo no has podido ingresar porque tu cuenta está inactiva. Recibirás un mail con instrucciones.'
-      signed_up_but_locked: 'Se ha registrado correctamente. Sin embarno no podrá ingresar porque su cuenta se encuentra bloqueada.'
-      signed_up_but_unconfirmed: 'Se ha enviado un mensaje con un enlace de confirmación a su dirección de mail. Por favor, haga click en el enlace para confirmar su cuenta.'
+      signed_up_but_locked: 'Se ha registrado correctamente. Sin embargo no podrás ingresar porque tu cuenta se encuentra bloqueada.'
+      signed_up_but_unconfirmed: 'Se ha enviado un mensaje con un enlace de confirmación a tu dirección de mail. Por favor, hacé click en el enlace para confirmar tu cuenta.'
       signed_up: "Te has registrado exitosamente."
-      update_needs_confirmation: "Su cuenta se ha actualizado correctamente, pero es necesario verificar su nueva dirección de mail. Por favor, chequee su email y haga click en el enlace para finalizar el proceso."
+      update_needs_confirmation: "Tu cuenta se ha actualizado correctamente, pero es necesario verificar tu nueva dirección de mail. Por favor, chequeá tu email y hacé click en el enlace para finalizar el proceso."
       updated: 'Actualizaste tu cuenta exitosamente.'
       updated_but_not_signed_in: "Tu cuenta se ha actualizado correctamente, pero como tu contraseña cambió tenés que ingresar nuevamente."
     sessions:
@@ -56,10 +56,10 @@ es:
   errors:
     messages:
       already_confirmed: "ya fue confirmado"
-      confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"
+      confirmation_period_expired: "necesita ser confirmado dentro de %{period}, por favor pida otro"
       expired: "expiró, solicitá otro"
       not_found: "no encontrado"
-      not_locked: "no ha sido desbloqueado"
+      not_locked: "no se encuentra bloqueado"
       not_saved:
         one: "Un error impide continuar:"
         other: "%{count} errores impiden continuar:"
