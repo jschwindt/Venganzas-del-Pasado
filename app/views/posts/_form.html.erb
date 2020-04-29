@@ -54,6 +54,9 @@
     </div>
   <% end %>
 </div>
+<% content_for :extra_css do %>
+  <%= stylesheet_link_tag 'mde', media: 'all' %>
+<% end %>
 <% content_for :extra_js do %>
   <%= javascript_pack_tag 'mde' %>
 <% end %>

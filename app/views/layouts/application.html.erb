@@ -31,6 +31,7 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= yield :extra_css -%>
     <% if Rails.env.production? %><%= render 'google_headers' %><% end %>
   </head>
   <body>
