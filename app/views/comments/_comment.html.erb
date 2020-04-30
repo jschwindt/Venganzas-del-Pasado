@@ -6,11 +6,11 @@
   </figure>
   <div class="media-content">
     <div class="content">
-      <p>
+      <div class="comment-head">
         <strong><%= link_to_unless comment.user.nil?, comment.author, comment.user %></strong> <small><%= timeago(comment.created_at) %></small>
         en <%= link_to comment.post_title, comment.post %> dijo:
-        <%= markdown_format(comment.content) %>
-      </p>
+      </div>
+      <%= markdown_format(comment.content) %>
     </div>
     <nav class="level is-mobile">
       <div class="level-left">
