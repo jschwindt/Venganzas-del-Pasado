@@ -9,7 +9,23 @@ class Comment < ApplicationRecord
 
   validates :content, :post_id, presence: true
 
-  searchkick searchable: %i[author content], filterable: [:created_at], language: 'spanish'
+  searchkick searchable: %i[author content], filterable: [:created_at], settings: {
+    analysis: {
+      filter: {
+        spanish_stop: {
+          type: 'stop',
+          stopwords: '_spanish_'
+        }
+      },
+      analyzer: {
+        rebuilt_spanish: {
+          tokenizer: 'standard',
+          filter: %w[lowercase asciifolding spanish_stop]
+        }
+      }
+    }
+  }
+
   scope :search_import, -> { where('status IN (?)', %w[neutral approved flagged]) }
 
   def should_index?
@@ -69,5 +85,4 @@ class Comment < ApplicationRecord
 
     self
   end
-
 end

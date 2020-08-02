@@ -19,7 +19,23 @@ class Post < ApplicationRecord
   scope :lifo, -> { order('created_at DESC') }
   scope :this_month, -> { where(created_at: Date.today.beginning_of_month..Date.today.end_of_month) }
 
-  searchkick searchable: %i[title content], filterable: [:created_at], language: 'spanish'
+  searchkick searchable: %i[title content], filterable: [:created_at], settings: {
+    analysis: {
+      filter: {
+        spanish_stop: {
+          type: 'stop',
+          stopwords: '_spanish_'
+        }
+      },
+      analyzer: {
+        rebuilt_spanish: {
+          tokenizer: 'standard',
+          filter: %w[lowercase asciifolding spanish_stop]
+        }
+      }
+    }
+  }
+
   scope :search_import, -> { where(status: 'published') }
 
   def should_index?
