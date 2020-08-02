@@ -18,7 +18,9 @@ services:
       # Where our data will be persisted
     volumes:
       - vdp-mysql-db:/var/lib/mysql
-
+    networks:
+      - elk
+  
   redis:
     image: "redis:5-alpine"
     restart: always
@@ -27,7 +29,9 @@ services:
       - 6379:6379
     volumes:
       - vdp-redis-db:/data
-
+    networks:
+      - elk
+  
   elasticsearch:
     build: ./elastic
     image: elasticsearch:7.6.2
@@ -40,9 +44,25 @@ services:
       - 9200:9200
     volumes:
       - vdp-elastic:/usr/share/elasticsearch/data
+    networks:
+      - elk
+  
+  kibana:
+    image: kibana:7.6.2
+    ports:
+      - 5601:5601
+    networks:
+      - elk
+    depends_on:
+      - elasticsearch
 
 # Names our volume
 volumes:
   vdp-mysql-db:
   vdp-redis-db:
   vdp-elastic:
+
+networks:
+  elk:
+    driver: bridge
+    
