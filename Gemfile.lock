@@ -102,7 +102,7 @@ GEM
       mini_mime (>= 0.1.3)
     childprocess (3.0.0)
     coderay (1.1.3)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.7)
     crass (1.0.6)
     devise (4.7.2)
       bcrypt (~> 3.0)
@@ -317,7 +317,7 @@ GEM
     simplecov-html (0.12.2)
     sitemap_generator (6.1.2)
       builder (~> 3.0)
-    solargraph (0.39.12)
+    solargraph (0.39.13)
       backport (~> 1.1)
       benchmark
       bundler (>= 1.17.2)
