@@ -38,6 +38,8 @@ module ApplicationHelper
   end
 
   def markdown_format(text, options = {})
+    return unless text.present?
+
     rndr = Redcarpet::Render::HTML.new(options.reverse_merge(filter_html: true, hard_wrap: true))
     markdown = Redcarpet::Markdown.new(
       rndr,

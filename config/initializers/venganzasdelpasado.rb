@@ -6,6 +6,7 @@ module VenganzasDelPasado
     config.home_posts_count = 3
     config.home_comments_count = 5
     config.posts_per_page = 10
+    config.posts_per_page_rss = 30
     config.comments_per_page = 20
     config.torrents_per_page = 10
     config.posts_search_per_page = 5

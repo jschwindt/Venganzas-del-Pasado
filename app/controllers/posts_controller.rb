@@ -5,7 +5,12 @@ class PostsController < ApplicationController
   skip_authorize_resource only: %i[archive contributions]
 
   def index
-    @posts = @posts.published.lifo.page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
+    posts_per_page = VenganzasDelPasado::Application.config.posts_per_page
+    respond_to do |format|
+      format.html
+      format.rss { posts_per_page = VenganzasDelPasado::Application.config.posts_per_page_rss }
+    end
+    @posts = @posts.published.lifo.page(params[:page]).per(posts_per_page)
   end
 
   def show

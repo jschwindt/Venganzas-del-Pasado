@@ -8,6 +8,11 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'should get posts index rss' do
+    get posts_url(format: :rss)
+    assert_response :success
+  end
+
   test 'should show post' do
     get post_url posts(:published)
     assert_response :success
