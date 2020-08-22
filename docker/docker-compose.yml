@@ -33,8 +33,8 @@ services:
       - elk
   
   elasticsearch:
-    build: ./elastic
-    image: elasticsearch:7.6.2
+    # build: ./elastic
+    image: elasticsearch:7.9.0
     restart: always
     container_name: vdp_elstic
     environment: 
@@ -48,7 +48,7 @@ services:
       - elk
   
   kibana:
-    image: kibana:7.6.2
+    image: kibana:7.9.0
     ports:
       - 5601:5601
     networks:
