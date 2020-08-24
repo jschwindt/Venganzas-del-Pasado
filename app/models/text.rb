@@ -34,7 +34,7 @@ class Text < ApplicationRecord
           time, text = line.split('|')
           time = time.to_i
           if time > 0 && time < 7500
-            Text.create(audio_id: audio_id, time: time, text: text)
+            Text.create(audio_id: audio_id, time: time, text: text.strip)
           end
         end
       end
