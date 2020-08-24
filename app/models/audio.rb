@@ -1,6 +1,8 @@
 class Audio < ApplicationRecord
   belongs_to :post
 
+  has_many :texts, dependent: :destroy
+
   delegate :title, to: :post, prefix: true
 
   validates :url, presence: true, uniqueness: { case_sensitive: false }
