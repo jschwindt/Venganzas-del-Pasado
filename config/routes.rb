@@ -54,6 +54,10 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'speech_to_text/next' => 'speech_to_text#next', as: :speech_to_text_next
+  put 'speech_to_text/start/:id' => 'speech_to_text#start', as: :speech_to_text_start
+  put 'speech_to_text/update/:id' => 'speech_to_text#update', as: :speech_to_text_update
+
   root to: 'home#index'
 
   get '*path(.:format)' => 'redirects#index'

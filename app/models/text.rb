@@ -22,21 +22,32 @@ class Text < ApplicationRecord
 
   # Class methods
   class << self
-    def speech_to_text(audio_id)
+    def bulk_insert(audio_id, body)
+      Text.where(audio_id: audio_id).destroy_all
+      saved_lines = 0
+      while line = body.gets
+        time, text = line.split('|')
+        text.strip!
+        time = time.to_i
+        if time > 0 && time < 7500 && text.length > 4
+          Text.create(audio_id: audio_id, time: time, text: text)
+          saved_lines += 1
+        end
+      end
+      saved_lines
+    end
 
+    def speech_to_text(audio_id)
       audio = Audio.find(audio_id)
       return unless md = audio.url.match(%r((/\d{4}/[^\/]+\.mp3)))
 
-      mp3_file = " /var/www/venganzasdelpasado.com.ar#{md[1]}"
-      cmd = "~/speech_to_text.py --model ~/vosk-model-es --audio #{mp3_file}"
-      Open3.popen3(cmd) do |stdin, stdout, stderr, wait_thr|
-        while line=stdout.gets do 
-          time, text = line.split('|')
-          time = time.to_i
-          if time > 0 && time < 7500
-            Text.create(audio_id: audio_id, time: time, text: text.strip)
-          end
-        end
+      mp3_file = "#{Rails.application.config.x.audios_root}#{md[1]}"
+      cmd = "#{Rails.application.config.x.speech_to_text_cmd} #{mp3_file}"
+      puts "Audio: #{audio.id}, cmd: #{cmd}"
+      Open3.popen3(cmd) do |_stdin, stdout, _stderr, wait_thr|
+        saved_lines = bulk_insert(audio.id, stdout)
+        exit_status = wait_thr.value
+        puts("Status: #{exit_status}, created #{saved_lines} text lines.")
       end
     end
   end

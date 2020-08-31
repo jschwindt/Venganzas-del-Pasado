@@ -1,0 +1,14 @@
+common: &common
+  speech_to_text_cmd: "~/vosk-model-es/speech_to_text.py --model ~/vosk-model-es/model --audio"
+  audios_root: "~/vosk-model-es"
+
+development:
+  <<: *common
+
+test:
+  <<: *common
+
+production:
+  <<: *common
+  speech_to_text_cmd: "~/speech_to_text.py --model ~/vosk-model-es --audio"
+  audios_root: "/var/www/venganzasdelpasado.com.ar"

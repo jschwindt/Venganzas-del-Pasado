@@ -34,5 +34,7 @@ module VenganzasDelPasado
     config.i18n.enforce_available_locales = false
     config.i18n.default_locale = :es
 
+    config.x = Rails.application.config_for(:app_config)
+
   end
 end

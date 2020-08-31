@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_015654) do
+ActiveRecord::Schema.define(version: 2020_08_29_003729) do
 
   create_table "articles", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.string "title"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_015654) do
     t.integer "post_id"
     t.string "url"
     t.integer "bytes"
+    t.integer "speech_to_text_status", default: 0
     t.index ["post_id"], name: "index_audios_on_post_id"
   end
 
@@ -83,6 +84,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_015654) do
     t.integer "audio_id", null: false
     t.integer "time"
     t.text "text"
+    t.index ["audio_id", "time"], name: "index_texts_on_audio_id_and_time"
   end
 
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
