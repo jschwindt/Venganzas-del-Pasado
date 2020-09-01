@@ -22,10 +22,10 @@ class Text < ApplicationRecord
 
   # Class methods
   class << self
-    def bulk_insert(audio_id, body)
+    def bulk_insert(audio_id, text)
       Text.where(audio_id: audio_id).destroy_all
       saved_lines = 0
-      while line = body.gets
+      text.each_line do |line|
         time, text = line.split('|')
         text.strip!
         time = time.to_i
