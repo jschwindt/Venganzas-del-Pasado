@@ -3,7 +3,7 @@ require 'open3'
 class Text < ApplicationRecord
   belongs_to :audio
 
-  searchkick searchable: %i[text], settings: {
+  searchkick callbacks: false, searchable: %i[text], settings: {
     analysis: {
       filter: {
         spanish_stop: {
