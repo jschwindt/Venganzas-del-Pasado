@@ -123,6 +123,21 @@ class Post < ApplicationRecord
     def contributions
       where('contributor_id IS NOT NULL').order('updated_at DESC')
     end
+
+    def time2hms(time)
+      h = time / 3600
+      m = (time - (h * 3600)) / 60
+      s = time - h * 3600 - m * 60
+      "%d:%02d:%02d" % [h, m, s]
+    end
+
+    def from_text_search(text, highlights)
+      post = text.audio.post
+      existing_content = post.content
+      content = highlights.gsub(/{\d+}/){|m| t = time2hms(m[1...-1].to_i); "<a href=\"#play-#{t}\">#{t}</a>"}
+      post.content = content + "\n" + existing_content
+      post
+    end
   end # Class methods
 
   def publish_contribution

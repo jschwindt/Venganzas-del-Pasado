@@ -3,26 +3,26 @@
 
 <div class="tabs is-boxed">
   <ul>
-    <li class="<%= (@what == 'posts' ? 'is-active' : nil) %>">
+    <li>
       <%= link_to search_path(q: params[:q], what: 'posts', page: nil) do %>
-        Posts&nbsp;
-        <span class="tag is-info is-light"><%= @posts_result.total_count %></span>
+        Posts
       <% end %>
     </li>
-    <li class="<%= (@what == 'comments' ? 'is-active' : nil) %>">
+    <li>
       <%= link_to search_path(q: params[:q], what: 'comments', page: nil) do %>
-        Comentarios&nbsp;
-        <span class="tag is-info is-light"><%= @comments_result.total_count %></span>
+        Comentarios
       <% end %>
     </li>
-    <!--li>
+    <li class="is-active">
       <%= link_to search_path(q: params[:q], what: 'texts', page: nil) do %>
         Búsqueda experimental de texto
       <% end %>
-    </li-->
+    </li>
   </ul>
 </div>
 <div class="search-results">
-  <%= render @results %>
+  <% @results.with_highlights.each do |text, highlights| %>
+    <%= render Post.from_text_search(text, highlights[:text]) %>
+  <% end %>
 </div>
 <%= paginate @results, window: 2 %>

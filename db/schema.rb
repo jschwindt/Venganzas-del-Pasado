@@ -80,11 +80,10 @@ ActiveRecord::Schema.define(version: 2020_08_29_003729) do
     t.index ["updated_at"], name: "index_posts_on_updated_at"
   end
 
-  create_table "texts", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "texts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.integer "audio_id", null: false
     t.integer "time"
     t.text "text"
-    t.index ["audio_id", "time"], name: "index_texts_on_audio_id_and_time"
   end
 
   create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
