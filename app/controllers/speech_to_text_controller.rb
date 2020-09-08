@@ -5,7 +5,7 @@ class SpeechToTextController < ApplicationController
   before_action :load_audio, only: %i[start update]
 
   def next
-    audios = Audio.where(speech_to_text_status: :not_available).order(id: :desc).limit(3)
+    audios = Audio.where(speech_to_text_status: :unavailable).order(id: :desc).limit(3)
     render json: audios.to_json
   end
 

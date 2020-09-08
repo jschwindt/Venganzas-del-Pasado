@@ -124,6 +124,12 @@ article.comment {
   }
 }
 
+.post-transcription {
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+}
+
 a[href^="#play-"]::before {
   font-family: "fas";
   font-size: 0.75rem;

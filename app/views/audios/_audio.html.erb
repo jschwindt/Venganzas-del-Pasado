@@ -11,6 +11,11 @@
       <%= link_to post_audio_url(audio.post, audio), class: 'open_player', title: "Abrir player en popup" do %>
         <i class="fas icon-link-ext"></i> player
       <% end %>
+      <% if audio.texts.count > 0 %>
+        <%= link_to post_path(audio.post, anchor: 'transcription', transcription: true), title: "Ver transcripciones" do %>
+          <i class="fas icon-doc-text"></i> Transcripción
+        <% end %>
+      <% end %>
     </p>
   </nav>
 <% end %>

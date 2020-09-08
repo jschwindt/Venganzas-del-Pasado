@@ -202,6 +202,14 @@ class Post < ApplicationRecord
     end
   end
 
+  def transcription
+    first_audio = audios.first
+    return unless first_audio
+
+    text = first_audio.texts.order(time: :asc).map(&:text).join
+    text.gsub(/{\d+}/){|m| t = Post.time2hms(m[1...-1].to_i); "<a href=\"#play-#{t}\">#{t}</a>"}
+  end
+
   protected
 
   def validate_status

@@ -19,6 +19,8 @@ class PostsController < ApplicationController
              params[:page] :
              comments_collection.page.per(VenganzasDelPasado::Application.config.comments_per_page).total_pages
     @comments = comments_collection.page(page).per(VenganzasDelPasado::Application.config.comments_per_page)
+
+    @transcription = @post.transcription if params[:transcription].present?
   end
 
   def archive

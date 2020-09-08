@@ -30,6 +30,13 @@
       <%= markdown_format post.content, filter_html: false %>
     </div>
   <% end %>
+  <% if @transcription.present? %>
+    <a name="transcription"></a>
+    <div class="post-transcription content">
+      <h4>Transcripción automática</h4>
+      <%= markdown_format @transcription, filter_html: false %>
+    </div>
+  <% end %>
   <nav class="level post-footer">
     <% if post.contributor %>
       <p class="level-item has-text-centered">
