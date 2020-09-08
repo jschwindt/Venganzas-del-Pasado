@@ -15,8 +15,12 @@ class SpeechToTextController < ApplicationController
   end
 
   def update
-    inserted_lines = Text.bulk_insert(@audio.id, params.fetch(:text, ''))
-    @audio.available! if inserted_lines > 0
+    text = params.fetch(:text, '')
+    if text.present?
+      Text.where(audio_id: @audio.id).destroy_all if @audio.processing?
+      Text.create(audio_id: @audio.id, time: params[:time], text: text)
+      @audio.available!
+    end
     render json: @audio.to_json
   end
 
