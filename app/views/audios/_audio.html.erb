@@ -1,4 +1,4 @@
-<% cache [:links, audio], :expires_in => 7.days do %>
+<% cache [:links, audio, audio.speech_to_text_status], :expires_in => 7.days do %>
   <nav class="panel">
     <%= render 'audios/player', url: audio.url, id: audio.id %>
     <p class="panel-tabs">
