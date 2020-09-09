@@ -1,7 +1,14 @@
 class Text < ApplicationRecord
   belongs_to :audio
 
-  searchkick searchable: %i[text], settings: {
+  def search_data
+    {
+      text: text,
+      created_at: audio.post.created_at
+    }
+  end
+
+  searchkick searchable: %i[text], filterable: [:created_at], batch_size: 500, settings: {
     analysis: {
       filter: {
         spanish_stop: {

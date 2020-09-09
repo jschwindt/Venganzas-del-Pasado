@@ -59,3 +59,16 @@ module ApplicationHelper
                 options.merge(title: time.getutc.iso8601, datetime: time.getutc.iso8601))
   end
 end
+
+def month_and_year_select(name, options = {}, html_options = {})
+  p = params[name] || {}
+  if p[:year].present? && p[:month].present?
+    begin
+      Date.civil(p[:year].to_i, p[:month].to_i, 1)
+    rescue ArgumentError # Invalid date selected
+      p = {}
+    end
+  end
+  content_tag(:div, class: 'select') { select_month(p[:month].to_i, options, html_options) } + 
+    content_tag(:div, class: 'select') { select_year(p[:year].to_i, options, html_options) }
+end

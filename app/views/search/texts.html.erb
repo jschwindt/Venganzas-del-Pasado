@@ -1,6 +1,5 @@
 <% page_title("Resultados de búsqueda") %>
 <h2 class="title fancy is-4"><%= html_page_title%></h2>
-
 <div class="tabs is-boxed">
   <ul>
     <li>
@@ -15,10 +14,50 @@
     </li>
     <li class="is-active">
       <%= link_to search_path(q: params[:q], what: 'texts', page: nil) do %>
-        Búsqueda experimental de texto
+        Transcripciones (experimental)
       <% end %>
     </li>
   </ul>
+</div>
+<div class="content">
+  <%= form_tag search_path(what: 'texts'), method: 'get' do %>
+    <div class="field is-horizontal has-addons">
+      <div class="control has-icons-right with100p">
+        <%= text_field_tag :q, params[:q], placeholder: 'Buscar en las transcripciones', class: 'input' %>
+      </div>
+      <div class="control">
+        <button class="button is-link"><i class="fas icon-search"></i></button>
+      </div>
+    </div>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label">Fecha desde</label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <%= month_and_year_select :date_from, {
+            prefix: :date_from,
+            start_year: 1985,
+            end_year: Time.zone.now.year,
+            include_blank: true,
+          }
+          %>
+        </div>
+      <div class="field-label is-normal">
+        <label class="label">Fecha hasta</label>
+      </div>
+        <div class="field">
+          <%= month_and_year_select :date_to, {
+            prefix: :date_to,
+            start_year: 1985,
+            end_year: Time.zone.now.year,
+            include_blank: true,
+          }
+          %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>
 <div class="search-results">
   <% @results.with_highlights.each do |text, highlights| %>

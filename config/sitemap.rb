@@ -17,7 +17,7 @@ SitemapGenerator::Sitemap.create do
   add posts_path, :changefreq => 'daily'
 
   Post.published.lifo.find_each do |post|
-    add post_path(post), :lastmod => post.updated_at, :changefreq => 'daily', :priority => 0.8
+    add post_path(post, transcription: true), :lastmod => post.updated_at, :changefreq => 'daily', :priority => 0.8
   end
 
   add torrents_path, :changefreq => 'daily'
