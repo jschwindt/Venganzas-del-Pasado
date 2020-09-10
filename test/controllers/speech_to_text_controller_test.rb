@@ -24,7 +24,7 @@ class SpeechToTextControllerTest < ActionDispatch::IntegrationTest
 
   test 'should put update' do
     audio = audios(:one)
-    put speech_to_text_update_url(id: audio), headers: HEADERS
+    put speech_to_text_update_url(id: audio, text: '{1} one', time: 1), headers: HEADERS
     assert_response :success
   end
 end

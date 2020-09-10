@@ -76,4 +76,16 @@ class PostTest < ActiveSupport::TestCase
     assert_equal posts(:on_2010_02_15).next, posts(:on_2010_02_16)
     assert_equal posts(:on_2010_02_16).previous, posts(:on_2010_02_15)
   end
+
+  test 'from_text_search' do
+    text = texts(:one)
+    post = Post.from_text_search(text, '{1} the transcript')
+    assert_equal post, posts(:one)
+  end
+
+  test 'transcription' do
+    post = posts(:one)
+    assert_equal post.transcription, '<a href="#play-0:00:02">0:00:02</a> second 2'
+  end
+
 end

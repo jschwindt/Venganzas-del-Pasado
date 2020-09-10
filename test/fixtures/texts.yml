@@ -3,5 +3,5 @@
 one:
   audio: one
   time: 1
-  text: MyText
+  text: "{2} second 2"
 
