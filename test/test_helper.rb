@@ -15,6 +15,7 @@ end
 # reindex models
 Post.reindex
 Comment.reindex
+Text.reindex
 
 # and disable callbacks
 Searchkick.disable_callbacks
