@@ -33,28 +33,26 @@
       <div class="field-label is-normal">
         <label class="label">Fecha desde</label>
       </div>
-      <div class="field-body">
-        <div class="field">
-          <%= month_and_year_select :date_from, {
-            prefix: :date_from,
-            start_year: 1985,
-            end_year: Time.zone.now.year,
-            include_blank: true,
-          }
-          %>
-        </div>
+      <div class="field">
+        <%= month_and_year_select :date_from, {
+          prefix: :date_from,
+          start_year: 1985,
+          end_year: Time.zone.now.year,
+          include_blank: true,
+        }
+        %>
+      </div>
       <div class="field-label is-normal">
         <label class="label">Fecha hasta</label>
       </div>
-        <div class="field">
-          <%= month_and_year_select :date_to, {
-            prefix: :date_to,
-            start_year: 1985,
-            end_year: Time.zone.now.year,
-            include_blank: true,
-          }
-          %>
-        </div>
+      <div class="field">
+        <%= month_and_year_select :date_to, {
+          prefix: :date_to,
+          start_year: 1985,
+          end_year: Time.zone.now.year,
+          include_blank: true,
+        }
+        %>
       </div>
     </div>
   <% end %>

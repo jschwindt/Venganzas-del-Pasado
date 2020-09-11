@@ -11,7 +11,9 @@
     <div class="control">
       <%= f.label :content, class: 'label' %>
       <%= f.text_area :content, class: 'textarea', rows: 20, id: 'markdownify' %>
-      <em>Podés darle estilo y formato al texto utilizando #{link_to "Markdown", article_path('markdown'), target: '_blank' }.</em>
+      <em>Podés darle estilo y formato al texto utilizando
+        <%= link_to "Markdown", article_path('markdown'), target: '_blank' %>
+      </em>
     </div>
   </div>
   <div class="field">
