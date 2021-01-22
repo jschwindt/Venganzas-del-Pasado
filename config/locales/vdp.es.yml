@@ -2,3 +2,8 @@ es:
     num_comments:
         one: "1 Comentario"
         other: "%{count} Comentarios"
+
+    recaptcha:
+        errors:
+            verification_failed: Falló la verificación de reCAPTCHA
+            recaptcha_unreachable: Oops, la verificación de reCAPTCHA falló, volvé a intentarlo.

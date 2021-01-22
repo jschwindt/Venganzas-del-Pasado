@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :configure_permitted_parameters, if: :devise_controller?
-
   protect_from_forgery
 
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
@@ -19,10 +17,6 @@ class ApplicationController < ActionController::Base
     else
       'application'
     end
-  end
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:alias])
   end
 
   def not_found
