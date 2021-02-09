@@ -18,7 +18,7 @@ ffmpeg -y -loglevel info \
        -metadata album="La venganza será terrible" \
        -metadata year="${YEAR}" \
        -metadata genre="Other" \
-       -metadata comment="Programa de Dolina en Radio AM750 del ${DATE} http://venganzasdelpasado.com.ar/" \
+       -metadata comment="Programa de Dolina en Radio AM750 del ${DATE} https://venganzasdelpasado.com.ar/" \
        -id3v2_version 3 \
        \
        ${DEST}/lavenganza_${DATE}.mp3

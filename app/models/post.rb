@@ -91,7 +91,7 @@ class Post < ApplicationRecord
           post.created_at = Time.zone.parse('#{year}-#{mon}-#{day} 03:00:00')
           post.status     = 'published'
           post.content    = ''
-          audio           = Audio.find_or_initialize_by(url: "http://venganzasdelpasado.com.ar/#{year}/lavenganza_#{year}-#{mon}-#{day}.mp3")
+          audio           = Audio.find_or_initialize_by(url: "https://venganzasdelpasado.com.ar/#{year}/lavenganza_#{year}-#{mon}-#{day}.mp3")
           audio.bytes     = File.size(filename)
           post.audios << audio
         end
@@ -155,7 +155,7 @@ class Post < ApplicationRecord
       system "/usr/bin/s3cmd -c /home/jschwindt/.s3cfg --acl-public put #{medium.asset.path} s3://s3.schwindt.org/dolina/#{year}/#{filename}"
 
       # Create Audio record
-      audios << Audio.new(url: "http://venganzasdelpasado.com.ar/#{year}/#{filename}", bytes: File.size(dest_file))
+      audios << Audio.new(url: "https://venganzasdelpasado.com.ar/#{year}/#{filename}", bytes: File.size(dest_file))
 
       # Remove media
       medium.destroy
