@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/ruby:2.6.6-buster-node
         auth:
-          username: mydockerhub-user
+          username: jschwindt
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout
