@@ -4,15 +4,15 @@ require 'date'
 require 'net/https'
 
 yesterday = Date.today - 1
-year   = yesterday.strftime('%Y')
+year = yesterday.strftime('%Y')
 mp3_file = "lavenganza_#{yesterday.strftime('%Y-%m-%d')}.mp3"
 
 SOURCES = [
   { url: "https://venganzasdelpasado.com.ar/st1/#{mp3_file}", min_size: 19_000_000 },
   { url: "https://venganzasdelpasado.com.ar/st/#{mp3_file}",  min_size: 25_000_000 },
   { url: "https://venganzasdelpasado.com.ar/st2/#{mp3_file}", min_size: 25_000_000 },
-  { url: "https://venganzasdelpasado.com.ar/st3/#{mp3_file}", min_size: 25_000_000 },
-]
+  { url: "https://venganzasdelpasado.com.ar/st3/#{mp3_file}", min_size: 20_000_000 }
+].freeze
 
 def get_file_length(url)
   uri = URI(url)
@@ -34,5 +34,5 @@ SOURCES.each do |source|
   end
 end
 
-puts "Ninguno sirve!"
+puts 'Ninguno sirve!'
 exit 1

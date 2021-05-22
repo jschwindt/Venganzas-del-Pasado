@@ -6,6 +6,12 @@
       <% end %>
     </li>
     <% if can? :manage, User %>
+      <li><%= link_to admin_preview_path do %>
+          <i class="fas icon-eye"></i> Elegir audio
+        <% end %>
+      </li>
+    <% end %>
+    <% if can? :manage, User %>
       <li><%= link_to admin_users_path do %>
           <i class="fas icon-users"></i> Usuarios
         <% end %>

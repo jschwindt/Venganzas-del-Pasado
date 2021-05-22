@@ -1,0 +1,8 @@
+<% page_title("Audios disponibles") %>
+<h2 class="title fancy is-4">Audios disponibles</h2>
+<h3 class="title"><%= html_page_title %></h3>
+
+<% @audios.each_with_index do |audio, idx| %>
+    <h4 class="title is-4"><%= audio[:folder] + audio[:file] %> (<%= number_to_human_size(audio[:size]) %>)</h4>
+    <%= render 'audios/player', url: "https://venganzasdelpasado.com.ar#{audio[:folder]}#{audio[:file]}", id: idx %>
+<% end %>

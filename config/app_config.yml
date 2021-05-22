@@ -1,9 +1,15 @@
 common: &common
   speech_to_text_cmd: "~/vosk-model-es/speech_to_text.py --model ~/vosk-model-es/model --audio"
   audios_root: "~/vosk-model-es"
+  audios_folders:
+    - /st/
+    - /st1/
+    - /st2/
+    - /st3/
 
 development:
   <<: *common
+  audios_root: "/Users/jschwindt/Projects/venganzas_del_pasado"
 
 test:
   <<: *common

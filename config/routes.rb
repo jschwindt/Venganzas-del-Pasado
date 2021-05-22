@@ -55,6 +55,8 @@ Rails.application.routes.draw do
         get 'approve_contribution'
       end
     end
+
+    get '/preview' => 'preview#index'
   end
 
   get 'speech_to_text/next' => 'speech_to_text#next', as: :speech_to_text_next

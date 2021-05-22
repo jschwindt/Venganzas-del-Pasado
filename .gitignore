@@ -34,4 +34,9 @@ vendor/bundle
 /config/credentials/development.key
 /config/credentials/production.key
 /config/credentials/test.key
+
 coverage/
+st/
+st1/
+st2/
+st3/
