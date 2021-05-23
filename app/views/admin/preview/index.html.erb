@@ -1,8 +1,18 @@
-<% page_title("Audios disponibles") %>
+<% page_title("Audios del #{@audios.date_str}") %>
 <h2 class="title fancy is-4">Audios disponibles</h2>
 <h3 class="title"><%= html_page_title %></h3>
 
 <% @audios.each_with_index do |audio, idx| %>
-    <h4 class="title is-4"><%= audio[:folder] + audio[:file] %> (<%= number_to_human_size(audio[:size]) %>)</h4>
+  <div class="content">
     <%= render 'audios/player', url: "https://venganzasdelpasado.com.ar#{audio[:folder]}#{audio[:file]}", id: idx %>
+    <%= link_to "https://venganzasdelpasado.com.ar#{audio[:folder]}#{audio[:file]}", rel: 'nofollow', title: "Descargar MP3" do %>
+      <i class="fas icon-download"></i> mp3
+    <% end %>
+    -
+    <%= link_to admin_publish_path(filename: audio[:folder] + audio[:file]),
+          data: {confirm: "¿Estás de usar #{audio[:folder]}#{audio[:file]}?" },
+          method: :post, remote: :true, class: "tag is-small is-danger" do %>
+      Reemplazar con <%= audio[:folder] %> (<%= number_to_human_size(audio[:size]) %>)
+    <% end%>
+  </div>
 <% end %>

@@ -57,6 +57,8 @@ Rails.application.routes.draw do
     end
 
     get '/preview' => 'preview#index'
+    post '/preview' => 'preview#publish', as: :publish
+
   end
 
   get 'speech_to_text/next' => 'speech_to_text#next', as: :speech_to_text_next
