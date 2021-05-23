@@ -8,9 +8,9 @@ module Admin
       filename = params[:filename].gsub(%r{[^\w\d./_\-]}, '')
       if File.exist?(VenganzasDelPasado::Application.config.x.audios_root + filename)
         File.open("#{VenganzasDelPasado::Application.config.x.audios_root}/publish/file.txt", 'w') do |f|
-          f.write "#{filename}\n"
+          f.write filename
         end
-        @result = "El archivo #{filename}"
+        @result = "El archivo #{filename} será publicado."
       else
         @result = 'NOK'
       end
