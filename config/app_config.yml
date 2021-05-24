@@ -1,6 +1,4 @@
 common: &common
-  speech_to_text_cmd: "~/vosk-model-es/speech_to_text.py --model ~/vosk-model-es/model --audio"
-  audios_root: "~/vosk-model-es"
   audios_folders:
     - /st/
     - /st1/
@@ -9,6 +7,7 @@ common: &common
 
 development:
   <<: *common
+  speech_to_text_cmd: "source /Users/jschwindt/Projects/vdp-vosk/.env-local; /Users/jschwindt/Projects/vdp-vosk/.venv/bin/python /Users/jschwindt/Projects/vdp-vosk/process_stt.py -m /Users/jschwindt/Projects/vdp-vosk/model > /tmp/last_stt.log 2>&1"
   audios_root: "/Users/jschwindt/Projects/venganzas_del_pasado"
 
 test:
@@ -16,5 +15,5 @@ test:
 
 production:
   <<: *common
-  speech_to_text_cmd: "~/speech_to_text.py --model ~/vosk-model-es --audio"
+  speech_to_text_cmd: "source /home/jschwindt/vosk/.env; /home/jschwindt/vosk/.venv/bin/python /home/jschwindt/vosk/process_stt.py -m /home/jschwindt/vosk/model > /tmp/last_stt.log 2>&1"
   audios_root: "/var/www/venganzasdelpasado.com.ar"
