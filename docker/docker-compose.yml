@@ -20,7 +20,7 @@ services:
       - vdp-mysql-db:/var/lib/mysql
     networks:
       - elk
-  
+
   redis:
     image: "redis:5-alpine"
     restart: always
@@ -31,26 +31,29 @@ services:
       - vdp-redis-db:/data
     networks:
       - elk
-  
+
   elasticsearch:
-    # build: ./elastic
-    image: elasticsearch:7.9.0
+    image: elasticsearch:7.13.1
     restart: always
-    container_name: vdp_elstic
-    environment: 
+    container_name: vdp_elastic
+    environment:
+      - "xpack.security.enabled=false"
       - "discovery.type=single-node"
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    networks:
+      - elk
     ports:
       - 9200:9200
     volumes:
       - vdp-elastic:/usr/share/elasticsearch/data
-    networks:
-      - elk
-  
+
   kibana:
-    image: kibana:7.9.0
+    image: kibana:7.13.1
+    container_name: vdp_kibana
     ports:
       - 5601:5601
+    environment:
+      - ELASTICSEARCH_HOSTS=http://vdp_elastic:9200
     networks:
       - elk
     depends_on:
@@ -65,4 +68,3 @@ volumes:
 networks:
   elk:
     driver: bridge
-    
