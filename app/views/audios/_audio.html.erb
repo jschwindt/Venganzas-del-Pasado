@@ -1,4 +1,4 @@
-<% cache [:links, audio, audio.speech_to_text_status], :expires_in => 7.days do %>
+<% cache [:links, audio, audio.speech_to_text_status, audio.sp_url], :expires_in => 7.days do %>
   <nav class="panel">
     <%= render 'audios/player', url: audio.url, id: audio.id %>
     <p class="panel-tabs">
@@ -17,5 +17,9 @@
         <% end %>
       <% end %>
     </p>
+    <% if audio.sp_url %>
+      <%= render 'audios/player', url: audio.sp_url, id: "sp_#{audio.id}" %>
+      <p class="panel-tabs">Versión sin cortes</p>
+    <% end %>
   </nav>
 <% end %>
