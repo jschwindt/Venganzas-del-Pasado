@@ -11,8 +11,8 @@ year = day.strftime('%Y')
 mp3_file = "lavenganza_#{day.strftime('%Y-%m-%d')}.mp3"
 
 SOURCES = [
+  { file: "/st0/#{mp3_file}",  min_size: 25_000_000 },
   { file: "/st1/#{mp3_file}", min_size: 19_000_000 },
-  { file: "/st/#{mp3_file}",  min_size: 25_000_000 },
   { file: "/st2/#{mp3_file}", min_size: 25_000_000 },
   { file: "/st3/#{mp3_file}", min_size: 20_000_000 }
 ].freeze

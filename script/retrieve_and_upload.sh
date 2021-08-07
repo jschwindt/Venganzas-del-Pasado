@@ -12,7 +12,7 @@ FILE="lavenganza_$DATE.mp3"
 
 rm -rf lavenganza_*.mp3
 
-ls -lh $HOME/st/$FILE $HOME/st1/$FILE $HOME/st2/$FILE $HOME/st3/$FILE
+ls -lh $HOME/st0/$FILE $HOME/st1/$FILE $HOME/st2/$FILE $HOME/st3/$FILE
 
 echo "Fetching '$1'..."
 /usr/bin/wget -q -N $1

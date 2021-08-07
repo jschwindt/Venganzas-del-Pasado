@@ -1,6 +1,6 @@
 common: &common
   audios_folders:
-    - /st/
+    - /st0/
     - /st1/
     - /st2/
     - /st3/

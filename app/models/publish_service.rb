@@ -6,7 +6,7 @@ class PublishService
   def run
     @publish_files.each do |publish_file|
       File.readlines(publish_file).each do |line|
-        if line.match(%r[(/st\d*/)(lavenganza_(\d{4})-\d{2}-\d{2}.mp3)])
+        if line.match(%r[(/st\d/)(lavenganza_(\d{4})-\d{2}-\d{2}.mp3)])
           process(Regexp.last_match(0), Regexp.last_match(2), Regexp.last_match(3))
         end
       end
