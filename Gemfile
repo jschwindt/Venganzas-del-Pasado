@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
+gem 'rails', '~> 6.1.4'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4'
 # Use Puma as the app server
@@ -27,18 +27,18 @@ gem 'aasm'
 gem 'cancancan'
 gem 'carrierwave'
 gem 'devise'
-gem 'friendly_id', '~> 5.2.4'
+gem 'friendly_id', '~> 5.4.2'
 gem 'has_scope'
 gem 'hiredis'
 gem 'inherited_resources'
 gem 'kaminari'
 gem 'mini_magick'
-gem 'omniauth', '~> 1.9.1'
+gem 'omniauth', '~> 2.0.4'
 gem 'omniauth-facebook'
 gem 'recaptcha'
 gem 'redcarpet'
 gem 'redis'
-gem 'searchkick', '~> 4.4.2'
+gem 'searchkick', '~> 4.6.1'
 gem 'sitemap_generator'
 gem 'watu_table_builder', require: 'table_builder'
 
@@ -49,22 +49,22 @@ group :development, :test do
 end
 
 group :development do
-  gem 'capistrano', '~> 3.11', require: false
+  gem 'capistrano', '~> 3.16', require: false
   gem 'capistrano-passenger', require: false
-  gem 'capistrano-rails', '~> 1.4', require: false
+  gem 'capistrano-rails', '~> 1.6.1', require: false
   gem 'guard'
   gem 'guard-minitest'
   gem 'letter_opener'
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'rubocop', '~> 0.81.0', require: false
+  gem 'rubocop', '~> 1.22.1', require: false
   gem 'solargraph'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
+  gem 'web-console', '>= 4.1.0'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara', '>= 3.35'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
   # Easy installation and use of web drivers to run system tests with browsers
