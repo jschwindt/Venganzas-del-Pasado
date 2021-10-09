@@ -34,7 +34,7 @@ class PublishService
     post = Post.create_from_audio_file(audio_file)
     audio = post.audios.first
     file_size = File.size audio_file
-    audio.update_attributes(bytes: file_size, speech_to_text_status: :unavailable)
+    audio.update(bytes: file_size, speech_to_text_status: :unavailable)
     puts "#{post.inspect}\n#{audio.inspect}"
   end
 
