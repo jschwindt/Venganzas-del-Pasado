@@ -43,7 +43,7 @@
         <% else %>
           <%= link_to 'Registrate', new_user_registration_path, class: "navbar-item" %>
           <%= link_to 'Iniciá sesión con email', new_user_session_path, class: "navbar-item" %>
-          <%= link_to image_tag('fb-login.png', title: "Iniciar sesión con Facebook"), user_omniauth_path(:facebook), method: :post, class: "navbar-item" %>
+          <%= link_to image_tag('fb-login.png', title: "Inicio de sesión con Facebook"), new_user_session_path(msg: "facebook"), class: "navbar-item" %>
         <% end %>
       </div>
     </div>

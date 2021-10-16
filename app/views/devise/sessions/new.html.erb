@@ -1,11 +1,31 @@
 <h2 class="title fancy is-4">Iniciar Sesión</h2>
 
-<p>
-  Si tenés una cuenta en Facebook podés iniciar sesión haciendo click en el siguiente botón:
-</p>
-<p class="facebook-login">
-  <%= link_to image_tag('fb-login.png', title: "Iniciar sesión con Facebook"), user_omniauth_path(:facebook), method: :post %>
-</p>
+<% if params[:msg] == 'facebook' %>
+
+  <div class="notification is-info">
+    <p>
+      <strong>Atención usuarios de Facebook:</strong> debido a cambios en las condiciones de Facebook,
+      no es más posible iniciar sesión utilizando dicho método.
+      Si alguna vez te habías registrado en <strong><em>Venganzas del Pasado</em></strong> con credenciales de Facebook,
+      ingresá la misma dirección de mail que usás Facebook en el campo siguiente y vas a recibir instrucciones para generar
+      la clave para este sitio:
+    </p>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <div class="field">
+        <div class="control">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input" %>
+        </div>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button is-link">Crear contraseña</button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 <p>
   Si ya tenés una cuenta en este sitio, podés ingresar mediante el siguiente formulario:
 </p>

@@ -2,13 +2,7 @@
 <h3 class="title is-4">Registrate en Venganzas del Pasado</h3>
 
 <p>
-  Si tenés una cuenta en Facebook podés iniciar sesión haciendo click en el siguiente botón:
-</p>
-<p class="facebook-login">
-  <%= link_to image_tag('fb-login.png', title: "Iniciar sesión con Facebook"), user_omniauth_path(:facebook), method: :post %>
-</p>
-<p>
-  Si no tenés una cuenta en Facebook o simplemente preferís no utilizarla para registrarte, te invitamos a crear una nueva cuenta mediante el siguiente formulario:
+  Te invitamos a crear una nueva cuenta mediante el siguiente formulario:
 </p>
 <br />
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>

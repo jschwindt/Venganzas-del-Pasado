@@ -41,7 +41,7 @@ de la wishlist.
     link a perfil en FB, si tiene.  ✔
 *   Admin sencillo que sirva inicialmente para moderar, cambiar karma
     manualmente y crear posts.  ✔
-*   Omniauth para login con Facebook. ✔
+*   Omniauth para login con Facebook. ✔ [Eliminado debido al cambio constante de condiciones de FB]
 *   Gravatars. ✔
 *   Migración del contenido actual: Post, audios, comentarios, usuarios y tal
     vez páginas. ✔

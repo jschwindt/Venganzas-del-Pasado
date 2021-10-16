@@ -10,53 +10,13 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable
 
   scope :lifo, -> { order('created_at DESC') }
 
   class << self
     def roles
       ['', 'admin', 'editor', 'moderator']
-    end
-
-    def find_for_facebook_oauth(access_token, _signed_in_resource = nil)
-      data = access_token.extra.raw_info
-      if (user = User.where('email = ? OR fb_userid = ?', data.email, data.id).first)
-        user.email     = data.email
-        user.fb_userid = data.id
-        user.confirmed_at = Time.zone.now
-        user.save!
-        user
-      else
-        create_from_facebook data
-      end
-    end
-
-    def create_from_facebook(fb_data)
-      generated_password = Devise.friendly_token.first(10)
-      user = User.new(email: fb_data.email,
-                      alias: fb_data.username || fb_data.name,
-                      password: generated_password,
-                      password_confirmation: generated_password)
-      user.fb_userid = fb_data.id
-      user.skip_confirmation!
-      user.save
-      user
-    end
-
-    # Called by Devise during User creation
-    def new_with_session(params, session)
-      super.tap do |user|
-        if (data = session['devise.facebook_data']) && session['devise.facebook_data']['extra']['raw_info']
-          user.email         = params[:email]
-          user.alias         = params[:alias]
-          user.fb_userid     = data['id']
-          generated_password = Devise.friendly_token.first(10)
-          user.password      = generated_password
-          user.password_confirmation = generated_password
-          user.skip_confirmation!
-        end
-      end
     end
 
     def active
@@ -70,30 +30,12 @@ class User < ApplicationRecord
     end
   end # End class methods
 
-  # Overrides Devise method to allow non-password updates for Facebook users
-  def update_with_password(params = {})
-    if has_facebook_profile?
-      params.delete(:current_password)
-      update_without_password(params)
-    else
-      super
-    end
-  end
-
   def ability
     @ability ||= Ability.new(self)
   end
 
   def can_admin?
     %w[moderator editor admin].include? role
-  end
-
-  #  def active?
-  #    last_sign_in_at.present? || confirmed_at.present?
-  #  end
-
-  def has_facebook_profile?
-    fb_userid.present?
   end
 
   def profile_picture_url
@@ -103,11 +45,7 @@ class User < ApplicationRecord
   private
 
   def update_profile_picture_url
-    if has_facebook_profile?
-      self.profile_picture_url = "//graph.facebook.com/#{fb_userid}/picture"
-    else
-      self.profile_picture_url = User.gravatar_url(email)
-    end
+    self.profile_picture_url = User.gravatar_url(email)
   end
 
   def clean_role

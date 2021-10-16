@@ -3,12 +3,8 @@ Rails.application.routes.draw do
   get 'search(/:what)', action: :index, controller: :search, as: :search
 
   devise_for :users, controllers: {
-    omniauth_callbacks: 'users/omniauth_callbacks',
     registrations: 'users/registrations'
   }
-  devise_scope :users do
-    post '/users/auth/:provider' => 'users/omniauth_callbacks#passthru', as: :user_omniauth
-  end
 
   get 'posts/:year(/:month(/:day))' => 'posts#archive', as: :posts_archive, constraints: {
     year: /\d{4}/, month: /\d{1,2}/, day: /\d{1,2}/
