@@ -6,14 +6,14 @@
     <%= tag 'meta', name: 'description', content: @meta_description || 'El sitio donde podés escuchar online y descargar los archivos de audio en MP3 del programa La Venganza será Terrible de Alejandro Dolina.' %>
     <%= auto_discovery_link_tag :rss, posts_path(format: :rss), { title: 'RSS feed de Venganzas del Pasado' } %>
     <%= auto_discovery_link_tag :rss, torrents_path(format: :rss), { title: 'Torrent RSS de Venganzas del Pasado' } %>
-    <%= tag 'link', rel: 'image_src', href: asset_path('vdp_logo.jpg') %>
+    <%= tag 'link', rel: 'image_src', href: asset_path('vdp-logo.png') %>
     <%= tag 'meta', name: 'twitter:card',       content: 'summary' %>
     <%= tag 'meta', name: 'twitter:site',       content: '@venganzaspasado' %>
     <%= tag 'meta', name: 'twitter:creator',    content: '@jschwindt' %>
     <%= tag 'meta', property: 'og:url',         content: request.original_url %>
     <%= tag 'meta', property: 'og:title',       content: yield(:title) %>
     <%= tag 'meta', property: 'og:description', content: @meta_description || 'El sitio donde podés escuchar online y descargar los archivos de audio en MP3 del programa La Venganza será Terrible de Alejandro Dolina.' %>
-    <%= tag 'meta', property: 'og:image',       content: asset_url('vdp_logo.jpg') %>
+    <%= tag 'meta', property: 'og:image',       content: asset_url('vdp-logo.png') %>
     <%= tag 'meta', property: 'og:type',        content: @meta_og_type || 'website' %>
     <%= tag 'meta', property: 'og:locale',      content: 'es_AR' %>
     <%= tag 'meta', property: 'fb:app_id',      content: '39744394508' %>
