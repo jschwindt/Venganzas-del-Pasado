@@ -1,12 +1,12 @@
 <% if params[:page].nil? %>
   <% the_title = "Torrents de La Venganza será Terrible de Alejandro Dolina" -%>
 <% else %>
-  <% the_title = "Torrents de La Venganza será Terrible de Alejandro Dolina<small>, Página #{params[:page]}</small>" -%>
+  <% the_title = "Torrents de La Venganza será Terrible de Alejandro Dolina (página #{params[:page]})" -%>
 <% end %>
 <% page_title the_title -%>
 <% meta_description strip_tags(the_title) -%>
 <h2 class="title fancy is-4">Descarga de los MP3 usando torrent</h2>
-<h2 class="title"><%=raw the_title %></h2>
+<h2 class="title"><%= the_title %></h2>
 <div class="content">
   Si estás usando el RSS de los torrents para agregarlo a tu cliente
   BitTorrent favorito y automatizar las descargas,

@@ -8,11 +8,11 @@
 <% if params[:page].nil? %>
   <% the_title = title_part %>
 <% else %>
-  <% the_title = "#{title_part}, <small>Página #{params[:page]}</small>" %>
+  <% the_title = "#{title_part} (página #{params[:page]})" -%>
 <% end %>
 <% page_title the_title %>
 <% meta_description strip_tags("#{the_title} de La Venganza será Terrible") %>
-<h2 class="title fancy is-4"><%= raw the_title %></h2>
+<h2 class="title fancy is-4"><%= the_title %></h2>
 <%= render 'layouts/banners/top' %>
 <%= render @posts %>
 <%= paginate @posts, window: 2 %>
