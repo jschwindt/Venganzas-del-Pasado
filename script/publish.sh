@@ -7,4 +7,5 @@ cd /var/www/venganzasdelpasado.com.ar/current
 ./bin/rails runner PublishService.new.run
 
 . /home/jschwindt/vosk/.env
-/home/jschwindt/vosk/.venv/bin/python /home/jschwindt/vosk/process_stt.py -m /home/jschwindt/vosk/model >> /tmp/last_stt.log 2>&1
+#/home/jschwindt/vosk/.venv/bin/python /home/jschwindt/vosk/process_stt.py -m /home/jschwindt/vosk/model >> /tmp/last_stt.log 2>&1
+/home/jschwindt/whisper/.venv/bin/python /home/jschwindt/whisper/process_stt.py >> /tmp/last_stt.log 2>&1
