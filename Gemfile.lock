@@ -158,7 +158,7 @@ GEM
     formatador (1.1.0)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
-    globalid (1.0.0)
+    globalid (1.0.1)
       activesupport (>= 5.0)
     guard (2.18.0)
       formatador (>= 0.2.4)
@@ -229,7 +229,7 @@ GEM
     mini_magick (4.11.0)
     mini_mime (1.1.2)
     mini_portile2 (2.8.0)
-    minitest (5.16.3)
+    minitest (5.17.0)
     msgpack (1.6.0)
     multi_json (1.15.0)
     multipart-post (2.2.3)
@@ -409,7 +409,7 @@ GEM
       nokogiri (~> 1.8)
     yard (0.9.28)
       webrick (~> 1.7.0)
-    zeitwerk (2.6.1)
+    zeitwerk (2.6.6)
 
 PLATFORMS
   ruby
