@@ -66,7 +66,7 @@ Rails.application.configure do
     port: 25,
     domain: 'venganzasdelpasado.com.ar',
     authentication: 'plain',
-    enable_starttls_auto: false
+    enable_starttls: false
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
