@@ -239,6 +239,8 @@ GEM
     multipart-post (2.2.3)
     mysql2 (0.5.4)
     nenv (0.3.0)
+    net-http (0.3.2)
+      uri
     net-imap (0.3.4)
       date
       net-protocol
@@ -398,6 +400,7 @@ GEM
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.3.0)
+    uri (0.10.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     watu_table_builder (0.3.0)
@@ -455,6 +458,7 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   mini_magick
   mysql2 (>= 0.4.4)
+  net-http
   puma (~> 5.6.2)
   rails (~> 6.1.4)
   recaptcha
@@ -469,6 +473,7 @@ DEPENDENCIES
   solargraph
   sprockets (~> 3.7.2)
   tzinfo-data
+  uri (= 0.10.0)
   watu_table_builder
   web-console (>= 4.1.0)
   webdrivers
