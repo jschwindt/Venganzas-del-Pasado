@@ -21,11 +21,13 @@ set :deploy_to, '/var/www/venganzasdelpasado.com.ar'
 # set :pty, true
 
 # Default value for :linked_files is []
-append :linked_files, 'config/database.yml', 'config/credentials/production.key'
+append :linked_files, 'config/database.yml', 'config/credentials/production.key',
+       'docker/docker-compose-meilisearch.yml'
 
 # Default value for linked_dirs is []
 append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets',
-       'public/uploads', 'public/sitemaps', 'public/st0', 'public/st1', 'public/st2', 'public/st3'
+       'public/uploads', 'public/sitemaps',
+       'public/st0', 'public/st1', 'public/st2', 'public/st3', 'public/st4'
 
 # Default value for default_env is {}
 set :default_env, { path: '/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH' }
