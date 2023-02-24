@@ -42,9 +42,9 @@ gem 'mini_magick'
 gem 'recaptcha'
 gem 'redcarpet'
 gem 'redis'
-gem 'searchkick', '~> 4.6.1'
 gem 'sitemap_generator'
 gem 'watu_table_builder', require: 'table_builder'
+gem 'meilisearch-rails'
 
 group :development, :test do
   gem 'amazing_print'

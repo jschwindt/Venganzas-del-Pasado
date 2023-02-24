@@ -13,12 +13,9 @@ class Hash
 end
 
 # reindex models
-Post.reindex
-Comment.reindex
-Text.reindex
-
-# and disable callbacks
-Searchkick.disable_callbacks
+Post.reindex!
+Comment.reindex!
+Text.reindex!
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers

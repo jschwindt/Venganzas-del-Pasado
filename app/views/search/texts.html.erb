@@ -58,8 +58,8 @@
   <% end %>
 </div>
 <div class="search-results">
-  <% @results.with_highlights.each do |text, highlights| %>
-    <%= render Post.from_text_search(text, highlights[:text]) %>
+  <% @results.each do |text, highlights| %>
+    <%= render Post.from_text_search(text, text.formatted['text']) %>
   <% end %>
 </div>
 <%= paginate @results, window: 2 %>

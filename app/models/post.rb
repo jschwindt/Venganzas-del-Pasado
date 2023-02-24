@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+  include MeiliSearch::Rails
   extend FriendlyId
   friendly_id :title, use: %i[slugged finders]
 
@@ -19,27 +20,29 @@ class Post < ApplicationRecord
   scope :lifo, -> { order('created_at DESC') }
   scope :this_month, -> { where(created_at: Date.today.beginning_of_month..Date.today.end_of_month) }
 
-  searchkick searchable: %i[title content], filterable: [:created_at], settings: {
-    analysis: {
-      filter: {
-        spanish_stop: {
-          type: 'stop',
-          stopwords: '_spanish_'
-        }
-      },
-      analyzer: {
-        rebuilt_spanish: {
-          tokenizer: 'standard',
-          filter: %w[lowercase asciifolding spanish_stop]
-        }
-      }
-    }
-  }
-
-  scope :search_import, -> { where(status: 'published') }
-
   def should_index?
     status == 'published'
+  end
+
+  def timestamp
+    created_at.to_i
+  end
+
+  meilisearch if: :should_index?, force_utf8_encoding: true do
+    attribute :title, :content, :timestamp
+    filterable_attributes [:timestamp]
+    sortable_attributes [:timestamp]
+    ranking_rules [
+      "sort",
+      "exactness",
+      "words",
+      "typo",
+      "proximity",
+      "attribute",
+    ]
+
+    # The following parameters are applied when calling the search() method:
+    pagination max_total_hits: 1000
   end
 
   # Class methods

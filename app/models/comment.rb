@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
+  include MeiliSearch::Rails
   include AASM
 
   belongs_to :post, counter_cache: true
@@ -9,27 +10,29 @@ class Comment < ApplicationRecord
 
   validates :content, :post_id, presence: true
 
-  searchkick searchable: %i[author content], filterable: [:created_at], settings: {
-    analysis: {
-      filter: {
-        spanish_stop: {
-          type: 'stop',
-          stopwords: '_spanish_'
-        }
-      },
-      analyzer: {
-        rebuilt_spanish: {
-          tokenizer: 'standard',
-          filter: %w[lowercase asciifolding spanish_stop]
-        }
-      }
-    }
-  }
-
-  scope :search_import, -> { where('status IN (?)', %w[neutral approved flagged]) }
-
   def should_index?
     %w[neutral approved flagged].include? status
+  end
+
+  def timestamp
+    created_at.to_i
+  end
+
+  meilisearch if: :should_index?, force_utf8_encoding: true do
+    attribute :content, :timestamp
+    filterable_attributes [:timestamp]
+    sortable_attributes [:timestamp]
+    ranking_rules [
+      "sort",
+      "exactness",
+      "words",
+      "typo",
+      "proximity",
+      "attribute",
+    ]
+
+    # The following parameters are applied when calling the search() method:
+    pagination max_total_hits: 1000
   end
 
   aasm column: :status do

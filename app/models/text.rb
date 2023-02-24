@@ -1,4 +1,5 @@
 class Text < ApplicationRecord
+  include MeiliSearch::Rails
   belongs_to :audio
 
   def search_data
@@ -8,21 +9,26 @@ class Text < ApplicationRecord
     }
   end
 
-  searchkick searchable: %i[text], filterable: [:created_at], batch_size: 500, settings: {
-    analysis: {
-      filter: {
-        spanish_stop: {
-          type: 'stop',
-          stopwords: '_spanish_'
-        }
-      },
-      analyzer: {
-        rebuilt_spanish: {
-          tokenizer: 'standard',
-          filter: %w[asciifolding spanish_stop]
-        }
-      }
-    }
-  }
+  def timestamp
+    audio.post.created_at.to_i
+  end
+
+  meilisearch force_utf8_encoding: true do
+    attribute :text, :timestamp
+    filterable_attributes [:timestamp]
+    sortable_attributes [:timestamp]
+    ranking_rules [
+      "sort",
+      "exactness",
+      "words",
+      "typo",
+      "proximity",
+      "attribute",
+    ]
+
+    # The following parameters are applied when calling the search() method:
+    attributes_to_highlight ['text']
+    pagination max_total_hits: 1000
+  end
 
 end
