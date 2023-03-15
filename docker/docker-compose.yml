@@ -1,25 +1,15 @@
 version: '3.3'
 services:
   db:
-    image: mysql:5.7
+    image: mysql:8.0
     restart: always
     container_name: vdp_mysql
     environment:
-      MYSQL_DATABASE: 'vpd'
-      # So you don't have to use root, but you can if you like
-      MYSQL_USER: 'user'
-      # You can use whatever password you like
-      MYSQL_PASSWORD: 'password'
-      # Password for root access
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     ports:
-      # <Port exposed> : < MySQL Port running inside container>
       - '3306:3306'
-      # Where our data will be persisted
     volumes:
       - vdp-mysql-db:/var/lib/mysql
-    networks:
-      - elk
 
   redis:
     image: "redis:5-alpine"
@@ -29,42 +19,22 @@ services:
       - 6379:6379
     volumes:
       - vdp-redis-db:/data
-    networks:
-      - elk
 
-  elasticsearch:
-    image: elasticsearch:7.13.1
+  meilisearch:
+    image: getmeili/meilisearch:${MEILI_TAG}
     restart: always
-    container_name: vdp_elastic
+    container_name: vdp_meilisearch
     environment:
-      - "xpack.security.enabled=false"
-      - "discovery.type=single-node"
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-    networks:
-      - elk
+      MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
+      MEILI_ENV: production
+      MEILI_NO_ANALYTICS: true
     ports:
-      - 9200:9200
+      - '7700:7700'
+      # Where our data will be persisted
     volumes:
-      - vdp-elastic:/usr/share/elasticsearch/data
-
-  kibana:
-    image: kibana:7.13.1
-    container_name: vdp_kibana
-    ports:
-      - 5601:5601
-    environment:
-      - ELASTICSEARCH_HOSTS=http://vdp_elastic:9200
-    networks:
-      - elk
-    depends_on:
-      - elasticsearch
+      - ${MEILI_DATA_PATH}:/meili_data
 
 # Names our volume
 volumes:
   vdp-mysql-db:
   vdp-redis-db:
-  vdp-elastic:
-
-networks:
-  elk:
-    driver: bridge
