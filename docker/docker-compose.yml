@@ -2,7 +2,6 @@ version: '3.3'
 services:
   db:
     image: mysql:8.0
-    restart: always
     container_name: vdp_mysql
     environment:
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
@@ -13,7 +12,6 @@ services:
 
   redis:
     image: "redis:5-alpine"
-    restart: always
     container_name: vdp_redis
     ports:
       - 6379:6379
@@ -22,7 +20,6 @@ services:
 
   meilisearch:
     image: getmeili/meilisearch:${MEILI_TAG}
-    restart: always
     container_name: vdp_meilisearch
     environment:
       MEILI_MASTER_KEY: ${MEILI_MASTER_KEY}
