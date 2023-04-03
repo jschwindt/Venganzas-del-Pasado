@@ -60,7 +60,7 @@
           m=d.getElementsByTagName(t)[0];a.async=1;a.src=u;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://mautic.jp5.lol/mtc.js','mt');
 
-      mt('send', 'pageview', {email: '<% current_user.email %>', username: '<%= current_user.alias %>'});
+      mt('send', 'pageview', {email: '<%= current_user.email %>', username: '<%= current_user.alias %>'});
       </script>
     <% end %>
   </body>
