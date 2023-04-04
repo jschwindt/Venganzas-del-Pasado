@@ -52,9 +52,9 @@ group :development, :test do
 end
 
 group :development do
-  gem 'capistrano', '~> 3.16', require: false
+  gem 'capistrano', '~> 3.17', require: false
   gem 'capistrano-passenger', require: false
-  gem 'capistrano-rails', '~> 1.6.1', require: false
+  gem 'capistrano-rails', '~> 1.6', require: false
   gem 'guard'
   gem 'guard-minitest'
   gem 'letter_opener'

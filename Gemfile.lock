@@ -406,9 +406,9 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   cancancan
-  capistrano (~> 3.16)
+  capistrano (~> 3.17)
   capistrano-passenger
-  capistrano-rails (~> 1.6.1)
+  capistrano-rails (~> 1.6)
   capybara (>= 3.35)
   carrierwave
   devise
