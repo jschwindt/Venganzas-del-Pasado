@@ -33,6 +33,7 @@ SOURCES.each do |source|
     puts "Show start time: #{show_start_time}"
     if show_start_time > 0
       system("ffmpeg -loglevel panic -y -i #{source_file}-bak.mp3 -ss #{show_start_time} -c copy #{source_file}")
+      FileUtils.rm("#{source_file}-start.mp3")
     end
     File.open("#{app_config['audios_root']}/publish/#{Time.now.to_i}.txt", 'w') do |f|
       f.write source[:file]
