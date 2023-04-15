@@ -8,7 +8,7 @@ common: &common
 
 development:
   <<: *common
-  speech_to_text_cmd: "source /Users/jschwindt/Projects/vdp-vosk/.env-local; /Users/jschwindt/Projects/vdp-vosk/.venv/bin/python /Users/jschwindt/Projects/vdp-vosk/process_stt.py -m /Users/jschwindt/Projects/vdp-vosk/model > /tmp/last_stt.log 2>&1"
+  find_show_start: "/Users/jschwindt/Projects/whisper/.venv/bin/python /Users/jschwindt/Projects/whisper/find_show_start.py"
   audios_root: "/Users/jschwindt/Projects/venganzas_del_pasado"
 
 test:
@@ -16,5 +16,5 @@ test:
 
 production:
   <<: *common
-  speech_to_text_cmd: "source /home/jschwindt/vosk/.env; /home/jschwindt/vosk/.venv/bin/python /home/jschwindt/vosk/process_stt.py -m /home/jschwindt/vosk/model > /tmp/last_stt.log 2>&1"
+  find_show_start: "/home/jschwindt/whisper/.venv/bin/python /home/jschwindt/whisper/find_show_start.py"
   audios_root: "/var/www/venganzasdelpasado.com.ar"
