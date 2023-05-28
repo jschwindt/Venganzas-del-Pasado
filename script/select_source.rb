@@ -5,7 +5,7 @@ require 'yaml'
 require 'fileutils'
 
 app_config_file = File.expand_path('../config/app_config.yml', __dir__)
-app_config = YAML.load_file(app_config_file)[ENV['RAILS_ENV'] || 'development']
+app_config = YAML.load_file(app_config_file, aliases: true)[ENV['RAILS_ENV'] || 'development']
 find_show_start_cmd = app_config['find_show_start']
 
 day = Date.today - (ARGV[0] || 1).to_i
