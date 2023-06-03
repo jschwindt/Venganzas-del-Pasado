@@ -15,7 +15,7 @@ echo "Downloading from $URL to $DEST for $DURATION (date: $DATE, year: $YEAR)"
 
 ffmpeg -y -loglevel info \
        -i "${URL}" -t "${DURATION}" \
-       -codec:a libmp3lame -b:a 64k \
+       -codec:a libmp3lame -qscale:a 9 \
        \
        -metadata title="La venganza ${DATE}" \
        -metadata artist="Alejandro Dolina" \
