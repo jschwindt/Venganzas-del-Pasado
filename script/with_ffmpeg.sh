@@ -3,15 +3,19 @@
 URL=${1:-http://streaming.espectador.com/envivo}
 DEST=${2:-/var/www/venganzasdelpasado.com.ar/st3}
 DURATION=${3:-2:00:00}
+if [[ "$(uname)" == "Darwin" ]]; then
+DATE=${4:-$(date -v -1d +%F)}
+YEAR=${5:-$(date -v -1d +%Y)}
+else
 DATE=${4:-$(date +%F -d yesterday)}
 YEAR=${5:-$(date +%Y -d yesterday)}
+fi
 
 echo "Downloading from $URL to $DEST for $DURATION (date: $DATE, year: $YEAR)"
 
 ffmpeg -y -loglevel info \
        -i "${URL}" -t "${DURATION}" \
-       -codec:a libmp3lame -b:a 32k \
-       -filter:a volume="replaygain=track:volume=0.4",compand="attacks=1:decays=4:soft-knee=6:points=-80/-80|-75/-25|0/0:gain=-6:volume=-30:delay=1" \
+       -codec:a libmp3lame -b:a 64k \
        \
        -metadata title="La venganza ${DATE}" \
        -metadata artist="Alejandro Dolina" \
