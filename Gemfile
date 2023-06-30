@@ -32,7 +32,7 @@ gem 'aasm'
 gem 'cancancan'
 gem 'carrierwave'
 gem 'devise'
-gem 'friendly_id', '~> 5.4.2'
+gem 'friendly_id'
 gem 'has_scope'
 gem 'hiredis'
 gem 'inherited_resources'
@@ -58,8 +58,8 @@ group :development do
   gem 'guard'
   gem 'guard-minitest'
   gem 'letter_opener'
-  gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'rubocop', '~> 1.22.1', require: false
+  gem 'listen', '>= 3.0.8', '< 3.2'
+  gem 'rubocop', '~> 1.53.1', require: false
   gem 'solargraph'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
