@@ -44,6 +44,7 @@ gem 'redis'
 gem 'sitemap_generator'
 gem 'watu_table_builder', require: 'table_builder'
 gem 'meilisearch-rails'
+gem 'simple-spreadsheet'
 
 group :development, :test do
   gem 'amazing_print'
