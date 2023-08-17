@@ -4,6 +4,8 @@ require 'date'
 require 'yaml'
 require 'fileutils'
 
+# USAGE: select_source.rb [# days back, default 1] [/st? to force re processing]
+
 app_config_file = File.expand_path('../config/app_config.yml', __dir__)
 app_config = YAML.load_file(app_config_file, aliases: true)[ENV['RAILS_ENV'] || 'development']
 find_show_start_cmd = app_config['find_show_start']
@@ -22,9 +24,11 @@ SOURCES = [
 
 dest_file = "#{app_config['audios_root']}/#{year}/#{mp3_file}"
 
-exit 0 if File.exist?(dest_file) && File.size(dest_file) > 15_000_000
+exit 0 if File.exist?(dest_file) && File.size(dest_file) > 17_000_000 && !ARGV[1]
 
 SOURCES.each do |source|
+  next if ARGV[1] && !source[:file].start_with?(ARGV[1])
+
   source_file = "#{app_config['audios_root']}#{source[:file]}"
   if File.exist?(source_file) && File.size(source_file) > source[:min_size]
     puts "SIRVE: #{source[:file]} (#{File.size(source_file) / (1024 * 1024)} Mb)"
