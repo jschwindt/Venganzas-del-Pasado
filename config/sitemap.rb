@@ -20,8 +20,6 @@ SitemapGenerator::Sitemap.create do
     add post_path(post, transcription: true), :lastmod => post.updated_at, :changefreq => 'daily', :priority => 0.8
   end
 
-  add torrents_path, :changefreq => 'daily'
-
   Article.find_each do |article|
     add article_path(article), :lastmod => article.updated_at
   end
