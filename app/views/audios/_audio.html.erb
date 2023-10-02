@@ -5,9 +5,6 @@
       <%= link_to audio.url, rel: 'nofollow', title: "Descargar MP3" do %>
         <i class="fas icon-download"></i> mp3
       <% end %>
-      <%= link_to audio.torrent_url, rel: 'nofollow', title: "Descargar .torrent" do %>
-        <i class="fas icon-magnet"></i> torrent
-      <% end %>
       <%= link_to post_audio_url(audio.post, audio), class: 'open_player', title: "Abrir player en popup" do %>
         <i class="fas icon-link-ext"></i> player
       <% end %>

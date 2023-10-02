@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= tag 'meta', name: 'description', content: @meta_description || 'El sitio donde podés escuchar online y descargar los archivos de audio en MP3 del programa La Venganza será Terrible de Alejandro Dolina.' %>
     <%= auto_discovery_link_tag :rss, posts_path(format: :rss), { title: 'RSS feed de Venganzas del Pasado' } %>
-    <%= auto_discovery_link_tag :rss, torrents_path(format: :rss), { title: 'Torrent RSS de Venganzas del Pasado' } %>
     <%= tag 'link', rel: 'image_src', href: asset_path('vdp-logo.png') %>
     <%= tag 'meta', name: 'twitter:card',       content: 'summary' %>
     <%= tag 'meta', name: 'twitter:site',       content: '@venganzaspasado' %>

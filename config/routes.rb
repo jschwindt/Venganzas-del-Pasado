@@ -31,7 +31,6 @@ Rails.application.routes.draw do
   end
 
   resources :articles, only: :show
-  resources :torrents, only: :index
 
   namespace :admin do
     get '/' => 'base#dashboard', as: :dashboard

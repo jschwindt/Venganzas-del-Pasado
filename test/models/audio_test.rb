@@ -22,8 +22,4 @@ class AudioTest < ActiveSupport::TestCase
     end
   end
 
-  test 'torrent_url' do
-    audio = audios(:real_url)
-    assert_equal audio.torrent_url, 'https://s3.amazonaws.com/s3.schwindt.org/dolina/2011/lavenganza_2011-11-22.mp3?torrent'
-  end
 end

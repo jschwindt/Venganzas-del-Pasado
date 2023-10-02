@@ -31,9 +31,6 @@ class RedirectsController < ApplicationController
     when 'descargas'
       redirect_to '/posts/descargas',                                       status: :moved_permanently
 
-    when 'torrent-feed.xml'
-      redirect_to '/torrents.rss',                                          status: :moved_permanently
-
     when /^(page|foro|tag|actualizar|arreglar|donaciones)/
       redirect_to '/',                                                      status: :moved_permanently
 

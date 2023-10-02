@@ -29,7 +29,7 @@ de la wishlist.
     audios.
 *   Limitación del largo de un comentario y la frecuencia (tal vez con lo del
     karma alcance).
-*   RSS feeds de posts ✔, torrents ✔ y, tal vez, comentarios ✘.
+*   RSS feeds de posts ✔, torrents ✘ y, tal vez, comentarios ✘.
 *   Comentarios con usuario logueado.  ✔
 *   Aprobación automática para usuarios con buen karma.  ✔
 *   Moderación para usuarios nuevos o con mal karma.  ✔
