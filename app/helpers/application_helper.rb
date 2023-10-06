@@ -16,6 +16,10 @@ module ApplicationHelper
     @meta_og_type = og_type
   end
 
+  def canonical_url(url)
+    @canonical_url = url
+  end
+
   def alert_message_for(object)
     if object.respond_to?(:errors) && object.errors.any?
       messages = object.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
@@ -69,6 +73,6 @@ def month_and_year_select(name, options = {}, html_options = {})
       p = {}
     end
   end
-  content_tag(:div, class: 'select') { select_month(p[:month].to_i, options, html_options) } + 
+  content_tag(:div, class: 'select') { select_month(p[:month].to_i, options, html_options) } +
     content_tag(:div, class: 'select') { select_year(p[:year].to_i, options, html_options) }
 end

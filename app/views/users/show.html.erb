@@ -1,7 +1,9 @@
 <% if params[:page].nil? %>
   <% the_title = "Perfil de #{@user.alias}" -%>
+  <%- canonical_url(user_url @user) %>
 <% else %>
   <% the_title = "Perfil de #{@user.alias} - Página #{params[:page]} de comentarios" -%>
+  <%- canonical_url(comments_user_path(@user) + "/page/" + params[:page]) %>
 <% end %>
 <% page_title the_title -%>
 <% meta_description the_title + " en Venganzas del Pasado", 'profile' -%>

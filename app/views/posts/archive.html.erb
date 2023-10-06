@@ -1,9 +1,12 @@
 <% if params[:day].present? %>
   <% title_part = "Archivo de programas del #{params[:day]}/#{params[:month]}/#{params[:year]}" -%>
+  <%- canonical_url(posts_archive_url params[:year], params[:month], params[:day]) %>
 <% elsif params[:month].present? %>
   <% title_part = "Archivo de programas de #{I18n.t('date.month_names')[params[:month].to_i].capitalize} de #{params[:year]}" -%>
+  <%- canonical_url(posts_archive_url params[:year], params[:month]) %>
 <% else -%>
   <% title_part = "Archivo de programas del año #{params[:year]}" -%>
+  <%- canonical_url(posts_archive_url params[:year]) %>
 <% end %>
 <% if params[:page].nil? %>
   <% the_title = title_part %>

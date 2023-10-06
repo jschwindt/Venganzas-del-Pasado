@@ -1,6 +1,7 @@
 <% the_title = "Comentario ##{@comment.id} de #{@post.title}" -%>
 <% page_title the_title -%>
 <% meta_description the_title -%>
+<%- canonical_url(post_comment_url(@post, @comment)) %>
 <h2 class="title fancy is-4"><%= link_to @post.title, @post %></h2>
 <h2 class="title"><%= %"Comentario ##{@comment.id}" %></h2>
 <div class="post-show">

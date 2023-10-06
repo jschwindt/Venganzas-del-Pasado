@@ -4,6 +4,7 @@
   <% page_title @post.title + " - Página #{params[:page]} de comentarios" -%>
 <% end %>
 <% meta_description @post.description, 'article' -%>
+<%- canonical_url(post_url @post) %>
 <div class="level is-mobile">
   <% if prev_post = @post.previous %>
     <div class="level-left">
