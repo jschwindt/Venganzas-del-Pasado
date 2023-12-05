@@ -1,5 +1,6 @@
 <% page_title "Escuchando #{@audio.post_title}" -%>
 <% meta_description "Audio de #{@audio.post_title}" -%>
+<%- canonical_url(post_audio_url(@audio.post, @audio)) %>
 <div class="row">
   <div id="content">
     <h3 class="title">
