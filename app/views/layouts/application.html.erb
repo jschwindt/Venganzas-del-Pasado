@@ -9,7 +9,7 @@
     <%= tag 'meta', name: 'twitter:card',       content: 'summary' %>
     <%= tag 'meta', name: 'twitter:site',       content: '@venganzaspasado' %>
     <%= tag 'meta', name: 'twitter:creator',    content: '@jschwindt' %>
-    <%= tag 'meta', property: 'og:url',         content: @canonical_url || request.original_url %>
+    <%= tag 'meta', property: 'og:url',         content: request.original_url %>
     <%= tag 'meta', property: 'og:title',       content: yield(:title) %>
     <%= tag 'meta', property: 'og:description', content: @meta_description || 'El sitio donde podés escuchar online y descargar los archivos de audio en MP3 del programa La Venganza será Terrible de Alejandro Dolina.' %>
     <%= tag 'meta', property: 'og:image',       content: asset_url('vdp_logo.jpg') %>
@@ -18,7 +18,7 @@
     <%= tag 'meta', property: 'fb:app_id',      content: '39744394508' %>
     <%= tag 'meta', property: 'fb:admins',      content: 'jschwindt' %>
     <%= favicon_link_tag '/favicon.ico' %>
-    <% if @canonical_url %><link rel="canonical" href="<%= @canonical_url %>" /><% end %>
+    <link rel="canonical" href="<%= request.original_url %>" />
     <link rel="preload" href="<%= asset_path('fas.woff2') %>" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">

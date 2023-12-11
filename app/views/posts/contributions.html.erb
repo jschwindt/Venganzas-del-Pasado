@@ -1,9 +1,7 @@
 <% if params[:page].nil? %>
   <% the_title = "Contribuciones de Programas de La Venganza será Terrible" -%>
-  <%- canonical_url(contributions_url) %>
 <% else %>
   <% the_title = "Contribuciones de Programas de La Venganza será Terrible (página #{params[:page]})" -%>
-  <%- canonical_url(contributions_url + "/page/" + params[:page]) %>
 <% end %>
 <% page_title the_title -%>
 <% meta_description strip_tags(the_title) -%>

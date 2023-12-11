@@ -1,9 +1,7 @@
 <% if params[:page].present? %>
   <% the_title = "Programas de La Venganza será Terrible de Alejandro Dolina (página #{params[:page]})" -%>
-  <%- canonical_url(posts_url + "/page/" + params[:page]) %>
 <% else %>
   <% the_title = "Programas de La Venganza será Terrible de Alejandro Dolina" -%>
-  <%- canonical_url(posts_url) %>
 <% end %>
 <% page_title the_title -%>
 <% meta_description strip_tags(the_title) -%>
