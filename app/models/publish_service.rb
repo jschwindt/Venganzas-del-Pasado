@@ -47,6 +47,6 @@ class PublishService
 
   def generate_sitemap
     Rails.application.load_tasks
-    Rake::Task['sitemap:refresh'].invoke
+    Rake::Task['sitemap:refresh:no_ping'].invoke
   end
 end
