@@ -20,8 +20,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'psych', '< 4'
 
-gem 'ed25519', '>= 1.2', '< 2.0'
 gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
+gem 'ed25519', '>= 1.2', '< 2.0'
 
 gem 'sprockets', '~> 3.7.2'
 
@@ -37,14 +37,14 @@ gem 'has_scope'
 gem 'hiredis'
 gem 'inherited_resources'
 gem 'kaminari'
+gem 'meilisearch-rails'
 gem 'mini_magick'
 gem 'recaptcha'
 gem 'redcarpet'
 gem 'redis'
+gem 'simple-spreadsheet'
 gem 'sitemap_generator'
 gem 'watu_table_builder', require: 'table_builder'
-gem 'meilisearch-rails'
-gem 'simple-spreadsheet'
 
 group :development, :test do
   gem 'amazing_print'
