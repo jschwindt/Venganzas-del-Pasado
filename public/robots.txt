@@ -1,3 +1,7 @@
 User-agent: *
 
+Disallow: /search
+Disallow: /posts.rss
+Disallow: /feed/
+
 Sitemap: https://venganzasdelpasado.com.ar/sitemaps/sitemap.xml.gz
