@@ -44,6 +44,7 @@ gem 'redcarpet'
 gem 'redis'
 gem 'simple-spreadsheet'
 gem 'sitemap_generator'
+gem 'httpx' # rubocop:disable Bundler/OrderedGems
 gem 'watu_table_builder', require: 'table_builder'
 
 group :development, :test do
