@@ -64,9 +64,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: '127.0.0.1',
     port: 25,
-    domain: 'venganzasdelpasado.com.ar',
-    authentication: 'plain',
-    enable_starttls: false
+    domain: 'venganzasdelpasado.com.ar'
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
