@@ -33,7 +33,7 @@ SOURCES.each do |source|
   if File.exist?(source_file) && File.size(source_file) > source[:min_size]
     puts "SIRVE: #{source[:file]} (#{File.size(source_file) / (1024 * 1024)} Mb)"
     FileUtils.cp(source_file, "#{source_file}-bak.mp3")
-    system("ffmpeg -loglevel panic -y -i #{source_file} -t 00:10:00 -c copy #{source_file}-start.mp3")
+    system("ffmpeg -loglevel panic -y -i #{source_file} -t 00:15:00 -c copy #{source_file}-start.mp3")
     show_start_time = `#{find_show_start_cmd} #{source_file}-start.mp3`.to_f
     puts "Show start time: #{show_start_time}"
     if show_start_time > 0
