@@ -1,5 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-lock '~> 3.18.0'
+lock '~> 3.19.1'
 
 set :application, 'venganzas_del_pasado'
 set :repo_url, 'git@github.com:jschwindt/Venganzas-del-Pasado.git'
