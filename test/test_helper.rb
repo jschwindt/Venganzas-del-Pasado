@@ -6,12 +6,6 @@ SimpleCov.start
 require_relative '../config/environment'
 require 'rails/test_help'
 
-class Hash
-  def to_o
-    JSON.parse to_json, object_class: OpenStruct
-  end
-end
-
 # reindex models
 Post.reindex!
 Comment.reindex!
