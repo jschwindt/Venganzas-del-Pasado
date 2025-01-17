@@ -29,7 +29,8 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets',
        'public/st0', 'public/st1', 'public/st2', 'public/st3', 'public/st4'
 
 # Default value for default_env is {}
-set :default_env, { path: '/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH' }
+set :default_env,
+    { path: '/usr/local/rbenv/shims:/usr/local/rbenv/bin:/home/jschwindt/.nvm/versions/node/v12.22.12/bin:$PATH' }
 
 # Default value for local_user is ENV['USER']
 # set :local_user, -> { `git config user.name`.chomp }
