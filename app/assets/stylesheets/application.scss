@@ -235,4 +235,17 @@ ul.archive-months {
   margin-top: 1rem;
 }
 
+.referrals {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  .referral-item {
+    width: 45%;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
 @import "./fas";
