@@ -42,3 +42,5 @@ st?/
 20??/
 data.ms/
 .env
+/config/master.key
+/config/credentials.yml.enc
