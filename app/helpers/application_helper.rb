@@ -55,7 +55,7 @@ module ApplicationHelper
     return unless time
 
     options[:class] ||= "timeago"
-    content_tag(:abbr, "el " + l(time, format: :long),
+    content_tag(:abbr, "el " + l(time, format: :short),
                 options.merge(title: time.getutc.iso8601, datetime: time.getutc.iso8601))
   end
 end
