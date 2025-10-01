@@ -1,0 +1,17 @@
+en:
+  marksmith:
+    attach_from_gallery: Attach from gallery
+    bold: bold
+    code: code
+    header: header
+    image: image
+    italic: italic
+    link: link
+    markdown_is_supported: Markdown is supported
+    ordered_list: ordered list
+    preview: preview
+    quote: quote
+    task_list: task_list
+    unordered_list: unordered list
+    upload_files: upload files
+    write: write

@@ -20,18 +20,18 @@ class Comment < ApplicationRecord
 
   meilisearch if: :should_index?, force_utf8_encoding: true do
     attribute :content, :timestamp
-    filterable_attributes [:timestamp]
-    sortable_attributes [:timestamp]
+    filterable_attributes [ :timestamp ]
+    sortable_attributes [ :timestamp ]
     ranking_rules [
       "sort",
       "exactness",
       "words",
       "typo",
       "proximity",
-      "attribute",
+      "attribute"
     ]
 
-    # The following parameters are applied when calling the search() method:
+    # The following parameters are applied when calling the method search()
     pagination max_total_hits: 1000
   end
 
@@ -59,20 +59,20 @@ class Comment < ApplicationRecord
     end
   end
 
-  scope :fifo, -> { order('created_at ASC') }
-  scope :lifo, -> { order('created_at DESC') }
+  scope :fifo, -> { order("created_at ASC") }
+  scope :lifo, -> { order("created_at DESC") }
 
   class << self
     def visible_by(user)
       if user
-        where('status IN (?) OR (user_id = ? AND status != ?)', %w[neutral approved flagged], user.id, 'deleted')
+        where("status IN (?) OR (user_id = ? AND status != ?)", %w[neutral approved flagged], user.id, "deleted")
       else
-        where('status IN (?)', %w[neutral approved flagged])
+        where("status IN (?)", %w[neutral approved flagged])
       end
     end
 
     def has_status(status)
-      where('status = ?', status) unless status.nil?
+      where("status = ?", status) unless status.nil?
     end
   end # Class methods
 

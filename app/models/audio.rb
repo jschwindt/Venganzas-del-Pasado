@@ -1,5 +1,6 @@
 class Audio < ApplicationRecord
-  enum speech_to_text_status: %i[unavailable processing available]
+  # enum speech_to_text_status: %i[unavailable processing available]
+  enum :speech_to_text_status, %i[unavailable processing available], default: :unavailable
   belongs_to :post
 
   has_many :texts, dependent: :destroy

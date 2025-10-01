@@ -20,12 +20,12 @@
           </span>
           <% if can? :approve, comment %>
             <%= link_to approve_admin_comment_path(comment), class: "level-item" do %>
-              <i class="fas icon-ok"></i> Aprobar
+              <%= icon "check", class: "small-icon is-light" %> Aprobar
             <% end %>
           <% end %>
           <% if can? :destroy, comment %>
-            <%= link_to admin_comment_path(comment), method: :delete, data: { confirm: '¿Estás seguro?' }, class: "level-item has-text-danger" do %>
-              <i class="fas icon-trash-empty"></i> <strong>Eliminar def.</strong>
+            <%= link_to admin_comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" }, class: "level-item has-text-danger" do %>
+              <%= icon "shredder", class: "small-icon" %> <strong>Eliminar def.</strong>
             <% end %>
           <% end %>
         <% else %>
@@ -36,21 +36,21 @@
           <% end %>
           <% if (comment.pending? or comment.flagged?) and can?(:approve, comment) %>
             <%= link_to approve_admin_comment_path(comment), class: "level-item" do %>
-              <i class="fas icon-ok"></i> Aprobar
+              <%= icon "check", class: "small-icon" %> Aprobar
             <% end %>
           <% end %>
           <% if can? :trash, comment %>
-            <%= link_to trash_admin_comment_path(comment), method: :delete, data: { confirm: '¿Estás seguro?' }, class: "level-item" do %>
-              <i class="fas icon-trash-empty"></i> Eliminar
+            <%= link_to trash_admin_comment_path(comment), data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" }, class: "level-item" do %>
+              <%= icon "trash-2", class: "small-icon" %> Eliminar
             <% end %>
           <% end %>
         <% end %>
         <%= link_to post_comment_path(comment.post, comment), class: "level-item" do %>
-          <i class="fas icon-bookmark-empty"></i> <small>Enlace al comentario</small>
+          <%= icon "bookmark", class: "small-icon" %> <small>Enlace al comentario</small>
         <% end %>
         <% if comment.neutral? && can?(:flag, comment) %>
-          <%= link_to flag_comment_path(comment), data: { confirm: '¿Estás seguro?' }, method: :post, remote: :true, class: "level-item", id: "flag_#{comment.id}" do %>
-            <i class="fas icon-flag-empty"></i> Denunciar
+          <%= link_to flag_comment_path(comment), data: { turbo_method: :post, turbo_confirm: "¿Estás seguro?" }, class: "level-item", id: "flag_#{comment.id}" do %>
+            <%= icon "flag", class: "small-icon" %> Denunciar
           <% end %>
         <% end %>
       </div>

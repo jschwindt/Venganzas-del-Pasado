@@ -1,15 +1,18 @@
-@charset "utf-8";
-
-// Update some of Bulma's component variables
-$body-background-color: white;
+// Set your brand colors
 $link: #26a;
-$family-sans-serif: 'Didact Gothic', sans-serif;
-@import "bulma";
 
-@import "social-likes/dist/social-likes_classic";
+// Override global Sass variables from the /utilities folder
+@use "bulma_sass/utilities" with (
+  $family-primary: '"Didact Gothic", sans-serif',
+  $link: $link
+);
+
+// Load all styles
+@use "bulma";
+
 
 .header {
-  background-image: image-url("redtexture.jpg");
+  background-image: url("redtexture.jpg");
 }
 
 .claim {
@@ -34,7 +37,7 @@ $family-sans-serif: 'Didact Gothic', sans-serif;
 }
 
 .footer {
-  background: image-url('fondo-footer.png') no-repeat left bottom;
+  background: url('fondo-footer.png') no-repeat left bottom;
   background-color: #404040;
   color: white;
   min-height: 5rem;
@@ -48,7 +51,7 @@ $family-sans-serif: 'Didact Gothic', sans-serif;
 }
 
 .fancy {
-  background-image: image-url("redtexture.jpg");
+  background-image: url("redtexture.jpg");
   color: whitesmoke;
   padding: 0.2em 0.2em 0.2em 0.5em;
   border-radius: 0.2em;
@@ -63,11 +66,6 @@ $family-sans-serif: 'Didact Gothic', sans-serif;
 
 .post {
   padding: 0.5rem;
-}
-
-.post-top-header .level-right {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
 }
 
 audio {
@@ -207,8 +205,11 @@ ul.archive-years {
 
 ul.archive-months {
   display: none;
+  margin-top: 0 !important;
   li {
     list-style: none;
+    border-left: 1px solid #ccc;
+    margin-top: 0 !important;
   }
 }
 
@@ -248,4 +249,27 @@ ul.archive-months {
   }
 }
 
-@import "./fas";
+.facebook {
+  height: 24px;
+}
+
+.twitter {
+  height: 24px;
+}
+
+.panel-tabs {
+  a {
+    font-size: 0.875rem;
+  }
+}
+
+.small-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.icon-link {
+  display: flex !important;
+  align-items: center;
+  gap: 0.5rem;
+}

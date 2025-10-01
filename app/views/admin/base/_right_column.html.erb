@@ -1,36 +1,36 @@
 <h3 class="title title-right is-4">Menú</h3>
 <aside class="menu box">
   <ul class="menu-list">
-    <li><%= link_to admin_dashboard_path do %>
-        <i class="fas icon-home"></i> Dashboard
+    <li><%= link_to admin_dashboard_path(), class: 'carajo' do %>
+        <%= icon "house", class: "small-icon" %> Dashboard
       <% end %>
     </li>
     <% if can? :manage, User %>
-      <li><%= link_to admin_preview_path do %>
-          <i class="fas icon-eye"></i> Elegir audio
+      <li><%= link_to admin_preview_path(), class: 'icon-link' do %>
+          <%= icon "eye", class: "small-icon" %> Elegir audio
         <% end %>
       </li>
     <% end %>
     <% if can? :manage, User %>
-      <li><%= link_to admin_users_path do %>
-          <i class="fas icon-users"></i> Usuarios
+      <li><%= link_to admin_users_path(), class: 'icon-link' do %>
+          <%= icon "users", class: "small-icon" %> Usuarios
         <% end %>
       </li>
     <% end %>
     <% if can? :approve, Comment %>
-      <li><%= link_to admin_comments_path do %>
-          <i class="fas icon-comment"></i> Comentarios
+      <li><%= link_to admin_comments_path(), class: 'icon-link' do %>
+          <%= icon "message-circle", class: "small-icon" %> Comentarios
         <% end %>
       </li>
     <% end %>
     <% if can? :update, Post %>
-      <li><%= link_to admin_posts_path do %>
-          <i class="fas icon-doc-text-inv"></i> Posts
+      <li><%= link_to admin_posts_path(), class: 'icon-link' do %>
+          <%= icon "notepad-text", class: "small-icon" %> Posts
         <% end %>
         <% if can? :create, Post %>
           <ul>
-            <li><%= link_to new_admin_post_path do %>
-                <i class="fas icon-pencil"></i> Crear Post
+            <li><%= link_to new_admin_post_path(), class: 'icon-link' do %>
+                <%= icon "pencil", class: "small-icon" %> Crear Post
               <% end %>
             </li>
           </ul>
@@ -38,12 +38,12 @@
       </li>
     <% end %>
     <% if can? :manage, Article %>
-      <li><%= link_to admin_articles_path do %>
-          <i class="fas icon-book"></i> Artículos
+      <li><%= link_to admin_articles_path(), class: 'icon-link' do %>
+          <%= icon "book", class: "small-icon" %> Artículos
         <% end %>
         <ul>
-          <li><%= link_to new_admin_article_path do %>
-              <i class="fas icon-pencil"></i> Crear Artículo
+          <li><%= link_to new_admin_article_path(), class: 'icon-link' do %>
+              <%= icon "pencil", class: "small-icon" %> Crear Artículo
             <% end %>
           </li>
         </ul>

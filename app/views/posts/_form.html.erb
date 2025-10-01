@@ -17,6 +17,7 @@
 </div>
 <div class="content">
   <%= form_for post do |f| %>
+    <%= render "devise/shared/error_messages", resource: post %>
     <div class="field">
       <%= f.label :title, class: 'label' %>
       <div class="control">
@@ -26,7 +27,7 @@
     <div class="field">
       <div class="control">
         <%= f.label :content, class: 'label' %>
-        <%= f.text_area :content, class: 'textarea', rows: 20, id: 'markdownify' %>
+        <%= f.marksmith :content %>
       </div>
     </div>
     <div class="field">
@@ -53,9 +54,6 @@
     </div>
   <% end %>
 </div>
-<% content_for :extra_css do %>
-  <%= stylesheet_link_tag 'mde', media: 'all' %>
-<% end %>
-<% content_for :extra_js do %>
-  <%= javascript_pack_tag 'mde' %>
+<%= content_for :extra_css do %>
+  <%= stylesheet_link_tag "marksmith" %>
 <% end %>

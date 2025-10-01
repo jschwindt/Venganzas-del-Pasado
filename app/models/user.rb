@@ -2,7 +2,7 @@ class User < ApplicationRecord
   extend FriendlyId
   friendly_id :alias, use: %i[history finders]
   has_many :comments, dependent: :nullify
-  has_many :contributions, class_name: 'Post', foreign_key: :contributor_id, dependent: :nullify
+  has_many :contributions, class_name: "Post", foreign_key: :contributor_id, dependent: :nullify
   validates :alias, presence: true, uniqueness: { case_sensitive: false }
   before_save :update_profile_picture_url, :clean_role
   delegate :can?, :cannot?, to: :ability
@@ -12,17 +12,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  scope :lifo, -> { order('created_at DESC') }
+  scope :lifo, -> { order("created_at DESC") }
 
   class << self
     def roles
-      ['', 'admin', 'editor', 'moderator']
+      [ "", "admin", "editor", "moderator" ]
     end
 
     def active
       # Los usuarios migrados de WP tienen confirmed_at
       # pero no necesariamente last_sign_in_at
-      where('last_sign_in_at IS NOT NULL OR confirmed_at IS NOT NULL')
+      where("last_sign_in_at IS NOT NULL OR confirmed_at IS NOT NULL")
     end
 
     def gravatar_url(email)
@@ -49,6 +49,6 @@ class User < ApplicationRecord
   end
 
   def clean_role
-    self.role = '' unless User.roles.include? role
+    self.role = "" unless User.roles.include? role
   end
 end

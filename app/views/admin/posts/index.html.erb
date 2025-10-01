@@ -46,7 +46,7 @@
           <td class="actions">
             <%= link_to "Editar", edit_admin_post_path(post), class: "tag is-success" %>
             <% if can? :destroy, Post %>
-              <%= link_to "Eliminar", admin_post_path(post), method: :delete, data: { confirm: "¿Estás seguro?" }, class: "tag is-danger" %>
+              <%= link_to "Eliminar", admin_post_path(post), data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" }, class: "tag is-danger" %>
             <% end %>
           </td>
         </tr>

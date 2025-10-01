@@ -2,15 +2,15 @@
   <nav class="panel">
     <%= render 'audios/player', url: audio.url, id: audio.id %>
     <p class="panel-tabs">
-      <%= link_to audio.url, rel: 'nofollow', title: "Descargar MP3" do %>
-        <i class="fas icon-download"></i> mp3
+      <%= link_to audio.url, class: 'icon-link', rel: 'nofollow', title: "Descargar MP3" do %>
+        <%= icon "download", class: "small-icon" %> mp3
       <% end %>
-      <%= link_to post_audio_url(audio.post, audio), class: 'open_player', title: "Abrir player en popup" do %>
-        <i class="fas icon-link-ext"></i> player
+      <%= link_to post_audio_url(audio.post, audio), class: 'icon-link', title: "Abrir player en popup" do %>
+        <%= icon "external-link", class: "small-icon" %> player
       <% end %>
       <% if audio.texts.count > 0 %>
-        <%= link_to post_path(audio.post, anchor: 'transcription', transcription: true), title: "Ver transcripciones" do %>
-          <i class="fas icon-doc-text"></i> transcripción
+        <%= link_to post_path(audio.post, anchor: 'transcription', transcription: true), class: 'icon-link', title: "Ver transcripciones" do %>
+          <%= icon "message-square-text", class: "small-icon" %> transcripción
         <% end %>
       <% end %>
     </p>

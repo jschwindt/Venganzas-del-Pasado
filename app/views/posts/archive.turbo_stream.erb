@@ -1,0 +1,5 @@
+<%= turbo_stream.replace "archive-#{@year}" do %>
+  <ul class="archive-months menu-list" id="archive-<%= @year %>" style="display: block;">
+    <%= render partial: 'monthly_posts', collection: @monthly_posts %>
+  </ul>
+<% end %>

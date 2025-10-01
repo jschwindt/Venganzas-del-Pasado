@@ -1,9 +1,9 @@
 module ApplicationHelper
   def page_title(page_title)
     @page_title = page_title
-    full_title = ''
+    full_title = ""
     full_title = "#{page_title} - " if page_title.present?
-    full_title += 'Venganzas del Pasado'
+    full_title += "Venganzas del Pasado"
     content_for(:title) { strip_tags(full_title) }
   end
 
@@ -11,7 +11,7 @@ module ApplicationHelper
     @page_title
   end
 
-  def meta_description(text, og_type = 'website')
+  def meta_description(text, og_type = "website")
     @meta_description = text
     @meta_og_type = og_type
   end
@@ -34,7 +34,7 @@ module ApplicationHelper
   end
 
   def active_if_current(action)
-    current_page?(action) ? 'is-active' : ''
+    current_page?(action) ? "is-active" : ""
   end
 
   def markdown_format(text, options = {})
@@ -54,8 +54,8 @@ module ApplicationHelper
   def timeago(time, options = {})
     return unless time
 
-    options[:class] ||= 'timeago'
-    content_tag(:abbr, 'el ' + l(time, format: :long),
+    options[:class] ||= "timeago"
+    content_tag(:abbr, "el " + l(time, format: :long),
                 options.merge(title: time.getutc.iso8601, datetime: time.getutc.iso8601))
   end
 end
@@ -69,6 +69,6 @@ def month_and_year_select(name, options = {}, html_options = {})
       p = {}
     end
   end
-  content_tag(:div, class: 'select') { select_month(p[:month].to_i, options, html_options) } +
-    content_tag(:div, class: 'select') { select_year(p[:year].to_i, options, html_options) }
+  content_tag(:div, class: "select") { select_month(p[:month].to_i, options, html_options) } +
+    content_tag(:div, class: "select") { select_year(p[:year].to_i, options, html_options) }
 end

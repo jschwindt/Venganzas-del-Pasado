@@ -22,24 +22,24 @@ class RedirectsController < ApplicationController
       # /2011 => /posts/2011
       redirect_to "/posts/#{Regexp.last_match(1)}",                         status: :moved_permanently
 
-    when 'feed'
-      redirect_to '/posts.rss',                                             status: :moved_permanently
+    when "feed"
+      redirect_to "/posts.rss",                                             status: :moved_permanently
 
-    when 'acerca-de'
-      redirect_to '/articles/acerca-de-este-sitio',                         status: :moved_permanently
+    when "acerca-de"
+      redirect_to "/articles/acerca-de-este-sitio",                         status: :moved_permanently
 
-    when 'descargas'
-      redirect_to '/posts/descargas',                                       status: :moved_permanently
+    when "descargas"
+      redirect_to "/posts/descargas",                                       status: :moved_permanently
 
     when /^(page|foro|tag|actualizar|arreglar|donaciones)/
-      redirect_to '/',                                                      status: :moved_permanently
+      redirect_to "/",                                                      status: :moved_permanently
 
     when %r{^users/([^/]+)/page/(\d+)}
       # /users/marcela/page/1 => /users/marcela/comments/page/1
       redirect_to "/users/#{Regexp.last_match(1)}/comments/page/#{Regexp.last_match(2)}", status: :moved_permanently
 
     else
-      render '404.html', status: 404
+      render "404", status: 404
     end
   end
 end

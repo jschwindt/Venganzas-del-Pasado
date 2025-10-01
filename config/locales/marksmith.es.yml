@@ -1,0 +1,17 @@
+es:
+  marksmith:
+    attach_from_gallery: Adjuntar desde galería
+    bold: negrita
+    code: código
+    header: encabezado
+    image: imagen
+    italic: cursiva
+    link: enlace
+    markdown_is_supported: Podés darle estilo y formato al texto utilizando Markdown
+    ordered_list: lista ordenada
+    preview: vista previa
+    quote: cita
+    task_list: lista de tareas
+    unordered_list: lista desordenada
+    upload_files: subir archivos
+    write: escribir

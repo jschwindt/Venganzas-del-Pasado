@@ -1,10 +1,10 @@
-ENV['RAILS_ENV'] ||= 'test'
+ENV["RAILS_ENV"] ||= "test"
 
-require 'simplecov'
+require "simplecov"
 SimpleCov.start
 
-require_relative '../config/environment'
-require 'rails/test_help'
+require_relative "../config/environment"
+require "rails/test_help"
 
 # reindex models
 Post.reindex!

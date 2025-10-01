@@ -46,7 +46,7 @@
 <div class="content">Esto no puede deshacerse, por favor pensalo bien antes de hacer click, ya que no habrá forma de recuperar tus datos.</div>
 <div class="field is-grouped">
   <div class="control">
-    <%= button_to "Eliminar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás completamente seguro?" }, method: :delete, class: "button is-danger" %>
+    <%= button_to "Eliminar mi cuenta", registration_path(resource_name), data: { turbo_method: :delete, turbo_confirm: "¿Estás completamente seguro?" }, class: "button is-danger" %>
   </div>
   <div class="control">
     <%= link_to "Cancelar", :back, class: "button" %>

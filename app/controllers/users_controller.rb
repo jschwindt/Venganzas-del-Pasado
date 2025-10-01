@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :load_resource, except: :index
   load_and_authorize_resource
 
   def show
@@ -23,11 +22,5 @@ class UsersController < ApplicationController
                     .page(params[:page]).per(VenganzasDelPasado::Application.config.posts_per_page)
 
     render :show
-  end
-
-  protected
-
-  def load_resource
-    @user = User.friendly.find(params[:id])
   end
 end

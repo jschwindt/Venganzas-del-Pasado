@@ -1,17 +1,8 @@
-Style/HashEachMethods:
-  Enabled: true
+# Omakase Ruby styling for Rails
+inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 
-Style/HashTransformKeys:
-  Enabled: true
-
-Style/HashTransformValues:
-  Enabled: true
-
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-Layout/LineLength:
-  Max: 120
-
-Style/Documentation:
-  Enabled: false
+# Overwrite or add rules to create your own house style
+#
+# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
+# Layout/SpaceInsideArrayLiteralBrackets:
+#   Enabled: false

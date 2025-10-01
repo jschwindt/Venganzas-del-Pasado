@@ -5,9 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link rel="preload" href="<%= asset_path('fas.woff2') %>" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap">
-    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= yield :extra_css -%>
   </head>
   <body>
@@ -26,7 +25,7 @@
         </div>
       </div>
     </section>
-    <%= javascript_pack_tag 'application' %>
+    <%= javascript_importmap_tags %>
     <%= yield :extra_js %>
   </body>
 </html>

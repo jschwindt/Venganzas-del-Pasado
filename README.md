@@ -5,12 +5,12 @@ Este es el código fuente del sitio Venganzas del Pasado
 
 ## Tecnología
 
-*   Web Framework: Ruby on Rails v6.0
+*   Web Framework: Ruby on Rails v8.0
 *   CSS Framework: [Bulma](https://bulma.io)
-*   DB: Mysql v5.7
-*   Buscador: Elasticsearch v7.6
+*   DB: Mysql v8.0
+*   Buscador: MeiliSearch v1.14
 *   Cache: Redis
-*   Webfonts: Font Awesome v4.7 (customized with [Fontello](http://fontello.com/))
+*   Webfonts: Lucide Icons [Lucide](https://lucide.dev/icons/))
 
 
 ## Desarrollo

@@ -1,15 +1,28 @@
 <article class="box post">
   <div class="post-top-header level">
     <div class="level-left">
-      <em>
+      <em class="level-item">
         <%= "#{post.created_at.day} de #{I18n.t('date.month_names')[post.created_at.month.to_i].capitalize} de #{post.created_at.year}" %>
       </em>
     </div>
     <div class="level-right">
-      <div class="post-share">
-        <div class="social-likes social-likes_light" data-counters="no" data-title="<%= post.title %>" data-url="<%= post_url(post) %>">
-          <div class="facebook" title="Compartir en Facebook">Facebook</div>
-          <div class="twitter" data-via="venganzaspasado" title="Compartir en Twitter">Twitter</div>
+      <div class="post-share level-item">
+        <div class="social-likes social-likes_light"
+             data-controller="social-sharing"
+             data-social-sharing-title-value="<%= post.title %>"
+             data-social-sharing-url-value="<%= post_url(post) %>">
+          <%= image_tag "fb-share.svg",
+                        class: "facebook",
+                        title: "Compartir en Facebook",
+                        alt: "Compartir en Facebook",
+                        data: { social_sharing_target: "facebook" },
+                        style: "cursor: pointer;" %>
+          <%= image_tag "x-share.svg",
+                        class: "twitter",
+                        title: "Compartir en Twitter",
+                        alt: "Compartir en Twitter",
+                        data: { social_sharing_target: "twitter" },
+                        style: "cursor: pointer;" %>
         </div>
       </div>
     </div>
@@ -46,27 +59,27 @@
     <% if can? :update, post %>
       <p class="level-item has-text-centered">
         <%= link_to edit_admin_post_path(post) do %>
-            <i class="fas icon-edit"></i> Editar
+            <%= icon "square-pen", class: "small-icon" %> Editar
           <% end %>
       </p>
       <% if post.pending? %>
         <p class="level-item has-text-centered">
           <%= link_to approve_contribution_admin_post_path(post) do %>
-            <i class="fas icon-ok"></i> Aprobar contribución
+            <%= icon "check", class: "small-icon" %> Aprobar contribución
           <% end %>
         </p>
       <% end %>
       <% if can? :destroy, Post %>
         <p class="level-item has-text-centered">
-          <%= link_to admin_post_path(post), method: :delete, data: { confirm: "¿Estás seguro?" } do %>
-            <i class="fas icon-trash-empty"></i> Eliminar
+          <%= link_to admin_post_path(post), data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" } do %>
+            <%= icon "trash-2", class: "small-icon" %> Eliminar
           <% end %>
         </p>
       <% end %>
     <% end %>
     <p class="level-item has-text-right">
       <%= link_to post_path(post, anchor: "comments"), title: "Ver los comentarios" do %>
-        <i class="fas icon-comment-empty"></i>
+        <%= icon "message-circle", class: "small-icon" %>
         <%= t('num_comments', count: post.comments.visible_by(current_user).count) %>
       <% end %>
     </p>

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
-  before_action :find_page_by_slug, only: [:show]
+  before_action :find_page_by_slug, only: [ :show ]
   load_and_authorize_resource
   skip_authorize_resource only: %i[archive contributions]
 
@@ -25,7 +25,7 @@ class PostsController < ApplicationController
 
   def archive
     authorize! :index, Post
-    if request.xhr?
+    if request.format.turbo_stream?
       @year = params[:year].to_i
       @monthly_posts = Post.post_count_by_month(params[:year])
       return
@@ -58,7 +58,7 @@ class PostsController < ApplicationController
       @post.media.size.upto(4) do
         @post.media << Medium.new
       end
-      render 'new'
+      render "new"
     end
   end
 
@@ -69,6 +69,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit([:title, :content, :created_at, media_attributes: [:asset]])
+    params.require(:post).permit([ :title, :content, :created_at, media_attributes: [ :asset ] ])
   end
 end

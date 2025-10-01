@@ -5,7 +5,7 @@
   <ul class="archive-years menu-list">
     <% Post.post_count_by_year.each do |post| %>
       <li>
-        <%= link_to posts_archive_path(post.year), remote: true do -%>Año <%= post.year %> <small>(<%= post.count %>)</small><% end %>
+        <%= link_to posts_archive_path(post.year), data: { turbo_stream: true } do -%>Año <%= post.year %> <small>(<%= post.count %>)</small><% end %>
         <ul class="archive-months menu-list" id="archive-<%= post.year %>"></ul>
       </li>
     <% end %>

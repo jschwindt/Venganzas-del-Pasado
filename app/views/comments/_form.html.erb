@@ -16,11 +16,8 @@
           <div class="field">
             <div class="control">
               <%= f.label "Tu comentario:", class: 'label' %>
-              <%= f.text_area :content, rows: 6, placeholder: "Escribi un comentario", class: "textarea" %>
+              <%= f.marksmith :content %>
             </div>
-            <em>Podés darle estilo y formato al texto utilizando
-              <%= link_to "Markdown", article_path('markdown'), target: '_blank' %>
-            </em>
           </div>
           <div class="field">
             <div class="control">
@@ -32,3 +29,6 @@
     </div>
   </div>
 </article>
+<%= content_for :extra_css do %>
+  <%= stylesheet_link_tag "marksmith" %>
+<% end %>

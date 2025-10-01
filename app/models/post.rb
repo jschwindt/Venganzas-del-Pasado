@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :audios,   dependent: :destroy
   has_many :media,    dependent: :destroy
-  belongs_to :contributor, class_name: 'User', optional: true
+  belongs_to :contributor, class_name: "User", optional: true
   accepts_nested_attributes_for :media
 
   validates :title, :created_at, presence: true
@@ -15,13 +15,13 @@ class Post < ApplicationRecord
   delegate :alias, to: :contributor, prefix: true, allow_nil: true
   delegate :capitalize, to: :status, prefix: true, allow_nil: true
 
-  scope :published, -> { where(status: 'published') }
-  scope :waiting, -> { where(status: 'waiting') }
-  scope :lifo, -> { order('created_at DESC') }
+  scope :published, -> { where(status: "published") }
+  scope :waiting, -> { where(status: "waiting") }
+  scope :lifo, -> { order("created_at DESC") }
   scope :this_month, -> { where(created_at: Date.today.beginning_of_month..Date.today.end_of_month) }
 
   def should_index?
-    status == 'published'
+    status == "published"
   end
 
   def timestamp
@@ -30,18 +30,18 @@ class Post < ApplicationRecord
 
   meilisearch if: :should_index?, force_utf8_encoding: true do
     attribute :title, :content, :timestamp
-    filterable_attributes [:timestamp]
-    sortable_attributes [:timestamp]
+    filterable_attributes [ :timestamp ]
+    sortable_attributes [ :timestamp ]
     ranking_rules [
       "sort",
       "exactness",
       "words",
       "typo",
       "proximity",
-      "attribute",
+      "attribute"
     ]
 
-    # The following parameters are applied when calling the search() method:
+    # The following parameters are applied when calling the method search()
     pagination max_total_hits: 1000
   end
 
@@ -71,17 +71,17 @@ class Post < ApplicationRecord
 
     def post_count_by_year
       published
-        .select('YEAR(created_at) AS year, COUNT(*) AS count')
-        .group('year')
-        .order('year DESC')
+        .select("YEAR(created_at) AS year, COUNT(*) AS count")
+        .group("year")
+        .order("year DESC")
     end
 
     def post_count_by_month(year)
       published
-        .select('MONTH(created_at) AS month, COUNT(*) AS count')
-        .where('YEAR(created_at) = ?', year)
-        .group('month')
-        .order('month DESC')
+        .select("MONTH(created_at) AS month, COUNT(*) AS count")
+        .where("YEAR(created_at) = ?", year)
+        .group("month")
+        .order("month DESC")
     end
 
     def create_from_audio_file(filename)
@@ -92,8 +92,8 @@ class Post < ApplicationRecord
         title = "La venganza será terrible del #{day}/#{mon}/#{year}"
         Post.find_or_create_by(title: title) do |post|
           post.created_at = Time.zone.parse('#{year}-#{mon}-#{day} 03:00:00')
-          post.status     = 'published'
-          post.content    = ''
+          post.status     = "published"
+          post.content    = ""
           audio           = Audio.find_or_initialize_by(url: "https://venganzasdelpasado.com.ar/#{year}/lavenganza_#{year}-#{mon}-#{day}.mp3")
           audio.bytes     = File.size(filename)
           post.audios << audio
@@ -104,10 +104,10 @@ class Post < ApplicationRecord
     def new_contribution(params, user)
       # Elimina de params los media vacíos
       if params[:media_attributes].present?
-        params[:media_attributes] = params[:media_attributes].select { |_k, v| v['asset'].present? }
+        params[:media_attributes] = params[:media_attributes].select { |_k, v| v["asset"].present? }
       end
       post = new(params)
-      post.status = 'pending'
+      post.status = "pending"
       post.created_at += 4.hours if post.created_at # a las 4 de la mañana, para que no interfiera con los automáticos
       post.contributor = user
       # Agrega un media vacío si no hay ninguno, para que falle la validación
@@ -116,28 +116,28 @@ class Post < ApplicationRecord
     end
 
     def has_status(status)
-      where('status = ?', status)
+      where("status = ?", status)
     end
 
     def last_updated
-      published.order('updated_at DESC').first
+      published.order("updated_at DESC").first
     end
 
     def contributions
-      where('contributor_id IS NOT NULL').order('updated_at DESC')
+      where("contributor_id IS NOT NULL").order("updated_at DESC")
     end
 
     def time2hms(time)
       h = time / 3600
       m = (time - (h * 3600)) / 60
       s = time - h * 3600 - m * 60
-      "%d:%02d:%02d" % [h, m, s]
+      "%d:%02d:%02d" % [ h, m, s ]
     end
 
     def from_text_search(text, highlights)
       post = text.audio.post
       existing_content = post.content
-      content = highlights.gsub(/{\d+}/){|m| t = time2hms(m[1...-1].to_i); "<a href=\"#play-#{t}\">#{t}</a>"}
+      content = highlights.gsub(/{\d+}/) { |m| t = time2hms(m[1...-1].to_i); "<a href=\"#play-#{t}\">#{t}</a>" }
       post.content = content + "\n" + existing_content
       post
     end
@@ -165,12 +165,12 @@ class Post < ApplicationRecord
     end
 
     # Change status to published
-    self.status = 'published'
+    self.status = "published"
     save
   end
 
   def approve_contribution!
-    self.status = 'waiting'
+    self.status = "waiting"
     save!
   end
 
@@ -179,27 +179,27 @@ class Post < ApplicationRecord
   end
 
   def published?
-    status == 'published'
+    status == "published"
   end
 
   def pending?
-    status == 'pending'
+    status == "pending"
   end
 
   def previous
-    Post.lifo.published.where('created_at < ?', created_at).first
+    Post.lifo.published.where("created_at < ?", created_at).first
   end
 
   def next
-    Post.lifo.published.where('created_at > ?', created_at).last
+    Post.lifo.published.where("created_at > ?", created_at).last
   end
 
   def description
     if content.present?
-      desc = content.gsub(%r{</?[^>]+?>}, '') # remove html tags
-                    .gsub(/[_#*\r\n-]+/, ' ') # remove some markdown
-                    .truncate(200, separator: ' ', omission: '')
-      desc.gsub(/\s+/, ' ').strip
+      desc = content.gsub(%r{</?[^>]+?>}, "") # remove html tags
+                    .gsub(/[_#*\r\n-]+/, " ") # remove some markdown
+                    .truncate(200, separator: " ", omission: "")
+      desc.gsub(/\s+/, " ").strip
     else
       "#{title} de Alejandro Dolina"
     end
@@ -210,7 +210,7 @@ class Post < ApplicationRecord
     return unless first_audio
 
     text = first_audio.texts.order(time: :asc).map(&:text).join
-    text.gsub(/{\d+}/){|m| t = Post.time2hms(m[1...-1].to_i); "<a href=\"#play-#{t}\">#{t}</a>"}
+    text.gsub(/{\d+}/) { |m| t = Post.time2hms(m[1...-1].to_i); "<a href=\"#play-#{t}\">#{t}</a>" }
   end
 
   protected
@@ -218,6 +218,6 @@ class Post < ApplicationRecord
   def validate_status
     return if Post.statuses.include?(status)
 
-    errors.add(:status, I18n.t('activerecord.errors.models.post.attributes.status.inclusion'))
+    errors.add(:status, I18n.t("activerecord.errors.models.post.attributes.status.inclusion"))
   end
 end

@@ -3,11 +3,10 @@
   <head>
     <title>Venganzas del Pasado</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preload" href="<%= asset_path('fas.woff2') %>" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap">
     <link rel="canonical" href="<%= request.original_url %>" />
-    <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= javascript_pack_tag 'application' %>
+    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
   </head>
   <body>
       <div class="container popup">

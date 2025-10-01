@@ -5,13 +5,12 @@
 <% @audios.each_with_index do |audio, idx| %>
   <div class="content">
     <%= render 'audios/player', url: "https://venganzasdelpasado.com.ar#{audio[:folder]}#{audio[:file]}", id: idx %>
-    <%= link_to "https://venganzasdelpasado.com.ar#{audio[:folder]}#{audio[:file]}", rel: 'nofollow', title: "Descargar MP3" do %>
-      <i class="fas icon-download"></i> mp3
+    <%= link_to "https://venganzasdelpasado.com.ar#{audio[:folder]}#{audio[:file]}", class: 'icon-link', rel: 'nofollow', title: "Descargar MP3" do %>
+      <%= icon "download", class: "small-icon" %> mp3
     <% end %>
     -
     <%= link_to admin_publish_path(filename: audio[:folder] + audio[:file]),
-          data: {confirm: "¿Estás de usar #{audio[:folder]}#{audio[:file]}?" },
-          method: :post, remote: :true, class: "tag is-small is-danger" do %>
+          data: { turbo_method: :post, turbo_confirm: "¿Estás seguro de usar #{audio[:folder]}#{audio[:file]}?" }, class: "tag is-small is-danger" do %>
       Reemplazar con <%= audio[:folder] %> (<%= number_to_human_size(audio[:size]) %>)
     <% end%>
   </div>
