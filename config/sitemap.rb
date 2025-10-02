@@ -1,6 +1,6 @@
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "https://venganzasdelpasado.com.ar"
-SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
+SitemapGenerator::Sitemap.sitemaps_path = "sitemaps/"
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
@@ -14,20 +14,17 @@ SitemapGenerator::Sitemap.create do
   # Defaults: :priority => 0.5, :changefreq => 'weekly',
   #           :lastmod => Time.now, :host => default_host
 
-  add posts_path, :changefreq => 'daily'
+  add posts_path, changefreq: "daily"
 
-  Post.published.lifo.find_each do |post|
-    add post_path(post, transcription: true), :lastmod => post.updated_at, :changefreq => 'daily', :priority => 0.8
+  Post.published.find_each(cursor: :id, order: :desc) do |post|
+    add post_path(post, transcription: true), lastmod: post.updated_at, changefreq: "daily", priority: 0.8
   end
 
   Article.find_each do |article|
-    add article_path(article), :lastmod => article.updated_at
+    add article_path(article), lastmod: article.updated_at
   end
 
   User.find_each do |user|
-    add user_path(user), :lastmod => user.updated_at
+    add user_path(user), lastmod: user.updated_at
   end
-
-
-
 end
