@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 71bfd59c0d67fb921671ffe79f6599b3463d876c
+  revision: dac26fdf22498d79fe78501c55fdbf386f20590a
   branch: main
   specs:
     actioncable (8.1.0.beta1)
@@ -297,7 +297,7 @@ GEM
     mutex_m (0.3.0)
     mysql2 (0.5.7)
       bigdecimal
-    net-imap (0.5.10)
+    net-imap (0.5.11)
       date
       net-protocol
     net-pop (0.1.2)
@@ -369,9 +369,10 @@ GEM
       rails (> 6.1)
     rainbow (3.1.1)
     rake (13.3.0)
-    rdoc (6.14.2)
+    rdoc (6.15.0)
       erb
       psych (>= 4.0.0)
+      tsort
     recaptcha (5.21.1)
     redcarpet (3.6.1)
     redis (5.4.1)
