@@ -15,8 +15,12 @@ dev:
 [group('local-dev')]
 test:
     bin/rails test
+    bin/rails test:system
 
 [group('local-dev')]
 audit:
     bundle-audit update
     bundle-audit check
+
+deploy:
+    bundle exec cap production deploy
