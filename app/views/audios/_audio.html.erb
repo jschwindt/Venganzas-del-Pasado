@@ -5,7 +5,13 @@
       <%= link_to audio.url, class: 'icon-link', rel: 'nofollow', title: "Descargar MP3" do %>
         <%= icon "download", class: "small-icon" %> mp3
       <% end %>
-      <%= link_to post_audio_url(audio.post, audio), class: 'icon-link', title: "Abrir player en popup" do %>
+      <%= link_to post_audio_url(audio.post, audio),
+            class: "icon-link",
+            title: "Abrir player en popup",
+            data: {
+              controller: "player",
+              action: "click->player#open"
+            } do %>
         <%= icon "external-link", class: "small-icon" %> player
       <% end %>
       <% if audio.texts.count > 0 %>
