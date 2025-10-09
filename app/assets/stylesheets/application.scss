@@ -122,10 +122,16 @@ article.comment {
 }
 
 a[href^="#play-"]::before {
-  font-family: "fas";
-  font-size: 0.75rem;
-  margin: 0 0.3rem 0 0.8rem;
-  content: '\e810';
+  content: '';
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin: -0.3rem 0.3rem 0 0.3rem;
+  background-image: url('icons/lucide/outline/play.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  vertical-align: middle;
 }
 
 a[href^="#play-"] {
