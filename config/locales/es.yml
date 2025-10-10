@@ -41,7 +41,7 @@ es:
     formats:
       default: "%d/%m/%Y"
       long: "%A, %d de %B de %Y"
-      short: "%d de %b"
+      short: "%d de %b de %Y"
     month_names:
     -
     - enero
@@ -215,5 +215,5 @@ es:
     formats:
       default: "%a, %d de %b de %Y a las %H:%M:%S %Z"
       long: "%A, %d de %B de %Y a las %I:%M %p"
-      short: "%d de %b a las %H:%M hrs"
+      short: "%d-%b-%Y a las %H:%M hrs"
     pm: pm
