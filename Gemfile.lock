@@ -1,6 +1,18 @@
 GIT
+  remote: https://github.com/heartcombo/devise.git
+  revision: cf93de390a29654620fdf7ac07b4794eb95171d0
+  branch: main
+  specs:
+    devise (5.0.0.beta)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 6.0.0)
+      responders
+      warden (~> 1.2.3)
+
+GIT
   remote: https://github.com/rails/rails.git
-  revision: 82d39b5f52a6f6fd08bdbd92585cec03dfedaa14
+  revision: d156ee00602eab9044bc23ac8de8f245379d6af5
   branch: main
   specs:
     actioncable (8.1.0.beta1)
@@ -64,7 +76,6 @@ GIT
       marcel (~> 1.0)
     activesupport (8.1.0.beta1)
       base64
-      benchmark (>= 0.3)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.3.1)
       connection_pool (>= 2.2.5)
@@ -117,8 +128,7 @@ GEM
     bcrypt_pbkdf (1.1.1)
     bcrypt_pbkdf (1.1.1-arm64-darwin)
     bcrypt_pbkdf (1.1.1-x86_64-darwin)
-    benchmark (0.4.1)
-    bigdecimal (3.3.0)
+    bigdecimal (3.3.1)
     bindex (0.8.1)
     bootsnap (1.18.6)
       msgpack (~> 1.2)
@@ -172,16 +182,10 @@ GEM
     debug (1.11.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
-    devise (4.9.4)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
     docile (1.4.1)
     drb (2.2.3)
     ed25519 (1.4.0)
-    erb (5.0.3)
+    erb (5.1.1)
     erubi (1.13.1)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
@@ -338,7 +342,7 @@ GEM
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.5.1)
+    prism (1.5.2)
     propshaft (1.3.1)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -350,7 +354,7 @@ GEM
     puma (7.0.4)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (3.2.2)
+    rack (3.2.3)
     rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -383,9 +387,9 @@ GEM
     regexp_parser (2.11.3)
     reline (0.6.2)
       io-console (~> 0.5)
-    responders (3.1.1)
-      actionpack (>= 5.2)
-      railties (>= 5.2)
+    responders (3.2.0)
+      actionpack (>= 7.0)
+      railties (>= 7.0)
     rexml (3.4.4)
     rubocop (1.81.1)
       json (~> 2.3)
@@ -526,7 +530,7 @@ DEPENDENCIES
   carrierwave (~> 3.0)
   dartsass-rails (~> 0.5.1)
   debug
-  devise (~> 4.9)
+  devise!
   ed25519 (>= 1.2, < 2.0)
   friendly_id (~> 5.5)
   has_scope (~> 0.8.2)
