@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/heartcombo/devise.git
-  revision: cf93de390a29654620fdf7ac07b4794eb95171d0
+  revision: d60f81008676edc6ae9c8e6e4b28a20a473185d3
   branch: main
   specs:
     devise (5.0.0.beta)
@@ -253,7 +253,7 @@ GEM
     jbuilder (2.14.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
-    json (2.15.1)
+    json (2.15.2)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
