@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
   def after_sign_in_path_for(resource_or_scope)
-    request.env['omniauth.origin'] || stored_location_for(resource_or_scope) || root_path
+    request.env["omniauth.origin"] || stored_location_for(resource_or_scope) || root_path
   end
 
   layout :layout_by_resource
@@ -13,16 +13,16 @@ class ApplicationController < ActionController::Base
 
   def layout_by_resource
     if devise_controller?
-      'lean'
+      "lean"
     else
-      'application'
+      "application"
     end
   end
 
   def not_found
     respond_to do |format|
-      format.html { render '404.html', status: 404 }
-      format.json { render json: { error: 'not_found' }, status: 404 }
+      format.html { render "application/404", status: 404 }
+      format.json { render json: { error: "not_found" }, status: 404 }
     end
   end
 end
