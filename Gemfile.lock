@@ -10,6 +10,14 @@ GIT
       responders
       warden (~> 1.2.3)
 
+GIT
+  remote: https://github.com/jschwindt/marksmith.git
+  revision: 3e0f0751bb544a97201e181f1955b938641113c1
+  branch: main
+  specs:
+    marksmith (0.4.7)
+      activesupport
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -256,8 +264,6 @@ GEM
       net-pop
       net-smtp
     marcel (1.0.4)
-    marksmith (0.4.7)
-      activesupport
     matrix (0.4.3)
     meilisearch (0.32.0)
       httparty (~> 0.22)
@@ -536,7 +542,7 @@ DEPENDENCIES
   jbuilder
   kaminari (~> 1.2)
   letter_opener
-  marksmith (~> 0.4.7)
+  marksmith!
   meilisearch-rails (~> 0.16.0)
   mysql2 (~> 0.5)
   propshaft

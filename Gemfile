@@ -84,7 +84,7 @@ gem "sitemap_generator", "~> 6.3"
 gem "httpx", "~> 1.6"
 gem "carrierwave", "~> 3.0"
 gem "watu_table_builder", require: "table_builder"
-gem "marksmith", "~> 0.4.7"
+gem "marksmith", github: "jschwindt/marksmith", branch: "main"
 
 gem "dartsass-rails", "~> 0.5.1"
 
