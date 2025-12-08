@@ -71,7 +71,7 @@ gem "aasm", "~> 5.5"
 
 # gem "devise", "~> 4.9"
 gem "devise", github: "heartcombo/devise", branch: "main"
-gem "friendly_id", "~> 5.5"
+gem "friendly_id", "~> 5.6"
 gem "has_scope", "~> 0.8.2"
 gem "hiredis", "~> 0.6.3"
 gem "inherited_resources", "~> 2.1"
