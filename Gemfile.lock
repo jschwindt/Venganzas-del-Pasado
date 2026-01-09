@@ -120,7 +120,7 @@ GEM
       bundler (>= 1.2.0)
       thor (~> 1.0)
     cancancan (3.6.1)
-    capistrano (3.19.2)
+    capistrano (3.20.0)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
@@ -525,7 +525,7 @@ DEPENDENCIES
   bulma-rails (~> 1.0)
   bundler-audit
   cancancan (~> 3.6)
-  capistrano (~> 3.19.2)
+  capistrano (~> 3.20.0)
   capistrano-passenger
   capistrano-rails (~> 1.7.0)
   capybara
