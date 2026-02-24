@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/heartcombo/devise.git
-  revision: e9c534d363cc9d552662049b38582eead87bedd6
+  revision: 5b008ed51c0df3223cf727e7ad07378d6329b12f
   branch: main
   specs:
-    devise (5.0.0.rc)
+    devise (5.0.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 7.0)
@@ -12,10 +12,10 @@ GIT
 
 GIT
   remote: https://github.com/jschwindt/marksmith.git
-  revision: 3e0f0751bb544a97201e181f1955b938641113c1
+  revision: 37867e0b6c41d3656fcb4278ddfea8dba50c7f3c
   branch: main
   specs:
-    marksmith (0.4.7)
+    marksmith (0.4.8.pre)
       activesupport
 
 GEM
@@ -109,9 +109,9 @@ GEM
     bcrypt_pbkdf (1.1.2-x86_64-darwin)
     bigdecimal (4.0.1)
     bindex (0.8.1)
-    bootsnap (1.20.1)
+    bootsnap (1.23.0)
       msgpack (~> 1.2)
-    brakeman (7.1.2)
+    brakeman (8.0.2)
       racc
     builder (3.3.0)
     bulma-rails (1.0.4.1)
@@ -164,7 +164,7 @@ GEM
     docile (1.4.1)
     drb (2.2.3)
     ed25519 (1.4.0)
-    erb (6.0.1)
+    erb (6.0.2)
     erubi (1.13.1)
     ffi (1.17.3-aarch64-linux-gnu)
     ffi (1.17.3-aarch64-linux-musl)
@@ -178,37 +178,37 @@ GEM
       activerecord (>= 4.0.0)
     globalid (1.3.0)
       activesupport (>= 6.1)
-    google-protobuf (4.33.2)
+    google-protobuf (4.33.5)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.33.2-aarch64-linux-gnu)
+    google-protobuf (4.33.5-aarch64-linux-gnu)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.33.2-aarch64-linux-musl)
+    google-protobuf (4.33.5-aarch64-linux-musl)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.33.2-arm64-darwin)
+    google-protobuf (4.33.5-arm64-darwin)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.33.2-x86_64-darwin)
+    google-protobuf (4.33.5-x86_64-darwin)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.33.2-x86_64-linux-gnu)
+    google-protobuf (4.33.5-x86_64-linux-gnu)
       bigdecimal
       rake (>= 13)
-    google-protobuf (4.33.2-x86_64-linux-musl)
+    google-protobuf (4.33.5-x86_64-linux-musl)
       bigdecimal
       rake (>= 13)
     has_scope (0.8.2)
       actionpack (>= 5.2)
       activesupport (>= 5.2)
     hiredis (0.6.3)
-    http-2 (1.1.1)
-    httparty (0.24.0)
+    http-2 (1.1.2)
+    httparty (0.24.2)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    httpx (1.7.0)
+    httpx (1.7.2)
       http-2 (>= 1.0.0)
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
@@ -225,14 +225,15 @@ GEM
       railties (>= 7.0)
       responders (>= 2)
     io-console (0.8.2)
-    irb (1.16.0)
+    irb (1.17.0)
       pp (>= 0.6.0)
+      prism (>= 1.3.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     jbuilder (2.14.1)
       actionview (>= 7.0.0)
       activesupport (>= 7.0.0)
-    json (2.18.0)
+    json (2.18.1)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -273,7 +274,8 @@ GEM
     mini_magick (5.3.1)
       logger
     mini_mime (1.1.5)
-    minitest (6.0.1)
+    minitest (6.0.2)
+      drb (~> 2.0)
       prism (~> 1.5)
     msgpack (1.8.0)
     multi_xml (0.8.1)
@@ -281,7 +283,7 @@ GEM
     mutex_m (0.3.0)
     mysql2 (0.5.7)
       bigdecimal
-    net-imap (0.6.2)
+    net-imap (0.6.3)
       date
       net-protocol
     net-pop (0.1.2)
@@ -315,13 +317,13 @@ GEM
     orm_adapter (0.5.0)
     ostruct (0.6.3)
     parallel (1.27.0)
-    parser (3.3.10.0)
+    parser (3.3.10.2)
       ast (~> 2.4.1)
       racc
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
-    prism (1.7.0)
+    prism (1.9.0)
     propshaft (1.3.1)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -330,7 +332,7 @@ GEM
       date
       stringio
     public_suffix (7.0.2)
-    puma (7.1.0)
+    puma (7.2.0)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (3.2.5)
@@ -362,7 +364,7 @@ GEM
     rails-html-sanitizer (1.6.2)
       loofah (~> 2.21)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
-    rails_icons (1.5.1)
+    rails_icons (1.6.1)
       nokogiri (~> 1.16, >= 1.16.4)
       rails (>= 7.0)
     railties (8.1.2)
@@ -376,7 +378,7 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.3.1)
-    rdoc (7.0.3)
+    rdoc (7.2.0)
       erb
       psych (>= 4.0.0)
       tsort
@@ -384,7 +386,7 @@ GEM
     redcarpet (3.6.1)
     redis (5.4.1)
       redis-client (>= 0.22.0)
-    redis-client (0.26.3)
+    redis-client (0.26.4)
       connection_pool
     regexp_parser (2.11.3)
     reline (0.6.3)
@@ -393,7 +395,7 @@ GEM
       actionpack (>= 7.0)
       railties (>= 7.0)
     rexml (3.4.4)
-    rubocop (1.82.1)
+    rubocop (1.84.2)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -401,7 +403,7 @@ GEM
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
       regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.48.0, < 2.0)
+      rubocop-ast (>= 1.49.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
     rubocop-ast (1.49.0)
@@ -426,24 +428,24 @@ GEM
       ffi (~> 1.12)
       logger
     rubyzip (3.2.2)
-    sass-embedded (1.97.2-aarch64-linux-gnu)
+    sass-embedded (1.97.3-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.97.2-aarch64-linux-musl)
+    sass-embedded (1.97.3-aarch64-linux-musl)
       google-protobuf (~> 4.31)
-    sass-embedded (1.97.2-arm-linux-gnueabihf)
+    sass-embedded (1.97.3-arm-linux-gnueabihf)
       google-protobuf (~> 4.31)
-    sass-embedded (1.97.2-arm-linux-musleabihf)
+    sass-embedded (1.97.3-arm-linux-musleabihf)
       google-protobuf (~> 4.31)
-    sass-embedded (1.97.2-arm64-darwin)
+    sass-embedded (1.97.3-arm64-darwin)
       google-protobuf (~> 4.31)
-    sass-embedded (1.97.2-x86_64-darwin)
+    sass-embedded (1.97.3-x86_64-darwin)
       google-protobuf (~> 4.31)
-    sass-embedded (1.97.2-x86_64-linux-gnu)
+    sass-embedded (1.97.3-x86_64-linux-gnu)
       google-protobuf (~> 4.31)
-    sass-embedded (1.97.2-x86_64-linux-musl)
+    sass-embedded (1.97.3-x86_64-linux-musl)
       google-protobuf (~> 4.31)
     securerandom (0.4.1)
-    selenium-webdriver (4.39.0)
+    selenium-webdriver (4.41.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -469,14 +471,14 @@ GEM
       railties (>= 6.0.0)
     stringio (3.2.0)
     thor (1.5.0)
-    thruster (0.1.17)
-    thruster (0.1.17-aarch64-linux)
-    thruster (0.1.17-arm64-darwin)
-    thruster (0.1.17-x86_64-darwin)
-    thruster (0.1.17-x86_64-linux)
+    thruster (0.1.18)
+    thruster (0.1.18-aarch64-linux)
+    thruster (0.1.18-arm64-darwin)
+    thruster (0.1.18-x86_64-darwin)
+    thruster (0.1.18-x86_64-linux)
     timeout (0.6.0)
     tsort (0.2.0)
-    turbo-rails (2.0.20)
+    turbo-rails (2.0.23)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
     tzinfo (2.0.6)
@@ -489,11 +491,10 @@ GEM
     warden (1.2.9)
       rack (>= 2.0.9)
     watu_table_builder (0.3.0)
-    web-console (4.2.1)
-      actionview (>= 6.0.0)
-      activemodel (>= 6.0.0)
+    web-console (4.3.0)
+      actionview (>= 8.0.0)
       bindex (>= 0.4.0)
-      railties (>= 6.0.0)
+      railties (>= 8.0.0)
     websocket (1.2.11)
     websocket-driver (0.8.0)
       base64
@@ -501,7 +502,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.7.4)
+    zeitwerk (2.7.5)
 
 PLATFORMS
   aarch64-linux
