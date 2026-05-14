@@ -1,7 +1,7 @@
-require 'test_helper'
+require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
-  test 'show user sign_in, sign_up, etc' do
+  test "show user sign_in, sign_up, etc" do
     get new_user_session_url
     assert_response :success
 
@@ -18,23 +18,23 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should show user' do
+  test "should show user" do
     get user_url users(:one)
     assert_response :success
   end
 
-  test 'should redirect to user FriendlyId' do
+  test "should redirect to user FriendlyId" do
     user = users(:one)
     get user_url user.id
     assert_redirected_to user_url(user)
   end
 
-  test 'should show users comments' do
+  test "should show users comments" do
     get comments_user_url users(:one)
     assert_response :success
   end
 
-  test 'should show users contributions' do
+  test "should show users contributions" do
     get contributions_user_url users(:one)
     assert_response :success
   end

@@ -23,7 +23,7 @@ module ApplicationHelper
       html = <<-HTML
       <div class="content notification is-danger">
         <p>
-          <strong>Se ha#{object.errors.count > 1 ? 'n' : ''} encontrado #{object.errors.count} error#{object.errors.count > 1 ? 'es' : ''}:</strong>
+          <strong>Se ha#{object.errors.count > 1 ? "n" : ""} encontrado #{object.errors.count} error#{object.errors.count > 1 ? "es" : ""}:</strong>
         </p>
         <ul>#{messages}</ul>
       </div>
@@ -55,8 +55,11 @@ module ApplicationHelper
     return unless time
 
     options[:class] ||= "timeago"
-    content_tag(:abbr, "el " + l(time, format: :short),
-                options.merge(title: time.getutc.iso8601, datetime: time.getutc.iso8601))
+    content_tag(
+      :abbr,
+      "el " + l(time, format: :short),
+      options.merge(title: time.getutc.iso8601, datetime: time.getutc.iso8601)
+    )
   end
 end
 
@@ -65,10 +68,12 @@ def month_and_year_select(name, options = {}, html_options = {})
   if p[:year].present? && p[:month].present?
     begin
       Date.civil(p[:year].to_i, p[:month].to_i, 1)
-    rescue ArgumentError # Invalid date selected
+      # Invalid date selected
+    rescue ArgumentError
       p = {}
     end
   end
+
   content_tag(:div, class: "select") { select_month(p[:month].to_i, options, html_options) } +
     content_tag(:div, class: "select") { select_year(p[:year].to_i, options, html_options) }
 end

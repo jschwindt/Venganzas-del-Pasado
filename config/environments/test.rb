@@ -16,9 +16,8 @@ Rails.application.configure do
   # config.eager_load = ENV["CI"].present?
   config.eager_load = true
 
-
   # Configure public file server for tests with cache-control for performance.
-  config.public_file_server.headers = { "cache-control" => "public, max-age=3600" }
+  config.public_file_server.headers = {"cache-control" => "public, max-age=3600"}
 
   # Show full error reports.
   config.consider_all_requests_local = true
@@ -49,5 +48,5 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
-  config.action_mailer.default_url_options = { host: "http://localhost.test" }
+  config.action_mailer.default_url_options = {host: "http://localhost.test"}
 end

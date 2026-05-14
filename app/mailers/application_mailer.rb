@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
   default from: Devise.mailer_sender
-  layout 'mailer'
+  layout "mailer"
 end

@@ -7,17 +7,17 @@ module Admin
     has_scope :lifo, type: :boolean, default: true
 
     def approve
-      @comment = Comment.find params[:id]
+      @comment = Comment.find(params[:id])
       @comment.approve!
       flash[:notice] = "Se ha aprobado el comentario."
-      redirect_to collection_url(has_status: "pending")
+      redirect_to(collection_url(has_status: "pending"))
     end
 
     def trash
-      @comment = Comment.find params[:id]
+      @comment = Comment.find(params[:id])
       @comment.trash!
       flash[:notice] = "Se ha eliminado el comentario."
-      redirect_to collection_url
+      redirect_to(collection_url)
     end
 
     def destroy
@@ -30,11 +30,11 @@ module Admin
     protected
 
     def verify_admin
-      render "403", status: 403 unless current_user.can?(:approve, Comment)
+      render("403", status: 403) unless current_user.can?(:approve, Comment)
     end
 
     def load_collection
-      @comments = apply_scopes Comment
+      @comments = apply_scopes(Comment)
     end
 
     def load_resource

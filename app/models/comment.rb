@@ -11,7 +11,7 @@ class Comment < ApplicationRecord
   validates :content, :post_id, presence: true
 
   def should_index?
-    %w[neutral approved flagged].include? status
+    %w[neutral approved flagged].include?(status)
   end
 
   def timestamp
@@ -20,16 +20,18 @@ class Comment < ApplicationRecord
 
   meilisearch if: :should_index?, force_utf8_encoding: true do
     attribute :content, :timestamp
-    filterable_attributes [ :timestamp ]
-    sortable_attributes [ :timestamp ]
-    ranking_rules [
-      "sort",
-      "exactness",
-      "words",
-      "typo",
-      "proximity",
-      "attribute"
-    ]
+    filterable_attributes [:timestamp]
+    sortable_attributes [:timestamp]
+    ranking_rules(
+      [
+        "sort",
+        "exactness",
+        "words",
+        "typo",
+        "proximity",
+        "attribute"
+      ]
+    )
 
     # The following parameters are applied when calling the method search()
     pagination max_total_hits: 1000
@@ -74,7 +76,8 @@ class Comment < ApplicationRecord
     def has_status(status)
       where("status = ?", status) unless status.nil?
     end
-  end # Class methods
+    # Class methods
+  end
 
   def publish_as(user, request)
     self.user_id = user.id
@@ -82,7 +85,7 @@ class Comment < ApplicationRecord
     self.author_email = user.email
     self.author_ip = request.remote_ip
 
-    moderate unless user.can? :publish, self
+    moderate unless user.can?(:publish, self)
 
     self.profile_picture_url = user.profile_picture_url
 

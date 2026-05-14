@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  prepend_before_action :check_captcha, only: [ :create ]
-  prepend_before_action :configure_sign_up_params, only: [ :create ]
+  prepend_before_action :check_captcha, only: [:create]
+  prepend_before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -43,17 +43,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [ :alias ])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:alias])
   end
 
   def check_captcha
     return true if verify_recaptcha
 
-    self.resource = resource_class.new sign_up_params
-    resource.validate # Look for any other validation errors besides reCAPTCHA
+    self.resource = resource_class.new(sign_up_params)
+    # Look for any other validation errors besides reCAPTCHA
+    resource.validate
     set_minimum_password_length
-    print "check_captcha!!! ", resource.errors.full_messages
-    render "devise/registrations/new", status: :unprocessable_entity
+    print("check_captcha!!! ", resource.errors.full_messages)
+    render("devise/registrations/new", status: :unprocessable_entity)
   end
 
   # If you have extra params to permit, append them to the sanitizer.

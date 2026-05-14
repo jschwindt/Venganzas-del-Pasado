@@ -1,8 +1,8 @@
-require 'test_helper'
+require "test_helper"
 
 class ApplicationHelperTest < ActionView::TestCase
-  test 'alert_message_for' do
-    post = Post.new(status: 'published', created_at: Date.today)
+  test "alert_message_for" do
+    post = Post.new(status: "published", created_at: Date.today)
     post.valid?
     expected = <<-HTML
       <div class="content notification is-danger">

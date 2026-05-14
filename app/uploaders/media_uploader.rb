@@ -15,7 +15,7 @@ class MediaUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    '/assets/no-image.jpg'
+    "/assets/no-image.jpg"
   end
 
   # Process files as they are uploaded:
@@ -23,11 +23,11 @@ class MediaUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   version :thumb, if: :image? do
-    process resize_to_fit: [200, '']
+    process resize_to_fit: [200, ""]
   end
 
   version :large, if: :image? do
-    process resize_to_fit: [520, '']
+    process resize_to_fit: [520, ""]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
@@ -45,6 +45,6 @@ class MediaUploader < CarrierWave::Uploader::Base
   protected
 
   def image?(new_file)
-    new_file.content_type.try(:include?, 'image')
+    new_file.content_type.try(:include?, "image")
   end
 end

@@ -4,8 +4,8 @@ class Post < ApplicationRecord
   friendly_id :title, use: %i[slugged finders]
 
   has_many :comments, dependent: :destroy
-  has_many :audios,   dependent: :destroy
-  has_many :media,    dependent: :destroy
+  has_many :audios, dependent: :destroy
+  has_many :media, dependent: :destroy
   belongs_to :contributor, class_name: "User", optional: true
   accepts_nested_attributes_for :media
 
@@ -30,16 +30,18 @@ class Post < ApplicationRecord
 
   meilisearch if: :should_index?, force_utf8_encoding: true do
     attribute :title, :content, :timestamp
-    filterable_attributes [ :timestamp ]
-    sortable_attributes [ :timestamp ]
-    ranking_rules [
-      "sort",
-      "exactness",
-      "words",
-      "typo",
-      "proximity",
-      "attribute"
-    ]
+    filterable_attributes [:timestamp]
+    sortable_attributes [:timestamp]
+    ranking_rules(
+      [
+        "sort",
+        "exactness",
+        "words",
+        "typo",
+        "proximity",
+        "attribute"
+      ]
+    )
 
     # The following parameters are applied when calling the method search()
     pagination max_total_hits: 1000
@@ -52,7 +54,7 @@ class Post < ApplicationRecord
     end
 
     def created_on(year, month = nil, day = nil)
-      date = Date.new year.to_i
+      date = Date.new(year.to_i)
 
       if month.present?
         date = date.change(month: month.to_i)
@@ -91,11 +93,13 @@ class Post < ApplicationRecord
         year = Regexp.last_match(1)
         title = "La venganza será terrible del #{day}/#{mon}/#{year}"
         Post.find_or_create_by(title: title) do |post|
-          post.created_at = Time.zone.parse('#{year}-#{mon}-#{day} 03:00:00')
-          post.status     = "published"
-          post.content    = ""
-          audio           = Audio.find_or_initialize_by(url: "https://venganzasdelpasado.com.ar/#{year}/lavenganza_#{year}-#{mon}-#{day}.mp3")
-          audio.bytes     = File.size(filename)
+          post.created_at = Time.zone.parse("\#{year}-\#{mon}-\#{day} 03:00:00")
+          post.status = "published"
+          post.content = ""
+          audio = Audio.find_or_initialize_by(
+            url: "https://venganzasdelpasado.com.ar/#{year}/lavenganza_#{year}-#{mon}-#{day}.mp3"
+          )
+          audio.bytes = File.size(filename)
           post.audios << audio
         end
       end
@@ -106,9 +110,11 @@ class Post < ApplicationRecord
       if params[:media_attributes].present?
         params[:media_attributes] = params[:media_attributes].select { |_k, v| v["asset"].present? }
       end
+
       post = new(params)
       post.status = "pending"
-      post.created_at += 4.hours if post.created_at # a las 4 de la mañana, para que no interfiera con los automáticos
+      # a las 4 de la mañana, para que no interfiera con los automáticos
+      post.created_at += 4.hours if post.created_at
       post.contributor = user
       # Agrega un media vacío si no hay ninguno, para que falle la validación
       post.media << Medium.new if post.media.empty?
@@ -131,31 +137,37 @@ class Post < ApplicationRecord
       h = time / 3600
       m = (time - (h * 3600)) / 60
       s = time - h * 3600 - m * 60
-      "%d:%02d:%02d" % [ h, m, s ]
+      "%d:%02d:%02d" % [h, m, s]
     end
 
     def from_text_search(text, highlights)
       post = text.audio.post
       existing_content = post.content
-      content = highlights.gsub(/{\d+}/) { |m| t = time2hms(m[1...-1].to_i); "<a href=\"#play-#{t}\">#{t}</a>" }
+      content = highlights.gsub(/{\d+}/) { |m|
+        t = time2hms(m[1...-1].to_i)
+        "<a href=\"#play-#{t}\">#{t}</a>"
+      }
       post.content = content + "\n" + existing_content
       post
     end
-  end # Class methods
+    # Class methods
+  end
 
   def publish_contribution
     media.each do |medium|
-      filename = "lavenganza_#{created_at.strftime('%Y-%m-%d')}_#{medium.id}.mp3"
+      filename = "lavenganza_#{created_at.strftime("%Y-%m-%d")}_#{medium.id}.mp3"
       year = created_at.year
       dest_dir = "/var/www/venganzasdelpasado.com.ar/#{year}"
       dest_file = "#{dest_dir}/#{filename}"
 
       # Copy MP3 to local store
-      FileUtils.mkdir_p dest_dir
-      FileUtils.copy_file medium.asset.path, dest_file
+      FileUtils.mkdir_p(dest_dir)
+      FileUtils.copy_file(medium.asset.path, dest_file)
 
       # Upload to S3
-      system "/usr/bin/s3cmd -c /home/jschwindt/.s3cfg --acl-public put #{medium.asset.path} s3://s3.schwindt.org/dolina/#{year}/#{filename}"
+      system(
+        "/usr/bin/s3cmd -c /home/jschwindt/.s3cfg --acl-public put #{medium.asset.path} s3://s3.schwindt.org/dolina/#{year}/#{filename}"
+      )
 
       # Create Audio record
       audios << Audio.new(url: "https://venganzasdelpasado.com.ar/#{year}/#{filename}", bytes: File.size(dest_file))
@@ -196,9 +208,12 @@ class Post < ApplicationRecord
 
   def description
     if content.present?
-      desc = content.gsub(%r{</?[^>]+?>}, "") # remove html tags
-                    .gsub(/[_#*\r\n-]+/, " ") # remove some markdown
-                    .truncate(200, separator: " ", omission: "")
+      # remove html tags
+      desc = content
+        .gsub(%r{</?[^>]+?>}, "")
+        # remove some markdown
+        .gsub(/[_#*\r\n-]+/, " ")
+        .truncate(200, separator: " ", omission: "")
       desc.gsub(/\s+/, " ").strip
     else
       "#{title} de Alejandro Dolina"
@@ -210,7 +225,10 @@ class Post < ApplicationRecord
     return unless first_audio
 
     text = first_audio.texts.order(time: :asc).map(&:text).join
-    text.gsub(/{\d+}/) { |m| t = Post.time2hms(m[1...-1].to_i); "<a href=\"#play-#{t}\">#{t}</a>" }
+    text.gsub(/{\d+}/) { |m|
+      t = Post.time2hms(m[1...-1].to_i)
+      "<a href=\"#play-#{t}\">#{t}</a>"
+    }
   end
 
   protected

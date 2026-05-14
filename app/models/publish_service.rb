@@ -11,7 +11,8 @@ class PublishService
         end
       end
     end
-    FileUtils.rm @publish_files
+
+    FileUtils.rm(@publish_files)
   end
 
   def process(source_mp3_file, mp3_file_name, year)
@@ -26,27 +27,27 @@ class PublishService
   def copy_mp3(source_mp3_file, year)
     source = "#{VenganzasDelPasado::Application.config.x.audios_root}#{source_mp3_file}"
     dest = "#{VenganzasDelPasado::Application.config.x.audios_root}/#{year}/"
-    puts "Copying #{source} -> #{dest}"
+    puts("Copying #{source} -> #{dest}")
     FileUtils.cp(source, dest)
   end
 
   def create_post(audio_file)
     post = Post.create_from_audio_file(audio_file)
     audio = post.audios.first
-    file_size = File.size audio_file
+    file_size = File.size(audio_file)
     audio.update(bytes: file_size, speech_to_text_status: :unavailable)
-    puts "#{post.inspect}\n#{audio.inspect}"
+    puts("#{post.inspect}\n#{audio.inspect}")
   end
 
   def sync_s3(year)
     source = "#{VenganzasDelPasado::Application.config.x.audios_root}/#{year}/"
     dest = "s3://s3.schwindt.org/dolina/#{year}/"
     result = `aws s3 sync #{source} #{dest} --acl public-read --no-progress`
-    puts result if result.present?
+    puts(result) if result.present?
   end
 
   def generate_sitemap
     Rails.application.load_tasks
-    Rake::Task['sitemap:refresh:no_ping'].invoke
+    Rake::Task["sitemap:refresh:no_ping"].invoke
   end
 end

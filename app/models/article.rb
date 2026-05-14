@@ -5,9 +5,12 @@ class Article < ApplicationRecord
   validates :title, :content, presence: true
 
   def description
-    desc = content.gsub(%r{</?[^>]+?>}, '') # remove html tags
-                  .gsub(/[_#*\r\n-]+/, ' ') # remove some markdown
-                  .truncate(200, separator: ' ', omission: '')
-    desc.gsub(/\s+/, ' ').strip
+    # remove html tags
+    desc = content
+      .gsub(%r{</?[^>]+?>}, "")
+      # remove some markdown
+      .gsub(/[_#*\r\n-]+/, " ")
+      .truncate(200, separator: " ", omission: "")
+    desc.gsub(/\s+/, " ").strip
   end
 end

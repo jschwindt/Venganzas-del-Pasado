@@ -15,19 +15,21 @@ class Text < ApplicationRecord
 
   meilisearch force_utf8_encoding: true do
     attribute :text, :timestamp
-    filterable_attributes [ :timestamp ]
-    sortable_attributes [ :timestamp ]
-    ranking_rules [
-      "sort",
-      "exactness",
-      "words",
-      "typo",
-      "proximity",
-      "attribute"
-    ]
+    filterable_attributes [:timestamp]
+    sortable_attributes [:timestamp]
+    ranking_rules(
+      [
+        "sort",
+        "exactness",
+        "words",
+        "typo",
+        "proximity",
+        "attribute"
+      ]
+    )
 
     # The following parameters are applied when calling the method search()
-    attributes_to_highlight [ "text" ]
+    attributes_to_highlight ["text"]
     pagination max_total_hits: 1000
   end
 end

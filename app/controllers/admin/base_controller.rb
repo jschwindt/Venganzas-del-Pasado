@@ -13,16 +13,17 @@ module Admin
 
     def create
       create!(notice: "Creado correctamente.") do |success, _failure|
-        success.html { redirect_to edit_resource_url }
+        success.html { redirect_to(edit_resource_url) }
       end
     end
 
-    def dashboard; end
+    def dashboard
+    end
 
     protected
 
     def verify_admin
-      render "403", status: 403 unless current_user.try(:can_admin?)
+      render("403", status: 403) unless current_user.try(:can_admin?)
     end
   end
 end

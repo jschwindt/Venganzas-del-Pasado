@@ -7,21 +7,25 @@ class CommentsController < ApplicationController
     @comment = @post.comments.new(comment_params).publish_as(current_user, request)
     if @comment.save
       if @comment.pending?
-        flash[:warning] = 'Tu comentario se ha guardado, y está pendiente de aprobación.'
-        CommentMailer.with(comment: @comment, subject: 'Comentario para moderar')
-                     .moderation_needed.deliver_now
+        flash[:warning] = "Tu comentario se ha guardado, y está pendiente de aprobación."
+        CommentMailer
+          .with(comment: @comment, subject: "Comentario para moderar")
+          .moderation_needed
+          .deliver_now
       end
     end
 
     return if request.xhr?
 
-    redirect_to "#{post_path(@post)}#comment-#{@comment.id}"
+    redirect_to("#{post_path(@post)}#comment-#{@comment.id}")
   end
 
   def flag
     @comment.flag!
-    CommentMailer.with(comment: @comment, subject: 'Comentario denunciado')
-                 .moderation_needed.deliver_now
+    CommentMailer
+      .with(comment: @comment, subject: "Comentario denunciado")
+      .moderation_needed
+      .deliver_now
   end
 
   protected

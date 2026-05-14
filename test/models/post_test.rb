@@ -1,7 +1,7 @@
-require 'test_helper'
+require "test_helper"
 
 class PostTest < ActiveSupport::TestCase
-  test 'should accept valid status' do
+  test "should accept valid status" do
     post = posts(:one)
     Post.statuses.each do |status|
       post.status = status
@@ -9,13 +9,13 @@ class PostTest < ActiveSupport::TestCase
     end
   end
 
-  test 'should refuse invalid status' do
+  test "should refuse invalid status" do
     post = posts(:one)
-    post.status = '--dummy_status--'
+    post.status = "--dummy_status--"
     assert post.invalid?
   end
 
-  test 'created_on y_m_d scope' do
+  test "created_on y_m_d scope" do
     posts = Post.created_on(2010)
     assert_equal posts.length, 3
 
@@ -26,36 +26,36 @@ class PostTest < ActiveSupport::TestCase
     assert_equal posts.length, 1
   end
 
-  test 'post_count_by_year' do
+  test "post_count_by_year" do
     posts = Post.post_count_by_year.entries
     posts_counts = posts.select { |p| p.year == 2010 }.first
     assert_equal posts_counts.count, 3
   end
 
-  test 'post_count_by_month' do
+  test "post_count_by_month" do
     posts = Post.post_count_by_month(2010).entries
     posts_counts = posts.select { |p| p.month == 2 }.first
     assert_equal posts_counts.count, 2
   end
 
-  test 'create_from_audio_file' do
-    assert_difference 'Audio.count' do
-      assert_difference 'Post.count' do
-        fname = Rails.root.join('test/fixtures/files', 'lavenganza_2015-01-02.mp3').to_s
+  test "create_from_audio_file" do
+    assert_difference "Audio.count" do
+      assert_difference "Post.count" do
+        fname = Rails.root.join("test/fixtures/files", "lavenganza_2015-01-02.mp3").to_s
         post = Post.create_from_audio_file(fname)
-        assert_equal post.title, 'La venganza será terrible del 02/01/2015'
+        assert_equal post.title, "La venganza será terrible del 02/01/2015"
       end
     end
   end
 
-  test 'new_contribution' do
+  test "new_contribution" do
     params = ActiveSupport::HashWithIndifferentAccess.new(
       {
-        title: 'New Contribution',
+        title: "New Contribution",
         created_at: Date.new(2019, 1, 2),
         media_attributes: {
-          '0' => {
-            asset: File.open(Rails.root.join('test/fixtures/files', 'lavenganza_2015-01-02.mp3'))
+          "0" => {
+            asset: File.open(Rails.root.join("test/fixtures/files", "lavenganza_2015-01-02.mp3"))
           }
         }
       }
@@ -63,29 +63,29 @@ class PostTest < ActiveSupport::TestCase
     user = users(:contributor)
     post = Post.new_contribution(params, user)
     assert post.valid?
-    assert_equal post.title, 'New Contribution'
-    assert_equal post.status, 'pending'
+    assert_equal post.title, "New Contribution"
+    assert_equal post.status, "pending"
   end
 
-  test 'description' do
-    assert_equal posts(:no_content).description, 'No content post de Alejandro Dolina'
-    assert_equal posts(:with_html).description, 'Title in H1 and some markdown and lot of spaces.'
+  test "description" do
+    assert_equal posts(:no_content).description, "No content post de Alejandro Dolina"
+    assert_equal posts(:with_html).description, "Title in H1 and some markdown and lot of spaces."
   end
 
-  test 'previous and next' do
+  test "previous and next" do
     assert_equal posts(:on_2010_02_15).next, posts(:on_2010_02_16)
     assert_equal posts(:on_2010_02_16).previous, posts(:on_2010_02_15)
   end
 
-  test 'from_text_search' do
+  test "from_text_search" do
     text = texts(:one)
-    post = Post.from_text_search(text, '{1} the transcript')
+    post = Post.from_text_search(text, "{1} the transcript")
     assert_equal post, posts(:one)
   end
 
-  test 'transcription' do
+  test "transcription" do
     post = posts(:one)
-    assert_equal post.transcription, '<a href="#play-0:00:02">0:00:02</a> second 2'
+    assert_equal post.transcription, "<a href=\"#play-0:00:02\">0:00:02</a> second 2"
   end
 
 end

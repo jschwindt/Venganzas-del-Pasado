@@ -3,7 +3,7 @@ class AudiosController < ApplicationController
   load_and_authorize_resource :audio, through: :post
 
   def show
-    render layout: 'popup'
+    render(layout: "popup")
   end
 
   protected

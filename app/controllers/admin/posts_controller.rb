@@ -8,17 +8,17 @@ module Admin
 
     def approve_contribution
       @post.approve_contribution!
-      redirect_to @post
+      redirect_to(@post)
     end
 
     protected
 
     def verify_admin
-      render '403', status: 403 unless current_user.can? :update, Post
+      render("403", status: 403) unless current_user.can?(:update, Post)
     end
 
     def load_collection
-      @posts = apply_scopes Post
+      @posts = apply_scopes(Post)
     end
 
     def load_resource

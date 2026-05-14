@@ -3,7 +3,12 @@ require "test_helper"
 class UserTest < ActiveSupport::TestCase
   test "create new user" do
     assert_difference "User.count" do
-      user = User.new(email: "created@example.com", alias: "Just-Created-User", password: "password", slug: "just-created-user")
+      user = User.new(
+        email: "created@example.com",
+        alias: "Just-Created-User",
+        password: "password",
+        slug: "just-created-user"
+      )
       user.save!
       assert_equal user.email, "created@example.com"
       assert_equal user.alias, "Just-Created-User"

@@ -52,7 +52,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test "logged in create contribution should fail" do
     sign_in users(:one)
     assert_no_difference "Post.count" do
-      post posts_url, params: { post: { title: "" } }
+      post posts_url, params: {post: {title: ""}}
       assert_response :success
     end
   end
@@ -66,7 +66,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
         media_attributes: {
           "0" => {
             asset: Rack::Test::UploadedFile.new(
-              Rails.root.join("test/fixtures/files", "lavenganza_2015-01-02.mp3"), "audio/mpeg"
+              Rails.root.join("test/fixtures/files", "lavenganza_2015-01-02.mp3"),
+              "audio/mpeg"
             )
           }
         }

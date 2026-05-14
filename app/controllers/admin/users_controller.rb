@@ -8,11 +8,11 @@ module Admin
     protected
 
     def verify_admin
-      render '403', status: 403 unless current_user.can? :manage, User
+      render("403", status: 403) unless current_user.can?(:manage, User)
     end
 
     def load_collection
-      @users = apply_scopes User
+      @users = apply_scopes(User)
     end
 
     def load_resource
