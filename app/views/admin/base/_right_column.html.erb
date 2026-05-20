@@ -49,5 +49,17 @@
         </ul>
       </li>
     <% end %>
+    <% if can? :manage, AffiliateLink %>
+      <li><%= link_to admin_affiliate_links_path(), class: 'icon-link' do %>
+          <%= icon "external-link", class: "small-icon" %> Links Afiliados
+        <% end %>
+        <ul>
+          <li><%= link_to new_admin_affiliate_link_path(), class: 'icon-link' do %>
+              <%= icon "pencil", class: "small-icon" %> Crear Link Afiliado
+            <% end %>
+          </li>
+        </ul>
+      </li>
+    <% end %>
   </ul>
 </aside>

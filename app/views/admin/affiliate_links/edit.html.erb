@@ -1,0 +1,9 @@
+<% page_title("Editando Link Afiliado") %>
+<h2 class="title fancy is-4">Administración de Links Afiliados</h2>
+<h3 class="title"><%= html_page_title %></h3>
+<div class="actions">
+  <%= link_to "Ver Producto", @affiliate_link.product_url, target: '_blank', class: "button is-light" %>
+</div>
+<br />
+
+<%= render 'form', affiliate_link: @affiliate_link %>

@@ -34,12 +34,15 @@ class Ability
 
       can(%i[read approve trash], Comment) if %w[moderator editor].include?(user.role)
 
-      if ["editor"].include?(user.role)
+      if [ "editor" ].include?(user.role)
         can(:read, Post)
         can(:update, Post)
       end
 
-      can(:manage, :all) if user.role == "admin"
+      if user.role == "admin"
+        can(:manage, AffiliateLink)
+        can(:manage, :all)
+      end
 
     end
   end

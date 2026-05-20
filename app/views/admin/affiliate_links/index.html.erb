@@ -1,0 +1,44 @@
+<% page_title("Listado de Links Afiliados") %>
+<h2 class="title fancy is-4">Administración de Links Afiliados</h2>
+<h3 class="title"><%= html_page_title %></h3>
+
+<% if @affiliate_links.empty? %>
+  <p>No se han encontrado links afiliados</p>
+<% else %>
+  <table class="table is-striped is-hoverable is-fullwidth">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Activo</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @affiliate_links.each do |affiliate_link| %>
+        <tr>
+          <td>
+            <%= affiliate_link.id %>
+          </td>
+          <td>
+            <%= link_to affiliate_link.name, affiliate_link.product_url, target: '_blank' %>
+          </td>
+          <td>
+            <%= number_to_currency(affiliate_link.price) if affiliate_link.price.present? %>
+          </td>
+          <td>
+            <%= affiliate_link.active? ? "Sí" : "No" %>
+          </td>
+          <td class="actions">
+            <%= link_to "Editar", edit_admin_affiliate_link_path(affiliate_link), class: "tag is-small is-success" %>
+            <% if can? :destroy, AffiliateLink %>
+              <%= link_to "Eliminar", admin_affiliate_link_path(affiliate_link), data: { turbo_method: :delete, turbo_confirm: "¿Estás seguro?" }, class: "tag is-small is-danger" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate @affiliate_links %>
+<% end %>

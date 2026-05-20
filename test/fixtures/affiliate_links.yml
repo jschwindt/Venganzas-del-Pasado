@@ -1,0 +1,7 @@
+one:
+  name: Libro de Dolina
+  product_url: https://www.mercadolibre.com.ar/libro-dolina
+  affiliate_url: https://www.mercadolibre.com.ar/affiliate/libro-dolina
+  image_url: https://http2.mlstatic.com/libro-dolina.jpg
+  price: 12500.5
+  active: true

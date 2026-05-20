@@ -1,0 +1,50 @@
+<%= alert_message_for(affiliate_link) %>
+<%= render 'flash' %>
+<%= form_for [:admin, affiliate_link] do |f| %>
+  <div class="field">
+    <%= f.label :name, "Nombre", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :name, class: 'input' %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :product_url, "URL del producto", class: 'label' %>
+    <div class="control">
+      <%= f.url_field :product_url, class: 'input' %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :affiliate_url, "URL de afiliado", class: 'label' %>
+    <div class="control">
+      <%= f.url_field :affiliate_url, class: 'input' %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :image_url, "URL de imagen", class: 'label' %>
+    <div class="control">
+      <%= f.url_field :image_url, class: 'input' %>
+    </div>
+  </div>
+  <div class="field">
+    <%= f.label :price, "Precio", class: 'label' %>
+    <div class="control">
+      <%= f.text_field :price, class: 'input' %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="control">
+      <label class="checkbox">
+        <%= f.check_box :active %>
+        Activo
+      </label>
+    </div>
+  </div>
+  <div class="field is-grouped">
+    <div class="control">
+      <%= f.submit ( affiliate_link.new_record? ? 'Crear' : 'Guardar' ), class: 'button is-link' %>
+    </div>
+    <div class="control">
+      <%= link_to 'Cancelar', admin_affiliate_links_path, class: "button is-link is-light" %>
+    </div>
+  </div>
+<% end %>
