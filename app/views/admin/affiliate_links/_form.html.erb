@@ -1,28 +1,41 @@
 <%= alert_message_for(affiliate_link) %>
 <%= render 'flash' %>
-<%= form_for [:admin, affiliate_link] do |f| %>
+<%= form_for [:admin, affiliate_link], html: {
+      data: {
+        controller: "affiliate-link-metadata",
+        affiliate_link_metadata_url_value: metadata_admin_affiliate_links_path
+      }
+    } do |f| %>
+  <div class="field">
+    <%= f.label :affiliate_url, "URL de afiliado", class: 'label' %>
+    <div class="field has-addons">
+      <div class="control is-expanded">
+        <%= f.url_field :affiliate_url, autofocus: affiliate_link.new_record?, class: 'input', data: { affiliate_link_metadata_target: "affiliateUrl" } %>
+      </div>
+      <div class="control">
+        <button type="button" class="button is-link" data-action="affiliate-link-metadata#load" data-affiliate-link-metadata-target="button">
+          Cargar Metadata
+        </button>
+      </div>
+    </div>
+    <p class="help" data-affiliate-link-metadata-target="status"></p>
+  </div>
   <div class="field">
     <%= f.label :name, "Nombre", class: 'label' %>
     <div class="control">
-      <%= f.text_field :name, class: 'input' %>
+      <%= f.text_field :name, class: 'input', data: { affiliate_link_metadata_target: "name" } %>
     </div>
   </div>
   <div class="field">
     <%= f.label :product_url, "URL del producto", class: 'label' %>
     <div class="control">
-      <%= f.url_field :product_url, class: 'input' %>
-    </div>
-  </div>
-  <div class="field">
-    <%= f.label :affiliate_url, "URL de afiliado", class: 'label' %>
-    <div class="control">
-      <%= f.url_field :affiliate_url, class: 'input' %>
+      <%= f.url_field :product_url, class: 'input', data: { affiliate_link_metadata_target: "productUrl" } %>
     </div>
   </div>
   <div class="field">
     <%= f.label :image_url, "URL de imagen", class: 'label' %>
     <div class="control">
-      <%= f.url_field :image_url, class: 'input' %>
+      <%= f.url_field :image_url, class: 'input', data: { affiliate_link_metadata_target: "imageUrl" } %>
     </div>
   </div>
   <div class="field">

@@ -48,7 +48,10 @@ class RedirectsController < ApplicationController
       redirect_to("/users/#{Regexp.last_match(1)}/comments/page/#{Regexp.last_match(2)}", status: :moved_permanently)
 
     else
-      render("404", status: 404)
+      respond_to do |format|
+        format.html { render("404", status: 404) }
+        format.any { render(json: { error: "not_found" }, status: 404) }
+      end
     end
   end
 end

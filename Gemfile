@@ -91,3 +91,5 @@ gem "dartsass-rails", "~> 0.5.1"
 gem "bulma-rails", "~> 1.0"
 
 gem "rails_icons", "~> 1.4"
+
+gem "metainspector", "~> 5.17"

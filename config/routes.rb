@@ -56,7 +56,9 @@ Rails.application.routes.draw do
     get("/" => "base#dashboard", :as => :dashboard)
 
     resources(:articles, except: :show)
-    resources(:affiliate_links)
+    resources(:affiliate_links) do
+      post("metadata", on: :collection)
+    end
     resources(:users, only: %i[index edit update])
 
     resources(:comments) do

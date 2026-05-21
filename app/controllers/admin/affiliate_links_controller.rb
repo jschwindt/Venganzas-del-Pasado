@@ -1,9 +1,29 @@
 module Admin
   class AffiliateLinksController < BaseController
     before_action :load_collection, only: :index
-    before_action :load_resource, except: %i[index new create]
+    before_action :load_resource, except: %i[index new create metadata]
     authorize_resource
     has_scope :lifo, type: :boolean, default: true
+
+    def metadata
+      render json: AffiliateLink.metadata_for(params.require(:url))
+    rescue ActionController::ParameterMissing
+      render json: { error: "url_required" }, status: :unprocessable_entity
+    rescue ::MetaInspector::TimeoutError, ::MetaInspector::RequestError => error
+      render json: { error: error.message }, status: :unprocessable_entity
+    end
+
+    def create
+      create!(notice: "Creado correctamente.") do |success, _failure|
+        success.html { redirect_to(collection_url) }
+      end
+    end
+
+    def update
+      update!(notice: "Se han guardado los cambios.") do
+        collection_url
+      end
+    end
 
     protected
 

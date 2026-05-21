@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_05_20_233051) do
+ActiveRecord::Schema[8.1].define(version: 2026_05_21_000245) do
   create_table "affiliate_links", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.boolean "active"
-    t.string "affiliate_url"
+    t.text "affiliate_url"
     t.datetime "created_at", null: false
-    t.string "image_url"
+    t.text "image_url"
     t.string "name"
     t.float "price"
-    t.string "product_url"
+    t.text "product_url"
     t.datetime "updated_at", null: false
   end
 
