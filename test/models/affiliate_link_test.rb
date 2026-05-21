@@ -12,6 +12,13 @@ class AffiliateLinkTest < ActiveSupport::TestCase
     assert affiliate_links.all?(&:active?)
   end
 
+  test "random active does not repeat products" do
+    affiliate_links = AffiliateLink.random_active
+    product_urls = affiliate_links.map(&:product_url)
+
+    assert_equal product_urls.uniq, product_urls
+  end
+
   test "requires name, product url and affiliate url" do
     affiliate_link = AffiliateLink.new
 

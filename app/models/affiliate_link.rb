@@ -10,7 +10,11 @@ class AffiliateLink < ApplicationRecord
   scope :random, -> { order(Arel.sql("RAND()")) }
 
   def self.random_active(limit = 4)
-    active.random.limit(limit)
+    active
+      .random
+      .to_a
+      .uniq { |affiliate_link| affiliate_link.product_url.presence || affiliate_link.affiliate_url }
+      .first(limit)
   end
 
   class << self

@@ -45,3 +45,11 @@ inactive:
   image_url: https://http2.mlstatic.com/producto-inactivo.jpg
   price: 1000.0
   active: false
+
+duplicate_one:
+  name: Libro de Dolina duplicado
+  product_url: https://www.mercadolibre.com.ar/libro-dolina
+  affiliate_url: https://www.mercadolibre.com.ar/affiliate/libro-dolina-duplicado
+  image_url: https://http2.mlstatic.com/libro-dolina-duplicado.jpg
+  price: 12500.5
+  active: true
