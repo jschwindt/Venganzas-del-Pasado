@@ -244,14 +244,31 @@ ul.archive-months {
 
 .referrals {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  .referral-item {
-    width: 45%;
-    img {
-      width: 100%;
-      height: auto;
-    }
+  flex-direction: column;
+  gap: 0.75rem;
+  .referral-card {
+    background-color: #404040;
+    border-radius: 0.25rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 8rem;
+    overflow: hidden;
+    text-decoration: none;
+    width: 100%;
+  }
+  .referral-card-image {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+  .referral-card-title {
+    background: #404040;
+    display: block;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 0.5rem;
+    width: 100%;
   }
 }
 

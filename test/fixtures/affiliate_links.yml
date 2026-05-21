@@ -5,3 +5,43 @@ one:
   image_url: https://http2.mlstatic.com/libro-dolina.jpg
   price: 12500.5
   active: true
+
+two:
+  name: Taza de Venganzas
+  product_url: https://www.mercadolibre.com.ar/taza-venganzas
+  affiliate_url: https://www.mercadolibre.com.ar/affiliate/taza-venganzas
+  image_url: https://http2.mlstatic.com/taza-venganzas.jpg
+  price: 5000.0
+  active: true
+
+three:
+  name: Remera de Dolina
+  product_url: https://www.mercadolibre.com.ar/remera-dolina
+  affiliate_url: https://www.mercadolibre.com.ar/affiliate/remera-dolina
+  image_url: https://http2.mlstatic.com/remera-dolina.jpg
+  price: 15000.0
+  active: true
+
+four:
+  name: Cuaderno de Venganzas
+  product_url: https://www.mercadolibre.com.ar/cuaderno-venganzas
+  affiliate_url: https://www.mercadolibre.com.ar/affiliate/cuaderno-venganzas
+  image_url: https://http2.mlstatic.com/cuaderno-venganzas.jpg
+  price: 7000.0
+  active: true
+
+five:
+  name: Lapicera de Venganzas
+  product_url: https://www.mercadolibre.com.ar/lapicera-venganzas
+  affiliate_url: https://www.mercadolibre.com.ar/affiliate/lapicera-venganzas
+  image_url: https://http2.mlstatic.com/lapicera-venganzas.jpg
+  price: 2500.0
+  active: true
+
+inactive:
+  name: Producto inactivo
+  product_url: https://www.mercadolibre.com.ar/producto-inactivo
+  affiliate_url: https://www.mercadolibre.com.ar/affiliate/producto-inactivo
+  image_url: https://http2.mlstatic.com/producto-inactivo.jpg
+  price: 1000.0
+  active: false

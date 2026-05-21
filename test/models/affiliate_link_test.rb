@@ -5,6 +5,13 @@ class AffiliateLinkTest < ActiveSupport::TestCase
     assert AffiliateLink.new.active?
   end
 
+  test "random active returns up to four active links" do
+    affiliate_links = AffiliateLink.random_active
+
+    assert_operator affiliate_links.size, :<=, 4
+    assert affiliate_links.all?(&:active?)
+  end
+
   test "requires name, product url and affiliate url" do
     affiliate_link = AffiliateLink.new
 

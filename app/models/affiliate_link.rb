@@ -5,7 +5,13 @@ class AffiliateLink < ApplicationRecord
 
   validates :name, :product_url, :affiliate_url, presence: true
 
+  scope :active, -> { where(active: true) }
   scope :lifo, -> { order("created_at DESC") }
+  scope :random, -> { order(Arel.sql("RAND()")) }
+
+  def self.random_active(limit = 4)
+    active.random.limit(limit)
+  end
 
   class << self
     def metadata_for(url)
