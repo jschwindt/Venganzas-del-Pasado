@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get("contributions(/page/:page)" => "posts#contributions", :as => :contributions)
 
   resources(:posts, only: %i[index show new create]) do
+    get("without_content", action: :without_content, on: :collection)
     # SEO friendly pagination for posts
     get("page/:page", action: :index, on: :collection)
     # SEO friendly pag. for post's comments

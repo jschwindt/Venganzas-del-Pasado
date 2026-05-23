@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create]
-  before_action :find_page_by_slug, only: [:show]
+  before_action :find_page_by_slug, only: [ :show ]
   load_and_authorize_resource
-  skip_authorize_resource only: %i[archive contributions]
+  skip_authorize_resource only: %i[archive contributions without_content]
 
   def index
     posts_per_page = VenganzasDelPasado::Application.config.posts_per_page
@@ -50,6 +50,25 @@ class PostsController < ApplicationController
       .per(VenganzasDelPasado::Application.config.posts_per_page)
   end
 
+  def without_content
+    authorize!(:index, Post)
+
+    posts = Post
+      .published
+      .where("content IS NULL OR TRIM(content) = ''")
+      .includes(:audios)
+      .lifo
+      .limit(10)
+
+    render json: posts.map { |post|
+      {
+        id: post.id,
+        title: post.title,
+        audio_id: post.audios.first&.id
+      }
+    }
+  end
+
   def new
     @post = Post.new
     1.upto(4).each do
@@ -81,6 +100,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit([:title, :content, :created_at, media_attributes: [:asset]])
+    params.require(:post).permit([ :title, :content, :created_at, media_attributes: [ :asset ] ])
   end
 end
