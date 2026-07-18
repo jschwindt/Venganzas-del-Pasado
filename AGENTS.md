@@ -10,11 +10,11 @@ completamente actualizado.
 
 ## Stack
 
-- Ruby `3.2.2`.
+- Ruby `4.0.6`.
 - Rails `8.1.1`.
 - Node `22.18.0`.
 - Base de datos MySQL.
-- Redis para cache/servicios.
+- Valkey, compatible con Redis, para cache/servicios.
 - MeiliSearch para indexacion y busqueda.
 - Frontend con importmap, Turbo, Stimulus, Dart Sass y Bulma.
 - Tests con Minitest, fixtures y system tests con Selenium/headless Chrome.
@@ -74,4 +74,3 @@ sistema y seeds. Usalo como validacion completa antes de publicar cambios.
 - Para validacion completa antes de un PR, corre `bin/ci`.
 - Si una suite falla porque faltan servicios externos locales, dejalo explicito
   y recomienda levantar los servicios de `docker/docker-compose.yml`.
-

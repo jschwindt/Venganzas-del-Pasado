@@ -50,6 +50,4 @@ test:
 #
 production:
   <<: *default
-  database: venganzas_del_pasado_production
-  username: venganzas_del_pasado
-  password: <%= ENV['VENGANZAS_DEL_PASADO_DATABASE_PASSWORD'] %>
+  url: <%= ENV["DATABASE_URL"] %>

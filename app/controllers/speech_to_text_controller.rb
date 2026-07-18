@@ -28,8 +28,8 @@ class SpeechToTextController < ApplicationController
   private
 
   def authenticate_user_from_token!
-    user_email = Rails.application.credentials.audio_api[:user_email]
-    secret_token = Rails.application.credentials.audio_api[:secret_token]
+    user_email = ENV["AUDIO_API_USER_EMAIL"].presence || Rails.application.credentials.dig(:audio_api, :user_email)
+    secret_token = ENV["AUDIO_API_SECRET_TOKEN"].presence || Rails.application.credentials.dig(:audio_api, :secret_token)
     user = user_email && User.find_by_email(user_email)
     sign_in(user, store: false) if user && Devise.secure_compare(secret_token, request.headers[:authorization])
   end

@@ -1,4 +1,5 @@
 require "active_support/core_ext/integer/time"
+require "fileutils"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -16,24 +17,27 @@ Rails.application.configure do
   config.action_controller.perform_caching = true
 
   # Cache assets for far-future expiry since they are all digest stamped.
-  config.public_file_server.headers = {"cache-control" => "public, max-age=#{1.year.to_i}"}
+  config.public_file_server.headers = { "cache-control" => "public, max-age=#{1.year.to_i}" }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.asset_host = "http://assets.example.com"
 
+  ssl_config = ActiveModel::Type::Boolean.new
+
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
-  config.assume_ssl = true
+  config.assume_ssl = ssl_config.cast(ENV.fetch("RAILS_ASSUME_SSL", "true"))
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  config.force_ssl = ssl_config.cast(ENV.fetch("RAILS_FORCE_SSL", "true"))
 
   # Skip http-to-https redirect for the default health check endpoint.
   # config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
 
-  # Log to STDOUT with the current request id as a default log tag.
-  config.log_tags = [:request_id]
-  # config.logger   = ActiveSupport::TaggedLogging.logger(STDOUT)
-  config.logger = ActiveSupport::Logger.new(Rails.root.join("log", "production.log"))
+  # Log to the persistent directory mounted by Docker Compose.
+  config.log_tags = [ :request_id ]
+  log_path = Rails.root.join("log")
+  FileUtils.mkdir_p(log_path)
+  config.logger = ActiveSupport::Logger.new(log_path.join("production.log"))
 
   # Change to "debug" to log everything (including potentially personally-identifiable information!).
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
@@ -45,7 +49,7 @@ Rails.application.configure do
   config.active_support.report_deprecations = false
 
   # Replace the default in-process memory cache store with a durable alternative.
-  config.cache_store = :redis_cache_store
+  config.cache_store = :redis_cache_store, { url: ENV.fetch("REDIS_URL") }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
@@ -55,7 +59,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Only use :id for inspections in production.
-  config.active_record.attributes_for_inspect = [:id]
+  config.active_record.attributes_for_inspect = [ :id ]
 
   # Enable DNS rebinding protection and other `Host` header attacks.
   # config.hosts = [
@@ -66,16 +70,14 @@ Rails.application.configure do
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
-  config.action_mailer.default_url_options = {host: "venganzasdelpasado.com.ar"}
+  config.action_mailer.default_url_options = { host: "venganzasdelpasado.com.ar" }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "127.0.0.1",
+    address: "host.docker.internal",
     port: 25,
     domain: "venganzasdelpasado.com.ar",
     enable_starttls: false
   }
 
-  # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
-  # the I18n.default_locale when a translation cannot be found).
-  config.i18n.fallbacks = true
+  routes.default_url_options = { host: "venganzasdelpasado.com.ar", protocol: "https" }
 end

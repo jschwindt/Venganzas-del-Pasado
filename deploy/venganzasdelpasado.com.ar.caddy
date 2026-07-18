@@ -1,0 +1,42 @@
+www.venganzasdelpasado.com.ar {
+	tls {
+		dns cloudflare {$CLOUDFLARE_API_TOKEN}
+	}
+
+	redir https://venganzasdelpasado.com.ar{uri} permanent
+}
+
+venganzasdelpasado.com.ar {
+	tls {
+		dns cloudflare {$CLOUDFLARE_API_TOKEN}
+	}
+
+	import common venganzasdelpasado.com.ar
+
+	handle_path /system/* {
+		root * /var/www/venganzasdelpasado.com.ar/system
+		file_server
+	}
+
+	handle_path /uploads/* {
+		root * /var/www/venganzasdelpasado.com.ar/uploads
+		file_server
+	}
+
+	handle_path /sitemaps/* {
+		root * /var/www/venganzasdelpasado.com.ar/sitemaps
+		file_server
+	}
+
+	@audio_mp3 path_regexp audio_mp3 (?i)^/(st[0-5]|[0-9]{4})/.*[.]mp3$
+	handle @audio_mp3 {
+		root * /var/www/venganzasdelpasado.com.ar
+		file_server
+	}
+
+	handle {
+		reverse_proxy vdp-app:3000 {
+			header_up Host {host}
+		}
+	}
+}

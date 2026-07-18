@@ -1,0 +1,13 @@
+# Install on the host as /etc/logrotate.d/vdp.
+# copytruncate is used because Rails keeps production.log open while running.
+/var/log/vdp/production.log {
+  daily
+  rotate 14
+  maxsize 50M
+  missingok
+  notifempty
+  compress
+  delaycompress
+  copytruncate
+  create 0644 1001 1001
+}

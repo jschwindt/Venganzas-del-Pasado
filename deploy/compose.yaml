@@ -1,0 +1,102 @@
+services:
+  app:
+    image: registry.jps.ar:5000/vdp/app:${APP_IMAGE_TAG:-latest}
+    restart: unless-stopped
+    deploy:
+      mode: replicated
+      replicas: 1
+    environment:
+      RAILS_ENV: production
+      RACK_ENV: production
+      PORT: 3000
+      DATABASE_URL: ${DATABASE_URL:?Set DATABASE_URL in deploy/.env}
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE:?Set SECRET_KEY_BASE in deploy/.env}
+      REDIS_URL: ${REDIS_URL:-redis://valkey:6379/0}
+      MEILISEARCH_HOST: ${MEILISEARCH_HOST:-http://meilisearch:7700}
+      MEILISEARCH_API_KEY: ${MEILISEARCH_API_KEY:?Set MEILISEARCH_API_KEY in deploy/.env}
+      RAILS_ASSUME_SSL: ${RAILS_ASSUME_SSL:-true}
+      RAILS_FORCE_SSL: ${RAILS_FORCE_SSL:-true}
+      RAILS_LOG_LEVEL: ${RAILS_LOG_LEVEL:-info}
+      WEB_CONCURRENCY: ${WEB_CONCURRENCY:-2}
+      RAILS_MAX_THREADS: ${RAILS_MAX_THREADS:-3}
+      RECAPTCHA_SITE_KEY: ${RECAPTCHA_SITE_KEY:-}
+      RECAPTCHA_SECRET_KEY: ${RECAPTCHA_SECRET_KEY:-}
+      AUDIO_API_USER_EMAIL: ${AUDIO_API_USER_EMAIL:-}
+      AUDIO_API_SECRET_TOKEN: ${AUDIO_API_SECRET_TOKEN:-}
+    expose:
+      - "3000"
+    user: "1001:1001"
+    volumes:
+      - /var/www/venganzasdelpasado.com.ar:/var/www/venganzasdelpasado.com.ar
+      - /var/www/venganzasdelpasado.com.ar/system:/rails/public/system
+      - /var/www/venganzasdelpasado.com.ar/uploads:/rails/public/uploads
+      - /var/www/venganzasdelpasado.com.ar/sitemaps:/rails/public/sitemaps
+      # Create with: sudo mkdir -p /var/log/vdp && sudo chown -R 1001:1001 /var/log/vdp
+      - /var/log/vdp:/rails/log
+    networks:
+      backnet:
+        aliases:
+          - vdp-app
+      private:
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      valkey:
+        condition: service_healthy
+      meilisearch:
+        condition: service_healthy
+
+  valkey:
+    image: valkey/valkey:9.1.0-alpine
+    restart: unless-stopped
+    stop_grace_period: 30s
+    command:
+      - valkey-server
+      - --dir
+      - /data
+      - --appendonly
+      - "yes"
+      - --appendfsync
+      - everysec
+    volumes:
+      - vdp-valkey-data:/data
+    networks:
+      private:
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  meilisearch:
+    image: getmeili/meilisearch:v1.45.1
+    restart: unless-stopped
+    stop_grace_period: 30s
+    command: ["/bin/meilisearch", "--no-analytics"]
+    environment:
+      MEILI_MASTER_KEY: ${MEILISEARCH_API_KEY:?Set MEILISEARCH_API_KEY in deploy/.env}
+      MEILI_ENV: production
+      MEILI_DB_PATH: /meili_data
+    volumes:
+      - vdp-meilisearch-data:/meili_data
+    networks:
+      private:
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "--silent", "http://127.0.0.1:7700/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+networks:
+  backnet:
+    external: true
+  private:
+    internal: true
+
+volumes:
+  vdp-valkey-data:
+    name: vdp-valkey-data
+  vdp-meilisearch-data:
+    name: vdp-meilisearch-data

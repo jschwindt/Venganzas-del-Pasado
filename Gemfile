@@ -45,10 +45,6 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
-
-  gem "capistrano", "~> 3.19.2", require: false
-  gem "capistrano-passenger", require: false
-  gem "capistrano-rails", "~> 1.7.0", require: false
 end
 
 group :development do
@@ -70,7 +66,7 @@ gem "cancancan", "~> 3.6"
 gem "aasm", "~> 5.5"
 
 gem "devise", "~> 5.0"
-#gem "devise", github: "heartcombo/devise", branch: "main"
+# gem "devise", github: "heartcombo/devise", branch: "main"
 gem "friendly_id", "~> 5.5"
 gem "has_scope", "~> 0.8.2"
 gem "hiredis", "~> 0.6.3"

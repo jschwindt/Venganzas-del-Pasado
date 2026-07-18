@@ -6,7 +6,7 @@ set dotenv-load := true
 [doc('Upgrade gems')]
 [group('local-dev')]
 upgrade-gems:
-    bundle update
+    ./bin/bundler-audit check --update
 
 [group('local-dev')]
 dev:
@@ -21,6 +21,3 @@ test:
 audit:
     bundle-audit update
     bundle-audit check
-
-deploy:
-    bundle exec cap production deploy

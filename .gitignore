@@ -9,6 +9,8 @@
 
 # Ignore all environment files.
 /.env*
+/deploy/.env
+/deploy/.deploy-state/
 
 # Ignore all logfiles and tempfiles.
 /log/*

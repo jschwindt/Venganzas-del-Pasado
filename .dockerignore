@@ -9,6 +9,8 @@
 
 # Ignore all environment files.
 /.env*
+/deploy/.env
+/deploy/.deploy-state/
 
 # Ignore all default key files.
 /config/master.key
@@ -35,6 +37,14 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 /public/assets
+/public/system/
+/public/uploads/
+
+# Host-managed audio and publication trees must never enter the image context.
+/publish/
+/st?/
+/19??/
+/20??/
 
 # Ignore CI service files.
 /.github
