@@ -28,9 +28,10 @@ venganzasdelpasado.com.ar {
 		file_server
 	}
 
-	@audio_mp3 path_regexp audio_mp3 (?i)^/(st[0-5]|[0-9]{4})/.*[.]mp3$
+	@audio_mp3 path_regexp audio_mp3 (?i)^/(st[0-5]|[12][0-9]{3})/.*[.]mp3$
 	handle @audio_mp3 {
 		root * /var/www/venganzasdelpasado.com.ar
+		header Content-Disposition "attachment"
 		file_server
 	}
 
