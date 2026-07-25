@@ -47,7 +47,7 @@ services:
         condition: service_healthy
 
   valkey:
-    image: valkey/valkey:9.1.0-alpine
+    image: valkey/valkey:9-alpine
     restart: unless-stopped
     stop_grace_period: 30s
     command:
