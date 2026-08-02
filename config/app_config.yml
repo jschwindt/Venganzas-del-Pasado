@@ -1,5 +1,7 @@
 common: &common
   audios_root: "/Users/jschwindt/Projects/venganzas_del_pasado"
+  public_audio_base_url: <%= ENV.fetch("VDP_PUBLIC_AUDIO_BASE_URL", "https://venganzasdelpasado.com.ar") %>
+  refresh_audio_pipeline_outputs: true
   audios_folders:
     - /st0/
     - /st1/
@@ -13,6 +15,7 @@ development:
 
 test:
   <<: *common
+  refresh_audio_pipeline_outputs: false
 
 production:
   <<: *common

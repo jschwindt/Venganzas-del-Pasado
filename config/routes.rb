@@ -83,6 +83,15 @@ Rails.application.routes.draw do
   put("speech_to_text/start/:id" => "speech_to_text#start", :as => :speech_to_text_start)
   put("speech_to_text/update/:id" => "speech_to_text#update", :as => :speech_to_text_update)
 
+  namespace(:api) do
+    namespace(:audio_pipeline) do
+      get("shows/:date" => "shows#show")
+      post("publications" => "publications#create")
+      put("audios/:id/transcript" => "audios#transcript")
+      put("audios/:id/summary" => "audios#summary")
+    end
+  end
+
   root(to: "home#index")
 
   get("*path(.:format)" => "redirects#index")
