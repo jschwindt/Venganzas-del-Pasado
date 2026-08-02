@@ -151,17 +151,22 @@ bootstrap_current_release() {
 verify_running_release() {
   local container_id="$1"
   local current="$2"
+  local expected_image="$image_repository:$current"
   local running_image_id
   local expected_image_id
 
   [[ -n "$current" ]] || return 0
-  docker image inspect "$image_repository:$current" >/dev/null 2>&1 || \
-    die "state points to $current, but that image is not available locally"
+
+  if ! docker image inspect "$expected_image" >/dev/null 2>&1; then
+    echo "Recorded current image $expected_image is not available locally; pulling it to verify the running container..." >&2
+    docker pull "$expected_image" >/dev/null || \
+      die "state points to $current, but that image is unavailable locally and could not be pulled"
+  fi
 
   running_image_id="$(container_image_id "$container_id")"
-  expected_image_id="$(docker image inspect --format '{{.Id}}' "$image_repository:$current")"
+  expected_image_id="$(docker image inspect --format '{{.Id}}' "$expected_image")"
   [[ "$running_image_id" == "$expected_image_id" ]] || \
-    die "the running app image does not match the recorded current release ($current)"
+    die "the running app image ($running_image_id) does not match the recorded current release $current ($expected_image_id)"
 }
 
 remove_containers_created_during_rollout() {
