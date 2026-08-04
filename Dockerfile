@@ -54,6 +54,7 @@ COPY config ./config
 COPY db ./db
 COPY lib ./lib
 COPY public ./public
+COPY vendor ./vendor
 
 RUN bundle exec bootsnap precompile -j 1 app/ lib/
 RUN DATABASE_URL="mysql2://root@127.0.0.1/vdp_build" \
