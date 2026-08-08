@@ -51,6 +51,27 @@ manualmente al servidor; el workflow sólo publica la imagen y ejecuta
    bash -n rolling-update.sh
    ```
 
+## Tareas programadas
+
+Ofelia ejecuta dentro del contenedor `app`, usando la zona horaria
+`America/Argentina/Buenos_Aires`:
+
+- `bin/bundler-audit check --update`, todos los días a las 08:00.
+- `bundle exec rake vdp:contribuciones:publish`, todos los días a las 05:00.
+
+El perfil se habilita con `COMPOSE_PROFILES=scheduler` en `deploy/.env`. Para
+iniciar o verificar el scheduler en el host:
+
+```sh
+docker compose up -d ofelia
+docker compose ps ofelia
+docker compose logs --tail 100 ofelia
+```
+
+El rolling update detiene Ofelia durante el período en que conviven dos
+contenedores `app` y lo recrea al terminar, para evitar ejecuciones duplicadas
+y tomar las etiquetas de la nueva imagen.
+
 ## GitHub Actions
 
 El workflow se ejecuta con cada push a `prod` y requiere:

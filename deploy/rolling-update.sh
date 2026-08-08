@@ -19,6 +19,8 @@ rollout_snapshot_taken=false
 previous_container_id=""
 previous_container_stopped=false
 promotion_complete=false
+scheduler_was_running=false
+scheduler_paused=false
 
 usage() {
   cat <<'USAGE'
@@ -169,6 +171,25 @@ verify_running_release() {
     die "the running app image ($running_image_id) does not match the recorded current release $current ($expected_image_id)"
 }
 
+scheduler_container() {
+  docker compose ps --quiet ofelia 2>/dev/null || true
+}
+
+pause_scheduler() {
+  if [[ -n "$(scheduler_container)" ]]; then
+    scheduler_was_running=true
+    scheduler_paused=true
+    docker compose stop ofelia
+  fi
+}
+
+restore_scheduler() {
+  if [[ "$scheduler_was_running" == true && "$scheduler_paused" == true ]]; then
+    docker compose up -d --force-recreate --no-deps ofelia
+    scheduler_paused=false
+  fi
+}
+
 remove_containers_created_during_rollout() {
   local after
   local candidate
@@ -198,6 +219,7 @@ cleanup() {
       previous_container_stopped=false
     fi
   fi
+  restore_scheduler
   exit "$status"
 }
 
@@ -281,10 +303,11 @@ perform_rollout() {
   [[ "$target_tag" != "$current" ]] || die "release $target_tag is already running"
 
   pull_release "$allow_local_fallback"
+  pause_scheduler
   if (( running_count == 1 )); then
-    docker compose up -d --scale "$app_service=2" --no-recreate "$app_service"
+    docker compose up -d --no-deps --scale "$app_service=2" --no-recreate "$app_service"
   else
-    docker compose up -d --scale "$app_service=1" --no-recreate "$app_service"
+    docker compose up -d --no-deps --scale "$app_service=1" --no-recreate "$app_service"
   fi
 
   after_all="$(all_app_containers)"
@@ -302,6 +325,7 @@ perform_rollout() {
 
   promotion_complete=true
   write_state "$target_tag" "$current"
+  restore_scheduler
 
   echo "Release $target_tag is healthy and active."
   if [[ -n "$current" ]]; then

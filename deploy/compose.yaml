@@ -46,6 +46,37 @@ services:
         condition: service_healthy
       meilisearch:
         condition: service_healthy
+    labels:
+      - "ofelia.enabled=true"
+      # Todos los días a las 08:00.
+      - "ofelia.job-exec.gem_audit.schedule=0 0 8 * * *"
+      - "ofelia.job-exec.gem_audit.command=bin/bundler-audit check --update"
+      - "ofelia.job-exec.gem_audit.user=1001:1001"
+      - "ofelia.job-exec.gem_audit.no-overlap=true"
+      # Todos los días a las 05:00.
+      - "ofelia.job-exec.publish_contributions.schedule=0 0 5 * * *"
+      - "ofelia.job-exec.publish_contributions.command=bundle exec rake vdp:contribuciones:publish"
+      - "ofelia.job-exec.publish_contributions.user=1001:1001"
+      - "ofelia.job-exec.publish_contributions.no-overlap=true"
+
+  ofelia:
+    image: mcuadros/ofelia:latest
+    profiles:
+      - scheduler
+    restart: unless-stopped
+    command: daemon --docker
+    depends_on:
+      - app
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "10"
+    environment:
+      TZ: America/Argentina/Buenos_Aires
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
 
   valkey:
     image: valkey/valkey:9-alpine
