@@ -21,3 +21,5 @@ test:
 audit:
     bundle-audit update
     bundle-audit check
+    bun audit
+    bin/importmap audit

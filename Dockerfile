@@ -64,7 +64,7 @@ RUN DATABASE_URL="mysql2://root@127.0.0.1/vdp_build" \
     RECAPTCHA_SECRET_KEY="build-only-placeholder" \
     SECRET_KEY_BASE_DUMMY=1 \
     ./bin/rails assets:precompile
-RUN rm -rf node_modules tmp/cache package.json bun.lockb
+RUN rm -rf node_modules tmp/cache
 
 FROM base
 
@@ -75,6 +75,7 @@ RUN groupadd --system --gid 1001 rails && \
 
 COPY --chown=rails:rails --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --chown=rails:rails --from=build /rails /rails
+COPY --from=bun /usr/local/bin/bun /usr/local/bin/bun
 
 RUN mkdir -p log tmp/pids tmp/cache storage public/uploads && \
     chown -R rails:rails log tmp storage public/uploads && \

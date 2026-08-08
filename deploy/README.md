@@ -57,6 +57,8 @@ Ofelia ejecuta dentro del contenedor `app`, usando la zona horaria
 `America/Argentina/Buenos_Aires`:
 
 - `bin/bundler-audit check --update`, todos los días a las 08:00.
+- `bun audit`, todos los días a las 08:05.
+- `bin/importmap audit`, todos los días a las 08:10.
 - `bundle exec rake vdp:contribuciones:publish`, todos los días a las 05:00.
 
 El perfil se habilita con `COMPOSE_PROFILES=scheduler` en `deploy/.env`. Para
