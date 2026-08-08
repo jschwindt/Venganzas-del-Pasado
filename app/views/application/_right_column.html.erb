@@ -14,7 +14,7 @@
 <% cache [:daily_archive, Post.last_updated], expires_in: 2.days do %>
   <%= render 'layouts/widgets/daily_archive' %>
 <% end %>
-<%= render 'layouts/widgets/referrals' %>
+<%# <%= render 'layouts/widgets/referrals' %> %>
 <% cache [:monthly_archive, Post.last_updated], expires_in: 2.days do %>
   <%= render 'layouts/widgets/monthly_archive' %>
 <% end %>
