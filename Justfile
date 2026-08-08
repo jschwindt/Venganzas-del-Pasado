@@ -19,7 +19,4 @@ test:
 
 [group('local-dev')]
 audit:
-    bundle-audit update
-    bundle-audit check
-    bun audit
-    bin/importmap audit
+    bin/security-audit

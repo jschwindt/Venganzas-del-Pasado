@@ -1,4 +1,14 @@
 namespace :vdp do
+  desc "Audita dependencias y notifica vulnerabilidades"
+  task scheduled_security_audit: :environment do
+    report = SecurityAudit::ScheduledRun.new(
+      runner: SecurityAudit::Runner.new(root: Rails.root)
+    ).call
+
+    puts SecurityAudit::Formatter.call(report)
+    exit report.exit_code unless report.exit_code.zero?
+  end
+
   desc 'Publica contribuciones'
   namespace :contribuciones do
     task publish: :environment do

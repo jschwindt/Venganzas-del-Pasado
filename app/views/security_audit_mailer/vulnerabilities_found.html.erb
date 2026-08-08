@@ -1,0 +1,28 @@
+<p>
+  La auditoría de seguridad encontró <%= pluralize(@report.findings.size, "vulnerabilidad", "vulnerabilidades") %>.
+</p>
+
+<% @findings_by_scanner.each do |scanner, findings| %>
+  <h2><%= scanner %></h2>
+  <ul>
+    <% findings.each do |finding| %>
+      <li>
+        <strong><%= finding.package %></strong>
+        [<%= finding.severity %>]:
+        <%= finding.description %>
+        <% if finding.identifier.present? %>— <%= finding.identifier %><% end %>
+        <% if finding.affected_versions.present? %>— versiones afectadas: <%= finding.affected_versions %><% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% if @report.incomplete? %>
+  <h2>Auditoría incompleta</h2>
+  <p>También se produjeron los siguientes errores operativos:</p>
+  <ul>
+    <% @report.errors.each do |error| %>
+      <li><strong><%= error.scanner %>:</strong> <%= error.message %></li>
+    <% end %>
+  </ul>
+<% end %>

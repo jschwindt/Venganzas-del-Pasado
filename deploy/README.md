@@ -56,9 +56,11 @@ manualmente al servidor; el workflow sólo publica la imagen y ejecuta
 Ofelia ejecuta dentro del contenedor `app`, usando la zona horaria
 `America/Argentina/Buenos_Aires`:
 
-- `bin/bundler-audit check --update`, todos los días a las 08:00.
-- `bun audit`, todos los días a las 08:05.
-- `bin/importmap audit`, todos los días a las 08:10.
+- `bin/rails vdp:scheduled_security_audit`, todos los días a las 08:00. La
+  tarea audita gems, dependencias de Bun e importmap y envía un único mail a
+  `juan@schwindt.org` cuando encuentra vulnerabilidades. Una ejecución limpia
+  no envía mail; los errores operativos quedan en los logs y hacen fallar el
+  job sin enviar una alerta.
 - `bundle exec rake vdp:contribuciones:publish`, todos los días a las 05:00.
 
 El perfil se habilita con `COMPOSE_PROFILES=scheduler` en `deploy/.env`. Para

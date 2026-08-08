@@ -49,20 +49,10 @@ services:
     labels:
       - "ofelia.enabled=true"
       # Todos los días a las 08:00.
-      - "ofelia.job-exec.gem_audit.schedule=0 0 8 * * *"
-      - "ofelia.job-exec.gem_audit.command=bin/bundler-audit check --update"
-      - "ofelia.job-exec.gem_audit.user=1001:1001"
-      - "ofelia.job-exec.gem_audit.no-overlap=true"
-      # Todos los días a las 08:05.
-      - "ofelia.job-exec.javascript_audit.schedule=0 5 8 * * *"
-      - "ofelia.job-exec.javascript_audit.command=bun audit"
-      - "ofelia.job-exec.javascript_audit.user=1001:1001"
-      - "ofelia.job-exec.javascript_audit.no-overlap=true"
-      # Todos los días a las 08:10.
-      - "ofelia.job-exec.importmap_audit.schedule=0 10 8 * * *"
-      - "ofelia.job-exec.importmap_audit.command=bin/importmap audit"
-      - "ofelia.job-exec.importmap_audit.user=1001:1001"
-      - "ofelia.job-exec.importmap_audit.no-overlap=true"
+      - "ofelia.job-exec.security_audit.schedule=0 0 8 * * *"
+      - "ofelia.job-exec.security_audit.command=bin/rails vdp:scheduled_security_audit"
+      - "ofelia.job-exec.security_audit.user=1001:1001"
+      - "ofelia.job-exec.security_audit.no-overlap=true"
       # Todos los días a las 05:00.
       - "ofelia.job-exec.publish_contributions.schedule=0 0 5 * * *"
       - "ofelia.job-exec.publish_contributions.command=bundle exec rake vdp:contribuciones:publish"
