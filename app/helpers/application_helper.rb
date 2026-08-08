@@ -40,15 +40,7 @@ module ApplicationHelper
   def markdown_format(text, options = {})
     return unless text.present?
 
-    rndr = Redcarpet::Render::HTML.new(options.reverse_merge(filter_html: true, hard_wrap: true))
-    markdown = Redcarpet::Markdown.new(
-      rndr,
-      autolink: true,
-      strikethrough: true,
-      no_intra_emphasis: true,
-      space_after_headers: true
-    )
-    markdown.render(text).html_safe
+    MarkdownRenderer.render(text, render_options: options).html_safe
   end
 
   def timeago(time, options = {})
