@@ -53,8 +53,8 @@ services:
       - "ofelia.job-exec.security_audit.command=bin/rails vdp:scheduled_security_audit"
       - "ofelia.job-exec.security_audit.user=1001:1001"
       - "ofelia.job-exec.security_audit.no-overlap=true"
-      # Todos los días a las 05:00.
-      - "ofelia.job-exec.publish_contributions.schedule=0 0 5 * * *"
+      # Cada hora a las y 30 minutos
+      - "ofelia.job-exec.publish_contributions.schedule=0 30 * * * *"
       - "ofelia.job-exec.publish_contributions.command=bundle exec rake vdp:contribuciones:publish"
       - "ofelia.job-exec.publish_contributions.user=1001:1001"
       - "ofelia.job-exec.publish_contributions.no-overlap=true"
