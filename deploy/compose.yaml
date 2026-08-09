@@ -1,3 +1,5 @@
+name: vdp
+
 services:
   app:
     image: registry.jps.ar:5000/vdp/app:${APP_IMAGE_TAG:-latest}
@@ -64,7 +66,11 @@ services:
     profiles:
       - scheduler
     restart: unless-stopped
-    command: daemon --docker
+    command:
+      - daemon
+      - --docker
+      - --docker-filter
+      - label=com.docker.compose.project=vdp
     depends_on:
       - app
     logging:
