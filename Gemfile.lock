@@ -398,8 +398,8 @@ GEM
       tsort
     recaptcha (5.21.2)
     redcarpet (3.6.1)
-    redis (5.4.1)
-      redis-client (>= 0.22.0)
+    redis (6.0.0)
+      redis-client (= 0.30.1)
     redis-client (0.30.1)
       connection_pool
     regexp_parser (2.12.0)
@@ -553,7 +553,7 @@ DEPENDENCIES
   rails_icons (~> 1.4)
   recaptcha (~> 5.21)
   redcarpet (~> 3.6)
-  redis (~> 5.4)
+  redis (~> 6.0)
   rubocop-rails-omakase
   selenium-webdriver
   simplecov
