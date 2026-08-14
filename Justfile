@@ -8,6 +8,11 @@ set dotenv-load := true
 upgrade-gems:
     bundle update --all
 
+[doc('Upgrade JavaScript packages')]
+[group('local-dev')]
+upgrade-packages:
+    bun update
+
 [group('local-dev')]
 dev:
     bin/dev
