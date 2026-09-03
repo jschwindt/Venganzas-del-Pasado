@@ -78,7 +78,7 @@ gem "redcarpet", "~> 3.6"
 gem "redis", "~> 5.4"
 gem "sitemap_generator", "~> 6.3"
 gem "httpx", "~> 1.6"
-gem "carrierwave", "~> 3.0"
+gem "carrierwave", "~> 3.1"
 gem "watu_table_builder", require: "table_builder"
 gem "marksmith", github: "jschwindt/marksmith", branch: "main"
 
