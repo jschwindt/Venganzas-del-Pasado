@@ -465,7 +465,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 4.0)
       websocket (~> 1.0)
-    simplecov (1.1.1)
+    simplecov (1.2.0)
     sitemap_generator (6.3.0)
       builder (~> 3.0)
     ssrf_filter (1.5.0)
