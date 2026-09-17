@@ -202,14 +202,14 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
     hiredis (0.6.3)
-    http-2 (1.2.1)
+    http-2 (1.2.3)
     http-cookie (1.1.6)
       domain_name (~> 0.5)
     httparty (0.24.2)
       csv
       mini_mime (>= 1.0.0)
       multi_xml (>= 0.5.2)
-    httpx (1.8.1)
+    httpx (1.8.4)
       http-2 (>= 1.2.0)
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
@@ -537,7 +537,7 @@ DEPENDENCIES
   friendly_id (~> 5.5)
   has_scope (~> 0.8.2)
   hiredis (~> 0.6.3)
-  httpx (~> 1.6)
+  httpx (~> 1.8)
   importmap-rails
   inherited_resources (~> 2.1)
   jbuilder
