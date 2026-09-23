@@ -73,12 +73,16 @@ gem "hiredis", "~> 0.6.3"
 gem "inherited_resources", "~> 2.1"
 gem "kaminari", "~> 1.2"
 gem "meilisearch-rails", "~> 0.16.0"
+# HTTParty 0.24.2, used by MeiliSearch, still passes the removed quirks_mode option.
+gem "json", "< 3"
 gem "recaptcha", "~> 5.21"
 gem "redcarpet", "~> 3.6"
 gem "redis", "~> 5.4"
 gem "sitemap_generator", "~> 6.3"
 gem "httpx", "~> 1.6"
 gem "carrierwave", "~> 3.0"
+# image_processing 2 no longer installs a processing backend.
+gem "mini_magick", "~> 5.0"
 gem "watu_table_builder", require: "table_builder"
 gem "marksmith", github: "jschwindt/marksmith", branch: "main"
 
