@@ -26,5 +26,17 @@ module Marksmith
       assert_select "turbo-stream[target='markdown-preview'] em", count: 0
       assert_select "turbo-stream[target='markdown-preview'] u", count: 0
     end
+
+    test "sanitizes executable content while preserving markdown" do
+      post markdown_previews_path, params: {
+        body: "**seguro** <script>alert(1)</script> [mal](javascript:alert(1))",
+        element_id: "markdown-preview"
+      }, as: :turbo_stream
+
+      assert_response :success
+      assert_select "turbo-stream[target='markdown-preview'] strong", text: "seguro"
+      assert_select "script", count: 0
+      assert_select "a[href^='javascript:']", count: 0
+    end
   end
 end

@@ -40,14 +40,14 @@
   </div>
   <% if post.content? %>
     <div class="post-content content">
-      <%= markdown_format post.content, filter_html: false %>
+      <%= markdown_format post.content %>
     </div>
   <% end %>
   <% if @transcription.present? %>
     <a name="transcription"></a>
     <div class="post-transcription content">
       <h4>Transcripción automática</h4>
-      <%= markdown_format @transcription, filter_html: false %>
+      <%= markdown_format @transcription %>
     </div>
   <% end %>
   <nav class="level post-footer">

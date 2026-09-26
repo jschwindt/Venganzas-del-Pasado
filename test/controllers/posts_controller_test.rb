@@ -20,6 +20,18 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_select "img[alt='Compartir en Twitter']", count: 1
   end
 
+  test "renders post markdown without executable content" do
+    post = posts(:published)
+    post.update!(content: "**contenido** <script>alert(1)</script> [mal](javascript:alert(1))")
+
+    get post_url(post)
+
+    assert_response :success
+    assert_select ".post-content strong", text: "contenido"
+    assert_select ".post-content script", count: 0
+    assert_select ".post-content a[href^='javascript:']", count: 0
+  end
+
   test "should get archive" do
     get posts_archive_url year: 2010
     assert_response :success

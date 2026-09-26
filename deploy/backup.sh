@@ -5,10 +5,6 @@ set -euo pipefail
 SYNC="aws s3 sync"
 SYNC_OPT="--no-progress"
 
-log() {
-  echo "[$(date '+%Y-%m-%d %H:%M:%S')] [VdP] $*"
-}
-
 usage() {
   echo "Usage: $(basename "$0") TARGET_DIR" >&2
 }
@@ -17,6 +13,10 @@ if [[ $# -lt 1 || -z "${1:-}" ]]; then
   usage
   exit 1
 fi
+
+log() {
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] [VdP] $*"
+}
 
 # Se recibe TARGET_DIR para mantener el contrato común de los backups,
 # aunque este proyecto sincroniza uploads directamente a S3.

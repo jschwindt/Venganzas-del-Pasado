@@ -17,7 +17,6 @@ module Marksmith
     def render
       MarkdownRenderer.render(
         @body,
-        render_options: { filter_html: false },
         extensions: PREVIEW_EXTENSIONS
       )
     end

@@ -8,6 +8,19 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "renders comment markdown without executable content" do
+    comment = comments(:one)
+    comment.update!(content: "_comentario_ <img src=x onerror=alert(1)> [mal](javascript:alert(1))")
+
+    get post_comment_url(comment.post, comment)
+
+    assert_response :success
+    assert_select "article.media .media-content em", text: "comentario"
+    assert_select "article.media .media-content img[src='x']", count: 1
+    assert_select "article.media .media-content img[onerror]", count: 0
+    assert_select "article.media .media-content a[href^='javascript:']", count: 0
+  end
+
   test "should not allow to create comment if logged out" do
     assert_raises CanCan::AccessDenied do
       post post_comments_url(posts(:published)), params: {comment: {content: "Hola"}}
