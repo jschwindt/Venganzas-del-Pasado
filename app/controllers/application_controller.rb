@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
   def after_sign_in_path_for(resource_or_scope)
-    request.env["omniauth.origin"] || stored_location_for(resource_or_scope) || root_path
+    stored_location_for(resource_or_scope) || root_path
   end
 
   layout :layout_by_resource

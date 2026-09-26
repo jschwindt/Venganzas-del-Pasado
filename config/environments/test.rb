@@ -3,6 +3,10 @@
 # your test database is "scratch space" for the test suite and is wiped
 # and recreated between test runs. Don't rely on the data there!
 
+# Match the public, development-only key used by docker/docker-compose.yml.
+# Tests must never depend on encrypted credentials or production secrets.
+ENV["MEILISEARCH_API_KEY"] ||= "development-only-key-at-least-16-bytes"
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -17,7 +21,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Configure public file server for tests with cache-control for performance.
-  config.public_file_server.headers = {"cache-control" => "public, max-age=3600"}
+  config.public_file_server.headers = { "cache-control" => "public, max-age=3600" }
 
   # Show full error reports.
   config.consider_all_requests_local = true
@@ -48,5 +52,5 @@ Rails.application.configure do
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
 
-  config.action_mailer.default_url_options = {host: "http://localhost.test"}
+  config.action_mailer.default_url_options = { host: "http://localhost.test" }
 end

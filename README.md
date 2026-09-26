@@ -25,8 +25,6 @@ de la wishlist.
 *   Redirects del sitio viejo para mantener SEO.  ✔
 *   Player en popup de manera de poder seguir escuchando mientras se navega el
     sitio.  ✔
-*   Página en Facebook con navegación sencilla que permita escuchar los
-    audios.
 *   Limitación del largo de un comentario y la frecuencia (tal vez con lo del
     karma alcance).
 *   RSS feeds de posts ✔, torrents ✘ y, tal vez, comentarios ✘.
@@ -37,11 +35,9 @@ de la wishlist.
     admin.  ✔
 *   Post con markdown y sin html.  ✔
 *   Comentarios con markdown.  ✔
-*   Página del usuario con su gravatar (más grande), todos sus comentarios y
-    link a perfil en FB, si tiene.  ✔
+*   Página del usuario con su gravatar (más grande) y todos sus comentarios. ✔
 *   Admin sencillo que sirva inicialmente para moderar, cambiar karma
     manualmente y crear posts.  ✔
-*   Omniauth para login con Facebook. ✔ [Eliminado debido al cambio constante de condiciones de FB]
 *   Gravatars. ✔
 *   Migración del contenido actual: Post, audios, comentarios, usuarios y tal
     vez páginas. ✔

@@ -7,9 +7,13 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore all environment files.
-/.env*
-/deploy/.env
+# Ignore all environment files at any depth, but keep documented templates.
+.env
+.env.*
+**/.env
+**/.env.*
+!**/.env.example
+!**/.env.sample
 /deploy/.deploy-state/
 
 # Ignore all default key files.

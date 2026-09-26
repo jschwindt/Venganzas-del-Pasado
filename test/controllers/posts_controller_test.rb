@@ -16,6 +16,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test "should show post" do
     get post_url posts(:published)
     assert_response :success
+    assert_select "img[alt='Compartir en Facebook']", count: 1
+    assert_select "img[alt='Compartir en Twitter']", count: 1
   end
 
   test "should get archive" do

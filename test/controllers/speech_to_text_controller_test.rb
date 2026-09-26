@@ -6,8 +6,20 @@ class SpeechToTextControllerTest < ActionDispatch::IntegrationTest
     authorization: "123456"
   }
 
+  setup do
+    @previous_audio_api_user_email = ENV["AUDIO_API_USER_EMAIL"]
+    @previous_audio_api_secret_token = ENV["AUDIO_API_SECRET_TOKEN"]
+    ENV["AUDIO_API_USER_EMAIL"] = users(:one).email
+    ENV["AUDIO_API_SECRET_TOKEN"] = HEADERS.fetch(:authorization)
+  end
+
+  teardown do
+    ENV["AUDIO_API_USER_EMAIL"] = @previous_audio_api_user_email
+    ENV["AUDIO_API_SECRET_TOKEN"] = @previous_audio_api_secret_token
+  end
+
   test "should not authorize without credentials" do
-    get speech_to_text_next_url, headers: {accept: "application/json"}
+    get speech_to_text_next_url, headers: { accept: "application/json" }
     assert_response :unauthorized
   end
 

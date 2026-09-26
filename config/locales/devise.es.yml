@@ -27,9 +27,6 @@ es:
         subject: "Email cambiado"
       password_change:
         subject: "Contraseña cambiada"
-    omniauth_callbacks:
-      success: 'Correctamente autorizado con la cuenta de  %{kind}.'
-      failure: 'No pudiste ingresar con la cuenta de %{kind}, causa: "%{reason}".'
     passwords:
       no_token: "No se puede acceder a esta página si no es viniendo desde un email de restablecimiento de contraseña. Asegurate de que el link esté completo."
       send_instructions: "Recibirás un email con instrucciones sobre cómo restablecer tu contraseña."

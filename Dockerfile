@@ -62,7 +62,10 @@ RUN DATABASE_URL="mysql2://root@127.0.0.1/vdp_build" \
     MEILISEARCH_API_KEY="build-only-placeholder" \
     RECAPTCHA_SITE_KEY="build-only-placeholder" \
     RECAPTCHA_SECRET_KEY="build-only-placeholder" \
-    SECRET_KEY_BASE_DUMMY=1 \
+    AUDIO_API_USER_EMAIL="build-only@example.com" \
+    AUDIO_API_SECRET_TOKEN="build-only-placeholder" \
+    VDP_AUDIO_PIPELINE_API_TOKEN="build-only-placeholder" \
+    SECRET_KEY_BASE="build-only-placeholder" \
     ./bin/rails assets:precompile
 RUN rm -rf node_modules tmp/cache
 

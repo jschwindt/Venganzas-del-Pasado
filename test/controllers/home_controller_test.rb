@@ -6,6 +6,8 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
   test "should get home" do
     get root_url
     assert_response :success
+    assert_select "a[href=?]", new_user_session_path, text: "Iniciá sesión"
+    assert_select ".navbar-end > a.navbar-item img", count: 0
   end
 
   test "should get home logged in" do

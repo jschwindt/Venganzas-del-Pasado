@@ -4,6 +4,10 @@ require "fileutils"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Production secrets are supplied by the deployment environment. Do not fall
+  # back to Rails encrypted credentials, which are intentionally not shipped.
+  config.secret_key_base = ENV.fetch("SECRET_KEY_BASE")
+
   # Code is not reloaded between requests.
   config.enable_reloading = false
 

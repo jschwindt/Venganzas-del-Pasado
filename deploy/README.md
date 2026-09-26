@@ -38,7 +38,12 @@ manualmente al servidor; el workflow sólo publica la imagen y ejecuta
    ```
 
 3. Copiar el contenido de `deploy/` a `/opt/docker/vdp`, crear `.env` desde
-   `.env.sample` y completar los secretos. Nunca copiar `.env` al repositorio.
+   `.env.sample`, completar los secretos y limitar su lectura al usuario del
+   deploy. Nunca copiar `.env` al repositorio.
+
+   ```sh
+   chmod 600 /opt/docker/vdp/.env
+   ```
 
 4. Verificar que MySQL acepte conexiones desde la red bridge de Docker y que
    Postfix acepte SMTP desde `host.docker.internal`.
@@ -86,6 +91,36 @@ El workflow se ejecuta con cada push a `prod` y requiere:
 
 Los cambios en `compose.yaml`, Caddy o scripts deben copiarse manualmente al
 host antes del push que los necesite.
+
+## Limpieza del historial por secretos expuestos
+
+La eliminación de archivos en una rama no los elimina del historial. Después
+de revocar las credenciales antiguas y coordinar el corte con colaboradores,
+la limpieza de C1 debe hacerse desde un clon nuevo con `git-filter-repo` 2.47 o
+superior:
+
+```sh
+git clone --mirror git@github.com:jschwindt/Venganzas-del-Pasado.git vdp-clean.git
+cd vdp-clean.git
+git filter-repo --sensitive-data-removal --invert-paths \
+  --path config/credentials.yml.enc \
+  --path config/credentials/development.key \
+  --path config/credentials/development.yml.enc \
+  --path config/credentials/production.key \
+  --path config/credentials/production.yml.enc \
+  --path config/credentials/test.key \
+  --path config/credentials/test.yml.enc \
+  --path docker/.env \
+  --path docker/.env.example
+git remote add origin git@github.com:jschwindt/Venganzas-del-Pasado.git
+git push --force --mirror origin
+```
+
+El force-push cambia los hashes de commits de todas las referencias afectadas.
+Los colaboradores deben reclonar o limpiar sus clones sin mezclar el historial
+anterior. También hay que coordinar la eliminación de forks y pedir a GitHub
+que purgue vistas cacheadas o referencias de pull requests que sigan exponiendo
+los objetos antiguos.
 
 ## Primer despliegue
 
