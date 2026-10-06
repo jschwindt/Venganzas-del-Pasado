@@ -63,7 +63,7 @@ end
 
 gem "cancancan", "~> 3.6"
 
-gem "aasm", "~> 5.5"
+gem "aasm", "~> 6.0"
 
 gem "devise", "~> 5.0"
 # gem "devise", github: "heartcombo/devise", branch: "main"
