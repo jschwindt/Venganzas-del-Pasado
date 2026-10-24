@@ -258,7 +258,7 @@ GEM
     matrix (0.4.3)
     meilisearch (0.32.0)
       httparty (~> 0.22)
-    meilisearch-rails (0.16.0)
+    meilisearch-rails (0.17.0)
       meilisearch (~> 0.32.0)
       mutex_m (~> 0.2)
     metainspector (5.17.3)
@@ -522,7 +522,7 @@ DEPENDENCIES
   kaminari (~> 1.2)
   letter_opener
   marksmith!
-  meilisearch-rails (~> 0.16.0)
+  meilisearch-rails (~> 0.17.0)
   metainspector (~> 5.17)
   mini_magick (~> 5.0)
   mysql2 (~> 0.5)
@@ -634,7 +634,7 @@ CHECKSUMS
   marksmith (0.4.8.pre)
   matrix (0.4.3) sha256=a0d5ab7ddcc1973ff690ab361b67f359acbb16958d1dc072b8b956a286564c5b
   meilisearch (0.32.0) sha256=ef6c37f3e53da6c429d0bd81a8d8794a6c50d1bd7d07cbca813618c203576dc4
-  meilisearch-rails (0.16.0) sha256=6f1f06075c7043c59ba0a30d4cf76c3d7374da270d73f5660ea4fe9491a1ad9c
+  meilisearch-rails (0.17.0) sha256=9872d0d562b7d66330cda4ea809aacf9fc75909eeed2f4dc5ca8025c9455da54
   metainspector (5.17.3) sha256=1f37676f27e7a8c0a8944ab168d140e2fc28faa5188eddbffc1735977a16b7bc
   mini_magick (5.4.0) sha256=f120af581d9ed4ec52c57f35a67a605d112bb1d8f582d1415b147fda42d11d78
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef

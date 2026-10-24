@@ -72,7 +72,7 @@ gem "has_scope", "~> 0.8.2"
 gem "hiredis", "~> 0.6.3"
 gem "inherited_resources", "~> 2.1"
 gem "kaminari", "~> 1.2"
-gem "meilisearch-rails", "~> 0.16.0"
+gem "meilisearch-rails", "~> 0.17.0"
 # HTTParty 0.24.2, used by MeiliSearch, still passes the removed quirks_mode option.
 gem "json", "< 3"
 gem "recaptcha", "~> 5.21"
