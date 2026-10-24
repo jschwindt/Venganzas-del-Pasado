@@ -1,6 +1,7 @@
 {
   "name": "app",
   "private": "true",
+  "packageManager": "bun@1.4.4",
   "dependencies": {
     "@avo-hq/marksmith": "^0.4.8",
     "bulma": "^1.0.4",

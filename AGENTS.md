@@ -10,8 +10,9 @@ completamente actualizado.
 
 ## Stack
 
-- Ruby `4.0.6`.
+- Ruby `4.0.9`.
 - Rails `8.1.1`.
+- Bun `1.4.4`.
 - Node `22.18.0`.
 - Base de datos MySQL.
 - Valkey, compatible con Redis, para cache/servicios.

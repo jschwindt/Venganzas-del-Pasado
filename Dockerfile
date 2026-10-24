@@ -4,8 +4,8 @@
 # Production image for the Rails app only. Caddy handles TLS and host-mounted
 # media while Rails serves its digest-stamped assets.
 
-ARG RUBY_VERSION=4.0.6
-ARG BUN_VERSION=1.2.23
+ARG RUBY_VERSION=4.0.9
+ARG BUN_VERSION=1.4.4
 
 FROM docker.io/oven/bun:${BUN_VERSION}-slim AS bun
 
