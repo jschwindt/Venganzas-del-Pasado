@@ -92,4 +92,4 @@ gem "bulma-rails", "~> 1.0"
 
 gem "rails_icons", "~> 1.4"
 
-gem "metainspector", "~> 5.17"
+gem "metainspector", "~> 5.20"
