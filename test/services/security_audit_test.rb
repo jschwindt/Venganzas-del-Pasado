@@ -110,7 +110,7 @@ class SecurityAuditTest < ActiveSupport::TestCase
         [ "", "update failed", Status.new(exitstatus: 2) ]
       when [ "bin/bundler-audit", "check", "--format", "json" ]
         [ gem_payload, "", Status.new(exitstatus: 0) ]
-      when [ "bun", "audit", "--json" ]
+      when [ "bun", "audit", "--json", "--ignore", "GHSA-fc5q-39xc-vjpf" ]
         [ "", "network failed", Status.new(exitstatus: 2) ]
       end
     end
@@ -145,6 +145,24 @@ class SecurityAuditTest < ActiveSupport::TestCase
     assert_equal 2, report.exit_code
   end
 
+  test "filters Bun advisories ignored by GHSA URL" do
+    payload = {
+      "picomatch" => [
+        {
+          "id" => 1_247_710,
+          "url" => "https://github.com/advisories/GHSA-fc5q-39xc-vjpf",
+          "severity" => "high",
+          "title" => "picomatch vulnerability"
+        }
+      ]
+    }
+
+    report = runner(gem_check: gem_payload, bun_check: JSON.generate(payload), importmap: []).run
+
+    assert_empty report.findings
+    assert_empty report.errors
+  end
+
   test "normalizes npm audit v2 vulnerability payloads" do
     payload = {
       "vulnerabilities" => {
@@ -177,7 +195,7 @@ class SecurityAuditTest < ActiveSupport::TestCase
       responses = {
         [ "bin/bundler-audit", "update", "--quiet" ] => [ "", "", Status.new(exitstatus: 0) ],
         [ "bin/bundler-audit", "check", "--format", "json" ] => [ gem_check, "", Status.new(exitstatus: gem_status) ],
-        [ "bun", "audit", "--json" ] => [ bun_check, "", Status.new(exitstatus: bun_status) ]
+        [ "bun", "audit", "--json", "--ignore", "GHSA-fc5q-39xc-vjpf" ] => [ bun_check, "", Status.new(exitstatus: bun_status) ]
       }
       command_runner = ->(*command, chdir:) { responses.fetch(command) }
       importmap_auditor = importmap.respond_to?(:call) ? importmap : -> { importmap }

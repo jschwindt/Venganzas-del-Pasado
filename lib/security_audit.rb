@@ -1,6 +1,7 @@
 require "json"
 require "open3"
 require "pathname"
+require "yaml"
 require "importmap-rails"
 require "importmap/map"
 require "importmap/npm"
@@ -75,7 +76,7 @@ module SecurityAudit
       end
 
       def audit_bun(findings, errors)
-        result = run_command("bun", "bun", "audit", "--json")
+        result = run_command("bun", *bun_audit_command)
         return errors << command_error("bun", "vulnerability check", result) unless result.expected_audit_status?
 
         payload = JSON.parse(result.stdout)
@@ -139,6 +140,20 @@ module SecurityAudit
         end
       end
 
+      def bun_audit_command
+        command = [ "bun", "audit", "--json" ]
+        ignored_bun_advisories.each { |advisory| command.push("--ignore", advisory) }
+        command
+      end
+
+      def ignored_bun_advisories
+        config_path = root.join("config/bun-audit.yml")
+        return [] unless config_path.exist?
+
+        config = YAML.safe_load_file(config_path) || {}
+        Array(config.fetch("ignore", [])).map(&:to_s)
+      end
+
       def normalize_bun_findings(payload)
         return normalize_npm_vulnerabilities(payload.fetch("vulnerabilities")) if payload.key?("vulnerabilities")
         return normalize_bun_advisories(payload.fetch("advisories")) if payload.key?("advisories")
@@ -163,6 +178,7 @@ module SecurityAudit
 
       def normalize_bun_entry(package, entry)
         return unless entry.is_a?(Hash)
+        return if ignored_bun_advisory?(entry)
 
         Finding.new(
           scanner: "bun",
@@ -172,6 +188,14 @@ module SecurityAudit
           description: entry["title"] || entry["description"] || "Known package vulnerability",
           affected_versions: entry["vulnerable_versions"] || entry["range"]
         )
+      end
+
+      def ignored_bun_advisory?(entry)
+        identifiers = entry.values_at("id", "cve", "ghsa", "url").compact.map(&:to_s)
+
+        ignored_bun_advisories.any? do |ignored|
+          identifiers.any? { |identifier| identifier == ignored || identifier.end_with?("/#{ignored}") }
+        end
       end
 
       def run_command(scanner, *command)

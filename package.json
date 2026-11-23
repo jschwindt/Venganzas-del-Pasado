@@ -5,10 +5,10 @@
   "dependencies": {
     "@avo-hq/marksmith": "^0.4.8",
     "bulma": "^1.0.4",
-    "sass": "^1.107.1"
+    "sass": "^1.108.2"
   },
   "devDependencies": {
     "picomatch": "2.3.2",
-    "vite": "~8.2.4"
+    "vite": "~8.2.6"
   }
 }

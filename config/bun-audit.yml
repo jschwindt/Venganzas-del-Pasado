@@ -1,0 +1,3 @@
+# Advisories that cannot currently be fixed and do not affect an exposed application path.
+# Remove each exception as soon as a patched dependency version is available.
+
