@@ -261,7 +261,7 @@ GEM
     meilisearch-rails (0.16.0)
       meilisearch (~> 0.32.0)
       mutex_m (~> 0.2)
-    metainspector (5.22.0)
+    metainspector (6.0.0)
       addressable (~> 2.9.1)
       base64 (~> 0.3)
       faraday (~> 2.14, >= 2.14.3)
@@ -277,6 +277,7 @@ GEM
     mini_magick (5.4.0)
       logger
     mini_mime (1.1.5)
+    mini_portile2 (2.8.9)
     minitest (6.1.0)
       drb (~> 2.0)
       prism (>= 1.5, < 3)
@@ -300,6 +301,9 @@ GEM
     net-smtp (0.5.2)
       net-protocol
     nio4r (2.7.5)
+    nokogiri (1.19.7)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
     nokogiri (1.19.7-aarch64-linux-gnu)
       racc (~> 1.4)
     nokogiri (1.19.7-aarch64-linux-musl)
@@ -322,6 +326,7 @@ GEM
     pp (0.6.4)
       prettyprint
     prettyprint (0.2.1)
+    prism (2.1.0)
     prism (2.1.0-aarch64-linux-gnu)
     prism (2.1.0-aarch64-linux-musl)
     prism (2.1.0-arm-linux-gnu)
@@ -433,6 +438,9 @@ GEM
       rubocop-rails (>= 2.30)
     ruby-progressbar (1.13.0)
     rubyzip (3.7.0)
+    sass-embedded (1.108.2)
+      google-protobuf (~> 4.31)
+      rake (~> 13.3)
     sass-embedded (1.108.2-aarch64-linux-gnu)
       google-protobuf (~> 4.31)
     sass-embedded (1.108.2-aarch64-linux-musl)
@@ -532,7 +540,7 @@ DEPENDENCIES
   letter_opener
   marksmith!
   meilisearch-rails (~> 0.16.0)
-  metainspector (~> 5.17)
+  metainspector (~> 6.0)
   mini_magick (~> 5.0)
   mysql2 (~> 0.5)
   propshaft
@@ -644,9 +652,10 @@ CHECKSUMS
   matrix (0.4.3) sha256=a0d5ab7ddcc1973ff690ab361b67f359acbb16958d1dc072b8b956a286564c5b
   meilisearch (0.32.0) sha256=ef6c37f3e53da6c429d0bd81a8d8794a6c50d1bd7d07cbca813618c203576dc4
   meilisearch-rails (0.16.0) sha256=6f1f06075c7043c59ba0a30d4cf76c3d7374da270d73f5660ea4fe9491a1ad9c
-  metainspector (5.22.0) sha256=c47efdd522c8aaf26102020362b98ec56fa7d23d48b6d6d6bbf2b9771c623744
+  metainspector (6.0.0) sha256=da8396080a8416cdef655908f078bec589cdb1af9406218a557963afb390b8d9
   mini_magick (5.4.0) sha256=f120af581d9ed4ec52c57f35a67a605d112bb1d8f582d1415b147fda42d11d78
   mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
+  mini_portile2 (2.8.9) sha256=0cd7c7f824e010c072e33f68bc02d85a00aeb6fce05bb4819c03dfd3c140c289
   minitest (6.1.0) sha256=ff373595aa8888631e8a5463986a76b3845346ae6d7fa46e139c1633d418076e
   msgpack (1.8.7) sha256=dfefec761b5f9047e6e8d95d2c7f8af4b3725d984a01942adc533aa819a2df33
   multi_xml (0.9.1) sha256=7ce766b59c17241ed62976caeae1fae9b2431b263398c35396239a68c4a64e57
@@ -659,6 +668,7 @@ CHECKSUMS
   net-protocol (0.4.0) sha256=f9f90c8c6f64794a45160bf422177a336db12809de3beeeaa26b88fcd2e8c853
   net-smtp (0.5.2) sha256=35103cc04d6b2d94632f9928ede07483c24b70b9c0db1f231fea43909b678f3c
   nio4r (2.7.5) sha256=6c90168e48fb5f8e768419c93abb94ba2b892a1d0602cb06eef16d8b7df1dca1
+  nokogiri (1.19.7) sha256=abe94507c54cb18f872777b16bdca4aad32b1abdc4c52fe843f1c80fbdf992b8
   nokogiri (1.19.7-aarch64-linux-gnu) sha256=8f5e15d299602456406e1f03a9f3456cceb33a0722811e818d2ee2214eb4c84a
   nokogiri (1.19.7-aarch64-linux-musl) sha256=efe0c3602e6e54521bc21c681930ce5568e2d11203de17400710b2b3ca2e4cb4
   nokogiri (1.19.7-arm-linux-gnu) sha256=7fd1907125691aa89e838cc91161761c758b4e17bb32f0dd9b5515a82cc759af
@@ -671,6 +681,7 @@ CHECKSUMS
   parser (3.3.14.0) sha256=62f8f76af7b919425ee2d811880e9dcb8011ab40bfd59970dfb583141697e58f
   pp (0.6.4) sha256=dfcb0fce700c41456265922884f9fe195d7fbb0674a3578e6c0f69588e82b570
   prettyprint (0.2.1) sha256=d555d57ea6d7cf001d4774b693546a6bd88bec1e778ddffb5c60b68ceec4b7d4
+  prism (2.1.0) sha256=1c0a7c6dea0e93183390fb123f007564dbe663198e2f86ad87204151147601f3
   prism (2.1.0-aarch64-linux-gnu) sha256=808dddc72def68e1a0463689414c97e0ba211938eddbab05387a4844aa2b3ec2
   prism (2.1.0-aarch64-linux-musl) sha256=dd1a0732620c1e575dabb07a297a62911fabd72f8e20ce850b522a866f877930
   prism (2.1.0-arm-linux-gnu) sha256=96b2426b9dbab05448c4add735619929042be3cd7e871ff186468121b62bcfa8
@@ -709,6 +720,7 @@ CHECKSUMS
   rubocop-rails-omakase (1.1.0) sha256=2af73ac8ee5852de2919abbd2618af9c15c19b512c4cfc1f9a5d3b6ef009109d
   ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
   rubyzip (3.7.0) sha256=65c19294da75297a939006f3516deacc33185fbd721ff1954f7a231db6d3e121
+  sass-embedded (1.108.2) sha256=d3df2784ab3195aae3c5893a7dabe985d191cae4210868f99774d0f5ae7b97af
   sass-embedded (1.108.2-aarch64-linux-gnu) sha256=79372c347ebfef0b80c29511487e80a78950b449538d1c162b2bc09b92967587
   sass-embedded (1.108.2-aarch64-linux-musl) sha256=e09cd8faf9468ee726bfc225d6fdb1705d12fb4d323039e1b2176f13d318d41f
   sass-embedded (1.108.2-arm-linux-gnueabihf) sha256=de55d4296132b44399a615dd7b676589bb1c546496683e746ccc3559412ef62e
